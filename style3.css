@@ -1,0 +1,3504 @@
+/* ==== GLOBAL RESET AND BOX-SIZING ==== */
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* ==== ROOT VARIABLES ==== */
+:root {
+  --spacing: 1.5rem;
+  --container-width: 1200px;
+  --text-color: #333;
+  --bg-color: #f9f9f9;
+}
+
+/* ==== GENERAL BODY STYLING ==== */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Vertical centering (usually better for specific containers) */
+  align-items: center;     /* Horizontal centering */
+  text-align: center;
+  background-color: #ffffff; /* Explicit hex code is more robust */
+  font-family: 'Poppins', sans-serif;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0;
+  min-height: 100vh;
+
+  /* Cross-browser scrollbar styling */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+
+  /* WebKit scrollbar styling */
+  -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
+}
+
+/* Optional: WebKit scrollbar styling (Chrome, Edge, Safari) */
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.25rem;
+}
+
+/* ==== HEADER/FOOTER ==== */
+.header, .footer {
+  background-color: #2a2d2f;
+  color: white;
+  padding: var(--spacing) 0;
+}
+
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3.375rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 0; /* make sure nothing pushes it */
+  background-color: #ffffff;  /* Explicit hex code is more robust */
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+justify-content: flex-start;
+  margin-inline: auto;
+
+}
+
+
+
+/* Logo/title section */
+.Table {
+  flex: 0 0 15%; /* Prevent it from growing/shrinking unexpectedly */
+  height: 100%; /* Match height of container */
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  position: relative;
+  left: 0%;
+}
+
+/* Text inside Table */
+.overlay-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 3;
+  padding-left: 0px;
+  background-color: transparent;
+}
+
+
+/* NET and TOON Styling */
+.net-text {
+  background:red;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.3em;
+  letter-spacing: 2px;
+}
+
+.toon-text {
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.3em;
+  margin-left: 5px;
+}
+
+/* Dark Mode */
+.dark-mode .net-text {
+  background:red;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark-mode .toon-text {
+  background:yellow;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark-mode .shorts-text {
+  background:red;
+  color: white;
+}
+
+
+/* Remove underline from anchor tags */
+a, .net-text, .toon-text {
+  text-decoration: none;
+}
+
+/* Remaining space: .nav */
+.nav {
+  flex-grow: 1;         /* Take up the rest */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 5vw;
+  background-color:transparent;
+  margin-left: 0px;
+}
+.container {
+  display: flex;
+  flex-direction: row; /* change to row if you want nav and others side by side */
+}
+
+.nav {
+  flex-grow: 1;
+  height: 100%;
+}
+
+
+.search {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  height:30px;
+  left: 2%;
+  background-color: #f5f5f5;
+  margin: 15px auto;
+  border-radius: 7px;
+  align-items: center;
+  border: 0.3px solid #ccc;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures hidden children don't leak out */
+}
+
+.dark-mode .search
+{
+  background-color: transparent;
+}
+
+.search input[type="search"] {
+  flex: 1;
+  height: 4.5vh;
+height: 100%;
+  border-radius: 7px;
+  background-color:transparent;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.search input[type="search"]:focus {
+  border: 1px solid white;
+  box-shadow: none;
+}
+
+
+.search input[type="search"]:valid ~ .clear-btn {
+  display: block;
+}
+
+body.dark-mode .search input[type="search"] {
+  color: #fff;
+}
+
+.search input[type="search"]::placeholder {
+  color: #36454F;
+  font-size: 0.9rem;
+}
+
+body.dark-mode .search input[type="search"]::placeholder {
+  color: #D3D3D3;
+}
+
+/* Optional mobile support */
+@media (max-width: 480px) {
+  .search {
+    width: 95%;
+    padding: 0.25rem;
+  }
+
+  .search input[type="search"] {
+    font-size: 0.95rem;
+    padding: 0.5rem 2rem 0.5rem 1.5rem;
+  }
+
+  .clear-btn {
+    font-size: 1rem;
+    right: 0.75rem;
+  }
+}
+
+/* Search icon to the left */
+.search .search-icon {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  padding: 1px;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Clear button to the right */
+.clear-btn {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: red;
+  display: none;
+}
+
+.search input[type="search"] {
+  padding-left: 2rem; /* make room for icon */
+  padding-right: 3.5rem; /* make room for clear button */
+}
+
+
+.upload {
+  position: relative;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  margin-top: 0;
+  margin-left: 1vw;
+  border-radius: 50%;
+}
+
+.upload img {
+  width: 3vw;
+  height:3vw;
+  margin-top: 0.2vh;
+  padding: 0.5vh;
+  margin-left: 0vw;
+}
+
+
+.upload:hover .tooltip
+{
+visibility: visible;
+opacity: 1;
+
+}
+
+/* Notifications Icon */
+.Notifications {
+  position: relative;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.Notifications img {
+  width: 2vw;
+  height: 2vw;
+  margin-top: 0.4375rem;
+}
+
+/* Notification Dropdown */
+.Notification-container {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 1%;
+  width: 24%;
+  min-width: 11.25em;
+  max-height: 30em;
+  padding: 1rem;
+
+  background-color: #333;
+  color: white;
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+
+  z-index: 30;
+}
+
+/* Active class to show the container */
+.Notification-container.active {
+  display: block;
+}
+
+.Theme {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Theme img {
+  width: 1.6875em;
+  height: 1.6875em;
+  border-radius: 50%;
+  margin-left: 1em;
+}
+.Account {
+  position: relative;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  margin-top: 0.3125rem; /* 5px */
+  margin-right: 1rem;     /* 16px */
+  margin-bottom: 0.1875rem; /* 3px */
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  float: right;
+}
+
+.Account img {
+  width: 2vw;
+  height: 2vw;
+  margin-left: 0.4rem; /* 5px */
+  border-radius: 50%;
+  object-fit: cover; /* Ensures proper scaling inside circle */
+}
+
+/* Dark mode adjustment */
+.dark-mode .Account img {
+  filter: invert(1);
+}
+
+/* Dropdown wrapper */
+.account-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
+  width: 24%;
+  min-width: 11.25em;
+  max-height: 25em;
+  background-color: #333;
+  box-shadow: 0px 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  z-index: 30;
+  padding: 0em 0;
+  text-align: left;
+  align-items: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) white;
+}
+
+.dropdown-content a {
+  
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block; /* Make links block elements */
+}
+
+.account-dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Profile Section */
+.proofile {
+  width: 100%;
+  min-height: 1.875em; /* 30px */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: white;
+  padding: 0.625em; /* 10px */
+  border-radius: 0.4375em; /* 7px */
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Hover Effect */
+.proofile:hover {
+  background-color: grey; /* Subtle purple hover effect */
+  color: white;
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Profile Image */
+.proofile img {
+  width: 1.6875em; /* 27px */
+  height: 1.6875em;
+  border-radius: 50%;
+  margin-right: 0.625em; /* 10px */
+}
+
+/* Profile Name */
+.proofile span {
+  font-weight: bold;
+  font-size: 0.875em; /* 14px */
+  color: black;
+  margin-left: 0.3125em; /* 5px */
+  text-align: left;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Change text color on hover */
+.proofile:hover span{
+  color: white;
+}
+
+
+.dropdown-content li {
+  list-style: none; /* Remove bullet points */
+}
+
+
+
+.tooltip {
+  position: absolute;
+  top: 100%; /* Show below the upload icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 0.4em 0.6em;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+}
+
+
+/* Tooltip Hover Effect */
+.upload:hover .tooltip, 
+.Notifications:hover .tooltip, 
+.Account:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .tooltip {
+    font-size: 0.75em; /* Reduce text size on smaller screens */
+    padding: 0.4em 0.6em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tooltip {
+    font-size: 0.6875em; /* Further reduce size for compact screens */
+    bottom: -1.75rem; /* Adjust positioning */
+  }
+}
+
+
+.sidebar {
+  display:none;
+  position: fixed;
+  width: 1%;
+  min-width: 3em; /* Converted from 80px */
+  height: 100vh; /* Full viewport height */
+ background-color:white;
+  top: 2.7rem;
+  left: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  transition: width 0.3s ease-in-out;
+  z-index: 3;
+  border-style:none;
+  justify-content:space-evenly;
+}
+
+.sidebar:hover {
+  width: 15%; /* Expands slightly on hover for better UX */
+}
+
+.sidebar::-webkit-scrollbar {
+  width: 6px;
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background:gray;
+  border-radius: 5px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background:gray;
+  scrollbar-color: rgba(0, 0, 0, 0.5) gray;
+}
+
+.sidebar img {
+  width: 1.6875rem; /* Converted from 27px */
+  height: 1.6875rem;
+  margin: 1.25rem auto 1.0625rem auto; /* Adjusted spacing */
+  display: block; /* Centers image in flex-based layouts */
+}
+
+.home {
+  width: 100%;
+  height: 3.125rem; /* Converted from 50px */
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: transparent;
+  border-radius: 0;
+  box-sizing: border-box;
+  padding: 0 0.9375rem; /* Converted from 15px */
+  margin: 3.125rem 0 2.5rem 0; /* Adjusted margin values */
+  gap:5px;
+  cursor: pointer;
+}
+
+.home img {
+  width: 1.5625rem; /* Converted from 25px */
+  height: 1.5625rem;
+  margin-left: 0rem; /* Converted from 10px */
+}
+
+.home span {
+  flex-grow: 1;
+  text-align: center;
+  color: #333333;
+  font-weight: 300; /* Use numerical weight for better compatibility */
+  font-size: 0.8125rem; /* Converted from 13px */
+  white-space: nowrap; /* Prevents text wrapping */
+  overflow: hidden;
+  text-overflow: ellipsis; /* Ensures long text is truncated */
+}
+
+
+.home:hover,
+.dark-mode .home:hover {
+  background-color: grey;
+}
+
+.video-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; /* Ensures left/right layout */
+  width: 100%;
+  height: auto;
+  background-color: transparent;
+  border-radius: 7px;
+  margin-top: 60px;
+  padding: 0px;
+  border-style: none;
+  align-items: flex-start;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  overflow-y: hidden; 
+  overflow-x: hidden;
+  gap:1rem;
+
+}
+
+.containerr {
+  width: clamp(300px, 58%, 100%);
+  max-width: 100%;
+  height: auto;
+  background-color:transparent; 
+  border-radius: 7px;
+  margin-top: 0px;
+  border-style: none;
+  flex-grow: 1; /* Ensures it takes up remaining space */
+  padding-bottom: 0px;
+  padding-top: 0px;
+margin-left: 1%;
+}
+
+
+
+.profillee {
+  position: relative; /* Keeping absolute positioning */
+  width: 100%;
+  height: 2.7rem; /* Flexible height */
+  max-width: 100%;
+  border-radius: 0px;
+  background-color: transparent;/* Kept original background */
+  align-items: center;
+margin-top: 0px;
+  gap: 0.5rem; /* Adds spacing between elements */
+
+}
+
+.profillee img {
+  width: clamp(2rem, 12%, 2.5rem); /* Responsive width */
+  height: auto;
+  border-radius: 50%;
+  float: left; /* Keeping float for now */
+  margin-left: clamp(3rem, 2vw, 2rem);
+  margin-top: 1px;
+  background-color: transparent;
+  object-fit: cover;
+}
+
+/* Dark mode adjustment */
+.dark-mode .profillee img  {
+  filter: invert(1);
+}
+
+
+.profillee-name {
+  position: absolute;
+  flex-grow: 1; /* Allow dynamic expansion */
+  min-width: 30%; /* Prevent excessive shrinking */
+  max-width: 100%; /* Limit maximum width */
+  height: 30px;
+  margin-left: 7rem;
+  margin-top:5px;
+  background-color: transparent;  /* Keep default background */
+  border-radius: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden; /* Prevent text overflow */
+  white-space: nowrap; /* Keep name in one line */
+  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+}
+
+
+.profillee-name span
+{
+  font-size: clamp(1rem, 1.2vw, 1.1rem); /* Ensure balance between small & large screens */
+  background-color: transparent;
+  color: #36454F;
+  text-align: center;
+  float: left;
+  font-weight: bolder;
+  font-size: clamp(1.2rem, 1.1vw, 1.5rem);
+  margin-left: clamp(0.5rem, 1vw, 1.25rem);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.captionn {
+  position: relative;
+  width:100%;
+  height: auto; /* Allow dynamic height */
+  background-color: transparent;
+  margin-top: 0px;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  overflow: hidden; /* Hide overflow */
+  padding: 5px; /* Ensure spacing */
+}
+
+.captionn h3 {
+  font-weight: bold;
+    font-size: clamp(1.2rem, 1.1vw, 1.5rem);
+  color: black;
+  text-align: center; /* Keep text centered */
+  white-space: nowrap; /* Prevent text wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Add ellipsis if text overflows */
+  max-width: 95%; /* Ensure text stays within bounds */
+  padding: 3px;
+  margin: 0; /* Remove unnecessary margin */
+}
+
+
+.video {
+  position: relative; /* Ensures proper flow in the document */
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9; /* Maintains the correct proportions */
+  background-color: transparent;
+  display: flex;
+  border-radius: 7px;
+  overflow: hidden;
+  justify-content: center;
+  align-items: center;
+  margin-top: 0px;
+}
+
+.video video {
+  width: 100%;
+  height:100%;
+  object-fit: cover;
+  display: block; /* Removes any unwanted whitespace below */
+}/* Section container for child elements */
+
+.play-overlay {
+  position: absolute;
+  top: 47%;
+  left: 51%;
+  width: 50px;
+  height: 50px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  opacity: 1; /* Start visible in case video doesn't autoplay */
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+
+
+.sectionn {
+  width: 100%;
+  max-width:99.5%;
+  display: flex;
+  flex-wrap:nowrap; /* More flexible layout */
+  justify-content: center;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: 1px;
+  margin-bottom: 1px;
+  border-radius: 0.4375rem;
+  border-style:none;
+  background-color:transparent; 
+}
+
+
+/* Light mode */
+.viewss,
+.commentss,
+.likess,
+.dislikee,
+.timee,
+.follow,
+.option {
+  position: relative;
+  flex: 1.5;
+  min-width: 1rem;
+  height: 1.7rem;
+  background-color: #F5F5F5;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+/* Light mode hover */
+.viewss:hover,
+.commentss:hover,
+.likess:hover,
+.dislikee:hover,
+.timee:hover,
+.follow:hover,
+.option:hover {
+  background-color: grey;
+}
+
+/* Dark mode hover */
+body.dark-mode .viewss:hover,
+body.dark-mode .commentss:hover,
+body.dark-mode .likess:hover,
+body.dark-mode .dislikee:hover,
+body.dark-mode .timee:hover,
+body.dark-mode .follow:hover,
+body.dark-mode .option:hover {
+  background-color: #4a4b4d;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Increase space for time and follow buttons */
+.viewss {
+  flex: 2;
+}
+
+/* Increase space for time and follow buttons */
+.follow {
+  flex: 2;
+}
+
+.timee {
+  flex: 2;
+}
+/* Responsive icons */
+.viewss img,
+.commentss img,
+.likess img,
+.dislikee img,
+.follow img,
+.option img {
+  width: clamp(1.3rem, 2vw, 1.5rem);
+  height: auto;
+  object-fit: cover;
+  margin-right: 0.5rem;
+}
+
+/* Responsive icons */
+.commentss img
+ {
+margin-top:2px ;
+}
+
+
+/* Label styling */
+.viewss span,
+.commentss span,
+.likess span,
+.dislikee span,
+.timee span,
+.follow span {
+  background-color: transparent;
+  color: #333333;
+  font-size: clamp(0.955rem, 1vw, 0.955rem);
+  text-align: center;
+  margin: 0;
+}
+
+
+.container-2 {
+  position: relative;
+  flex-basis: 38%; /* Allows dynamic width */
+  max-width: 37vw; /* Responsive width */
+  height: auto;
+  max-height: 555px; /* Set max height for scrolling */
+  float: right;
+  margin-top: 0px;
+margin-right: 0.5%;
+background-color: transparent; /* Maintain clean UI */
+  border-radius: 0.4375rem; /* Rounded edges */
+  overflow-y: auto; /* Enable vertical scrolling */
+  overflow-x: hidden; /* Hide horizontal scrolling */
+  display: flex;
+  flex-shrink: 0;
+  flex-wrap: wrap; /* Allow child elements to wrap */
+  flex-direction: row; /* Arrange items in rows */
+  /* Custom scrollbar styling */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  justify-content: flex-start;
+  border-style: none;
+  z-index: 2; 
+
+}
+
+/* Dark mode adjustments */
+.dark-mode .container-2 {
+  scrollbar-color: rgba(0, 0, 0, 0.5) grey;
+}
+.optionn {
+  
+  width: 100%;
+  height: 30px;
+  background-color: #F5F5F5; /* Pale Grey */
+  border-radius: 0.4375rem; /* Smooth rounded edges */
+  border: none; /* Remove unnecessary border */
+  z-index: 1; /* Ensure it's above other elements */
+  position: sticky; /* Keeps it visible when scrolling */
+  top: 0; /* Stick to the top */
+  display: flex; /* Use flexbox for proper alignment */
+  justify-content: space-between; /* Distribute space evenly */
+  align-items: center; /* Center items vertically */
+  padding: 0 15px; /* Add inner padding for spacing */
+}
+
+/* Label styling for better text display */
+.optionn span {
+  font-weight: bold;
+  color: #333333;
+  text-overflow: ellipsis; /* Handle long text */
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflowing text */
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.scroller {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin-bottom: 0px;
+  border-radius: 0rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px 10px; /* 5px vertically, 10px horizontally */
+  margin-top: 0px;
+  background-color: transparent;
+  justify-content: flex-start;
+}
+
+
+.card {
+  position: relative;
+  width: 30%; /* Maintain original width */
+  max-height: 230px;
+  background-color: transparent;/* Keep background clean */
+  flex: 0 1 47%; /* Keep original flex behavior */
+  border: none; /* Remove unnecessary borders */
+  border-radius: 0.4375rem; /* Smooth rounded edges */
+  margin: 10px 0 15px 10px; /* Maintain original positioning */
+  cursor: pointer; /* Indicates interactivity */
+  z-index: 0; 
+  line-height: 1; /* Optional: helps tighten layout */
+  box-sizing: border-box;
+  border-style:none;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding: 0px;
+}
+
+
+/* Subtle hover effect without changing position */
+.card:hover {
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15); /* Soft shadow on hover */
+}
+
+.card:first-of-type {
+  background-color: pink;
+}
+
+
+/* First card special styling */
+.dark-mode .card:nth-child(1) {
+  background-color:gray; /* Special background for first card */
+  border: 0.1px solid transparent; /* Red border highlight */
+  border-radius: 0.4375rem; /* Maintain consistent rounding */
+}
+
+
+
+.captiion {
+  width: 100%; /* Ensures full width inside the card */
+  height: auto; /* Adjusts based on content */
+  background-color: transparent;
+  display: flex;
+  align-items: center; /* Centers items vertically */
+  justify-content: center; /* Centers items horizontally */
+  overflow: hidden;
+  flex: 1; /* Expands to fill available space */
+  margin: 0; /* Removes unnecessary margins */
+  padding: 5px 0; /* Adds slight spacing without breaking alignment */
+}
+
+/* Caption Label */
+.captiion span {
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  white-space: nowrap; /* Prevents text wrapping */
+  overflow: hidden; /* Hides overflowing text */
+  text-overflow: ellipsis; /* Shows "..." when text is too long */
+  max-width: 90%; /* Limits width to prevent overlap */
+  padding: 4px 8px; /* Balanced padding */
+}
+
+/* 📱 Mobile Adjustments */
+@media (max-width: 768px) {
+  .captiion label {
+    font-size: 14px; /* Slightly smaller font for mobile */
+    padding: 4px 6px; /* Adjust spacing for smaller screens */
+    max-width: 85%; /* Prevents text overflow in tight spaces */
+  }
+}
+
+.pichaa {
+  width: 100%;
+  height: 125px;
+  overflow: hidden;
+  border-radius: 7px;
+  display: flex; /* Ensures proper alignment */
+  align-items: center; /* Centers video */
+  justify-content: center;
+  margin-top: 5px;
+  background-color: gray; /* Adds a fallback background for better contrast */
+}
+
+/* Video inside .pichaa */
+.pichaa video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video fills the container without distortion */
+  border-radius: 7px;
+}
+
+
+/* 📱 Mobile Optimization */
+@media (max-width: 768px) {
+  .pichaa {
+    height: 100px; /* Adjusts height for smaller screens */
+  }
+}
+
+.overlay-texttt {
+  position: absolute;
+  min-width: 10%; /* Prevents it from getting too small */
+  max-width: 22%; /* Ensures a good size balance */
+  height: auto;
+  background-color: rgba(0, 0, 0, 0.65); /* Slightly darker for better readability */
+  color: white;
+  left: 2%;
+  bottom: 24%;
+  border-radius: 7px;
+  padding: 6px 12px; /* Slightly better spacing */
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 768px) {
+  .overlay-texttt {
+    font-size: 12px;
+    padding: 4px 8px;
+    min-width: 12%;
+    max-width: 25%;
+    bottom: 10%;
+  }
+}
+.sectiion {
+  width: 100%;
+  height: auto; /* Allows vertical expansion if needed */
+  background-color: transparent;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  border-radius: 7px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  padding: 2px 8px;
+}
+
+/* 🟡 Views Section */
+.viewsss {
+  position: relative;
+  max-width: 41%;
+  height: 25px;
+  margin: 4px 0; /* Equal top and bottom margins */
+  background-color: transparent;
+  border-radius: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  gap: 3px;
+}
+
+.viewsss img {
+  width: 1.8vw;
+  height: 1.8vw;
+  min-width: 18px;
+  min-height: 18px;
+  margin-left: 0px;
+}
+
+.viewsss span {
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex-shrink: 1;
+  max-width: 100%;
+  color: black;
+}
+
+/* 🌙 Dark Mode Adjustments */
+.dark-mode .viewsss img {
+  filter: invert(1);
+}
+
+/* 🔴 Episode Section */
+.Episode {
+  width: 50%;
+  height: 25px;
+  margin: 4px 0; /* Equal top and bottom margins */
+  background-color: transparent;
+  border-radius: 0px;
+  font-size: 14px;
+  max-width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content:flex-end;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 2px 6px;
+}
+
+.Episode span {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
+  font-weight: 500;
+  color: black;
+}
+
+/* 📱 Mobile Optimization */
+@media (max-width: 768px) {
+  .viewsss, .Episode {
+    width: 45%;
+  }
+
+  .viewsss span, .Episode span {
+    font-size: 12px;
+  }
+
+  .viewsss img {
+    width: 14px;
+    height: 14px;
+    margin-right: 3px;
+  }
+}
+
+
+
+.comment-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  position: relative;
+  width: 100%;
+  max-height: 600px;
+  overflow-y: auto;
+  background-color: transparent;
+  padding-bottom: 0px; /* Reserve space for sticky input */
+  margin-left: 0%;
+  border-radius: 7px;
+  border: 0.1px solid #ccc;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  top:1em;
+}
+
+
+.comment-count {
+  position: sticky; /* Make it sticky */
+  top: 0; /* Stick to the top of the container */
+  width: 100%;
+  height: 30px;
+  background-color: #F5F5F5;
+  z-index: 1; /* Ensure it stays above other content */
+}
+
+.dark-mode .comment-count 
+{
+  background-color: #181818;; /* Black background for Dark Mode */
+
+}
+
+.comment-count span {
+  float: left;
+  margin-top: 5px;
+  margin-left: 10px;
+  font-weight: bold;
+}
+
+.about
+{
+display: none;
+width:38.5%;
+min-height: 600px;
+background-color: transparent;
+float: right;
+margin-right: 0px;
+margin-top: 10px; 
+max-height: 600px;
+border-radius: 7px;
+scrollbar-width: thin; /* Set scrollbar to thin */
+scrollbar-color: rgba(0, 0, 0, 0.5) transparent; /* Color of the scrollbar thumb and track */
+border-color: #ccc;
+border: 1px solid #ccc; /* Set a very thin border */
+}
+
+
+.commentt-new
+{
+width: 100%;
+background-color: #F5F5F5;
+
+
+}
+
+
+
+.comment-scroll-area {
+  height: auto;
+  overflow-y: hidden;
+  border: none;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  z-index:1000;
+  background-color: transparent;
+}
+
+.dark-mode .comment-scroll-area
+{
+  border-color: grey;
+}
+
+
+.commentt.display {
+  display:block;
+  position: relative;
+  width: 100%;
+  height: auto;
+  background-color:transparent;
+  border-radius: 7px;
+  border: none;
+  margin-top: 10px; /* Adjusted for better spacing */
+  float: left;
+  overflow-y: hidden;
+  z-index:0;
+  margin-left: 0px;
+  margin-bottom: 20px;
+}
+
+.commentt-profile {
+  width: 100%;
+  height: 40px;
+  background-color:transparent;
+  display: flex; /* ✅ Use flex to control child layout */
+  align-items: center;
+  gap: 10px; /* Space between items */
+  padding-left: 10px; /* Optional padding to bring things in */
+}
+
+.commentt-profile img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  cursor: pointer;
+  /* Remove floats */
+}
+
+/* Dark mode adjustment */
+.dark-mode .commentt-profile img {
+  filter: invert(1);
+}
+
+.commentt-name {
+  height: 30px;
+  background-color:transparent;
+  border-radius: 7px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 10px;
+  white-space: nowrap;
+  /* Remove margin-left or keep small one if needed */
+}
+
+.commentt-name span {
+  color: #36454F;
+  font-weight: bold;
+  font-size: 15px;
+  white-space: nowrap; /* still prevent wrapping */
+}
+
+
+
+.dark-mode .commentt-name span 
+{
+  color: #D3D3D3;
+}
+
+.timer
+{
+width: 20%;
+height: 30px;
+background-color:transparent;
+float:right;
+margin-right: 5px;
+margin-top: 0px;
+max-width: 180px; /* Prevents excessive width */
+display: flex;
+align-items: center;
+justify-content: center;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+border-radius: 7px;
+
+}
+
+.timer span 
+{
+margin-top:5px;
+margin: 0;
+display: flex;
+align-items: center;
+justify-content: center;
+text-align: center;
+overflow: hidden;
+text-overflow: ellipsis;
+white-space: nowrap;
+max-width: 100%;
+color: #555D50;
+font-size: 14px;
+}
+
+.dark-mode .timer span 
+{
+  color:   #F5F5DC; 
+}
+
+.commentt.new {
+  background-color: #F5F5F5;
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  padding: 10px;
+  border: none;
+  overflow-y: hidden;
+}
+.dark-mode .commentt.new 
+{
+  background-color: #181818;; /* Black background for Dark Mode */
+}
+
+
+.commentt.new textarea {
+  width: 100%;
+  min-height: 60px;
+  resize: vertical;
+  
+}
+
+
+/* Scrollable and dynamically expanding textarea */
+.commentt.display textarea {
+  width: 100%;
+  height: auto;
+  overflow-y: scroll; /* allow vertical scroll if needed */
+  resize: none;
+  white-space: pre-wrap;
+  word-break: break-word;
+  border: none;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+  padding: 10px;
+  color: #111;
+  background-color:transparent;
+  box-sizing: border-box;
+  line-height: 2;
+}
+
+.dark-mode  .commentt textarea
+{
+  color: white;
+}
+
+/* Focus state */
+.commentt textarea:focus {
+  border-color: transparent;
+}
+
+/* Light Mode (default) */
+body:not(.dark-mode) textarea {
+  background-color: white;
+  color: black;
+
+}
+
+/* Dark Mode */
+body.dark-mode textarea {
+  background-color: #222;
+  color: white;
+
+}
+
+
+.comment-actions {
+  display: none;
+  justify-content: flex-end;
+  margin-top: 10px;
+}
+
+.commentt.typing .comment-actions {
+  display: flex; /* or inline-flex/grid/block based on your design */
+  gap: 10px;
+}
+
+.cancel-btn,
+.send-btn {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.cancel-btn {
+  background-color: #6c757d;
+}
+
+.cancel-btn:hover {
+  background-color: #5a6268;
+}
+
+.send-btn {
+  background-color: #007BFF;
+}
+
+.send-btn:hover {
+  background-color: #0069d9;
+}
+
+.commentt.display {
+  margin-top: 4px; /* Or whatever aligns with the input version */
+}
+
+.comment-container {
+  overflow-x: hidden;
+}
+
+.commentt.display {
+  overflow-x: hidden;
+}
+
+
+/* Read-only or display mode */
+.commentt.display textarea {
+  width: 100%;
+  background-color:transparent;
+  border: none;
+  resize: none;
+  font-size: 1rem;
+  color: #111;
+  font-weight: 400;
+  padding: 6px 9px;
+  height: auto;
+  margin: 0 0 1px 0;
+  z-index: 1;
+  overflow-x: hidden;
+  white-space: pre-wrap; /* allows line breaks and wraps long lines */
+  word-break: break-word; /* ensures long words wrap instead of overflow */
+}
+
+.dark-mode .commentt.display textarea
+{
+  color: white;
+}
+
+.commentt-Section {
+  width: 25%;
+  max-width: 22%;
+  height: 30px;
+  background-color:transparent;
+  margin-top: 5px;
+  border-radius: 7px;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: space-between;
+  margin-left: auto;
+  z-index: -1;
+  padding: 10px;
+  margin-bottom: 5px;
+}
+
+
+/* Shared style for like, reply, sidebar */
+.like, .reply, .sidebarr {
+  flex: 1 1 5%;
+  min-width: 4rem;
+  max-width: 5rem;
+  height: 20px;
+  background-color: #F5F5F5;
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  margin-bottom: 0px;
+  padding: 12px;
+  gap: 6px; /* ✅ ensures icon and text are spaced nicely */
+}
+
+
+
+/* Dark mode background */
+.dark-mode .like,
+.dark-mode .reply,
+.dark-mode .sidebarr {
+  background-color: #353839;
+}
+
+/* Icons */
+.like img, .reply img, .sidebarr img {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+/* Invert icons in dark mode */
+.dark-mode .like img,
+.dark-mode .reply img,
+.dark-mode .sidebarr img {
+  filter: invert(1);
+}
+
+/* Labels */
+.like span, .reply span {
+  font-size: 14px;
+  line-height: 1;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+.container-3 {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center; /* ✅ Vertically center children */
+  justify-content: flex-start; /* Or center if needed */
+  width: 100%;
+  height: 20rem;
+  background-color: transparent;
+  border-radius: 0.4375rem;
+  margin-top: 2rem;
+  padding: 0;
+  padding-bottom: 0px;
+  border-style: none;
+}
+
+
+.optionnn {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 2rem; /* 50px converted to rem */
+  background-color:#FFFFFF;
+  display: flex;
+  align-items: center; /* Align content vertically */
+border-style:none;
+z-index: 3;
+  overflow: hidden;
+  border-radius: 0rem; /* 7px */
+}
+
+.optionnn span  {
+  font-size: 1.25rem; /* 20px converted to rem */
+  color: #333333;
+  font-weight: bolder;
+  white-space: nowrap; /* Prevent wrapping */
+  overflow: hidden; /* Hide overflow */
+  text-overflow: ellipsis; /* Show ellipsis */
+  flex-shrink: 1; /* Allow shrinking */
+  margin-left: 10px;
+}
+
+
+.channel {
+  position: relative;
+  width: clamp(150px, 30%, 300px);
+  height: auto; /* Let content size it */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center; /* ✅ Vertical alignment inside */
+}
+
+
+.channel img {
+  width: 80%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-top: 10px; /* ✅ No extra spacing */
+  position: relative;
+}
+
+
+/* Dark mode image invert */
+.dark-mode .channel img {
+  filter: invert(1);
+}
+
+
+.profile {
+  position: absolute;
+  width: 100%;
+  height: auto; /* Adjusts based on content */
+  background-color: transparent;
+  margin-top: 8.5rem; /* 15px in rem */
+  min-height: 2.1875rem; /* 35px in rem */
+  display: flex;
+  margin: 17.7rem auto 0 auto;
+  justify-content: space-between;
+  flex-wrap: nowrap; /* Prevents wrapping */
+  align-items: center; /* Centers items vertically */
+
+}
+
+.profile-name {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto; /* Allows dynamic expansion */
+  min-width: 7rem; /* 150px */
+  max-width: fit-content;
+  height: 1.875rem; /* 30px */
+  padding: 0 0.625rem; /* 10px */
+  background-color:transparent;
+  border-radius: 0.4375rem; /* 7px */
+  white-space: nowrap; /* Prevent text wrapping */
+  transition: background-color 0.3s ease-in-out;
+  left: 1.5%;
+}
+
+.profile-name span  {
+  font-size: 1.1rem; /* 18px */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin: 0;
+  color: #333; /* Darker text for better contrast */
+}
+
+
+.followers {
+  flex: 1 1 auto; /* Allows dynamic expansion and shrinkage */
+  height: 1.875rem; /* 30px */
+  min-width: 20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 0.625rem; /* 10px */
+  margin: 0.1875rem 0.625rem; /* Adds slight spacing */
+  border-radius: 0.4375rem; /* Rounded corners */
+  background-color:transparent;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: fit-content;
+  transition: background-color 0.3s ease-in-out;
+}
+
+/* Hover effect for improved UI feedback */
+.followers:hover {
+  background-color: #E0E0E0;
+}
+
+/* Followers label styling */
+.followers span  {
+  font-size: 1.1rem;
+  margin: 0;
+  text-align: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  flex-shrink: 1;
+  color: #333; /* Improved contrast */
+}
+
+/* Mobile optimization */
+@media (max-width: 768px) {
+  .followers {
+    width: 100%; /* Ensures full width on smaller screens */
+    justify-content: center;
+    margin: 0.3rem 0; /* Adds spacing between elements */
+  }
+}
+
+
+
+/* Base font size for rem calculations */
+html {
+  font-size: 16px; /* 1rem = 16px */
+}
+
+.Tablee {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  background-color: transparent;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 0.625rem;
+  padding: 1rem 0rem;
+  z-index:0;
+  margin-bottom: 0px;
+  scroll-behavior: smooth;
+}
+
+
+.series {
+  position: relative;
+  flex: 0 0 auto; /* Prevents it from shrinking or stretching */
+  min-width: 40%;
+  max-width: 40%;
+  height: auto;
+  margin-left: 0.625rem; /* 10px */
+  margin-top: 2rem; /* Previously 2rem */
+  background-color:transparent;
+  border-radius: 0.4375rem; /* 7px */
+  max-height: 15rem; /* 220px */
+  cursor: pointer;
+  overflow: hidden; /* Ensures no content overflows */
+margin-bottom: 0rem;
+z-index:10;
+}
+
+.series img {
+  width: 100%; /* Stretches across the container */
+  height: 100%; /* 220px */
+  border-radius: 0.4375rem; /* 7px */
+  max-width: 100%;
+  object-fit: cover; /* Ensures the image fills the container nicely */
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+}
+
+.series img:hover {
+  transform: scale(1.03); /* Smooth zoom effect */
+  opacity: 0.95; /* Slight transparency for modern feel */
+}
+
+.overlay-textttt {
+  position: absolute;
+  min-width: 10%;
+  max-width: 23%;
+  height: auto; /* Dynamic height */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
+  color: white;
+  left: 40%;
+  bottom: 15%;
+  border-radius: 0.4375rem; /* 7px */
+  padding: 0.375rem 0.625rem; /* Increased padding for better readability */
+  font-size: clamp(1rem, 1.2vw, 1.125rem); /* Responsive font size */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .overlay-textttt {
+    left: 50%; /* Center it better on smaller screens */
+    bottom: 10%;
+    max-width: 30%;
+    font-size: clamp(0.9rem, 2.5vw, 1rem); /* Adjusted font size for mobile */
+    padding: 0.25rem 0.5rem;
+  }
+}
+
+
+
+/* Parent Container for All Videos */
+.container-1 {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: transparent;
+  border-radius: 7px;
+  top:2rem;
+  overflow: hidden;
+  padding: 1rem 0; /* Adds some top and bottom spacing */
+  gap:1rem; /* Creates spacing between videos */
+  border-style: none;
+justify-content: flex-start;
+}
+
+/* Individual Video Containers */
+.kontainer {
+  position: relative;
+  width: clamp(28%, 30%, 32%);
+  height: auto;
+  background-color: pink;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+margin-left: 1.8%;
+margin-bottom: 10px;
+padding-bottom: 0px;
+border-style: none;
+}
+
+
+/* Video Thumbnails */
+.kontainer img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover; /* Ensures consistent scaling */
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+  .container-1 {
+    width: calc(100% - 10%);
+    left: 5%;
+    justify-content: space-around;
+  }
+
+  .kontainer {
+    width: clamp(40%, 45%, 48%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-1 {
+    width: 95%;
+    left: 2.5%;
+    gap: 1rem;
+  }
+
+  .kontainer {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container-1 {
+    width: 100%;
+    left: 0;
+    justify-content: center;
+  }
+
+  .kontainer {
+    width: 90%;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Profile Section */
+.profilee {
+  width: 100%;
+  height: 2rem; /* 40px */
+  border-radius: 0rem; /* 7px */
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem; /* 10px */
+  padding: 0rem; /* Adds subtle spacing */
+  margin-bottom: 0rem;
+  max-width: 100%;
+}
+
+/* Profile Image */
+.profilee img {
+  width: 2.2rem; /* 35px converted to rem */
+  height: 2.2rem;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border-radius: 50%;
+  margin-left: 1%;
+  object-fit: cover;
+  background-color: transparent;
+}
+
+.dark-mode .profilee img
+{
+  filter: invert(1);
+}
+
+/* Profile Name Container */
+.profilee-name {
+  flex-grow: 1;
+  height: 100%;
+  background: transparent;
+  border-radius: 0rem;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Profile Name Label */
+.profilee-name span {
+  font-size: 1.125rem; /* Adjusted for better scaling */
+  font-weight: 700;
+  color: #36454F;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  padding: 0.3125rem;
+  margin-left: 0px;
+
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .profilee {
+    padding: 0.3125rem 0.75rem;
+  }
+
+  .profilee img {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .profilee-name span{
+    font-size: 0.9375rem; /* Slightly smaller text */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profilee {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.3125rem 0.5rem;
+  }
+
+  .profilee img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .profilee-name span {
+    font-size: 0.875rem;
+  }
+}
+
+.caption {
+  width: 100%;
+  height: 1.875rem; /* 30px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: transparent;
+  padding: 0 0.625rem; /* Adds slight padding for better spacing */
+}
+
+/* Caption Text */
+.caption span {
+  color: black;
+  height: 100%;
+  font-weight: 700;
+  font-size: 0.96875rem; /* 15.5px */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  max-width: 100%;
+  margin-top: 3%;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .caption {
+    height: auto; /* Allows for multiple lines if necessary */
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .caption span {
+    font-size: 0.9375rem; /* Slightly smaller for mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .caption {
+    height: auto;
+    padding: 0.3125rem; /* Adjusted for compact screens */
+  }
+
+  .caption span {
+    font-size: 0.875rem; /* Smaller font size */
+  }
+}
+.videoo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 0.0625rem; /* 1px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.videoo video {
+  width: 100%;
+  height: 12.5rem; /* 200px */
+  object-fit: cover;
+  border-radius: 0.4375em; /* Converted from 7px */
+  display: block;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .videoo video {
+    height: 10rem; /* Adjusted for tablets */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .videoo video {
+    height: 8.5rem; /* Adjusted for mobile */
+  }
+}
+.overlay-textt {
+  position: absolute;
+  min-width: 12%; /* Slightly increased for better visibility */
+  max-width: 25%;
+  height: auto; /* Allows dynamic height */
+  background-color: rgba(0, 0, 0, 0.65); /* Slightly darker for better contrast */
+  color: white;
+  left: 2%;
+  bottom: 4%; /* Adjusted for better alignment */
+  border-radius: 0.4375rem; /* 7px */
+  padding: 0.1rem 0.1rem; /* Slightly increased padding for better spacing */
+  font-size: clamp(0.75rem, 1.2vw, 1rem); /* Responsive font size */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+
+}
+
+
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  .overlay-textt {
+    max-width: 35%;
+    font-size: clamp(0.7rem, 2vw, 0.875rem);
+    bottom: 3.5%;
+    left: 3%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .overlay-textt {
+    max-width: 45%;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    bottom: 3%;
+    left: 3%;
+  }
+}
+
+.sectiionn {
+  display: flex;
+  width: 100%;
+  background: transparent;
+  margin-top: 1px;
+  border-radius: 7px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.2rem;
+  padding: 0 0rem; /* Optional: adds horizontal padding for breathing space */
+  margin-bottom: 1px;
+}
+
+.views, .time, .category {
+  flex: 1 1 0;
+  max-width: 33.3%;
+  height: 1.8rem;
+  background: transparent;
+  margin: 0.1rem 0; /* Equal top and bottom margin */
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-width: 0;
+}
+
+/* Remove margin-left from views */
+.views {
+  margin-left: 0;
+  gap:5px;
+  justify-content: flex-start;
+}
+
+/* Remove margin-left from views */
+.time{
+
+  justify-content: flex-end;
+}
+
+
+/* Image inside views */
+.views img {
+  width: clamp(16px, 1.8vw, 24px);
+  height: clamp(16px, 1.8vw, 24px);
+  margin-left: 5px;
+}
+
+/* Text in views */
+.views span,
+.time span,
+.category span {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+}
+
+.time span
+{
+  margin-right: 10px;
+}
+
+
+/* Optional: Adjust for smaller screens */
+@media screen and (max-width: 768px) {
+  .sectiionn {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .views,
+  .time,
+  .category {
+    flex: 1 1 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .views img {
+    max-width: 20px;
+  }
+}
+
+
+/* Base styles for all devices */
+body {
+  font-size: 16px;
+  /* Other base styles */
+}
+
+/* Extra large screens (≥1400px) */
+@media (min-width: 1400px) {
+  body {
+    font-size: 18px;
+    /* Additional styles for extra large screens */
+  }
+}
+
+
+/* Light Mode Styles */
+.light-mode {
+  background-color: white; /* White background for Light Mode */
+  color: black; /* Black text for Light Mode */
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #121212; /* Black background for Dark Mode */
+  color: white; /* White text for Dark Mode */
+}
+
+.dark-mode .container .search img,
+.dark-mode .container .upload img,
+.dark-mode .container .Notifications img,
+.dark-mode .container .Settings img
+
+{
+  filter: invert(1);
+
+}
+
+
+.dark-mode .hero h2{
+  color:white; /* Change to white in dark mode */
+}
+
+.dark-mode .profail-name h4 {
+  color: white; /* Change to white in dark mode */
+}
+
+
+/* Dark Mode */
+.dark-mode .sectionn .viewss,
+.dark-mode .sectionn .commentss,
+.dark-mode .sectionn .likess,
+.dark-mode .sectionn .dislikee,
+.dark-mode .sectionn .follow,
+.dark-mode .sectionn .timee,
+.dark-mode .sectionn .option
+
+{
+  background-color: #2a2d2f;
+
+}
+
+.dark-mode .sectionn .viewss img,
+.dark-mode .sectionn .commentss img,
+.dark-mode .sectionn .likess img,
+.dark-mode .sectionn .dislikee img,
+.dark-mode .sectionn .follow img,
+.dark-mode .sectionn .option img
+{
+  filter: invert(1);
+
+}
+
+.dark-mode .sectionn .viewss span ,
+.dark-mode .sectionn .commentss span ,
+.dark-mode .sectionn .likess span ,
+.dark-mode .sectionn .dislikee span ,
+.dark-mode .sectionn .follow span ,
+.dark-mode .sectionn .option span ,
+.dark-mode .sectionn .timee span ,
+.dark-mode .sectionn .download span 
+
+{
+  color:white;
+
+}
+
+
+
+.dark-mode .sectiion .viewsss span ,
+
+.dark-mode .sectiion .Episode span 
+
+{
+  color:white;
+
+}
+
+.dark-mode .sidebar{
+  background-color: #2a2d2f;
+  }
+
+  .dark-mode .sidebar img
+  {
+    filter: invert(1);
+  
+  }
+
+.dark-mode .home
+{background-color:transparent;
+  }
+
+  .dark-mode .sidebar .home img
+
+
+{
+  filter: invert(1);
+
+}
+
+
+.dark-mode .home span {
+  color:#FFFFFF;
+}
+
+
+.dark-mode .profillee-name span  {
+
+  color: #D3D3D3;
+  }
+
+
+.dark-mode .profilee-name span {
+  color: #D3D3D3;
+  }
+
+  .dark-mode .caption span {
+    color:white; 
+    }
+  
+
+  .dark-mode .sectiionn .views span ,
+  .dark-mode .sectiionn .time span ,
+  .dark-mode .sectiionn .category span 
+  
+  
+  {
+    color:white;
+
+  }
+  
+  .dark-mode .sectiionn .views img
+  {
+    filter: invert(1);
+  
+  }
+  
+  
+  .dark-mode .rectanglee{
+    background-color: #353839;
+    }
+    .dark-mode .container .nav{
+      background-color: #121212; 
+       }
+    
+       .dark-mode .container .Table{
+        background-color: #121212; 
+         }
+    
+         .dark-mode .container .Table .overlay-text{
+          background-color: #121212; 
+           }
+    
+    
+    .dark-mode .rectanglee span {
+      color:   #F5F5DC; 
+      }
+      
+
+      .dark-mode .rectanglee:nth-child(1) {
+        background-color: white;
+      }
+      
+      .dark-mode .rectanglee:nth-child(1) span  {
+        color: black;
+      }
+
+.dark-mode .captionn h3 {
+  color:#A4F4AE; 
+  }
+
+  .dark-mode .profail-name h3{
+    color: #D3D3D3;
+    }
+
+    .dark-mode .caption h4{
+      color:white; 
+      }
+    
+      .dark-mode .captionn h3 {
+        color:white; 
+        }
+      
+
+  .dark-mode .captiion span  {
+    color:white; 
+  }
+
+
+.dark-mode .suggestionss {
+  background-color: #181818;
+}
+
+  .dark-mode .optionn{
+   background-color: #2a2d2f;;
+  }
+  .dark-mode .optionn span  {
+    color:#FFFFFF;}
+
+    .dark-mode .optionnn{
+      background-color: transparent;
+    }
+    .dark-mode .optionnn span  {
+      color:#FFFFFF;
+    }
+  
+    .dark-mode .profile-name{
+      background-color: #2a2d2f;
+    }
+    .dark-mode .profile-name span  {
+      color:white;
+    }
+    
+      
+      .dark-mode .followers{
+        background-color: #2a2d2f;
+      }
+      .dark-mode .followers span  {
+        color:white;
+      }
+      
+
+        
+
+.dark-mode .section .views img
+
+{
+  filter: invert(1);
+
+}
+
+
+  
+
+/* Base styles for all devices */
+body {
+  font-size: 16px;
+  /* Other base styles */
+}
+/* Mobile-first default styles (<=320px) */
+
+/* Small phones (up to 480px) */
+@media (max-width: 480px) {
+  .navbar { /* hide menu items, show hamburger */ }
+  .sidebar { display: none; }
+  .main-content { display: flex; flex-direction: column; }
+  .video-player { width: 100%; height: auto; }
+  button, .button { padding: 1rem; min-width: 48px; min-height: 48px; }
+
+  .video-container 
+  { 
+    max-width: 100%; height: auto; 
+    background-color: transparent;
+  
+  
+  
+  }
+
+  .card {
+    flex: 1 1 100%;
+    max-width: 100%;
+  }
+
+}
+
+/* Medium phones / small tablets (481px–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .container
+  {
+    background-color:#FFFFFF;
+  
+  }
+  
+  .nav
+  {
+    background-color: transparent;
+  }
+  
+
+  .video-container 
+  { 
+    width: 70%; height: auto; 
+  padding: 0px;
+  background-color: transparent;
+    margin-left: 7rem;
+  }
+
+
+  .container-1
+  {
+    background-color: transparent;
+  width: 100%;
+ 
+  justify-content: flex-start;
+  }
+  
+
+  .kontainer
+  {
+    background-color: transparent;
+    width: clamp(28%, 45%, 50%);
+  margin-left: 1.5rem;
+  }
+  
+  
+  .videoo {
+    width: 100%;
+    height: auto;
+  }
+  
+  .videoo video {
+    width: 100%;
+    height: 11rem; /* 200px */
+  
+  }
+  
+  
+  .sectiionn
+  {
+    background-color: transparent;
+    padding: 0px;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 0.2rem;
+    padding: 0 0rem; /* Optional: adds horizontal padding for breathing space */
+  }
+  
+
+
+}
+
+/* Tablets / small laptops (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  
+  .container
+  {
+    background-color:#FFFFFF;
+  
+  }
+  
+  .nav
+  {
+    background-color: transparent;
+  }
+  
+
+.search input[type="search"] {
+
+  min-height: 20px;
+  max-height: 25px;
+
+}
+
+
+.upload
+{
+  background-color: transparent;
+  width: 3.3vw;
+  height: 3.3vw;
+}
+
+
+.Notifications
+{
+  background-color: transparent;
+  width: 3.3vw;
+  height: 3.3vw;
+}
+
+
+.Account 
+{
+  background-color: transparent;
+  width: 3.3vw;
+  height: 3.3vw;
+}
+
+
+.upload img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
+
+.Table
+{
+  background-color: transparent;
+}
+
+.overlay-text 
+{
+  background-color: transparent;
+  font-size: 1.1rem;
+}
+.video-container 
+{ 
+  max-width: 100%; height: auto; 
+  margin-top: 60px;
+  background-color: transparent; 
+width: 100%;
+max-width: 100%;
+flex-shrink:0;
+}
+
+.containerr
+{
+background-color: transparent; 
+}
+
+
+.captionn h3
+{
+font-size: clamp(1rem, 1.1vw, 1.5rem);
+}
+
+/* Increase space for time and follow buttons */
+.viewss {
+flex: 2.1;
+}
+
+/* Increase space for time and follow buttons */
+.follow {
+flex: 2.1;
+}
+
+.timee {
+flex: 2;
+}
+
+
+.container-2
+{
+background-color: transparent; 
+max-height: 455px;
+}
+
+.card
+{
+  margin: 3px 0 3px 10px; /* Maintain original positioning */
+}
+
+.sectiion
+{
+  background-color: transparent;
+gap:0.1rem;
+  padding: 0px 0px;
+}
+
+.viewsss
+{
+  background-color: transparent;
+max-width: 45%;
+height: 25px;
+border-radius: 7px;
+}
+
+
+.timmee
+{
+
+  background-color: transparent;
+border-radius: 7px;
+}
+
+.viewsss span {
+font-weight: 300;
+flex: 2;
+}
+
+
+.container-3
+{
+  background-color: transparent;
+  height: auto;
+  padding: 0px;
+}
+
+.optionnn
+{
+  position: absolute;
+width: 100%;
+height: 30px;
+background-color: transparent;
+  z-index: 3;
+}
+
+.channel {
+
+  height: 100%; /* Fully inherit from container-3 */
+  background-color: transparent;
+  margin: 0 auto;
+  margin-top: 1.9rem; /* 50px */
+  margin-bottom: 0px;
+}
+
+.channel img
+{
+  margin-right: 3%;
+}
+
+.profile
+{
+  position: relative;
+  margin-top: 0rem; /* 15px in rem */
+}
+
+.profile-name span  {
+    font-size: 1rem;
+}
+
+/* Followers label styling */
+.followers span  {
+  font-size: 1rem;
+}
+
+.Table
+{
+  padding-bottom: 0rem;
+padding: 0px;
+}
+
+.series 
+{
+margin-top: 1.5rem;
+  min-width: 40%;
+  max-width: 40%;
+  height: 11.5rem; /* 200px */
+  margin-bottom: 0px;
+}
+
+
+
+
+  .container-1
+  {
+    background-color: transparent;
+  gap: 0.6rem;
+  justify-content: flex-start;
+  margin: 0 auto; /* ✅ Centers the block */
+  }
+  
+  .kontainer
+  {
+    background-color: transparent;
+    width: clamp(28%, 37%, 32%);
+  margin-left: 5px;
+  }
+  
+  
+  .caption span {
+    font-weight: 700;
+    font-size: 0.9rem;
+  }
+  
+  .videoo {
+    width: 100%;
+    height: auto;
+  }
+  
+  .videoo video {
+    width: 100%;
+    height: 10rem;
+  }
+
+
+
+}
+
+/* Desktops (1025px–1279px) */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .container
+  {
+    background-color: #FFFFFF; 
+  
+  }
+  
+  .nav
+  {
+    background-color: transparent;
+  }
+
+.overlay-text
+{
+  font-size: 1.2rem;
+}
+
+.search input[type="search"] {
+
+  min-height: 10px;
+  max-height: 15px;
+
+}
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Notifications
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Account 
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+
+
+.upload img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
+
+  .video-container 
+  { 
+    max-width: 100%; height: auto; 
+    margin-top: 60px;
+    background-color: transparent;
+  width: 100%;
+  flex-shrink:0;
+  margin: 0 auto; /* ✅ Centers the block */
+  }
+
+.containerr
+{
+  background-color: transparent;
+}
+
+
+.profillee
+{
+  background-color: transparent;
+  width: 100%;
+  height: 2rem; /* Flexible height */
+
+}
+
+
+/* Profile Image */
+.profillee img {
+  width:2rem; /* 35px converted to rem */
+  height: 2rem;
+}
+
+.captionn
+{
+  background-color: transparent;
+  height: 30px;
+}
+
+.captionn h3
+{
+  font-size: clamp(1rem, 1.1vw, 1.5rem);
+}
+
+/* Increase space for time and follow buttons */
+.viewss {
+  flex: 2.1;
+}
+
+/* Increase space for time and follow buttons */
+.follow {
+  flex: 2.1;
+}
+
+.timee {
+  flex: 2;
+}
+
+.container-2
+{
+  background-color: transparent;
+  max-height: 442px;
+  gap:8px;
+  float: none;   
+}
+
+
+.card {
+  position: relative;
+  margin: 0px 0 8px 6px; /* Maintain original positioning */
+  background-color: transparent;
+}
+
+.pichaa {
+  width: 100%;
+  height: 120px;
+  margin-top: 0px;
+  background-color: transparent; /* Adds a fallback background for better contrast */
+}
+
+
+
+.captiion {
+  width: 100%; /* Ensures full width inside the card */
+  height: auto; /* Adjusts based on content */
+  background-color: transparent;
+  padding: 0px 0; /* Adds slight spacing without breaking alignment */
+}
+
+.sectiion {
+  background-color: transparent;
+
+  padding: 0px 0px;
+
+}
+
+.viewsss
+{
+  background-color: transparent;
+  max-width: 45%;
+  height: 25px;
+  border-radius: 7px;
+}
+
+.Episode
+{
+  background-color: transparent;
+  border-radius: 7px;
+}
+
+.container-3
+{
+  background-color: transparent;
+  height: auto;
+  padding: 0px;
+}
+
+.optionnn
+{
+  position: absolute;
+width: 100%;
+height: 30px;
+background-color: transparent;
+  z-index: 3;
+}
+
+.channel {
+
+  height: 100%; /* Fully inherit from container-3 */
+  background-color: transparent;
+  margin: 0 auto;
+  margin-top: 1.9rem; /* 50px */
+  margin-bottom: 0px;
+}
+
+.channel img
+{
+  margin-right: 3%;
+}
+
+.profile
+{
+  position: relative;
+  margin-top: 0rem; /* 15px in rem */
+}
+
+.profile-name span  {
+    font-size: 1rem;
+}
+
+/* Followers label styling */
+.followers span  {
+  font-size: 1rem;
+}
+
+.Table
+{
+  padding-bottom: 0rem;
+padding: 0px;
+}
+
+.series 
+{
+margin-top: 1.5rem;
+  min-width: 40%;
+  max-width: 40%;
+  height: 11.5rem; /* 200px */
+  margin-bottom: 0px;
+}
+
+
+
+.container-1
+{
+  background-color: transparent;
+gap: 0.6rem;
+margin: 0 auto; /* ✅ Centers the block */
+}
+
+.kontainer
+{
+  background-color: transparent;
+  width: clamp(28%, 37%, 32%);
+margin-left: 5px;
+}
+
+
+.videoo {
+  width: 100%;
+  height: auto;
+}
+
+.videoo video {
+  width: 100%;
+  height: 10rem; /* 200px */
+
+}
+
+
+
+
+
+
+
+
+
+
+
+}
+
+
+
+/* Large desktops (1280px–1599px) */
+@media (min-width: 1280px) and (max-width: 1599px) {
+
+  .container
+{
+  background-color:#FFFFFF;
+}
+
+
+.card
+{
+  margin: 35px 0 15px 10px; /* Maintain original positioning */
+}
+
+.container-3
+{
+  background-color: transparent;
+  padding-bottom: 0px;
+}
+
+.optionnn
+{
+  background-color: transparent;
+}
+
+  
+.channel
+{
+  position:relative;
+  background-color: transparent;
+
+}
+
+.Table
+{
+  padding-bottom: 0rem;
+padding: 0px;
+margin-bottom: 0px;
+background-color: transparent;
+}
+
+.series 
+{
+  margin-top: 3.4rem; /* Previously 2rem */
+  max-height: 13rem; /* 220px */
+}
+
+
+.container-1
+{
+
+  background-color:transparent;
+gap: 1.7rem;
+
+}
+
+.kontainer
+{
+  background-color: transparent;
+  width: clamp(28%, 35%, 30%);
+  margin-left: 1.4%;
+ 
+}
+
+
+}
+
+/* Ultra-wide (1600px and up) */
+@media (min-width: 1600px) {
+ 
+.container
+{
+  background-color:#FFFFFF;
+}
+
+.Table
+{
+  background-color: transparent;
+}
+
+.overlay-text
+{
+  background-color: transparent;
+  font-size: 1.5rem;
+}
+
+.nav
+{
+  background-color: transparent;
+}
+
+.search input[type="search"] {
+
+  min-height: 20px;
+  max-height: 25px;
+
+}
+
+
+.upload
+{
+  background-color: transparent;
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
+.Notifications
+{
+  background-color: transparent;
+  width: 2vw;
+  height: 2vw;
+}
+
+.Account 
+{
+  background-color: transparent;
+  width: 2vw;
+  height: 2vw;
+}
+
+
+
+.upload img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
+
+  .video-container 
+  { 
+    max-width: 100%; height: auto; 
+    margin-top: 60px;
+    background-color: transparent;
+  width: 100%;
+  max-width: 100%;
+  flex-shrink:0;
+  }
+
+.containerr
+{
+  background-color: transparent;
+}
+
+
+.captionn h3
+{
+  font-size: clamp(1rem, 1.1vw, 1.5rem);
+}
+
+/* Increase space for time and follow buttons */
+.viewss {
+  flex: 2.1;
+}
+
+/* Increase space for time and follow buttons */
+.follow {
+  flex: 2.1;
+}
+
+.timee {
+  flex: 2;
+}
+
+
+.container-2
+{
+  background-color: transparent;
+  max-height: 775px;
+}
+
+.card
+{
+  background-color: transparent;
+  max-height: 300px;
+  margin: 5px 0 15px 15px; /* Maintain original positioning */
+}
+
+.pichaa {
+  width: 100%;
+  height: 150px;
+  
+}
+
+.sectiion
+{
+  background-color: transparent;
+  gap:0.1rem;
+    padding: 0px 0px;
+}
+
+.viewsss
+{
+
+  background-color: transparent;
+  max-width: 45%;
+  height: 25px;
+  border-radius: 7px;
+}
+
+
+.timmee
+{
+
+  background-color: transparent;
+  border-radius: 7px;
+}
+
+.viewsss span {
+  font-weight: 300;
+  flex: 2;
+}
+
+
+.viewsss img {
+  width: 1.5vw;
+  height: 1.5vw;
+
+}
+ 
+
+.container-3
+{
+  background-color: transparent;
+  height: auto;
+  padding: 0px;
+}
+
+.optionnn
+{
+  position: absolute;
+width: 100%;
+height: 30px;
+background-color: transparent;
+  z-index: 3;
+}
+
+.channel {
+
+  height: 100%; /* Fully inherit from container-3 */
+  background-color: transparent;
+  margin: 0 auto;
+  margin-top: 1.9rem; /* 50px */
+  margin-bottom: 0px;
+}
+
+.channel img
+{
+  margin-right: 3%;
+}
+
+.profile
+{
+  position: relative;
+  margin-top: 0rem; /* 15px in rem */
+}
+
+.profile-name span  {
+    font-size: 1rem;
+}
+
+/* Followers label styling */
+.followers span  {
+  font-size: 1rem;
+}
+
+.Table
+{
+  padding-bottom: 0rem;
+padding: 0px;
+background-color: transparent;
+}
+
+.series 
+{
+margin-top: 1.7rem;
+  min-width: 30%;
+  max-width: 35%;
+  margin-bottom: 0px;
+}
+
+
+
+  .container-1
+  {
+    background-color: transparent;
+  gap: 1.5rem;
+  width:100%; 
+  }
+
+  .kontainer
+  {
+    background-color: transparent;
+    width: clamp(28%, 37%, 32%);
+margin-left: 6px;
+  }
+
+/* Caption Text */
+.caption span {
+  font-weight: 700;
+  font-size: 0.9rem; /* 15.5px */
+}
+
+.videoo {
+  width: 100%;
+  height: auto;
+}
+
+.videoo video {
+  width: 100%;
+  height: 17.5rem; /* 200px */
+
+}
+
+  .views
+  {
+    background-color: transparent;
+  }
+
+
+.views img {
+  width: clamp(24px, 4.5vw, 30px);
+  height: clamp(24px, 4.5vw, 30px);
+  background-color: transparent;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+}
+
+/* Dark mode override */
+@media (prefers-color-scheme: dark) {
+  body { background: #121212; color: #e0e0e0; }
+  .navbar { background: #1f1f1f; }
+  /* etc. */
+}
+
+
+

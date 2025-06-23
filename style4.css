@@ -1,0 +1,2288 @@
+/* ==== GLOBAL RESET AND BOX-SIZING ==== */
+html {
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+/* ==== ROOT VARIABLES ==== */
+:root {
+  --spacing: 1.5rem;
+  --container-width: 1200px;
+  --text-color: #333;
+  --bg-color: #f9f9f9;
+}
+
+/* ==== GENERAL BODY STYLING ==== */
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+  justify-content: center; /* Vertical centering (usually better for specific containers) */
+  align-items: center;     /* Horizontal centering */
+  text-align: center;
+  background-color: #ffffff; /* Explicit hex code is more robust */
+  font-family: 'Poppins', sans-serif;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin: 0;
+  min-height: 100vh;
+
+  /* Cross-browser scrollbar styling */
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+
+  /* WebKit scrollbar styling */
+  -webkit-overflow-scrolling: touch; /* iOS smooth scroll */
+}
+
+/* Optional: WebKit scrollbar styling (Chrome, Edge, Safari) */
+body::-webkit-scrollbar {
+  width: 0.4rem;
+}
+
+body::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 0.25rem;
+}
+
+/* ==== HEADER/FOOTER ==== */
+.header, .footer {
+  background-color: #2a2d2f;
+  color: white;
+  padding: var(--spacing) 0;
+}
+
+
+.container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3.375rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-left: 0; /* make sure nothing pushes it */
+  background-color: #ffffff;  /* Explicit hex code is more robust */
+  z-index: 10;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+justify-content: flex-start;
+  margin-inline: auto;
+
+}
+
+
+
+/* Logo/title section */
+.Table {
+  flex: 0 0 15%; /* Prevent it from growing/shrinking unexpectedly */
+  height: 100%; /* Match height of container */
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  position: relative;
+  left: 0%;
+}
+
+/* Text inside Table */
+.overlay-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9rem;
+  font-weight: 800;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  z-index: 3;
+  padding-left: 0px;
+  background-color: transparent;
+}
+
+
+/* NET and TOON Styling */
+.net-text {
+  background:red;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.3em;
+  letter-spacing: 2px;
+}
+
+.toon-text {
+  background: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 1.3em;
+  margin-left: 5px;
+}
+
+/* Dark Mode */
+.dark-mode .net-text {
+  background:red;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark-mode .toon-text {
+  background:yellow;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.dark-mode .shorts-text {
+  background:red;
+  color: white;
+}
+
+
+/* Remove underline from anchor tags */
+a, .net-text, .toon-text {
+  text-decoration: none;
+}
+
+/* Remaining space: .nav */
+.nav {
+  flex-grow: 1;         /* Take up the rest */
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 5vw;
+  background-color:transparent;
+  margin-left: 0px;
+}
+.container {
+  display: flex;
+  flex-direction: row; /* change to row if you want nav and others side by side */
+}
+
+.nav {
+  flex-grow: 1;
+  height: 100%;
+}
+
+
+.search {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  height:30px;
+  left: 2%;
+  background-color: #f5f5f5;
+  margin: 15px auto;
+  border-radius: 7px;
+  align-items: center;
+  border: 0.3px solid #ccc;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures hidden children don't leak out */
+}
+
+.dark-mode .search
+{
+  background-color: transparent;
+}
+
+.search input[type="search"] {
+  flex: 1;
+  height: 4.5vh;
+height: 100%;
+  border-radius: 7px;
+  background-color:transparent;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.search input[type="search"]:focus {
+  border: 1px solid white;
+  box-shadow: none;
+}
+
+
+.search input[type="search"]:valid ~ .clear-btn {
+  display: block;
+}
+
+body.dark-mode .search input[type="search"] {
+  color: #fff;
+}
+
+.search input[type="search"]::placeholder {
+  color: #36454F;
+  font-size: 0.9rem;
+}
+
+body.dark-mode .search input[type="search"]::placeholder {
+  color: #D3D3D3;
+}
+
+/* Optional mobile support */
+@media (max-width: 480px) {
+  .search {
+    width: 95%;
+    padding: 0.25rem;
+  }
+
+  .search input[type="search"] {
+    font-size: 0.95rem;
+    padding: 0.5rem 2rem 0.5rem 1.5rem;
+  }
+
+  .clear-btn {
+    font-size: 1rem;
+    right: 0.75rem;
+  }
+}
+
+/* Search icon to the left */
+.search .search-icon {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  padding: 1px;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Clear button to the right */
+.clear-btn {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: red;
+  display: none;
+}
+
+.search input[type="search"] {
+  padding-left: 2rem; /* make room for icon */
+  padding-right: 3.5rem; /* make room for clear button */
+}
+
+
+.upload {
+  position: relative;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  margin-top: 0;
+  margin-left: 1vw;
+  border-radius: 50%;
+}
+
+.upload img {
+  width: 3vw;
+  height:3vw;
+  margin-top: 0.2vh;
+  padding: 0.5vh;
+  margin-left: 0vw;
+}
+
+
+.upload:hover .tooltip
+{
+visibility: visible;
+opacity: 1;
+
+}
+
+/* Notifications Icon */
+.Notifications {
+  position: relative;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  margin: 0.3125rem 0 0.1875rem 1.25rem; /* top right bottom left */
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.Notifications img {
+  width: 2vw;
+  height: 2vw;
+  margin-top: 0.4375rem;
+}
+
+/* Notification Dropdown */
+.Notification-container {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 1%;
+  width: 24%;
+  min-width: 11.25em;
+  max-height: 30em;
+  padding: 1rem;
+
+  background-color: #333;
+  color: white;
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+
+  z-index: 30;
+}
+
+/* Active class to show the container */
+.Notification-container.active {
+  display: block;
+}
+
+.Theme {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Theme img {
+  width: 1.6875em;
+  height: 1.6875em;
+  border-radius: 50%;
+  margin-left: 1em;
+}
+.Account {
+  position: relative;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  margin-top: 0.3125rem; /* 5px */
+  margin-right: 1rem;     /* 16px */
+  margin-bottom: 0.1875rem; /* 3px */
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  float: right;
+}
+
+.Account img {
+  width: 2vw;
+  height: 2vw;
+  margin-left: 0.4rem; /* 5px */
+  border-radius: 50%;
+  object-fit: cover; /* Ensures proper scaling inside circle */
+}
+
+/* Dark mode adjustment */
+.dark-mode .Account img {
+  filter: invert(1);
+}
+
+/* Dropdown wrapper */
+.account-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
+  width: 24%;
+  min-width: 11.25em;
+  max-height: 25em;
+  background-color: #333;
+  box-shadow: 0px 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  z-index: 30;
+  padding: 0em 0;
+  text-align: left;
+  align-items: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) white;
+}
+
+.dropdown-content a {
+  
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block; /* Make links block elements */
+}
+
+.account-dropdown:hover .dropdown-content {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* Profile Section */
+.proofile {
+  width: 100%;
+  min-height: 1.875em; /* 30px */
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: white;
+  padding: 0.625em; /* 10px */
+  border-radius: 0.4375em; /* 7px */
+  max-width: 90%;
+  margin: 0 auto;
+}
+
+/* Hover Effect */
+.proofile:hover {
+  background-color: grey; /* Subtle purple hover effect */
+  color: white;
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+/* Profile Image */
+.proofile img {
+  width: 1.6875em; /* 27px */
+  height: 1.6875em;
+  border-radius: 50%;
+  margin-right: 0.625em; /* 10px */
+}
+
+/* Profile Name */
+.proofile span {
+  font-weight: bold;
+  font-size: 0.875em; /* 14px */
+  color: black;
+  margin-left: 0.3125em; /* 5px */
+  text-align: left;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transition: color 0.3s ease-in-out;
+}
+
+/* Change text color on hover */
+.proofile:hover span{
+  color: white;
+}
+
+
+.dropdown-content li {
+  list-style: none; /* Remove bullet points */
+}
+
+
+
+.tooltip {
+  position: absolute;
+  top: 100%; /* Show below the upload icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 0.4em 0.6em;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+}
+
+
+/* Tooltip Hover Effect */
+.upload:hover .tooltip, 
+.Notifications:hover .tooltip, 
+.Account:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .tooltip {
+    font-size: 0.75em; /* Reduce text size on smaller screens */
+    padding: 0.4em 0.6em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tooltip {
+    font-size: 0.6875em; /* Further reduce size for compact screens */
+    bottom: -1.75rem; /* Adjust positioning */
+  }
+}
+
+
+.container-11 {
+  position: relative;
+  width: 100%;
+  max-width: 99%;
+  height: 15rem; 
+   margin-top: 3.625rem;
+  border-radius: 0.4375rem;
+  background-color: transparent;
+}
+
+.container-11 img {
+  width: 100%;
+  height:100%;
+  border-radius: 0.4375rem;
+  object-fit: cover; /* Can switch to contain or remove if cropping is an issue */
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+
+/* Profile Picture Styling */
+.pichaa img {
+  width: 20%;
+  max-width: 90vw; /* Ensures the image doesn't exceed 90% of the viewport width */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 50%; /* Creates a circular image */
+  margin-top: 5vh;
+  margin-bottom: 2vh;
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+/* Name Section */
+.Name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1vh;
+}
+
+.Name span {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #36454F;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  text-align: center;
+  padding: 0.5rem 1rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 90vw;
+}
+
+
+.container-11 {
+  position: relative;
+  width: 100%;
+  min-height: 6.25rem; /* 100px */
+  margin-top: 3.625rem; /* 58px */
+  border-radius: 0.4375rem; /* 7px */
+  background-color: transparent;
+}
+
+/* Profile Background Image */
+.container-11 img {
+  width: 100%;
+  height: 15rem; /* 240px */
+  border-radius: 0.4375rem; /* 7px */
+  object-fit: cover; /* Ensures proper image scaling */
+  margin: 0.625rem 0 0.625rem 0.5%; /* 10px top/bottom, 0.5% left */
+}
+
+/* Profile Picture */
+.pichaa img {
+  width: 20%;
+  max-width: 90vw; /* Ensures the image doesn't exceed 90% of the viewport width */
+  height: auto; /* Maintains aspect ratio */
+  border-radius: 50%; /* Creates a circular image */
+  margin: 5vh 0 2vh; /* 5% top, 2% bottom */
+  object-fit: cover; /* Ensures the image covers the container without distortion */
+}
+
+
+.dark-mode .pichaa img
+{
+  filter: invert(1);
+}
+
+
+/* Name Section */
+.Name {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 5vh; /* 5% of viewport height */
+  margin-top: 2vh; /* 2% of viewport height */
+  background-color: transparent;
+}
+
+.Name span {
+  width: 30%;
+  height: 100%;
+  background-color: transparent;
+  font-size: 2rem; /* Scales with root font size */
+  font-weight: bold;
+  color: #36454F;
+  padding: 1rem; /* Scales with root font size */
+  border-radius: 0.5rem; /* Scales with root font size */
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-top: 0.3rem; /* instead of margin-top */
+}
+
+
+
+
+.container-2 {
+  width: 99.78%;
+  background-color: transparent;
+    margin-left: 0%;
+  margin-top: 1rem;
+  border-style: none;
+  border-radius: 0.5rem;
+  padding: 0rem;
+  overflow: hidden;
+  transition: max-height 0.5s ease-in-out;
+}
+
+/* Default collapsed state */
+.container-2.collapsed {
+  max-height: 500px;
+}
+
+/* When expanded */
+.container-2.expanded {
+  max-height: 2000px; /* or any value large enough to fit content */
+}
+
+
+
+.Title {
+  width: 100%;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+  border-radius: 0px;
+  margin-bottom: 0rem; /* spacing below title */
+}
+
+.Title span {
+  font-weight: bold;
+  color:black;
+  font-size: clamp(1.5rem, 1vw, 3rem);
+  text-align: center;
+  text-transform: uppercase;
+  top:2%;
+  padding: 5px;
+}
+
+.dark-mode .Title span
+{
+  color: white;
+}
+
+.Profile-description {
+  width: 100%;
+  background-color: transparent;
+  height: auto;
+  overflow: hidden;
+  transition: all 0.3s ease-in-out;
+}
+
+
+
+#toggleBtn {
+  display: inline-block;
+  color:red; /* Change this to your preferred color */
+  font-weight: bold;
+  margin-top: 0.5rem;
+  cursor: pointer;
+  text-decoration: none; /* Remove underline if you want */
+  transition: color 0.3s ease;
+}
+
+.dark-mode #toggleBtn 
+{
+  color: yellow;
+}
+
+#toggleBtn:hover {
+  color:red; /* Optional: color on hover */
+}
+
+
+/* Stats Container */
+.container-3 {
+  position: relative;
+  width:100%;
+  height: 3rem; /* Responsive height */
+  background-color: transparent;
+  display: flex;
+  justify-content: space-evenly; /* Evenly distributes children */
+  gap: 3vw; /* Dynamic gap */
+  border-radius: 0.5rem;
+  margin-top: 1rem;
+  align-items: center;
+  text-align: center;
+  left: 0%;
+  margin-top: 2%;
+  border-style:none;
+}
+.viewws,
+.followers,
+.videos,
+.follow,
+.country {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem;
+  height: 2.5rem;
+  gap: 0.5rem;
+  min-width: 9%;
+  max-width: 11%;
+  flex-shrink: 0;
+  /* Removed top:1% */
+}
+
+/* Optional for better flexibility */
+.country {
+  width: auto;
+  min-width: 9%;
+  max-width: 15%;
+}
+
+/* Images */
+.container-3 img {
+  width: clamp(20px, 2.5vw, 40px);
+  height: clamp(20px, 2.5vw, 40px);
+}
+
+/* Text */
+.container-3 span {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  display: block;
+  width: 100%;
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+.follow span {
+  display: inline;
+}
+
+
+.video-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: flex-start;
+  justify-content: center;
+  width: 100%;
+  margin-top: 2%;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0.5rem;
+  box-sizing: border-box;
+  background-color: transparent;
+  border-style:none;
+}
+
+.containerr {
+  flex: 1 1 320px;
+  max-width: 500px;
+  min-width: 280px;
+  aspect-ratio: 16 / 9;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.75rem;
+  background-color: transparent;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  margin-top: 1.5%;
+  left: 0.2%;
+}
+
+
+.containerr video {
+  position: absolute;
+  inset: 0; /* shorthand for top: 0; right: 0; bottom: 0; left: 0 */
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border: none;
+  border-radius: inherit;
+}
+
+.rectangle {
+  flex: 1; /* take remaining space */
+  min-width: 280px;
+  background-color: transparent;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem;
+  box-sizing: border-box;
+  overflow-wrap: break-word;
+  margin-top:5px;
+}
+
+@media (max-width: 768px) {
+  .video-container {
+    flex-direction: column;
+  }
+
+  .containerr, .rectangle {
+    width: 100%;
+    flex: none;
+  }
+}
+
+
+/* Square container */
+.square {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem; /* Space between image and span */
+  width:100%;
+  max-width: 100%;
+  background-color: transparent;
+  overflow: hidden;
+
+}
+
+/* Profile image */
+.square img {
+  width: clamp(2.2rem, 2.5rem, 2.8rem);  /* Make image a bit more visible */
+  height: clamp(2.2rem, 2.5rem, 2.8rem);
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0; /* Prevent image from shrinking */
+  margin-left: 10%;
+}
+
+/* Image filter in dark mode */
+.dark-mode .square img {
+  filter: invert(1);
+}
+
+/* Name text */
+.square span {
+  flex-grow: 1;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #36454F;
+  padding: 0.2rem 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;  
+  border-radius: 0.4375rem;
+  background-color:transparent;
+
+  /* Optional: allow it to grow a bit more and align better */
+  min-width: 0;
+  max-width: 100%;
+}
+
+/* Caption container */
+.caaption {
+  position: relative;
+  width:100%;
+  max-width: 100%;
+  height: 1.875rem; /* Converted 30px to rem */
+  background-color: transparent;
+  display: flex; /* Use flexbox for alignment */
+  align-items: center; /* Center items vertically */
+  justify-content: center; /* Center items horizontally */
+  overflow: hidden; /* Hide overflow content */
+ 
+}
+
+/* Caption label */
+.caaption span{
+  color: black;
+  font-weight: bolder;
+  font-size: 1.25rem; /* Converted 20px to rem */
+  padding: 0.3125rem; /* Converted 5px to rem */
+  margin-top: 0.3125rem; /* Converted 5px to rem */
+  white-space: nowrap; /* Prevent text from wrapping */
+  overflow: hidden; /* Hide overflow text */
+  text-overflow: ellipsis; /* Show ellipsis for overflow */
+  text-align: center; /* Center text inside label */
+  flex-shrink: 1; /* Allow the label to shrink */
+  max-width: 100%; /* Ensure it doesn't exceed the container */
+}
+/* About section */
+.about {
+  width:100%;
+  max-width: 100%;
+  margin-top: 0.0625rem; /* 1px */
+  background-color: transparent;
+  border-radius: 0; /* Removed unnecessary conversion */
+  color: #000; /* Ensures text is black for better readability */
+  font-weight: normal;
+  margin-bottom: 0; /* Removed unnecessary conversion */
+  overflow: hidden;
+  max-height: 18.75rem; /* 300px */
+ /* Added padding for better spacing */
+  box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+  flex: 1; /* Allow this section to take available space */
+}
+/* Main Section Container */
+.secction {
+  max-width: 100%;
+  height: clamp(3vh); /* Responsive height */
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: clamp(0.5rem, 1.5vw, 1.5rem); /* Responsive gap */
+  margin-top:0px; /* Responsive top margin */
+  justify-content: space-evenly;
+  border-style:none;
+  margin-bottom: 5px;
+  padding: 0.2rem;
+}
+
+/* Shared Styles for Icon Containers */
+.viewss, .commentss, .likee, .dislikee, .optionn, .timess {
+  flex: 1; /* Equal flex value for consistent sizing */
+  max-width: 18%; /* Prevents excessive stretching */
+  height: clamp(1.8rem, 3vh, 2rem); /* Responsive height */
+  background-color: #F5F5F5; /* Pale Grey */
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  min-width: 3.5rem; /* Ensures visibility on small screens */
+  cursor: pointer;
+
+}
+
+.viewss:hover, .commentss:hover, .likee:hover, .dislikee:hover, .optionn:hover, .timess:hover {
+  background-color: gray; /* Lighter gray on hover */
+}
+
+.dark-mode .viewss:hover,
+.dark-mode .commentss:hover,
+.dark-mode .likee:hover,
+.dark-mode .dislikee:hover,
+.dark-mode .optionn:hover,
+.dark-mode .timess:hover {
+  background-color: #4a4b4d !important;
+}
+
+/* Adjusted Flex for 'timess' Section */
+.timess {
+  flex: 1.5; /* Slightly larger than others */
+  min-width: 6rem; /* Ensures visibility on small screens */
+}
+
+/* Icon Images */
+.viewss img, .commentss img, .likee img, .dislikee img, .timess img, .optionn img {
+  width: clamp(1.8rem, 2.5vh, 3rem); /* Responsive sizing */
+  height: clamp(1.8rem, 2.5vh, 3rem);
+  padding: 0.2rem;
+}
+.viewss span, .commentss span, .likee span, .dislikee span, .timess span, .optionn span {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: #333333;
+  font-size: clamp(14px, 1vw, 14px); /* Responsive font size */
+}
+
+
+.container-4 {
+
+  width: 100%;
+  margin: 40px auto 18px;
+  padding: 0.2rem 0.2rem; /* ✅ Correct padding syntax */
+  display: flex;
+  flex-wrap:nowrap;
+  justify-content: space-evenly;
+  gap: 3vw;
+  border-radius: 0.5rem;
+  border-style:none;
+  background-color: transparent;
+  margin-top: 2%;
+}
+
+.my-videos,
+.watchlist,
+.favorites,
+.playlist {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  padding: 5px 0.2rem; /* ✅ 5px vertical, 0.5rem horizontal */
+  cursor: pointer;
+  flex-shrink: 0;
+  flex-grow: 0;
+  min-width: 100px;
+  max-width: 180px;
+  height: auto;
+}
+
+.my-videos:hover,
+.watchlist:hover,
+.favorites:hover,
+.playlist:hover {
+
+  background-color: transparent;
+
+}
+
+
+/* Images inside nav items */
+.my-videos img,
+.watchlist img,
+.favorites img,
+.playlist img {
+  width: 2.5vw;
+  height: 2.5vw;
+
+}
+
+.my-videos span,
+.watchlist span,
+.favorites span,
+.playlist span {
+  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+  font-weight: 600;
+  color: #333;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: 0.35rem; /* ✅ This will now work */
+}
+
+/* Optional: Improve responsiveness on very small screens */
+@media (max-width: 480px) {
+  .my-videos,
+  .watchlist,
+  .favorites,
+  .playlist {
+    min-width: 45%;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .container-4 {
+    gap: 1rem;
+  }
+}
+
+.container-5,
+.container-6,
+.container-7 {
+  display: none;
+}/* Base tab styles */
+/* Base tab styles */
+.tab {
+  transition: border-bottom 0.3s ease, color 0.3s ease;
+  border-radius: 0.5rem;
+  background-color: transparent;
+  color: black;
+  border-bottom: 3px solid transparent; /* default */
+}
+
+@media (prefers-color-scheme: light) {
+  .tab.active-tab {
+    border-bottom: 3px solid black;
+    border-top: 3px solid black;
+    color: black;
+  }
+
+  .tab.active-tab span {
+    color: black;
+  }
+}
+
+
+/* Dark Mode: Use greenyellow border for active tab */
+@media (prefers-color-scheme: dark) {
+  .tab.active-tab {
+    border-bottom: 3px solid greenyellow;
+    border-top: 3px solid greenyellow;
+
+  }
+  
+}
+
+
+
+
+/* Shared layout styles */
+.content-container {
+  position: relative;
+  flex: 1;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: transparent;
+  border-radius: 7px;
+  top:1rem;
+  overflow: hidden;
+  padding: 1rem 0; /* Adds some top and bottom spacing */
+  gap:1rem; /* Creates spacing between videos */
+  border-style:none;
+justify-content: flex-start;
+}
+
+
+
+/* Unique background colors */
+.container-1 {
+  background-color: transparent;
+}
+
+.container-5 {
+  background-color: transparent;
+}
+
+.container-6 {
+  background-color: transparent;
+}
+
+.container-7 {
+  background-color: transparent;
+}
+
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 1024px) {
+  .container-1 {
+    width: calc(100% - 10%);
+    left: 5%;
+    justify-content: space-around;
+  }
+
+  .kontainer {
+    width: clamp(40%, 45%, 48%);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container-1 {
+    width: 100%;
+ 
+    gap: 1rem;
+  }
+
+  .kontainer {
+    width: 48%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container-1 {
+    width: 100%;
+    left: 0;
+    justify-content: center;
+  }
+
+  .kontainer {
+    width: 90%;
+    margin-bottom: 1.5rem;
+  }
+}
+
+/* Individual Video Containers */
+.kontainer {
+  position: relative;
+  width: clamp(28%, 30%, 32%);
+  height: auto;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  cursor: pointer;
+margin-left: 1.8%;
+margin-bottom: 10px;
+padding-bottom: 0px;
+border-style: none;
+}
+
+
+/* Video Thumbnails */
+.kontainer img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  object-fit: cover; /* Ensures consistent scaling */
+}
+
+
+.scroll-area {
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  z-index: 0;
+  gap: 0.2rem; /* Slight space between items */
+  padding: 0 0rem;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  scroll-snap-type: x mandatory; /* changed to x for horizontal */
+}
+
+/* Dark mode adjustments */
+.dark-mode .scroll {
+  scrollbar-color: rgba(7, 4, 4, 0.5) grey;
+}
+
+
+.shorts {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 9 / 16;
+  overflow: hidden;
+  margin: 1rem 0 1rem 0.7rem;
+  border-radius: 12px;
+  background-color: transparent;
+}
+
+.short-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  display: block;
+}
+
+/* Play overlay button */
+.play-overlay {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+/*
+.dark-mode .play-overlay
+{
+  filter: invert(1);
+}
+  */
+
+.overlay-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+
+/* Profile Section */
+.profilee {
+  width: 100%;
+  height: 2rem; /* 40px */
+  border-radius: 0rem; /* 7px */
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem; /* 10px */
+  padding: 0rem; /* Adds subtle spacing */
+  margin-bottom: 0rem;
+  max-width: 100%;
+}
+
+/* Profile Image */
+.profilee img {
+  width: 2.2rem; /* 35px converted to rem */
+  height: 2.2rem;
+  border-radius: 50%;
+  margin-left: 1%;
+  object-fit: cover;
+  background-color: transparent;
+}
+
+.dark-mode .profilee img
+{
+  filter: invert(1);
+}
+
+/* Profile Name Container */
+.profilee-name {
+  flex-grow: 1;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 0rem;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Profile Name Label */
+.profilee-name span {
+  font-size: 1.125rem; /* Adjusted for better scaling */
+  font-weight: 700;
+  color: #36454F;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  padding: 0.3125rem;
+  margin-left: 0px;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .profilee {
+    padding: 0.3125rem 0.75rem;
+  }
+
+  .profilee img {
+    width: 2.2rem;
+    height: 2.2rem;
+  }
+
+  .profilee-name span{
+    font-size: 0.9375rem; /* Slightly smaller text */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profilee {
+    flex-direction: row;
+    align-items: center;
+    padding: 0.3125rem 0.5rem;
+  }
+
+  .profilee img {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .profilee-name span {
+    font-size: 0.875rem;
+  }
+}
+
+.caption {
+  width: 100%;
+  height: 1.875rem; /* 30px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: transparent;
+  padding: 0 0.625rem; /* Adds slight padding for better spacing */
+}
+
+/* Caption Text */
+.caption span {
+  color: black;
+  height: 100%;
+  font-weight: 700;
+  font-size: 0.96875rem; /* 15.5px */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  max-width: 100%;
+  margin-top: 3%;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .caption {
+    height: auto; /* Allows for multiple lines if necessary */
+    flex-wrap: wrap;
+    text-align: center;
+  }
+
+  .caption span {
+    font-size: 0.9375rem; /* Slightly smaller for mobile */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .caption {
+    height: auto;
+    padding: 0.3125rem; /* Adjusted for compact screens */
+  }
+
+  .caption span {
+    font-size: 0.875rem; /* Smaller font size */
+  }
+}
+.videoo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 0.0625rem; /* 1px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.videoo video {
+  width: 100%;
+  height: 12.5rem; /* 200px */
+  object-fit: cover;
+  border-radius: 0.4375em; /* Converted from 7px */
+  display: block;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .videoo video {
+    height: 10rem; /* Adjusted for tablets */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .videoo video {
+    height: 8.5rem; /* Adjusted for mobile */
+  }
+}
+.overlay-textt {
+  position: absolute;
+  min-width: 12%; /* Slightly increased for better visibility */
+  max-width: 25%;
+  height: auto; /* Allows dynamic height */
+  background-color: rgba(0, 0, 0, 0.65); /* Slightly darker for better contrast */
+  color: white;
+  left: 2%;
+  bottom: 4%; /* Adjusted for better alignment */
+  border-radius: 0.4375rem; /* 7px */
+  padding: 0.1rem 0.1rem; /* Slightly increased padding for better spacing */
+  font-size: clamp(0.75rem, 1.2vw, 1rem); /* Responsive font size */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+
+}
+
+
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  .overlay-textt {
+    max-width: 35%;
+    font-size: clamp(0.7rem, 2vw, 0.875rem);
+    bottom: 3.5%;
+    left: 3%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .overlay-textt {
+    max-width: 45%;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    bottom: 3%;
+    left: 3%;
+  }
+}
+
+.sectiionn {
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  margin-top: 1px;
+  border-radius: 7px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.2rem;
+  padding: 0 0rem; /* Optional: adds horizontal padding for breathing space */
+  margin-bottom: 1px;
+}
+
+.views, .time, .category {
+  flex: 1 1 0;
+  max-width: 33.3%;
+  height: 1.8rem;
+  background-color: transparent;
+  margin: 0.1rem 0; /* Equal top and bottom margin */
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-width: 0;
+}
+
+
+/* Remove margin-left from views */
+.views {
+  margin-left: 0;
+  gap:5px;
+  justify-content: flex-start;
+}
+
+/* Remove margin-left from views */
+.time{
+
+  justify-content: flex-end;
+}
+
+
+/* Image inside views */
+.views img {
+  width: clamp(16px, 1.8vw, 24px);
+  height: clamp(16px, 1.8vw, 24px);
+  margin-left: 5px;
+}
+
+/* Text in views */
+.views span,
+.time span,
+.category span {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+}
+
+.time span
+{
+  margin-right: 10px;
+}
+
+/* Optional: Adjust for smaller screens */
+@media screen and (max-width: 768px) {
+  .sectiionn {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+
+  .views,
+  .time,
+  .category {
+    flex: 1 1 100%;
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .views img {
+    max-width: 20px;
+  }
+}
+
+
+
+
+/* Light Mode Styles */
+.light-mode {
+  background-color: white; /* White background for Light Mode */
+  color: black; /* Black text for Light Mode */
+}
+
+/* Dark Mode Styles */
+.dark-mode {
+  background-color: #121212; /* Black background for Dark Mode */
+  color: white; /* White text for Dark Mode */
+}
+
+/*
+.dark-mode .nav .fx-gap  {
+  background-color:#FFFAFA;
+}
+*/
+
+.dark-mode .nav input[type="text"]  {
+  color:   #F5F5DC; 
+}
+
+.dark-mode .nav input[type="text"]::placeholder  {
+  color:   #F5F5DC; 
+}
+
+.dark-mode .nav .fx-gap img
+{
+  filter: invert(1);
+
+}
+
+
+.dark-mode .container .nav{
+  background-color: #121212; 
+   }
+
+   .dark-mode .container .Table{
+    background-color: #121212; 
+     }
+
+     .dark-mode .container .Table .overlay-text{
+      background-color: #121212; 
+       }
+
+
+
+.dark-mode .container .search img,
+.dark-mode .container .upload img,
+.dark-mode .container .Notifications img,
+.dark-mode .container .Settings img
+
+{
+  filter: invert(1);
+
+}
+
+.dark-mode .profilee-name span{
+  color: #D3D3D3;
+  }
+
+  .dark-mode .caption span{
+    color:white; 
+    }
+
+
+    .dark-mode .sectiionn .views span,
+    .dark-mode .sectiionn .time span,
+    .dark-mode .sectiionn .category span {
+      color: white;
+    }
+    
+    
+    .dark-mode .sectiionn .views img
+    
+    
+    {
+      filter: invert(1);
+    
+    }
+    
+    
+    .dark-mode .sectiionn .views img
+    {
+      filter: invert(1);
+    
+    }
+
+
+.dark-mode .hero h2{
+  color:white; /* Change to white in dark mode */
+}
+
+
+
+.dark-mode .profail-name h4 {
+  color: white; /* Change to white in dark mode */
+}
+
+.dark-mode .Name {
+ background-color: transparent;
+}
+
+.dark-mode .Name span {
+  color: #D3D3D3;
+ }
+ 
+ .dark-mode .container-2 {
+  background-color: transparent;
+ }
+ 
+ .dark-mode .container-2 h3 {
+  color:   #F5F5DC; 
+  }
+  
+  .dark-mode .container-3 .viewws,
+  .dark-mode .container-3 .followers,
+  .dark-mode .container-3 .videos,
+  .dark-mode .container-3 .country,
+  .dark-mode .container-3 .follow
+  
+  {
+    background-color: transparent;
+  
+  }
+  
+
+  .dark-mode .container-3 .viewws img,
+  .dark-mode .container-3 .followers img,
+  .dark-mode .container-3 .videos img,
+  .dark-mode .container-3 .country img,
+  .dark-mode .container-3 .follow img
+  
+  {
+    filter: invert(1);
+  
+  }
+  
+  .dark-mode .container-3 .viewws span,
+  .dark-mode .container-3 .followers span,
+  .dark-mode .container-3 .videos span,
+  .dark-mode .container-3 .country span,
+  .dark-mode .container-3 .follow span {
+    color: #FFFFFF;
+  }
+  
+
+
+
+.dark-mode .container-4 .my-videos img,
+.dark-mode .container-4 .watchlist img,
+.dark-mode .container-4 .favorites img,
+.dark-mode .container-4 .playlist img,
+.dark-mode .container-4 .community img
+
+{
+  filter: invert(1);
+
+}
+
+/* Dark Mode */
+.dark-mode .square
+{
+  background-color: transparent;
+
+}
+
+.dark-mode .square span
+{
+  color: #D3D3D3;
+
+}
+
+.dark-mode .caaption span
+{
+  color:white; 
+
+}
+
+.dark-mode .about p
+{
+  color:white; 
+
+}
+
+
+.dark-mode .secction .viewss ,
+.dark-mode .secction .commentss ,
+.dark-mode .secction .likee,
+.dark-mode .secction .dislikee,
+.dark-mode .secction .timess,
+.dark-mode .secction .optionn
+{
+  background-color: #2a2d2f;
+
+}
+
+
+.dark-mode .secction .viewss img,
+.dark-mode .secction .commentss img,
+.dark-mode .secction .likee img,
+.dark-mode .secction .dislikee img,
+.dark-mode .secction .optionn img
+{
+  filter: invert(1);
+
+}
+
+.dark-mode .secction .viewss span,
+.dark-mode .secction .commentss span,
+.dark-mode .secction .likee span,
+.dark-mode .secction .dislikee span,
+.dark-mode .secction .timess span,
+.dark-mode .secction .optionn span {
+  color: white;
+}
+
+.net-text {
+  color: red; /* Black color for NET in light mode */
+  font-size: 2em; /* Adjust size as needed */
+}
+
+.toon-text {
+  color: red; /* Red color for TOON in light mode */
+  font-size: 2em; /* Adjust size as needed */
+}
+
+
+
+.dark-mode .net-text {
+  color: red; /* White color for NET in dark mode */
+}
+
+.dark-mode .toon-text {
+  color: red;  /* Yellow color for TOON in dark mode */
+}
+
+
+.dark-mode .captionn h3 {
+  color:#A4F4AE; 
+  }
+
+  .dark-mode .profail-name h3{
+    color: #D3D3D3;
+    }
+
+    .dark-mode .caption h4{
+      color:white; 
+      }
+    
+      .dark-mode .captionn h3 {
+        color:white; 
+        }
+      
+
+  .dark-mode .captiion span {
+    color:white; 
+  }
+
+
+  .dark-mode .container .search img,
+  .dark-mode .container .upload img,
+  .dark-mode .container .Notifications img,
+  .dark-mode .container .Settings img
+  
+  {
+    filter: invert(1);
+  
+  }
+
+
+
+  /* Mobile-first default styles (<=320px) */
+
+/* Small phones (up to 480px) */
+@media (max-width: 480px) {
+  .navbar { /* hide menu items, show hamburger */ }
+  .sidebar { display: none; }
+  .main-content { display: flex; flex-direction: column; }
+  .video-player { width: 100%; height: auto; }
+  button, .button { padding: 1rem; min-width: 48px; min-height: 48px; }
+}
+
+/* Medium phones / small tablets (481px–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .navbar { /* show expanded nav or hamburger */ }
+  .layout { display: grid;
+             grid-template-columns: 1fr 1fr; 
+             grid-gap: 16px; }
+  .sidebar { display: block; /* optional sidebar view */ }
+  .main-content, .video-container { width: 100%; }
+}
+
+/* Tablets / small laptops (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+  .container
+  {
+    background-color: transparent;
+  
+  .overlay-text
+  {
+    font-size: 0.7rem;
+  }
+  
+  .nav
+  {
+    background-color: transparent;
+  }
+    
+  .upload
+  {
+    background-color: transparent;
+    width: 3.3vw;
+    height: 3.3vw;
+  }
+  
+  
+  .Notifications
+  {
+    background-color: transparent;
+    width: 3.3vw;
+    height: 3.3vw;
+  }
+  
+  
+  .Account 
+  {
+    background-color: transparent;
+    width: 3.3vw;
+    height: 3.3vw;
+  }
+  
+  
+  .upload img {
+    width: 100%;
+    height:  100%;
+    margin: 0 auto;
+  }
+  
+  .Notifications img {
+    width: 100%;
+    height:  100%;
+    margin: 0 auto;
+  }
+  
+.video-container
+{
+  background-color: transparent;
+}
+
+.containerr
+{
+  background-color: transparent;
+  margin-top: 0.5%;
+}
+
+
+/* Shared layout styles */
+.content-container {
+  width: 100%;
+  gap: 0.5rem;
+  background-color: transparent;
+
+}
+
+.rectangle
+{
+  background-color: transparent;
+}
+
+.square
+{
+  background-color: transparent;
+}
+
+.about {
+  background-color: transparent;
+  height: auto;
+  max-height: 10rem; /* 300px */
+ /* Added padding for better spacing */
+  box-sizing: border-box; /* Ensures padding is included in the element's total width and height */
+  flex: 1; /* Allow this section to take available space */
+}
+
+/* Main Section Container */
+.secction {
+  height: clamp(3vh); /* Responsive height */
+  background-color: transparent;
+  gap: clamp(0.5rem, 1.5vw, 1.5rem); /* Responsive gap */
+  margin-bottom: 0px;
+  padding: 0rem;
+  margin-top: 5px;
+}
+
+
+.scroll-area
+{
+  background-color: transparent;
+  gap:1rem; /* Slight space between items */
+}
+
+.shorts {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 9 / 16;
+  margin: 1rem 0 1rem 0.7rem;
+
+}
+
+.short-video {
+  width: 100%;
+  height: 100%;
+
+}
+
+
+  .container-1
+  {
+    background-color: transparent;
+  gap: 0.6rem;
+  margin: 0 auto; /* ✅ Centers the block */
+  }
+  
+  .kontainer
+  {
+    background-color: transparent;
+    width: clamp(28%, 37%, 32%);
+  margin-left: 6px;
+  }
+  
+  
+}
+
+/* Desktops (1025px–1279px) */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .container
+  {
+    background-color: transparent;
+  
+  }
+  
+  .nav
+  {
+    background-color: transparent;
+
+  }
+
+.overlay-text
+{
+  font-size: 0.7589rem;
+}
+
+.search input[type="search"] {
+
+  min-height: 10px;
+  max-height: 15px;
+
+}
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Notifications
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Account 
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+
+
+.upload img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
+.container-2
+{
+  background-color: transparent;
+}
+
+.container-3
+{
+  background-color: transparent;
+}
+
+.video-container
+{
+  background-color: transparent;
+}
+
+.containerr
+{
+  background-color: transparent;
+  flex: 1 1 320px;
+  max-width: 400px;
+  min-width: 280px;
+  aspect-ratio: 16 / 9;
+  height: 300px;
+}
+
+.rectangle
+{
+  background-color: transparent;
+}
+
+/* Shared layout styles */
+.content-container {
+  width: 100%;
+  gap: 0.6rem;
+  background-color: transparent;
+
+}
+
+
+
+.container-1
+{
+  background-color: transparent;
+gap: 0.6rem;
+}
+
+.kontainer
+{
+  background-color: transparent;
+  width: clamp(28%, 37%, 32%);
+margin-left: 5px;
+}
+
+
+.scroll-area
+{
+  background-color: transparent;
+  gap:2rem; /* Slight space between items */
+}
+
+.shorts {
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 9 / 16;
+  margin: 1rem 0 1rem 0.7rem;
+
+}
+
+.short-video {
+  width: 100%;
+  height: 100%;
+
+}
+
+
+
+
+}
+@media (min-width: 1280px) and (max-width: 1599px) {
+  .content-container {
+    gap: 3rem;
+    background-color: transparent;
+    justify-content: space-around; /* Ensures even spacing */
+  }
+
+
+  
+  .kontainer {
+    background-color: transparent;
+    width: clamp(28%, 35%, 30%);
+    margin-left: 0; /* Let the gap do the spacing */
+  }
+}
+
+
+/* Ultra-wide (1600px and up) */
+@media (min-width: 1600px)
+{ 
+.container
+{
+  background-color: #000d;
+}
+
+  .container-2
+  {
+    background-color: darkblue;
+  }
+
+  .container-1
+  {
+  gap: 3rem;
+  background-color: gray;
+  }
+
+  .kontainer
+  {
+    background-color: transparent;
+    width: clamp(28%, 35%, 30%);
+    margin-left: 1rem;
+  }
+
+    .views
+  {
+    background-color: transparent;
+  }
+
+
+.views img {
+  width: clamp(24px, 4.5vw, 30px);
+  height: clamp(24px, 4.5vw, 30px);
+  background-color: transparent;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+  
+}
+
+}
