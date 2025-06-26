@@ -1,46 +1,60 @@
 document.addEventListener("DOMContentLoaded", function() {
-    const lightIcon = document.getElementById("theme-toggle-light");
-    const darkIcon = document.getElementById("theme-toggle-dark");
+  const lightIcon = document.getElementById("theme-toggle-light");
+  const darkIcon = document.getElementById("theme-toggle-dark");
+  const body = document.body; // Cache body element for efficiency
 
-    // Function to set the theme based on the mode
-    function setTheme(mode) {
-        if (mode === "dark") {
-            document.body.classList.add("dark-mode");
-            document.body.classList.remove("light-mode");
-            lightIcon.style.display = "block";
-            darkIcon.style.display = "none";
-        } else {
-            document.body.classList.add("light-mode");
-            document.body.classList.remove("dark-mode");
-            lightIcon.style.display = "none";
-            darkIcon.style.display = "block";
-        }
-    }
+  // Function to apply the theme classes and icon visibility
+  function applyTheme(mode) {
+      if (mode === "dark") {
+          body.classList.add("dark-mode");
+          body.classList.remove("light-mode");
+          if (lightIcon) lightIcon.style.display = "block"; // Only show if element exists
+          if (darkIcon) darkIcon.style.display = "none";   // Only hide if element exists
+      } else {
+          body.classList.add("light-mode");
+          body.classList.remove("dark-mode");
+          if (lightIcon) lightIcon.style.display = "none";  // Only hide if element exists
+          if (darkIcon) darkIcon.style.display = "block";  // Only show if element exists
+      }
+  }
 
-    // Function to toggle modes
-    function toggleMode() {
-        if (document.body.classList.contains("dark-mode")) {
-            setTheme("light");
-            localStorage.setItem("theme", "light"); // Save preference
-        } else {
-            setTheme("dark");
-            localStorage.setItem("theme", "dark"); // Save preference
-        }
-    }
+  // Function to toggle modes
+  function toggleMode() {
+      if (body.classList.contains("dark-mode")) {
+          applyTheme("light");
+          localStorage.setItem("theme", "light"); // Save preference
+      } else {
+          applyTheme("dark");
+          localStorage.setItem("theme", "dark"); // Save preference
+      }
+  }
 
-    // Check for saved theme preference in localStorage
-    const savedTheme = localStorage.getItem("theme");
-    if (savedTheme) {
-        setTheme(savedTheme); // Set the theme based on saved preference
-    } else {
-        setTheme("light"); // Default to light mode if no preference is saved
-    }
+  // --- Initial Theme Setup on Load ---
+  const savedTheme = localStorage.getItem("theme");
 
-    // Event listener for the icons
-    darkIcon.addEventListener("click", toggleMode);
-    lightIcon.addEventListener("click", toggleMode);
+  if (savedTheme) {
+      // If a theme is saved, apply it
+      applyTheme(savedTheme);
+  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      // If no theme is saved, check user's system preference (optional, but good UX)
+      applyTheme("dark");
+      localStorage.setItem("theme", "dark"); // Save this initial preference
+  }
+  else {
+      // Default to light mode if no preference saved and no system dark mode preference
+      applyTheme("light");
+      localStorage.setItem("theme", "light"); // Save this initial preference
+  }
+
+  // --- Event Listeners ---
+  // Ensure icons exist before adding listeners
+  if (darkIcon) {
+      darkIcon.addEventListener("click", toggleMode);
+  }
+  if (lightIcon) {
+      lightIcon.addEventListener("click", toggleMode);
+  }
 });
-
 document.querySelector(".account-dropdown").onclick = function(event) {
     event.preventDefault(); // Prevent the default anchor behavior
     var dropdown = document.getElementById("accountDropdown");
@@ -313,6 +327,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
   
+
   document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.sectionn').forEach(section => {
       // LIKE logic
@@ -321,37 +336,39 @@ document.addEventListener("DOMContentLoaded", function () {
       const likeActive = likeBox.querySelector('.like-icon.active');
       const likeCount = likeBox.querySelector('.like-count');
       let liked = false;
-
+      let likeCounter = 0;
+  
       likeBox.addEventListener('click', () => {
         liked = !liked;
         likeDefault.classList.toggle('hidden', liked);
         likeActive.classList.toggle('hidden', !liked);
-        let count = parseInt(likeCount.textContent);
-        likeCount.textContent = liked ? count + 1 : Math.max(0, count - 1);
+        likeCounter = liked ? likeCounter + 1 : likeCounter - 1;
+        likeCount.textContent = likeCounter;
       });
-
+  
       // DISLIKE logic
       const dislikeBox = section.querySelector('.dislikee');
       const dislikeDefault = dislikeBox.querySelector('.dislike-icon.default');
       const dislikeActive = dislikeBox.querySelector('.dislike-icon.active');
       const dislikeCount = dislikeBox.querySelector('.dislike-count');
       let disliked = false;
-
+      let dislikeCounter = 0;
+  
       dislikeBox.addEventListener('click', () => {
         disliked = !disliked;
         dislikeDefault.classList.toggle('hidden', disliked);
         dislikeActive.classList.toggle('hidden', !disliked);
-        let count = parseInt(dislikeCount.textContent);
-        dislikeCount.textContent = disliked ? count + 1 : Math.max(0, count - 1);
+        dislikeCounter = disliked ? dislikeCounter + 1 : dislikeCounter - 1;
+        dislikeCount.textContent = dislikeCounter;
       });
-
+  
       // FOLLOW logic
       const followBox = section.querySelector('.follow');
       const followDefault = followBox.querySelector('.follow-icon.default');
       const followActive = followBox.querySelector('.follow-icon.active');
       const followLabel = followBox.querySelector('.follow-label');
       let following = false;
-
+  
       followBox.addEventListener('click', () => {
         following = !following;
         followDefault.classList.toggle('hidden', following);

@@ -88,7 +88,7 @@ const container1 = document.querySelector('.container-1');
 commentIcon.addEventListener('click', function () {
     if (commentContainer.style.display === 'none' || commentContainer.style.display === '') {
         commentContainer.style.display = 'block'; // Show comment container
-        container1.style.marginTop = '50px'; // Move container-1 down by 50px
+        container1.style.marginTop = '20px'; // Move container-1 down by 50px
     } else {
         commentContainer.style.display = 'none'; // Hide comment container
         container1.style.marginTop = '15px'; // Reset container-1 position
@@ -343,37 +343,39 @@ document.addEventListener("DOMContentLoaded", function () {
       const likeActive = likeBox.querySelector('.like-icon.active');
       const likeCount = likeBox.querySelector('.like-count');
       let liked = false;
-
+      let likeCounter = 0;
+  
       likeBox.addEventListener('click', () => {
         liked = !liked;
         likeDefault.classList.toggle('hidden', liked);
         likeActive.classList.toggle('hidden', !liked);
-        let count = parseInt(likeCount.textContent);
-        likeCount.textContent = liked ? count + 1 : Math.max(0, count - 1);
+        likeCounter = liked ? likeCounter + 1 : likeCounter - 1;
+        likeCount.textContent = likeCounter;
       });
-
+  
       // DISLIKE logic
       const dislikeBox = section.querySelector('.dislikee');
       const dislikeDefault = dislikeBox.querySelector('.dislike-icon.default');
       const dislikeActive = dislikeBox.querySelector('.dislike-icon.active');
       const dislikeCount = dislikeBox.querySelector('.dislike-count');
       let disliked = false;
-
+      let dislikeCounter = 0;
+  
       dislikeBox.addEventListener('click', () => {
         disliked = !disliked;
         dislikeDefault.classList.toggle('hidden', disliked);
         dislikeActive.classList.toggle('hidden', !disliked);
-        let count = parseInt(dislikeCount.textContent);
-        dislikeCount.textContent = disliked ? count + 1 : Math.max(0, count - 1);
+        dislikeCounter = disliked ? dislikeCounter + 1 : dislikeCounter - 1;
+        dislikeCount.textContent = dislikeCounter;
       });
-
+  
       // FOLLOW logic
       const followBox = section.querySelector('.follow');
       const followDefault = followBox.querySelector('.follow-icon.default');
       const followActive = followBox.querySelector('.follow-icon.active');
       const followLabel = followBox.querySelector('.follow-label');
       let following = false;
-
+  
       followBox.addEventListener('click', () => {
         following = !following;
         followDefault.classList.toggle('hidden', following);
@@ -382,3 +384,4 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
+  
