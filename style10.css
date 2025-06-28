@@ -1227,7 +1227,7 @@ margin: 0 auto;
   min-height: 700px;
   max-height: 700px;
 
-  margin: 60px auto 0 auto; /* Top margin + horizontal centering */
+  margin: 7rem auto 0 auto; /* ✅ Margin-top now works */
   padding-bottom: 20px;
 }
 
@@ -1260,7 +1260,7 @@ h2
 
   .container
   {
-    background-color:violet;
+    background-color: var(--color-bg-light); /* Default background color for light mode */
   }
   
   .Table
@@ -1276,7 +1276,7 @@ h2
   
   .nav
   {
-    background-color: navy;
+    background-color: transparent;
   }
   
   .search input[type="search"] {
@@ -1289,21 +1289,21 @@ h2
   
   .upload
   {
-    background-color: rebeccapurple;
+    background-color: transparent;
     width: 3vw;
     height: 3vw;
   }
   
   .Notifications
   {
-    background-color: rebeccapurple;
+    background-color: transparent;
     width: 3vw;
     height: 3vw;
   }
   
   .Account 
   {
-    background-color: rebeccapurple;
+    background-color: transparent;
     width: 3vw;
     height: 3vw;
   }

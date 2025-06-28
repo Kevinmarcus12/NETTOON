@@ -856,7 +856,8 @@ opacity: 1;
     justify-content: center; /* Center the whole content block */
     gap: var(--spacing-xl); /* Larger gap for desktop layout (e.g., 2rem approx 32px) */
   }
-}/* ==== MAIN VIDEO CONTENT BLOCK (.containerr) - CORRECTED CLASS NAME ==== */
+}
+/* ==== MAIN VIDEO CONTENT BLOCK (.containerr) - CORRECTED CLASS NAME ==== */
 /* This div wraps the profile, caption, video player, and interaction section. */
 .containerr { /* CORRECTED: Used 'containerr' as per your HTML */
   /* Using clamp for responsive width: min 18.75rem (300px), flexible 58% of parent, max 45rem (720px) or more. */
@@ -971,47 +972,43 @@ opacity: 1;
   padding: 3px;
   margin: 0; /* Remove unnecessary margin */
 }
+/* No changes needed to your CSS for this fix. It's already correct. */
 
 /* ==== VIDEO PLAYER CONTAINER (.video) ==== */
 .video {
-  position: relative; /* Essential for positioning absolute child elements like overlays */
-  width: 100%; /* Ensures the video player takes the full width of its parent (.containerr) */
-  height: auto; /* Height adjusts automatically to maintain aspect ratio */
-  aspect-ratio: 16 / 9; /* CRITICAL: Maintains a cinematic 16:9 aspect ratio, preventing video distortion */
-  
-  background-color: var(--color-bg-dark-alt); /* A dark background can blend well if video loads slowly or has transparency */
-  border-radius: var(--border-radius-md); /* Smooth, consistent border-radius */
-  overflow: hidden; /* Clips any content (like video edges) that might exceed the border-radius */
-  
-  /* REMOVED: Imaginary space/padding between caption and video */
-  margin-top: 0; /* Ensures no top margin from original code */
-  margin-block-start: 0; /* Ensures no margin from previous refinement */
-
-  display: flex; /* Use flexbox to easily center content within the video wrapper */
-  justify-content: center; /* Horizontally centers the video */
-  align-items: center; /* Vertically centers the video */
+  position: relative;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  background-color: var(--color-bg-dark-alt);
+  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
+  overflow: hidden;
+  margin-block-start: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /* ==== VIDEO ELEMENT (.video video) ==== */
 .video video {
-  border-radius: 7px;
-  width: 100%; /* Ensures the video fills the wrapper's width */
-  height: 100%; /* Ensures the video fills the wrapper's height */
-  object-fit: cover; /* CRITICAL: Ensures the video covers the entire area without stretching or distortion, cropping if necessary */
-  display: block; /* Removes any default inline-block spacing below the video element */
+  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* Remains 'contain' for full video visibility */
+  display: block;
 }
 
+/* ==== PLAY OVERLAY BUTTON (.play-overlay) ==== */
 .play-overlay {
   position: absolute;
-  top: 47%;
-  left: 51%;
+  top: 50%;
+  left: 50%;
   width: 50px;
   height: 50px;
   transform: translate(-50%, -50%);
   cursor: pointer;
-  opacity: 1; /* Start visible in case video doesn't autoplay */
-  transition: opacity 0.3s ease;
-  z-index: 0;
+  opacity: 0; /* Starts hidden as video autoplays */
+  z-index: 10; /* Ensures it's above the video */
 }
 
 /* ==== INTERACTION SECTION CONTAINER (.sectionn) ==== */
@@ -1032,8 +1029,8 @@ opacity: 1;
   border-style: none; /* No border */
   background-color:transparent;
 }
-
-/* Light mode for interactive buttons/sections */
+/* ==== INDIVIDUAL INTERACTIVE ITEMS (.viewss, .commentss, .likess, .dislikee, .timee, .follow, .option) ==== */
+/* These styles apply to all clickable interactive items within the section, providing a consistent look and feel. */
 .viewss,
 .commentss,
 .likess,
@@ -1041,33 +1038,36 @@ opacity: 1;
 .timee,
 .follow,
 .option {
-  position: relative; /* Allows for absolute positioning of child elements within these items (e.g., badges) */
-  flex: 1.5; /* Distributes available space among these items based on their flex factor */
-  min-width: 1rem; /* Ensures a minimum width for touch targets */
-  height: 1.7rem; /* Fixed height for consistent button/item size */
-  
-  background-color: #F5F5F5; /* Pale Grey */
-  border-radius: 0.4375rem; /* Uses your specified rem value for consistency */
-  
-  display: flex; /* Uses flexbox to center content (icon and text) within each item */
-  align-items: center; /* Vertically centers content */
-  justify-content: center; /* Horizontally centers content */
-  
-  margin-block: var(--spacing-xxs); /* Responsive vertical margin (5px approx 0.3125rem) for spacing between rows if flex-wrap was enabled */
-  cursor: pointer; /* Indicates that the element is clickable */
-  
+    /* Positioning & Layout */
+    position: relative;    /* Allows for absolute positioning of child elements (e.g., badges) */
+    display: flex;         /* Uses flexbox to center content (icon and text) within each item */
+    align-items: center;   /* Vertically centers content */
+    justify-content: center; /* Horizontally centers content */
+    
+    /* Sizing & Spacing */
+    flex: 1.5;             /* Distributes available space among these items based on their flex factor */
+    min-width: 1rem;       /* Ensures a minimum width for touch targets */
+    height: var(--section-item-height); /* Fixed height (27.2px) for consistent button/item size */
+    margin-block: var(--spacing-xxs-half); /* Responsive vertical margin (5px) - mostly for wrapping scenarios */
+    
+    /* Appearance */
+    background-color: var(--color-bg-metadata-light); /* **YouTube-inspired light gray background** */
+    border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
+    cursor: pointer;       /* Indicates that the element is clickable */
+    /* NO TRANSITIONS as per user request */
 }
 
-/* Dark mode for interactive buttons/sections */
-body.dark-mode .viewss,
-body.dark-mode .commentss,
-body.dark-mode .likess,
-body.dark-mode .dislikee,
-body.dark-mode .timee,
-body.dark-mode .follow,
-body.dark-mode .option {
-  background-color: var(--color-bg-dark-card); /* Darker background for dark mode */
+/* Dark mode adjustment for individual interactive items */
+.dark-mode .viewss,
+.dark-mode .commentss,
+.dark-mode .likess,
+.dark-mode .dislikee,
+.dark-mode .timee,
+.dark-mode .follow,
+.dark-mode .option {
+    background-color: var(--color-bg-metadata-dark); /* **YouTube-inspired dark gray background** */
 }
+
 
 
 /* Utility class to hide elements */
@@ -1084,7 +1084,7 @@ body.dark-mode .option {
 .timee:hover,
 .follow:hover,
 .option:hover {
-  background-color: var(--color-button-light-hover); /* Light mode hover color (e.g., a darker gray) */
+  background-color: gray;
 }
 
 /* Dark mode hover effects for interactive elements */
@@ -1163,6 +1163,52 @@ body.dark-mode .timee span,
 body.dark-mode .follow span {
   color: var(--color-text-light-alt); /* Lighter text color for dark mode */
 }
+
+
+:root {
+  /* ... existing variables ... */
+
+  /* ==== YOUTUBE-INSPIRED METADATA BACKGROUND COLORS ==== */
+  /* Light Mode */
+  --color-bg-metadata-light: #F2F2F2; /* Very light gray, almost off-white */
+  /* Dark Mode */
+  --color-bg-metadata-dark: #202020; /* Dark gray, close to black */
+
+  /* New Hover Colors */
+  --color-button-light-hover: #E0E0E0; /* Light mode hover color */
+  --color-button-dark-hover: #4a4b4d; /* Dark mode hover color */
+
+  /* New Text Colors for these sections */
+  --color-text-dark-alt: #333; /* A general dark grey for text in light mode */
+  --color-text-light-alt: #F8F8F8; /* A general light grey for text in dark mode */
+
+  /* New Sizing Variables */
+  --section-item-height: 1.7rem; /* 27.2px */
+
+  /* New Border Radius Variable */
+  --border-radius-sm-plus: 0.4375rem; /* 7px */
+
+  /* New Icon Sizing Variables */
+  --icon-size-base: 1.5rem; /* 24px */
+  --icon-size-sm: 1.3rem; /* 20.8px */
+
+  /* New Spacing Variable */
+  --spacing-xxxs-alt: 0.125rem; /* 2px */
+
+  /* New Font Size Variable (if not covered by existing base font sizes) */
+  --font-size-base-alt: 0.955rem; /* 15.28px */
+
+  /* Ensure these are defined if not already */
+  --spacing-sm: 0.5rem; /* 8px */
+  --spacing-xxxs: 0.0625rem; /* 1px */
+  --spacing-xxs-half: 0.3125rem; /* 5px */
+  --spacing-xs: 0.5rem; /* 8px */
+  --font-family-primary: sans-serif; /* Example: 'Arial', sans-serif; */
+
+
+  /* ... rest of your variables ... */
+}
+
 .container-2 {
   position: relative; /* Essential for positioning child elements within this container */
   
@@ -1190,8 +1236,7 @@ body.dark-mode .follow span {
   flex-wrap: wrap; /* Allows child items to wrap to the next line within the container */
   flex-direction: row; /* Arranges items in rows (horizontally) initially */
   justify-content: flex-start; /* Aligns content to the start of the flex container */
-  
-  border-style: none; /* No border style */
+  border-style: none;; /* No border style */
   z-index: 2; /* Ensures it's layered correctly on the page */
 
   /* Custom Scrollbar Styling (Webkit Browsers - Chrome, Safari) */
@@ -1232,7 +1277,7 @@ body.dark-mode .follow span {
   height: 1.875rem; /* Consistent height (30px converted to rem) */
   
   background-color:#F5F5F5; /* Uses a variable for a pale gray background in light mode */
-  border-radius: var(--border-radius-md); /* Consistent smooth rounded edges using a variable */
+  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
   border: none; /* Removes any default border */
   
    z-index: 1;
@@ -1255,8 +1300,8 @@ body.dark-mode .follow span {
 /* ==== LABEL STYLING WITHIN .optionn ==== */
 .optionn span {
   font-family: var(--font-family-primary); /* Ensures a consistent, high-quality font */
-  font-weight: 700; /* Bolder font for prominence */
-  color: var(--color-text-dark); /* Dark text color for light mode, using a variable */
+  font-weight: 700; /* Bold font for prominence and readability */
+  color: var(--color-text-dark); /* Dark text color for light mode */
   
   /* Text truncation for long labels */
   text-overflow: ellipsis; /* Adds "..." if text overflows */
@@ -1287,12 +1332,12 @@ body.dark-mode .follow span {
   margin-block-end: 0; /* No bottom margin */
   margin-block-start: 0; /* No top margin */
   border-radius: 0; /* No border-radius */
-  
+  gap:  15px 15px; /* 5px vertically, 10px horizontally */
   background-color: transparent; /* No background */
   
   display: flex; /* Uses flexbox for arranging child items */
   flex-wrap: wrap; /* Allows child items to wrap to the next line */
-  gap: var(--spacing-sm) var(--spacing-md); /* Responsive gap between items: 0.75rem vertically, 1rem horizontally */
+
   
   justify-content: flex-start; /* Aligns content to the start (left) */
 }
@@ -1302,7 +1347,7 @@ body.dark-mode .follow span {
   width: 30%; /* Maintains your specified width, which acts as a base in a flex container */
   max-height: 14.375rem; /* Sets a maximum height (230px converted to rem) to control card size */
   
-  background-color:transparent; /* Ensures a clean, transparent background for the card */
+  border-style: none;/* Ensures a clean, transparent background for the card */
   /* flex: 0 1 47%; - This property is noted as "Keep original flex behavior". 
      However, 'flex-basis: 47%' is often used directly for initial sizing within a flex container. 
      The 'flex: 0 1 47%' shorthand means:
@@ -1317,7 +1362,7 @@ body.dark-mode .follow span {
   border-radius: 0.4375rem;
   
   /* Margins for spacing the cards */
-  margin: var(--spacing-xs) 0 var(--spacing-sm) var(--spacing-xs); /* Responsive margins: 10px (0.625rem) top, 0 right, 15px (0.9375rem) bottom, 10px (0.625rem) left */
+  margin: 33px 0 15px 10px; /* Maintain original positioning */
   
   cursor: pointer; /* Indicates that the card is interactive and clickable */
   z-index: 0; /* Controls stacking order, typically handled by parent for overall layout */
@@ -1368,10 +1413,10 @@ body.dark-mode .follow span {
 /* ==== CAPTION TEXT LABEL (.captiion span) ==== */
 /* Styles for the actual text content of the caption. */
 .captiion span {
-  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font type */
-  font-size: 0.9375rem; /* Precise font size (15px converted to rem). Consider using clamp() for more dynamic scaling if desired. */
-  font-weight: 700; /* Bold font for prominence and readability */
-  color: var(--color-text-dark); /* Dark text color for light mode, using a variable */
+  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+  font-weight: 700; /* Bold font for prominence */
+  font-size: var(--font-size-base-md); /* Responsive font size (0.96875rem approx 15.5px) */
+  color: black; /* Dark text color for light mode, using a variable */
   text-align: center; /* Centers the text within its own space */
   
   /* Text truncation for single-line display */
@@ -1382,7 +1427,7 @@ body.dark-mode .follow span {
   max-width: 90%; /* Limits the text width to prevent potential overlap with other elements */
   padding: var(--spacing-xxxs) var(--spacing-xs); /* Responsive padding (4px 8px converted to rem) */
 
-  transition: color var(--transition-speed) var(--transition-ease); /* Smooth transition for dark mode */
+
 }
 
 /* Dark mode adjustments for .captiion span */
@@ -1455,7 +1500,7 @@ body.dark-mode .follow span {
   
   /* Positioning within the parent */
   left: 2%; /* Positioned 2% from the left edge of its parent */
-  bottom: 18%; /* Positioned 24% from the bottom edge of its parent */
+  bottom: 21%; /* Positioned 24% from the bottom edge of its parent */
   
   border-radius: 7px; /* Smooth rounded edges using a variable (7px converted to rem) */
   padding: 0.375rem var(--spacing-md); /* Responsive padding (6px 12px converted to rem) */
@@ -2047,30 +2092,22 @@ body.dark-mode textarea {
 }
 
 
-/* ==== MAIN CONTAINER (.container-3) ==== */
-/* This container is designed to hold elements in a horizontal layout,
-   likely acting as a section for content display. */
-   .container-3 {
-    position: relative; /* Allows for precise positioning of child elements within it */
-    width: 100%; /* Spans the full width of its parent */
-    height: 20rem; /* Fixed height for this container */
-    
-    display: flex; /* Enables a flexible, horizontal layout for its children */
-    flex-direction: row; /* Arranges items in a single row */
-    align-items: center; /* Vertically centers children within the container */
-    justify-content: flex-start; /* Aligns children to the start (left) of the container */
-    
-    background-color: transparent; /* No background for the container itself */
-    border-radius: var(--border-radius-md); /* Consistent rounded edges using a variable (0.4375rem approx 7px) */
-    border-style:none; /* No border style */
-    
-    /* EXPLICITLY SETTING MARGIN-TOP TO 2REM */
-    /* This ensures the desired 2rem (32px) top margin,
-       overriding any potentially larger --spacing-xxl value elsewhere. */
-    margin-top: 2rem; 
-    
-    padding: 0; /* Removes any default internal padding */
-  }
+
+.container-3 {
+  position: relative;
+  width: 100%;
+  height: 20rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: transparent;
+  border-radius: var(--border-radius-md);
+  border-style: none;
+  margin-top: 2rem;
+  padding: 0; /* Important: no vertical spacing */
+  overflow: hidden;
+}
    .optionnn {
     position: absolute; /* Positions the element precisely within its parent (.container-3) */
     top: 0; /* Sticks it to the top edge of the parent */
@@ -2099,8 +2136,8 @@ body.dark-mode textarea {
   .optionnn span {
     font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
     font-size: var(--font-size-lg); /* Responsive font size (20px converted to rem) */
-    font-weight: 800; /* Bolder font for prominence, using a higher value for "bolder" */
-    color: var(--color-text-dark-alt); /* Dark text color for light mode, using a variable */
+    font-weight: 700; /* Bold font for prominence and readability */
+    color: var(--color-text-dark); /* Dark text color for light mode */
     
     margin-inline-start: var(--spacing-xs); /* Responsive left margin (10px converted to rem) */
     
@@ -2109,8 +2146,6 @@ body.dark-mode textarea {
     overflow: hidden; /* Hides overflowing text */
     text-overflow: ellipsis; /* Displays "..." for truncated text */
     flex-shrink: 1; /* Allows the text to shrink if necessary */
-  
-    transition: color var(--transition-speed) var(--transition-ease); /* Smooth transition for dark mode */
   }
   
   /* Dark mode adjustments for .optionnn span */
@@ -2126,7 +2161,7 @@ body.dark-mode textarea {
   /* Uses clamp() to ensure responsive scaling with defined min (150px) and max (300px) widths,
      and a fluid width (30%) relative to its parent. */
   width: clamp(9.375rem, 30%, 18.75rem); /* Converted 150px and 300px to rem */
-  background-color:transparent;
+  border-style: none;
   height: auto; /* Height adjusts dynamically based on its content */
   
   display: flex; /* Enables a flexible column layout for its children */
@@ -2149,7 +2184,7 @@ body.dark-mode textarea {
   /* ⭐ ADDITION: Force horizontal centering using auto margins ⭐ */
   margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
 
-  transition: filter var(--transition-speed) var(--transition-ease); /* Smooth transition for dark mode */
+ 
 }
 
 /* Dark mode adjustment for channel image */
@@ -2305,53 +2340,52 @@ justify-content: space-between;
     margin: var(--spacing-xxs-half) 0; /* Adds responsive spacing between elements */
   }
 }
-
+/* ✅ Tablee fix */
 .Tablee {
   position: relative;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: row;
-  background-color:transparent;
+  background-color: transparent;
   overflow-x: auto;
   overflow-y: hidden;
   gap: 0.625rem;
-  padding: 0rem 0rem;
-  z-index:0;
-  margin-bottom: 0px;
+  padding: 0;           /* Remove internal space */
+  margin: 0;            /* Remove outer space */
   scroll-behavior: smooth;
+  align-items: stretch; /* Ensures children fill full height */
+  box-sizing: border-box;
 }
 
-
+/* ✅ Series fix */
 .series {
   position: relative;
-  flex: 0 0 auto; /* Prevents it from shrinking or stretching */
+  flex: 0 0 auto;
   min-width: 35%;
   max-width: 40%;
-  height: auto;
-  margin-left: 0.625rem; /* 10px */
-  margin-top: 0.5rem; /* Previously 2rem */
-  background-color:transparent;
-  border-radius: 0.4375rem; /* 7px */
-  max-height: 15rem; /* 220px */
+  height: 75%;          /* Fills parent height */
+  margin: 3.3rem 0 0 0.625rem; /* Left gap only */
+  background-color: transparent;
+  border-radius: 0.4375rem;
+  max-height: 100%;
   cursor: pointer;
-  overflow: hidden; /* Ensures no content overflows */
-margin-bottom: 0rem;
-z-index:10;
+  overflow: hidden;
+  z-index: 10;
 }
 
 .series img {
-  width: 100%; /* Stretches across the container */
-  height: 100%; /* 220px */
-  border-radius: 0.4375rem; /* 7px */
+  width: 100%;
+  height: 100%;
+  border-radius: 0.4375rem;
   max-width: 100%;
-  object-fit: cover; /* Ensures the image fills the container nicely */
+  object-fit: cover;
   transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .series img:hover {
-  transform: scale(1.03); /* Smooth zoom effect */
-  opacity: 0.95; /* Slight transparency for modern feel */
+  transform: scale(1.03);
+  opacity: 0.95;
 }
 
 .overlay-textttt {
@@ -2598,46 +2632,57 @@ z-index:10;
   }
 }
 /* ==== CAPTION CONTAINER (.caption) ==== */
-/* This container likely holds a video title or description within a card. */
+/* This container holds the video title or description within a video card. */
 .caption {
-  width: 100%; /* Ensures it spans the full width of its parent */
-  height: 1.875rem; /* Consistent height (30px converted to rem) */
+  /* Sizing & Layout */
+  width: 100%;       /* Ensures it spans the full width of its parent (.kontainer) */
+  height: 2.5rem;  /* Consistent height (30px) for single-line captions */
   
-  display: flex; /* Enables a flexible layout for its content */
-  align-items: center; /* Vertically centers content within the container */
+  /* Flex Container Properties */
+  display: flex;         /* Enables a flexible layout for its content (caption text) */
+  align-items: center;   /* Vertically centers content within the container */
   justify-content: center; /* Horizontally centers content within the container */
   
-  overflow: hidden; /* Hides any overflowing content */
-  background: scroll; /* Maintains scroll behavior if applicable, though often implied */
-  background-color: transparent;  /* Uses a variable for the background color (darkblue) */
-  
-  padding: 0 var(--spacing-xs); /* Responsive horizontal padding (0.625rem approx 10px) */
+  /* Appearance & Overflow */
+  background-color:transparent; /* No background color, allowing parent's background to show */
+  overflow: hidden;    /* Hides any content that overflows the container boundaries */
+  /* `background: scroll` is often default and not needed here for visual styling. */
+  margin-bottom: 0%;
+  /* Spacing */
+  padding: 0 var(--spacing-xs); /* Responsive horizontal padding (8px) for internal spacing */
+  /* NO TRANSITIONS as per user request */
 }
 
-/* Dark mode adjustment for .caption */
+/* Dark mode adjustment for .caption container */
 .dark-mode .caption {
-  background-color: var(--color-bg-caption-dark); /* Darker background for dark mode */
+  background-color: transparent; /* Remains transparent in dark mode */
 }
-
 /* ==== CAPTION TEXT (.caption span) ==== */
-/* Styles for the actual text content of the caption. */
+/* Styles for the actual text content of the caption. *//* ==== CAPTION TEXT (.caption span) ==== */
+/* Styles for the actual text content of the caption, ensuring readability and truncation. */
 .caption span {
   font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
   font-weight: 700; /* Bold font for prominence */
   font-size: var(--font-size-base-md); /* Responsive font size (0.96875rem approx 15.5px) */
   color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
   
-  height: 100%; /* Fills the height of its parent container */
-  white-space: nowrap; /* Prevents text from wrapping to the next line */
-  overflow: hidden; /* Hides any text that extends beyond the element's bounds */
-  text-overflow: ellipsis; /* Displays "..." to indicate truncated text */
-  text-align: center; /* Centers the text within its own space */
-  max-width: 100%; /* Ensures text doesn't push parent width */
-  
-  margin-block-start: 1.5%; /* Maintains top margin as percentage relative to line-height or parent height */
+  /* Sizing & Flex Item Properties */
+  height: 100%; /* Fills the height of its parent container for vertical centering */
+  flex-grow: 1; /* Allows the text to grow and take available space */
 
-  transition: color var(--transition-speed) var(--transition-ease); /* Smooth transition for dark mode */
+  /* Text Handling */
+  white-space: nowrap;     /* Prevents text from wrapping to the next line */
+  overflow: hidden;        /* Hides any text that extends beyond the element's bounds */
+  text-overflow: ellipsis; /* Displays "..." to indicate truncated text */
+  text-align: center;      /* Centers the text within its own allocated space */
+  max-width: 100%;         /* Ensures text doesn't push parent width */
+  
+  /* Spacing */
+margin-top: 10%;
+margin-bottom: 5%;
+  /* NO TRANSITIONS as per user request */
 }
+
 
 /* Dark mode adjustment for .caption span */
 .dark-mode .caption span {
@@ -3295,7 +3340,7 @@ body {
   
   .container
   {
-    background-color:#FFFFFF;
+    background-color: var(--color-bg-light); /* Default background color for light mode */
   
   }
   
@@ -3372,7 +3417,7 @@ margin: 0 auto;
 { 
   max-width: 100%; height: auto; 
   margin-top: 60px;
-  background-color: transparent; 
+  background-color: transparent;
 width: 100%;
 max-width: 100%;
 flex-shrink:0;
@@ -3380,7 +3425,7 @@ flex-shrink:0;
 
 .containerr
 {
-background-color: transparent; 
+  background-color: transparent;
 }
 
 
@@ -3403,17 +3448,38 @@ flex: 2.1;
 flex: 2;
 }
 
+/* Label styling for text within interactive elements */
+.viewss span,
+.commentss span,
+.likess span,
+.dislikee span,
+.timee span,
+.follow span {
+  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
+
+}
+
 
 .container-2
 {
 background-color: transparent; 
-max-height: 455px;
+max-height: 425px;
+}
+
+.scroller{
+  gap: var(--spacing-sm) var(--spacing-md); /* Responsive gap between items: 0.75rem vertically, 1rem horizontally */
+  gap:  0px 10px; /* 5px vertically, 10px horizontally */
 }
 
 .card
 {
-  margin: 3px 0 3px 10px; /* Maintain original positioning */
+  margin: 10px 0 15px 8px; /* Maintain original positioning */
 }
+
+
+.pichaa {
+  width: 100%;
+  height: 115px;}
 
 .sectiion
 {
@@ -3424,24 +3490,24 @@ gap:0.1rem;
 
 .viewsss
 {
+  flex: 1.7;
   background-color: transparent;
-max-width: 45%;
-height: 25px;
-border-radius: 7px;
+
+  border-radius: 7px;
 }
 
 
-.timmee
+.Episode
 {
-
+  flex: 1;
   background-color: transparent;
-border-radius: 7px;
+  border-radius: 7px;
 }
 
-.viewsss span {
-font-weight: 300;
-flex: 2;
+.viewsss span, .Episode span {
+  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
 }
+
 
 
 .container-3
@@ -3456,8 +3522,8 @@ flex: 2;
   position: absolute;
 width: 100%;
 height: 30px;
-background-color: transparent;
-  z-index: 3;
+background-color: white; /* Darker background for dark mode */
+
 }
 
 .channel {
@@ -3471,7 +3537,7 @@ background-color: transparent;
 
 .channel img
 {
-  margin-right: 3%;
+  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
 }
 
 .profile
@@ -3491,37 +3557,35 @@ background-color: transparent;
 
 .Table
 {
-  padding-bottom: 0rem;
-padding: 0px;
+height: 100%;
+background-color: transparent;
 }
 
 .series 
 {
-margin-top: 1.5rem;
+margin-top: 2rem;
   min-width: 40%;
   max-width: 40%;
   height: 11.5rem; /* 200px */
-  margin-bottom: 0px;
+  margin-bottom: 5px;
+  z-index: -1;
 }
 
 
-
-
-  .container-1
-  {
-    background-color: transparent;
+.container-1 {
+  background-color: transparent;
   gap: 0.6rem;
   justify-content: flex-start;
-  margin: 0 auto; /* ✅ Centers the block */
-  }
-  
-  .kontainer
-  {
-    background-color: transparent;
-    width: clamp(28%, 37%, 32%);
+border-style:ridge;
+  width: 100%;         /* ✅ Keep it slightly narrow if needed */
+  left: 0 !important; /* ✅ Cancel previous left: 5% */
+}
+
+.kontainer {
+  background-color: transparent;
+  width: clamp(28%, 37%, 32%);
   margin-left: 5px;
-  }
-  
+}
   
   .caption span {
     font-weight: 700;
@@ -3541,110 +3605,107 @@ margin-top: 1.5rem;
 
 
 }
-
 /* Desktops (1025px–1279px) */
 @media (min-width: 1025px) and (max-width: 1279px) {
   .container
   {
-    background-color: #FFFFFF; 
+    background-color: var(--color-bg-light); /* Default background color for light mode */
   
   }
   
   .nav
   {
-    background-color: transparent;
+    background-color: transparent
   }
 
-.overlay-text
-{
-  font-size: 1.2rem;
-}
+  .overlay-text
+  {
+    font-size: 1.2rem;
+    background-color: transparent
+  }
+  
 
-.search input[type="search"] {
-
-  min-height: 10px;
-  max-height: 15px;
-
-}
-.upload
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-.Notifications
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-.Account 
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-
-
-.upload img {
-  width: 100%;
-  height:  100%;
+  .upload
+  {
+    background-color: transparent;
+    width: 3vw;
+    height: 3vw;
+  }
+  
+  .Notifications
+  {
+    background-color: transparent;
+    width: 3vw;
+    height: 3vw;
+  }
+  
+  .Account 
+  {
+    background-color: transparent;
+    width: 3vw;
+    height: 3vw;
+  }
+  
+  
+  
+  .upload img {
+    width: 100%;
+    height:  100%;
+    margin: 0 auto;
+  }
+  
+  .Notifications img {
+    width: 100%;
+    height:  100%;
+    margin: 0 auto;
+  }
+  
+  
+  
+  .Account img {
+    width: 100%;
+    height:  100%;
   margin: 0 auto;
-}
-
-.Notifications img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
-}
-
-
-
-.Account img {
-  width: 100%;
-  height:  100%;
-margin: 0 auto;
-}
-
-
+  }
+  
   .video-container 
   { 
     max-width: 100%; height: auto; 
-    margin-top: 60px;
-    background-color: transparent;
+    margin-top: 50px;
+    background-color: transparent
   width: 100%;
+  max-width: 100%;
   flex-shrink:0;
-  margin: 0 auto; /* ✅ Centers the block */
+  border-radius: 0px;
   }
 
 .containerr
 {
   background-color: transparent;
+  border-style: ridge;
 }
-
 
 .profillee
 {
   background-color: transparent;
-  width: 100%;
-  height: 2rem; /* Flexible height */
-
+  height: 30px;
 }
 
+.profillee-name
+{
+  background-color: transparent;
+  margin-top: 0px;
+}
 
-/* Profile Image */
 .profillee img {
-  width:2rem; /* 35px converted to rem */
-  height: 2rem;
+  width: clamp(2rem, 12%, 2rem); /* Responsive width */
+  height: auto;
+  margin-bottom: 10px;
 }
 
 .captionn
 {
-  background-color: transparent;
-  height: 30px;
+  background-color: saddlebrown;
 }
 
 .captionn h3
@@ -3652,24 +3713,42 @@ margin: 0 auto;
   font-size: clamp(1rem, 1.1vw, 1.5rem);
 }
 
+.sectionn
+{
+  background-color: transparent;
+}
+
 /* Increase space for time and follow buttons */
 .viewss {
-  flex: 2.1;
+  flex:1.5;
+  gap:0px;
+}
+
+/* Label styling for text within interactive elements */
+.viewss span,
+.commentss span,
+.likess span,
+.dislikee span,
+.timee span,
+.follow span {
+  font-size: clamp(0.8rem, 0.8vw, 0.8rem); 
+
 }
 
 /* Increase space for time and follow buttons */
 .follow {
-  flex: 2.1;
+  flex: 2.2;
 }
 
 .timee {
-  flex: 2;
+  flex: 2.5;
 }
+
 
 .container-2
 {
   background-color: transparent;
-  max-height: 442px;
+  max-height: 420px;
   gap:8px;
   float: none;   
 }
@@ -3745,7 +3824,7 @@ background-color: transparent;
 
 .channel img
 {
-  margin-right: 3%;
+  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
 }
 
 .profile
@@ -3765,6 +3844,7 @@ background-color: transparent;
 
 .Table
 {
+  background-color: transparent;
   padding-bottom: 0rem;
 padding: 0px;
 }
@@ -3825,7 +3905,7 @@ margin-left: 5px;
 
   .container
 {
-  background-color:#F5F5F5;
+  scrollbar-color: var(--color-brand-primary) var(--color-bg-light); 
 }
 
 .nav
@@ -3841,6 +3921,7 @@ margin-left: 5px;
 .containerr
 {
   background-color: transparent;
+ 
 }
 
 .container-2
@@ -3850,17 +3931,23 @@ margin-left: 5px;
 
 .card
 {
-  margin: 35px 0 15px 10px; /* Maintain original positioning */
+  margin: 33px 0 15px 10px; /* Maintain original positioning */
 }
 
 .container-3
 {
   background-color: transparent;
   padding-bottom: 0px;
+  border-style: none;
+}
+
+.optionnn
+{
+  background-color: transparent;
 }
 
 
-.Table
+.Tablee
 {
   padding-bottom: 0rem;
 padding: 0px;
@@ -3868,11 +3955,7 @@ margin-bottom: 0px;
 background-color: transparent;
 }
 
-.series 
-{
-  margin-top: 3.4rem; /* Previously 2rem */
-  max-height: 13rem; /* 220px */
-}
+
 
 
 .container-1
@@ -3891,6 +3974,13 @@ gap: 1.7rem;
  
 }
 
+.caption span {
+  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+/* Caption Text */
+  font-weight: 700;
+  font-size: 0.9rem; /* 15.5px */
+  color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
+}
 
 }
 
@@ -3899,7 +3989,7 @@ gap: 1.7rem;
  
 .container
 {
-  background-color:#FFFFFF;
+  scrollbar-color: var(--color-brand-primary) var(--color-bg-light); 
 }
 
 .Table

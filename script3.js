@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
             container3.style.marginTop = "40px"; // Move down
         } else {
             commentContainer.style.display = "none";
-            container3.style.marginTop = "15px"; // Reset to original position
+            container3.style.marginTop = "2rem"; // Reset to original position
         }
     });
 });

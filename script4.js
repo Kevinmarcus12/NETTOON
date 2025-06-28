@@ -114,21 +114,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-        // 
-        document.addEventListener("click", () => {
-            const video = document.querySelector(".short-video video");
-            if (video) {
-              video.muted = false;
-              video.play().catch((e) => console.log("Autoplayy with sound failed:", e));
-            }
-          }, { once: true });   
-
- // 
-
-
-
-
-
           document.addEventListener('DOMContentLoaded', function () {
             const tabs = document.querySelectorAll('.container-4 .tab');
             const containers = document.querySelectorAll('.content-container');
@@ -164,44 +149,49 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
-
-  window.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.shorts').forEach(container => {
+// Your JavaScript from the previous response is correct for the desired behavior
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.shorts').forEach(container => {
       const video = container.querySelector('video');
       const overlay = container.querySelector('.play-overlay');
 
-      if (!video || !overlay) return;
+      if (!video || !overlay) {
+          console.warn('Nettoon Shorts: Missing video or play overlay element in a .shorts container. Skipping setup for this container.');
+          return;
+      }
 
-      video.controls = false;
-      video.muted = true; // autoplay requires muted
+      video.controls = false; // Hide native video player controls
+      video.muted = true;     // Videos start muted, user clicks to enable sound and play
+      video.pause();          // Explicitly pause it initially to prevent any browser default autoplay
 
-      // Try autoplay
-      video.play().catch(err => {
-        console.warn('Autoplay failed:', err);
-        overlay.style.opacity = '1';
-      });
+      overlay.style.opacity = '1'; // Ensure the play overlay is visible by default.
 
-      // Handle overlay click to unmute and toggle playback
       overlay.addEventListener('click', () => {
-        video.muted = false;
-        if (video.paused) {
-          video.play().then(() => {
-            overlay.style.opacity = '0';
-          }).catch(err => {
-            console.error('Play failed after click:', err);
-          });
-        } else {
-          video.pause();
-        }
-      });
-
-      // Sync overlay with video state
-      video.addEventListener('pause', () => {
-        overlay.style.opacity = '1';
+          if (video.paused) {
+              video.muted = false; // Unmute the video on the first click to play
+              video.play().then(() => {
+                  overlay.style.opacity = '0';
+              }).catch(err => {
+                  console.error('Nettoon Shorts: Playback failed after click:', err);
+                  overlay.style.opacity = '1';
+              });
+          } else {
+              video.pause();
+          }
       });
 
       video.addEventListener('play', () => {
-        overlay.style.opacity = '0';
+          overlay.style.opacity = '0';
       });
-    });
+
+      video.addEventListener('pause', () => {
+          overlay.style.opacity = '1';
+      });
+
+      video.addEventListener('ended', () => {
+          video.pause();
+          video.currentTime = 0;
+          overlay.style.opacity = '1';
+      });
   });
+});

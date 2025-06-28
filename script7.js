@@ -239,3 +239,38 @@ document.querySelectorAll('.shorts').forEach(shortsContainer => {
       });
     });
   });
+
+
+
+  document.addEventListener('DOMContentLoaded', () => {
+    // Select all short video containers
+    document.querySelectorAll('.short-video').forEach(container => {
+        const video = container.querySelector('video');
+
+        if (!video) {
+            console.warn('Nettoon Shorts: Missing video element in a .short-video container. Skipping setup for this container.');
+            return;
+        }
+
+        // The HTML already has 'autoplay', 'loop', 'muted', and 'controls'.
+        // Browser policy will handle the initial muted autoplay.
+
+        // Attempt to play explicitly. This should succeed given 'muted' attribute in HTML.
+        video.play()
+            .then(() => {
+                // Video successfully started playing (it will be muted by browser due to policy)
+                // No need to hide an overlay here, as you're using native controls
+            })
+            .catch(err => {
+                // This catch block handles cases where even 'autoplay muted' fails (rare, but possible due to browser error or user settings)
+                console.warn('Nettoon Shorts Autoplay failed entirely:', err.message);
+                video.muted = true; // Ensure it's muted
+                video.pause();      // Ensure it's paused if play failed
+            });
+
+        // The native controls (enabled by the 'controls' attribute in HTML)
+        // will handle play/pause/volume/fullscreen interaction after autoplay.
+        // You would typically not use a separate custom play overlay if native controls are visible.
+        // If you still want a play overlay on pause, you'd integrate logic similar to the main player.
+    });
+});

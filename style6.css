@@ -1860,7 +1860,7 @@ button {
 
   .container
   {
-    background-color: #ffffff;
+    background-color: var(--color-bg-light); /* Default background color for light mode */
   margin-bottom: 50rem;
   }
   
@@ -1936,7 +1936,7 @@ margin: 0 auto;
 
 .upload-overlay
 {
-margin: 4.7rem auto 0 auto; /* ✅ Margin-top now works */
+margin: 7rem auto 0 auto; /* ✅ Margin-top now works */
 }
 
 

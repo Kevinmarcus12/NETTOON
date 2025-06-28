@@ -281,58 +281,63 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-
-  window.addEventListener('DOMContentLoaded', () => {
+  document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.video').forEach(container => {
-      const video = container.querySelector('video');
-      const overlay = container.querySelector('.play-overlay');
+        const video = container.querySelector('video');
+        const overlay = container.querySelector('.play-overlay');
 
-      if (!video) return;
+        if (!video || !overlay) {
+            console.warn('Nettoon Main Player: Missing video or play overlay in a .video container. Skipping setup for this container.');
+            return;
+        }
 
-      video.muted = false; // Unmute
-      video.controls = true;
+        // We REMOVED video.controls = false; in the previous step,
+        // so native controls will now appear as per your HTML 'controls' attribute.
 
-      // Try to autoplay with sound
-      const tryPlay = () => {
+        // Initial attempt to play. With 'autoplay muted' in HTML, this should succeed.
         video.play()
-          .then(() => {
-            if (overlay) overlay.style.opacity = '0';
-          })
-          .catch(err => {
-            if (overlay) overlay.style.opacity = '1';
-            // Retry on user click
-            if (overlay) {
-              overlay.addEventListener('click', () => {
-                video.play();
-              });
-            }
-          });
-      };
+            .then(() => {
+                // Video successfully started playing (muted by browser/HTML)
+                overlay.style.opacity = '0'; // Hide the custom overlay
+                // Attempt to unmute. THIS WILL ONLY WORK IF USER HAS ALREADY INTERACTED WITH THE PAGE.
+                // Otherwise, the browser will likely re-mute it.
+                video.muted = false;         
+            })
+            .catch(err => {
+                // This catch block is for rare cases where even 'autoplay muted' fails completely.
+                console.warn('Nettoon Main Player Autoplay failed completely:', err.message);
+                overlay.style.opacity = '1'; // Show custom overlay
+                video.muted = true; // Ensure it's muted if autoplay failed
+            });
 
-      tryPlay();
-
-      // Show/hide overlay based on play state
-      video.addEventListener('pause', () => {
-        if (overlay) overlay.style.opacity = '1';
-      });
-
-      video.addEventListener('play', () => {
-        if (overlay) overlay.style.opacity = '0';
-      });
-
-      // Also toggle video on overlay click
-      if (overlay) {
-        overlay.addEventListener('click', () => {
-          if (video.paused) {
-            video.play();
-          } else {
-            video.pause();
-          }
+        // Show custom overlay when video is paused
+        video.addEventListener('pause', () => {
+            overlay.style.opacity = '1';
         });
-      }
-    });
-  });
 
+        // Hide custom overlay when video starts playing
+        video.addEventListener('play', () => {
+            overlay.style.opacity = '0';
+        });
+        
+        // Handle clicks on the custom overlay to toggle play/pause and unmute state
+        overlay.addEventListener('click', () => {
+            if (video.paused) {
+                video.muted = false; // Unmute it when user explicitly clicks to play
+                video.play();
+            } else {
+                video.pause();
+            }
+        });
+
+        // When video ends, reset and show custom overlay
+        video.addEventListener('ended', () => {
+            video.currentTime = 0;
+            video.pause();
+            overlay.style.opacity = '1';
+        });
+    });
+});
 
 
   document.addEventListener('DOMContentLoaded', () => {
