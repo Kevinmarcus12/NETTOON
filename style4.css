@@ -2007,7 +2007,7 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
   border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
   cursor: pointer;       /* Indicates the element is clickable */
   margin-inline-start: 2.7%; /* Left margin (1.8% of parent) for initial alignment */
-  margin-block-end: var(--spacing-xxs); /* Small bottom margin (4px) for spacing between rows */
+  margin-block-end:20px; /* Small bottom margin (4px) for spacing between rows */
   padding-block-end: 0;  /* No bottom padding */
   border-style: none;    /* Removes any default border style */
   /* NO TRANSITIONS as per user request */
