@@ -2036,7 +2036,7 @@ margin: 0 auto;
 
 .overlay-text
 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 
@@ -2126,6 +2126,19 @@ margin: 0 auto;
   margin-left: 5px;
   }
   
+  
+.caption
+{
+  height: 2rem;  /* Consistent height (30px) for single-line captions */
+  background-color: fuchsia;
+}
+
+  .caption span
+  {
+    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+    font-weight: 700; /* Bold font for prominence */
+  }
   
   .videoo {
     width: 100%;

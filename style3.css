@@ -868,7 +868,7 @@ opacity: 1;
   box-shadow: var(--color-shadow); /* Subtle shadow for depth */
   border: none; /* No border style */
   display: flex;
-  margin-left: 10px; /* Keeping original margin-left */
+  margin-left:20px; /* Keeping original margin-left */
   flex-direction: column; /* Stack profile, caption, video, section vertically */
   flex-grow: 1; /* Allows it to take up available space in the .video-container row (on desktop) */
 }
@@ -981,7 +981,7 @@ opacity: 1;
   height: auto;
   aspect-ratio: 16 / 9;
   background-color: var(--color-bg-dark-alt);
-  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
+  border-radius: var(--border-radius-md); /* Consistent medium rounded corners for the video player */
   overflow: hidden;
   margin-block-start: 0;
   display: flex;
@@ -1500,9 +1500,9 @@ body.dark-mode .follow span {
   
   /* Positioning within the parent */
   left: 2%; /* Positioned 2% from the left edge of its parent */
-  bottom: 21%; /* Positioned 24% from the bottom edge of its parent */
+  bottom: 20%; /* Positioned 24% from the bottom edge of its parent */
   
-  border-radius: 7px; /* Smooth rounded edges using a variable (7px converted to rem) */
+  border-radius: 0.4375rem;
   padding: 0.375rem var(--spacing-md); /* Responsive padding (6px 12px converted to rem) */
   
   /* Text Truncation for Single Line */
@@ -2473,7 +2473,7 @@ justify-content: space-between;
 
   /* Dark mode adjustments for .kontainer */
   body.dark-mode .kontainer {
-    background-color: var(--color-bg-card-dark); /* Darker background for dark mode */
+    background-color: transparent; /* Darker background for dark mode */
   }
 
 /* Video Thumbnails */
@@ -3426,6 +3426,7 @@ flex-shrink:0;
 .containerr
 {
   background-color: transparent;
+  border-style:ridge;
 }
 
 
@@ -3464,6 +3465,7 @@ flex: 2;
 {
 background-color: transparent; 
 max-height: 425px;
+border-style:ridge;
 }
 
 .scroller{
@@ -3515,6 +3517,7 @@ gap:0.1rem;
   background-color: transparent;
   height: auto;
   padding: 0px;
+  border-style:ridge;
 }
 
 .optionnn
@@ -3672,7 +3675,7 @@ border-style:ridge;
   { 
     max-width: 100%; height: auto; 
     margin-top: 50px;
-    background-color: transparent
+    background-color: transparent;
   width: 100%;
   max-width: 100%;
   flex-shrink:0;
@@ -3682,7 +3685,7 @@ border-style:ridge;
 .containerr
 {
   background-color: transparent;
-  border-style: ridge;
+  border-style: none;
 }
 
 .profillee
@@ -3705,7 +3708,7 @@ border-style:ridge;
 
 .captionn
 {
-  background-color: saddlebrown;
+  background-color:transparent;
 }
 
 .captionn h3
@@ -3874,6 +3877,19 @@ margin: 0 auto; /* ✅ Centers the block */
 margin-left: 5px;
 }
 
+
+.caption
+{
+  height: 2rem;  /* Consistent height (30px) for single-line captions */
+  background-color: fuchsia;
+}
+
+  .caption span
+  {
+    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+    font-weight: 700; /* Bold font for prominence */
+  }
 
 .videoo {
   width: 100%;

@@ -843,7 +843,7 @@ opacity: 1;
   .login-container h1 {
     color: #1877f2;
     font-weight: bold;
-    font-weight: 750;
+    font-weight: var(--font-weight-extrabold); /* Extra bold for prominence */
     margin-bottom: 20px;
     font-size: 2rem;
   }

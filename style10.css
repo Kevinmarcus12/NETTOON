@@ -939,7 +939,8 @@ h2 {
     margin: 0; /* Removes any unwanted margin */
     border-radius: 7px;
     font-weight: bold;
-    font-weight: 750;
+
+    font-weight: var(--font-weight-extrabold); /* Extra bold for prominence */
     font-size: 2rem;
 
 }

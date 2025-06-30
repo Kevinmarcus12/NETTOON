@@ -1180,7 +1180,7 @@ opacity: 1;
   justify-content: flex-start; /* Aligns video cards to the start (left) of the container */
   
   /* Appearance & Spacing */
-  background-color: var(--color-bg-light); /* Default background color for light mode */
+  background-color:gray; /* Default background color for light mode */
   border-radius: var(--border-radius-none); /* No border radius, for a clean rectangular grid area */
   border-style: none; /* Applied a 'ridge' border style as per your original code.
                           Consider if a 'none' or a subtle 'solid' border from variables
@@ -1221,16 +1221,16 @@ opacity: 1;
   height: auto; /* Height adjusts dynamically based on its content (video thumbnail, title, etc.) */
   
   /* Appearance */
-  background-color: var(--color-bg-card-light); /* Uses a light background variable for the card */
+  background-color: pink; /* Uses a light background variable for the card */
   border-radius: var(--border-radius-md); /* Consistent medium rounded corners for the card */
   border-style:none; /* No border style, relying on shadow for separation */
   box-shadow: var(--shadow-sm); /* A subtle default shadow for depth */
   
   /* Spacing */
-  margin-inline-start:2%; /* Maintains your specified left margin for precise grid alignment */
+  margin-inline-start:1.9%; /* Maintains your specified left margin for precise grid alignment */
   margin-block-end: var(--spacing-xs); /* Consistent bottom margin (8px) for vertical spacing */
   padding-block-end: 0; /* No bottom padding, content fills to the bottom edge */
-  
+  margin-top: 10px;
   cursor: pointer; /* Indicates that the card is interactive and clickable */
   /* NO TRANSITIONS as per user request */
 }
@@ -1535,7 +1535,7 @@ margin-bottom: 5%;
   font-size: clamp(0.75rem, 1.2vw, 1rem);
   
   /* Shape & Spacing */
-  border-radius: var(--border-radius-sm); /* Consistent small rounded corners for the overlay */
+  border-radius: 0.4375rem; /* Consistent medium rounded corners for the video player *//* Consistent small rounded corners for the overlay */
   padding: var(--spacing-xxxs-half);     /* Small responsive padding (0.8px) around the text */
 
   /* Text Handling */
@@ -1985,6 +1985,17 @@ margin: 0 auto;
   margin-left: 0px;
 }
 
+.suggestionss
+{
+  background-color: saddlebrown;
+}
+
+.rectanglee
+{
+  background-color: seagreen;
+  font-weight: var(--font-weight-bold); /* Bold font weight */
+}
+
   .container-1
   {
     top: 6.1rem;
@@ -1992,13 +2003,13 @@ margin: 0 auto;
     left: 5.6%;  
       /* Positions the grid below the header and suggestions bar */
           /* Aligns it to the right of the sidebar, maintaining a consistent gap */
-    background-color:transparent;
+    background-color:violet;
   gap: 0.6rem;
   }
   
   .kontainer
   {
-    background-color:transparent;
+    background-color:pink;
     width: clamp(28%, 37%, 32%);
   margin-left: 5px;
   }
@@ -2036,7 +2047,7 @@ margin: 0 auto;
 
 .overlay-text
 {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 
@@ -2114,19 +2125,31 @@ margin: 0 auto;
 
   .container-1
   {
-    background-color: transparent;
-  gap: 0.6rem;
+    background-color: grey;
+  gap: 0.5rem;
   margin: 0 auto; /* ✅ Centers the block */
   }
   
   .kontainer
   {
-    background-color: transparent;
+    background-color: pink;
     width: clamp(28%, 37%, 32%);
-  margin-left: 5px;
+    margin-inline-start:0.75%; /* Maintains your specified left margin for precise grid alignment */
   }
   
-  
+.caption
+{
+  height: 2rem;  /* Consistent height (30px) for single-line captions */
+  background-color: fuchsia;
+}
+
+  .caption span
+  {
+    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+    font-weight: 700; /* Bold font for prominence */
+  }
+
   .videoo {
     width: 100%;
     height: auto;

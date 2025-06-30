@@ -872,7 +872,7 @@ opacity: 1;
   box-shadow: var(--color-shadow); /* Subtle shadow for depth */
   border: none; /* No border style */
   display: flex;
-  margin-left: 10px; /* Keeping original margin-left */
+  margin-left:20px; /* Keeping original margin-left */
   flex-direction: column; /* Stack profile, caption, video, section vertically */
   flex-grow: 1; /* Allows it to take up available space in the .video-container row (on desktop) */
 }
@@ -985,7 +985,7 @@ opacity: 1;
   height: auto;
   aspect-ratio: 16 / 9;
   background-color: var(--color-bg-dark-alt);
-  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
+  border-radius: var(--border-radius-md); /* Consistent medium rounded corners for the video player */
   overflow: hidden;
   margin-block-start: 0;
   display: flex;
@@ -1291,7 +1291,7 @@ body.dark-mode .follow span {
   display: flex; /* Uses flexbox for precise alignment of inner elements */
   justify-content: space-between; /* Distributes space to align items to both ends (e.g., left and right) */
   align-items: center; /* Vertically centers content within the option bar */
-  padding: 0 var(--spacing-md); /* Responsive inner padding (15px converted to rem) */
+
 margin-bottom: 5px;
 padding-top: 20px;
 background-color: #F5F5F5;
@@ -1624,31 +1624,43 @@ padding-bottom: 20px;
   }
 }
 
+
+/* ==== VIDEO OVERLAY TEXT (.overlay-texttt) ==== */
+/* This element likely displays information like video duration over a video thumbnail/player. */
 .overlay-texttt {
-  position: absolute;
-  min-width: 10%; /* Prevents it from getting too small */
-  max-width: 22%; /* Ensures a good size balance */
-  height: auto;
+  position: absolute; /* Positions the element precisely over its parent container */
+  
+  /* Responsive Sizing */
+  min-width: 10%; /* Ensures it doesn't get too small */
+  max-width: 22%; /* Controls its maximum size relative to the parent */
+  height: auto; /* Height adjusts dynamically based on content */
+  
+  /* Background and Text Styling */
   background-color: rgba(0, 0, 0, 0.65); /* Slightly darker for better readability */
-  color: white;
-  left: 2%;
+  color: var(--color-text-light); /* White text color, using a variable */
+  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+  font-size: var(--font-size-sm); /* Responsive font size (14px converted to rem) */
+  
+  /* Positioning within the parent */
+  left: 2%; /* Positioned 2% from the left edge of its parent */
   bottom: 15%; /* Positioned 24% from the bottom edge of its parent */
-  border-radius: 7px;
-  padding: 6px 12px; /* Slightly better spacing */
-  font-size: 14px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  
+  border-radius: 0.4375rem;
+  padding: 0.375rem var(--spacing-md); /* Responsive padding (6px 12px converted to rem) */
+  
+  /* Text Truncation for Single Line */
+  white-space: nowrap; /* Prevents text from wrapping to the next line */
+  overflow: hidden; /* Hides any text that overflows its container */
+  text-overflow: ellipsis; /* Displays "..." to indicate truncated text */
+  
+  /* Flexbox for Centering Content */
+  display: flex; /* Uses flexbox for precise alignment of inner text */
+  align-items: center; /* Vertically centers the text */
+  justify-content: center; /* Horizontally centers the text */
+
 }
 
-/* Hover Effect - Makes It More Interactive */
-.overlay-texttt:hover {
-  background-color: rgba(0, 0, 0, 0.8); /* Slightly more contrast */
-  transform: scale(1.05); /* Small pop effect */
-}
+
 
 /* 📱 Mobile Optimization */
 @media (max-width: 768px) {
@@ -2243,8 +2255,10 @@ body.dark-mode textarea {
 
   /* Dark mode adjustments for .kontainer */
   body.dark-mode .kontainer {
-    background-color: var(--color-bg-card-dark); /* Darker background for dark mode */
-  }.kontainer:hover
+    background-color: transparent; /* Darker background for dark mode */
+  }
+  
+  .kontainer:hover
   {
     background-color:honeydew;
     color: black;
@@ -3470,6 +3484,19 @@ margin: 0 auto;
 margin-left: 5px;
 }
 
+
+.caption
+{
+  height: 2rem;  /* Consistent height (30px) for single-line captions */
+  background-color: fuchsia;
+}
+
+  .caption span
+  {
+    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+    font-weight: 700; /* Bold font for prominence */
+  }
 
 .videoo {
   width: 100%;

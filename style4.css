@@ -835,7 +835,7 @@ opacity: 1;
   /* Spacing & Appearance */
   margin-block-start: 3.5rem; /* REMOVED: Top margin set to 0 as requested, positioning it at the very start of its flow */
   padding: 0;            /* REMOVED: Ensures no internal padding within the container */
-  border-radius: var(--border-radius-md); /* Consistent medium rounded corners (7px) for the banner */
+  border-radius: 0px; /* Consistent medium rounded corners (7px) for the banner */
   background-color:transparent; /* Ensures no background color for the container itself, relying on the image */
   
   /* Overflow */
@@ -852,7 +852,7 @@ opacity: 1;
 .container-11 img {
   width: 100%;       /* Ensures the image fills the entire width of its parent container */
   height: 100%;      /* Ensures the image fills the entire height of its parent container */
-  border-radius: var(--border-radius-md); /* Consistent medium rounded corners (7px), matching the container */
+  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
   object-fit: cover; /* **Crucial:** Ensures the image covers the entire area without distortion, cropping if necessary */
                      /* Alternative: `object-fit: contain;` would show the whole image, potentially leaving gaps. */
   box-shadow: var(--shadow-sm); /* A subtle default shadow for depth */
@@ -1646,7 +1646,7 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
     height: auto;          /* Height adjusts based on content */
     
     /* Appearance & Interactivity */
-    background-color:transparent; /* No background color for the tab itself */
+    background-color: #f0f0f0;
     border-radius: 0.4375rem;
     padding: var(--spacing-xxs-half) var(--spacing-xxxs); /* Responsive padding (2.4px vertical, 3.2px horizontal) */
     cursor: pointer;       /* Indicates the element is clickable */
@@ -2015,7 +2015,7 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
 
 /* Dark mode adjustment for .kontainer background and shadow */
 .dark-mode .kontainer {
-  background-color: var(--color-bg-dark-alt); /* Darker background in dark mode */
+  background-color: transparent; /* Darker background for dark mode */
   /* Consider adding: box-shadow: var(--shadow-sm-dark); if needed for depth in dark mode */
 }
 
@@ -2241,7 +2241,7 @@ margin-bottom: 5%;
   width: 100%;           /* Ensures the video fills the entire width of its parent */
   height: var(--size-video-player-height); /* Consistent height (200px) */
   object-fit: cover;     /* Ensures the video covers the area without distortion, cropping if necessary */
-  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
+  border-radius:7px; /* Consistent small rounded corners (7px) */
   display: block;        /* Ensures the video behaves as a block element */
   pointer-events: none;  /* Prevents clicks on the video itself, allowing overlays to capture events */
   /* NO TRANSITIONS as per user request */
@@ -2277,7 +2277,7 @@ margin-bottom: 5%;
   /* Typography & Appearance */
   background-color: rgba(0, 0, 0, 0.65); /* Slightly darker for better readability */
   color: white; /* White text color */
-  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
+  border-radius: 0.4375rem;
   padding: var(--spacing-xxxs-quarter) var(--spacing-xxxs-quarter); /* Small padding (1.6px) */
   font-size: clamp(0.75rem, 1.2vw, 1rem); /* Responsive font size */
   
@@ -2996,73 +2996,67 @@ margin-bottom: 5%;
   }
   
 }
-
 /* Desktops (1025px–1279px) */
 @media (min-width: 1025px) and (max-width: 1279px) {
 
-  .nav
-  {
+  .nav {
     background-color: transparent;
-
   }
 
-.overlay-text
+  .overlay-text {
+    font-size: 0.7589rem;
+  }
+
+  .search input[type="search"] {
+    min-height: 10px;
+    max-height: 15px;
+  }
+
+  .upload,
+  .Notifications,
+  .Account {
+    background-color: transparent;
+    width: 3vw; /* Icon container width scales with viewport */
+    height: 3vw; /* Icon container height scales with viewport */
+  }
+
+  .upload img,
+  .Notifications img,
+  .Account img {
+    width: 100%; /* Image fills its parent container (3vw) */
+    height: 100%; /* Image fills its parent container (3vw) */
+    margin: 0 auto; /* Centers the image within its container if it doesn't fill it entirely */
+  }
+
+.container-11 {
+
+ 
+  height: 12rem;   
+}
+
+.Name
 {
-  font-size: 0.7589rem;
+  background-color: darkblue;
+  padding: 0px, 0px; /* Responsive padding (4px vertical, 8px horizontal) */
 }
 
-.search input[type="search"] {
-
-  min-height: 10px;
-  max-height: 15px;
-
-}
-.upload
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-.Notifications
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-.Account 
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-
-
-.upload img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
-}
-
-.Notifications img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
-}
-
-
-
-.Account img {
-  width: 100%;
-  height:  100%;
-margin: 0 auto;
-}
+.Name span {
+  padding: 0px, 0px; /* Responsive padding (4px vertical, 8px horizontal) */
+  font-size: 25px; /* Large font size (32px) for prominence */}
 
 .container-2
 {
   background-color: transparent;
+}
+
+.Title
+{
+  background-color: darkcyan;
+}
+
+.Title span
+{
+  font-size: clamp(1rem, 0.5vw, 2rem);
 }
 
 .container-3
@@ -3127,6 +3121,19 @@ margin-left: 8px;
 }
 
 
+.caption
+{
+  height: 2rem;  /* Consistent height (30px) for single-line captions */
+  background-color: fuchsia;
+}
+
+  .caption span
+  {
+    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+    font-weight: 700; /* Bold font for prominence */
+  }
+
 .scroll-area
 {
   background-color: transparent;
@@ -3137,7 +3144,7 @@ margin-left: 8px;
   width: 100%;
   max-width: 300px;
   aspect-ratio: 9 / 16;
-  margin: 1rem 0 1rem 0.65rem;
+  margin: 1rem 0 1rem 0.8rem;
 
 }
 
