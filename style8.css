@@ -477,7 +477,6 @@ a {
 
 .search input[type="search"] {
   flex: 1;
-  height: 4.5vh;
 height: 100%;
   border-radius: 7px;
   background-color:transparent;
@@ -1180,7 +1179,7 @@ opacity: 1;
   justify-content: flex-start; /* Aligns video cards to the start (left) of the container */
   
   /* Appearance & Spacing */
-  background-color: var(--color-bg-light); /* Default background color for light mode */
+  background-color:gray; /* Default background color for light mode */
   border-radius: var(--border-radius-none); /* No border radius, for a clean rectangular grid area */
   border-style: none; /* Applied a 'ridge' border style as per your original code.
                           Consider if a 'none' or a subtle 'solid' border from variables
@@ -1221,16 +1220,16 @@ opacity: 1;
   height: auto; /* Height adjusts dynamically based on its content (video thumbnail, title, etc.) */
   
   /* Appearance */
-  background-color: var(--color-bg-card-light); /* Uses a light background variable for the card */
+  background-color: pink; /* Uses a light background variable for the card */
   border-radius: var(--border-radius-md); /* Consistent medium rounded corners for the card */
   border-style:none; /* No border style, relying on shadow for separation */
   box-shadow: var(--shadow-sm); /* A subtle default shadow for depth */
   
   /* Spacing */
-  margin-inline-start:2%; /* Maintains your specified left margin for precise grid alignment */
+  margin-inline-start:1.9%; /* Maintains your specified left margin for precise grid alignment */
   margin-block-end: var(--spacing-xs); /* Consistent bottom margin (8px) for vertical spacing */
   padding-block-end: 0; /* No bottom padding, content fills to the bottom edge */
-  
+  margin-top: 10px;
   cursor: pointer; /* Indicates that the card is interactive and clickable */
   /* NO TRANSITIONS as per user request */
 }
@@ -1535,7 +1534,7 @@ margin-bottom: 5%;
   font-size: clamp(0.75rem, 1.2vw, 1rem);
   
   /* Shape & Spacing */
-  border-radius: var(--border-radius-sm); /* Consistent small rounded corners for the overlay */
+  border-radius: 0.4375rem; /* Consistent medium rounded corners for the video player *//* Consistent small rounded corners for the overlay */
   padding: var(--spacing-xxxs-half);     /* Small responsive padding (0.8px) around the text */
 
   /* Text Handling */
@@ -1873,14 +1872,200 @@ body {
   body {
       font-size: 16px;
   }
-  .main-content {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Two columns often work well here */
-      gap: 15px;
+  .container
+  {
+    background-color: saddlebrown;
   }
-  .navigation {
-      /* Adjust navigation for tablet-like experience, maybe a horizontal bar */
+
+  .nav
+  {
+    background-color: darkkhaki;
   }
+  
+  .overlay-text
+  {
+    font-size: 0.9rem;
+  }
+  
+  .search
+  {
+    background-color: seagreen;
+    height:30px;
+  }
+
+  .upload
+  {
+    background-color: transparent;
+    width: 3vw;
+    height: 3vw;
+  }
+  
+  .Notifications
+  {
+    background-color: transparent;
+    width: 3vw;
+    height: 3vw;
+  }
+  
+  .Account 
+  {
+    background-color: transparent;
+    width: 3vw;
+    height: 3vw;
+  }
+  
+  .upload
+  {
+    background-color: transparent;
+    width: 3vw;
+    height: 3vw;
+  }
+  
+  
+  .upload img {
+    width: 100%;
+    height:  100%;
+    margin: 0 auto;
+  }
+  
+  .Notifications img {
+    width: 100%;
+    height:  100%;
+    margin: 0 auto;
+  }
+  
+  
+  .Account img {
+    width: 100%;
+    height:  100%;
+  margin: 0 auto;
+  }
+  
+
+
+  .suggestionss
+  {
+    width:100%; /* Occupies the remaining width after considering the sidebar and gap */
+    left: 0%;  
+    gap:5px;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    background-color: transparent;
+  }
+  
+  .rectanglee span
+  {
+    font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
+  }
+  
+  .sidebar
+  {
+    background-color:sienna; /* Default background color for light mode */
+    width:5.5%;
+    z-index: -1;
+    justify-content: flex-start;
+  }
+  
+  .sidebar:hover {
+    width: 16.5%; /* Expands slightly on hover for better UX */
+  }
+  
+  .home
+  {
+    margin-left: 0px;
+  }
+  
+  .suggestionss
+  {
+    background-color: violet;
+  }
+  
+  .rectanglee
+  {
+    background-color: rebeccapurple;
+    font-weight: var(--font-weight-bold); /* Bold font weight */
+  }
+  
+    .container-1
+    {
+      top: 6.6rem;
+      width: calc(100% - 5.8%); /* Occupies the remaining width after considering the sidebar and gap */
+      left: 5.6%;  
+        /* Positions the grid below the header and suggestions bar */
+            /* Aligns it to the right of the sidebar, maintaining a consistent gap */
+      background-color:indianred;
+    gap: 0.6rem;
+    border-style: ridge;
+    }
+    
+    .kontainer
+    {
+      background-color:grey;
+      width: clamp(48%, 58%, 48%);
+    margin-left: 7px;
+    border-style: ridge;
+    }
+    
+    .caption
+  {
+    height: 2rem;  /* Consistent height (30px) for single-line captions */
+    background-color: fuchsia;
+  }
+  
+    .caption span
+    {
+      font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+      font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+      font-weight: 700; /* Bold font for prominence */
+    }
+  
+    
+    .videoo {
+      width: 100%;
+      height: auto;
+    }
+    
+    .videoo video {
+      width: 100%;
+      height: 10rem; /* 200px */
+    
+    }
+
+    
+.sectiionn 
+{
+  background-color: saddlebrown;
+}
+
+  .views,
+  .time,
+  .category {
+    flex: 1 1 0; /* Allows items to grow and shrink, with a base of 0 */
+    max-width: 33.3%; /* Limits the maximum width to one-third of the parent */
+    height: 1.8rem; /* Consistent height (28.8px converted to rem) */
+    background-color: transparent;  /* Ensures transparent background */
+    
+    margin-block: 0px; /* Responsive vertical margin (0.1rem approx 1.6px) */
+
+  }
+
+
+  /* Specific styling for the .views section */
+  .views {
+    background-color: violet; 
+    margin-inline-start: 0; /* Removes any left margin */
+    gap: var(--spacing-xxs); /* Responsive spacing between icon and text (5px converted to rem) */
+    justify-content: flex-start; /* Aligns content to the start (left) */
+    margin-left:0px;
+  }
+  
+  /* Specific styling for the .time section */
+  .time {
+    background-color: seagreen;
+    justify-content: flex-end; /* Aligns content to the end (right) */
+  }
+
+
 }
 
 /* Tablets / Small Laptops (e.g., 769px - 1024px) */
@@ -1893,8 +2078,10 @@ body {
 
   .container
   {
-    background-color: var(--color-bg-light); /* Default background color for light mode */
+    background-color: darkgreen; /* Default background color for light mode */
   }
+
+
 
 .nav
 {
@@ -1955,10 +2142,17 @@ body {
 margin: 0 auto;
 }
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
+  width: 30%;}
+
 .suggestionss
 {
-  width: calc(100% - 5.8%); /* Occupies the remaining width after considering the sidebar and gap */
-  left: 5.6%;  
+  width:100%; /* Occupies the remaining width after considering the sidebar and gap */
+  left: 0%;  
   gap:5px;
   overflow-y: hidden;
   overflow-x: hidden;
@@ -1972,8 +2166,9 @@ margin: 0 auto;
 
 .sidebar
 {
-  background-color: var(--color-bg-light); /* Default background color for light mode */
-  width:5.5%; 
+  background-color:sienna; /* Default background color for light mode */
+  width:5.5%;
+  z-index: -1;
 }
 
 .sidebar:hover {
@@ -1985,6 +2180,17 @@ margin: 0 auto;
   margin-left: 0px;
 }
 
+.suggestionss
+{
+  background-color: saddlebrown;
+}
+
+.rectanglee
+{
+  background-color: seagreen;
+  font-weight: var(--font-weight-bold); /* Bold font weight */
+}
+
   .container-1
   {
     top: 6.1rem;
@@ -1992,17 +2198,30 @@ margin: 0 auto;
     left: 5.6%;  
       /* Positions the grid below the header and suggestions bar */
           /* Aligns it to the right of the sidebar, maintaining a consistent gap */
-    background-color:transparent;
+    background-color:violet;
   gap: 0.6rem;
   }
   
   .kontainer
   {
-    background-color:transparent;
+    background-color:pink;
     width: clamp(28%, 37%, 32%);
   margin-left: 5px;
   }
   
+  .caption
+{
+  height: 2rem;  /* Consistent height (30px) for single-line captions */
+  background-color: fuchsia;
+}
+
+  .caption span
+  {
+    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+    font-weight: 700; /* Bold font for prominence */
+  }
+
   
   .videoo {
     width: 100%;
@@ -2026,7 +2245,7 @@ margin: 0 auto;
 
   .container
   {
-    background-color: var(--color-bg-light); /* Default background color for light mode */
+    background-color: fuchsia; /* Default background color for light mode */
   }
 
 .nav
@@ -2114,18 +2333,18 @@ margin: 0 auto;
 
   .container-1
   {
-    background-color: transparent;
-  gap: 0.6rem;
+    background-color: grey;
+  gap: 0.5rem;
   margin: 0 auto; /* ✅ Centers the block */
   }
   
   .kontainer
   {
-    background-color: transparent;
+    background-color: pink;
     width: clamp(28%, 37%, 32%);
-  margin-left: 5px;
+    margin-inline-start:0.75%; /* Maintains your specified left margin for precise grid alignment */
   }
-  
+
   
 .caption
 {
@@ -2139,7 +2358,8 @@ margin: 0 auto;
     font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
     font-weight: 700; /* Bold font for prominence */
   }
-  
+
+
   .videoo {
     width: 100%;
     height: auto;
@@ -2150,6 +2370,12 @@ margin: 0 auto;
     height: 10rem; /* 200px */
   
   }
+
+.sectiionn
+{
+  background-color: #007bff;
+}
+
   
   
 }

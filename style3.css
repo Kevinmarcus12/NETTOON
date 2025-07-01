@@ -1289,7 +1289,6 @@ body.dark-mode .follow span {
   align-items: center; /* Vertically centers content within the option bar */
   padding: 0 var(--spacing-md); /* Responsive inner padding (15px converted to rem) */
 
-  transition: background-color var(--transition-speed) var(--transition-ease); /* Smooth transition for dark mode */
 }
 
 /* Dark mode adjustments for .optionn */
@@ -2105,6 +2104,8 @@ body.dark-mode textarea {
   border-radius: var(--border-radius-md);
   border-style: none;
   margin-top: 2rem;
+  overflow-y: hidden;
+  overflow-x: hidden;
   padding: 0; /* Important: no vertical spacing */
   overflow: hidden;
 }
@@ -2380,7 +2381,7 @@ justify-content: space-between;
   border-radius: 0.4375rem;
   max-width: 100%;
   object-fit: cover;
-  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+
 }
 
 .series img:hover {
@@ -2407,7 +2408,7 @@ justify-content: space-between;
   align-items: center;
   justify-content: center;
   word-break: break-word;
-  transition: background-color 0.3s ease-in-out, transform 0.3s ease-in-out;
+
 }
 
 
@@ -2463,7 +2464,7 @@ justify-content: space-between;
     border-radius: 0.4375rem;
     border-style: none; /* No border style */
     margin-inline-start: 1.8%; /* Maintains your specified left margin */
-    margin-block-end: var(--spacing-xs); /* Responsive bottom margin (10px converted to rem) */
+    margin-block-end: 15px; /* Responsive bottom margin (10px converted to rem) */
     padding-block-end: 0; /* No bottom padding */
     cursor: pointer; /* Indicates that the card is interactive and clickable */
     /* Initial Box Shadow (optional, but good for subtle depth) */
@@ -3269,68 +3270,370 @@ body {
 
 /* Medium phones / small tablets (481px–768px) */
 @media (min-width: 481px) and (max-width: 768px) {
-  .container
-  {
-    background-color:#FFFFFF;
   
-  }
-  
-  .nav
-  {
-    background-color: transparent;
-  }
-  
+.container
+{
+  background-color: saddlebrown;
+}
 
-  .video-container 
-  { 
-    width: 70%; height: auto; 
-  padding: 0px;
+.nav
+{
+  background-color: darkkhaki;
+}
+
+.overlay-text
+{
+  font-size: 0.9rem;
+}
+
+.search
+{
+  background-color: seagreen;
+  height:30px;
+}
+
+.upload
+{
   background-color: transparent;
-    margin-left: 7rem;
-  }
+  width: 3vw;
+  height: 3vw;
+}
+
+.Notifications
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Account 
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
 
 
-  .container-1
-  {
-    background-color: transparent;
+.upload img {
   width: 100%;
- 
-  justify-content: flex-start;
-  }
-  
+  height:  100%;
+  margin: 0 auto;
+}
 
-  .kontainer
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
+  width: 30%;}
+
+.video-container {
+  width: 100%;
+  flex-direction: column;           /* Stack elements vertically */
+  align-items: flex-start;          /* Align everything to the left */
+  gap: var(--spacing-md);
+  background-color: transparent;
+  border-style: ridge;
+}
+
+.containerr {
+  width: 100%;                      /* Full width on tablets */
+  margin-left: 0;                   /* Remove margin-left */
+  border-style: ridge;
+}
+
+.captionn h3
+{
+  font-size: clamp(1rem, 1.1vw, 1.5rem);
+}
+
+.sectionn 
+{
+  background-color: saddlebrown;
+}
+
+/* Increase space for time and follow buttons */
+.viewss {
+  flex: 2.1;
+}
+
+/* Increase space for time and follow buttons */
+.follow {
+  flex: 2.1;
+}
+
+.timee {
+  flex: 2;
+}
+
+/* Label styling for text within interactive elements */
+.viewss span,
+.commentss span,
+.likess span,
+.dislikee span,
+.timee span,
+.follow span {
+  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
+
+}
+
+
+.container-2 {
+
+  float: none;                      /* Remove float for better layout control */
+  width: 100%;                      /* Full width */
+  max-width: 100%;
+  margin-top: 0.5rem;               /* Spacing from the top or previous section */
+  margin-left: 0;                   /* Reset any horizontal spacing */
+  align-self: flex-start;           /* Align with the left edge */
+  border-style: ridge;
+}
+
+.optionn
+{
+  background-color: darkmagenta;
+}
+
+.All span, .Playlist span, .Sci-fi span, .WatchMojo span, .Watch span {
+  flex-grow: 1.5;
+  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
+}
+
+.video-group
+{ 
+background-color: saddlebrown;
+}
+
+.card
+{
+  background-color:chartreuse;
+  margin-left: 13px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  max-height: 300px;
+  min-width: 30%;
+  max-width: 31%;
+border-style: ridge;
+}
+
+.pichaa {
+  width: 100%;
+  height: 10rem; /* 200px */}
+
+  .overlay-texttt
   {
-    background-color: transparent;
-    width: clamp(28%, 45%, 50%);
-  margin-left: 1.5rem;
+margin-bottom: 6%;
+padding: 5px 5px;
+  }
+
+.sectiion
+{
+  background-color: transparent;
+  gap:0rem;
+    padding: 0px 0px;
+}
+
+.viewsss
+{
+  flex: 1.6;
+  background-color: transparent;
+
+  border-radius: 7px;
+}
+
+
+.timmee
+{
+  flex: 1.3;
+  background-color: transparent;
+  border-radius: 7px;
+}
+
+.viewsss span, .timmee span
+{
+  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
+}
+
+.comment-container {
+
+z-index: 1000;
+
+
+}
+
+
+.container-3
+{
+  background-color: transparent;
+  height: auto;
+  padding: 0px;
+  border-style: ridge;
+}
+
+.optionnn
+{
+  position: absolute;
+width: 100%;
+height: 30px;
+background-color: fuchsia;
+  z-index: 3;
+  
+}
+
+.optionnn span
+{
+  font-size: clamp(1rem, 1vw, 1rem); 
+}
+
+.channel {
+
+  height: 100%; /* Fully inherit from container-3 */
+  background-color: forestgreen;
+  margin: 0 auto;
+  margin-top: 2rem; /* 50px */
+  margin-bottom: 0px;
+}
+
+.channel img
+{
+  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
+  margin-top: 2rem; /* 15px in rem */
+}
+
+.profile
+{
+  position: relative;
+  margin-top: 2rem; /* 15px in rem */
+  margin-bottom: 0px;
+  background-color: darkgoldenrod;
+}
+
+.profile-name span  {
+    font-size: 1rem;
+}
+
+/* Followers label styling */
+.followers span  {
+  font-size: 1rem;
+}
+
+.Tablee
+{
+  background-color:gray;
+  padding-bottom: 0rem;
+padding: 0px;
+height: 100%;
+margin-bottom: 0rem;
+}
+
+.series 
+{
+margin-top: 1.5rem;
+  min-width: 45%;
+  max-width: 50%;
+  height: 11rem; /* 200px */
+  margin-top:3rem;
+  margin-bottom: 2rem;
+}
+
+
+.container-1 {
+  top: 0.5rem;
+  background-color: grey;
+  gap: 0.6rem;
+  justify-content: flex-start;
+  margin: 0 auto;
+  border-style: ridge;
+  width: 100%;         /* ✅ Keep it slightly narrow if needed */
+  left: 0 !important; /* ✅ Cancel previous left: 5% */
+}
+
+.kontainer
+{
+  background-color:pink;
+  width: clamp(48%, 58%, 48%);
+margin-left: 5px;
+border-style:ridge;
+}
+
+.caption
+{
+height: 2rem;  /* Consistent height (30px) for single-line captions */
+background-color: fuchsia;
+}
+
+.caption span
+{
+  font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+  font-weight: 700; /* Bold font for prominence */
+}
+
+
+.videoo {
+  width: 100%;
+  height: auto;
+}
+
+.videoo video {
+  width: 100%;
+  height: 10rem; /* 200px */
+
+}
+
+.sectiionn 
+{
+  background-color: saddlebrown;
+}
+
+  .views,
+  .time,
+  .category {
+    flex: 1 1 0; /* Allows items to grow and shrink, with a base of 0 */
+    max-width: 33.3%; /* Limits the maximum width to one-third of the parent */
+    height: 1.8rem; /* Consistent height (28.8px converted to rem) */
+    background-color: transparent;  /* Ensures transparent background */
+    
+    margin-block: 0px; /* Responsive vertical margin (0.1rem approx 1.6px) */
+
+  }
+
+
+  /* Specific styling for the .views section */
+  .views {
+    background-color: violet; 
+    margin-inline-start: 0; /* Removes any left margin */
+    gap: var(--spacing-xxs); /* Responsive spacing between icon and text (5px converted to rem) */
+    justify-content: flex-start; /* Aligns content to the start (left) */
+    margin-left:0px;
   }
   
-  
-  .videoo {
-    width: 100%;
-    height: auto;
+  /* Specific styling for the .time section */
+  .time {
+    background-color: seagreen;
+    justify-content: flex-end; /* Aligns content to the end (right) */
   }
-  
-  .videoo video {
-    width: 100%;
-    height: 11rem; /* 200px */
-  
-  }
-  
-  
-  .sectiionn
-  {
-    background-color: transparent;
-    padding: 0px;
-    width: 100%;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap;
-    gap: 0.2rem;
-    padding: 0 0rem; /* Optional: adds horizontal padding for breathing space */
-  }
-  
+
 
 
 }
@@ -3421,12 +3724,14 @@ margin: 0 auto;
 width: 100%;
 max-width: 100%;
 flex-shrink:0;
+border-style:ridge;
 }
 
 .containerr
 {
   background-color: transparent;
   border-style:ridge;
+  margin-left: 10px;
 }
 
 
@@ -3464,7 +3769,7 @@ flex: 2;
 .container-2
 {
 background-color: transparent; 
-max-height: 425px;
+max-height: 441px;
 border-style:ridge;
 }
 
@@ -3476,6 +3781,7 @@ border-style:ridge;
 .card
 {
   margin: 10px 0 15px 8px; /* Maintain original positioning */
+  background-color: darkcyan;
 }
 
 
@@ -3588,13 +3894,22 @@ border-style:ridge;
   background-color: transparent;
   width: clamp(28%, 37%, 32%);
   margin-left: 5px;
+  border-style:ridge;
 }
   
-  .caption span {
-    font-weight: 700;
-    font-size: 0.9rem;
+.caption
+{
+  height: 2rem;  /* Consistent height (30px) for single-line captions */
+  background-color: fuchsia;
+}
+
+  .caption span
+  {
+    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+    font-weight: 700; /* Bold font for prominence */
   }
-  
+
   .videoo {
     width: 100%;
     height: auto;

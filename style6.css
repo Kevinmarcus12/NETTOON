@@ -300,10 +300,11 @@ body::-webkit-scrollbar-thumb {
   position: relative; /* Allows for absolute positioning of its children (e.g., .overlay-text) */
   inset-inline-start: 0; /* Aligns to the start (left) edge of the container */
 }
+
 /* ==== OVERLAY TEXT CONTAINER (.overlay-text) ==== */
 /* This absolutely positioned container holds the actual text of the logo,
  allowing for special text-clipping effects. */
-.overlay-text {
+ .overlay-text {
   /* Positioning */
   position: absolute; /* Positions precisely within its parent (.Table) */
   inset: 0;           /* Stretches to cover the entire parent (top, right, bottom, left at 0) */
@@ -316,7 +317,7 @@ body::-webkit-scrollbar-thumb {
   
   /* Typography */
   font-family: var(--font-family-primary); /* Uses the primary brand font */
-  font-size: 1.3em; /* Sets the base font size for the logo text (24px) */
+  font-size: 0.8em; /* Sets the base font size for the logo text (24px) */
   font-weight: var(--font-weight-extrabold); /* Extra bold for prominence */
   
   /* Text Handling */
@@ -825,7 +826,7 @@ opacity: 1;
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  margin: 7rem auto 0 auto; /* ✅ Margin-top now works */
+  padding-top: 7rem; /* ✅ Pushes content without shifting container */
   display: flex;
   justify-content: center;
   align-items: flex-start; /* ✅ Allows margin-top to work */
@@ -833,15 +834,16 @@ opacity: 1;
 
 /* 🔥 Floating Upload Container */
 .upload-container {
+  width: 90vw;
+  max-width: 750px;
+  min-height: 700px;
+  max-height: 700px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  width: 90vw;
-  max-width: 750px;
-  min-height: 700px;
-  max-height: 700px;
+
   overflow-y: auto;
   background-color: transparent;
   padding: 2rem;
@@ -1847,12 +1849,173 @@ button {
 
 /* Medium phones / small tablets (481px–768px) */
 @media (min-width: 481px) and (max-width: 768px) {
-  .navbar { /* show expanded nav or hamburger */ }
-  .layout { display: grid;
-             grid-template-columns: 1fr 1fr; 
-             grid-gap: 16px; }
-  .sidebar { display: block; /* optional sidebar view */ }
-  .main-content, .video-container { width: 100%; }
+
+
+  body {
+    font-size: 16px;
+}
+.container
+{
+  background-color: saddlebrown;
+}
+
+.nav
+{
+  background-color: darkkhaki;
+  margin-left: 20px;
+}
+
+.Table {
+  /* Flex Item Properties within .container */
+  flex: 0 0 15%; /* Prevents growing/shrinking and sets initial base width to 15% of parent */
+  height: 100%; /* Matches the height of its parent (.container) */
+
+  background-color: violet; /* Transparent background for the logo section */
+
+  inset-inline-start: 1px; /* Aligns to the start (left) edge of the container */
+}
+
+.overlay-text
+{
+  background-color: darkblue;
+  font-size: 0.7rem;
+  
+}
+
+.search
+{
+  background-color: seagreen;
+  height:30px;
+}
+
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Notifications
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Account 
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+
+.upload img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
+  width: 30%;}
+
+.upload-overlay {
+  margin: 0 auto; /* ✅ Reset top margin */
+}
+
+
+/* 🔥 Floating Upload Container */
+.upload-container {
+  width: 90vw;
+  max-width: 650px;
+  min-height: 650px;
+  max-height: 700px;
+  padding-top: 0rem; /* ✅ Moves inner content down without affecting sticky h2 */
+}
+
+.title {
+
+  margin-bottom: 0.5rem;
+}
+
+
+h2
+{
+  font-size: 1rem;
+margin-top: 0px;
+
+
+}
+
+input, textarea {
+  width: 100%;
+  padding: 0.5rem; /* Slightly more padding for better UX */
+
+}
+
+.uploads {
+
+  width: 100%;
+  max-width: 60rem; /* 960px equivalent */
+  height: auto;
+display: flex;
+  flex-wrap: nowrap; /* Enables stacking for smaller screens */
+  justify-content: center;
+  background-color:transparent;
+  padding: 1rem; /* Slightly increased for better spacing */
+  gap: 0.5rem; /* Consistent spacing */
+  border: 0.05rem solid #ccc;
+}
+
+/* 📌 Video & Thumbnail Upload Boxes */
+.video, .thumbnail {
+  flex: 1 1 48%; /* Responsive width */
+  max-width: 15rem; /* Increases flexibility */
+  min-width: 12rem; /* Prevents breaking on smaller screens */
+  height: auto;
+  aspect-ratio: 16/9; /* Maintains aspect ratio */
+  background-color: #f9f9f9;}
+
+
+/* 🗨️ Meta Section for Comments */
+.meta {
+
+  gap: 0.8rem; /* Adjusted for balanced spacing */
+  background-color: transparent;
+  margin-top: 2vw;
+  width: 100%;
+margin-bottom: 20px;
+  padding: 10px;
+  flex-wrap: nowrap; /* Ensures elements stay in a single row */
+
+}
+
+
+
 }
 
 /* Tablets / small laptops (769px–1024px) */
@@ -1936,7 +2099,7 @@ margin: 0 auto;
 
 .upload-overlay
 {
-margin: 7rem auto 0 auto; /* ✅ Margin-top now works */
+  margin: 7rem auto 0 auto; /* ✅ Margin-top now works */
 }
 
 
@@ -2076,7 +2239,6 @@ margin: 7rem auto 0 auto; /* ✅ Margin-top now works */
 
 /* Large desktops (1280px–1599px) */
 @media (min-width: 1280px) and (max-width: 1599px) {
-  
   .upload-container
   {
     overflow-y: auto;

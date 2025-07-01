@@ -976,11 +976,12 @@ opacity: 1;
 
 /* Small phones (up to 480px) */
 @media (max-width: 480px) {
-  .navbar { /* hide menu items, show hamburger */ }
-  .sidebar { display: none; }
-  .main-content { display: flex; flex-direction: column; }
-  .video-player { width: 100%; height: auto; }
-  button, .button { padding: 1rem; min-width: 48px; min-height: 48px; }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0.5%;
+    width: 30%;}
 }
 
 /* Medium phones / small tablets (481px–768px) */
