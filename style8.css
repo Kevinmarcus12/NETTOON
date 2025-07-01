@@ -1179,7 +1179,7 @@ opacity: 1;
   justify-content: flex-start; /* Aligns video cards to the start (left) of the container */
   
   /* Appearance & Spacing */
-  background-color:gray; /* Default background color for light mode */
+  background-color: transparent;/* Default background color for light mode */
   border-radius: var(--border-radius-none); /* No border radius, for a clean rectangular grid area */
   border-style: none; /* Applied a 'ridge' border style as per your original code.
                           Consider if a 'none' or a subtle 'solid' border from variables
@@ -1220,7 +1220,7 @@ opacity: 1;
   height: auto; /* Height adjusts dynamically based on its content (video thumbnail, title, etc.) */
   
   /* Appearance */
-  background-color: pink; /* Uses a light background variable for the card */
+  background-color: transparent; /* Uses a light background variable for the card */
   border-radius: var(--border-radius-md); /* Consistent medium rounded corners for the card */
   border-style:none; /* No border style, relying on shadow for separation */
   box-shadow: var(--shadow-sm); /* A subtle default shadow for depth */
