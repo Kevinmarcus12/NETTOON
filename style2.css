@@ -1151,7 +1151,7 @@ img {
 .timee span,
 .follow span {
   background-color: transparent; /* No background for the text itself */
-  color: var(--color-text-dark-alt); /* Dark gray text color using variable */
+  color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
   font-family: var(--font-family-primary); /* Ensures consistent font */
   /* Clamp for font size. Note: 0.955rem is approximately 15.28px. If 1vw does not typically push it beyond this, 
      the clamp might effectively act as a fixed size. Consider if you want more dynamic scaling. */
@@ -1735,7 +1735,7 @@ padding-bottom: 20px;
     font-family: var(--font-family-primary); /* Consistent, high-quality font */
     font-size: var(--font-size-sm); /* Responsive font size (14px converted to rem) */
     font-weight: 500; /* Medium font weight */
-    color: var(--color-text-dark-alt); /* Dark text color for light mode, using a variable */
+    color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
     
     display: flex; /* Uses flexbox for potential inner alignment (e.g., if content changes) */
     align-items: center; /* Vertically centers text */
@@ -1783,7 +1783,7 @@ padding-bottom: 20px;
   margin: 0; /* Removes default margins */
   font-family: var(--font-family-primary); /* Consistent, high-quality font */
   font-weight: 500; /* Medium font weight */
-  color: var(--color-text-dark-alt); /* Dark text color for light mode, using a variable */
+  color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
   
   display: flex; /* Uses flexbox for potential inner alignment */
   align-items: center; /* Vertically centers text */

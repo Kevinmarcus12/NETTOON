@@ -1862,17 +1862,17 @@ button {
 .nav
 {
   background-color: darkkhaki;
-  margin-left: 20px;
+  margin-left: 0px;
 }
 
 .Table {
   /* Flex Item Properties within .container */
-  flex: 0 0 15%; /* Prevents growing/shrinking and sets initial base width to 15% of parent */
+  flex: 0 0 20%; /* Prevents growing/shrinking and sets initial base width to 15% of parent */
   height: 100%; /* Matches the height of its parent (.container) */
 
   background-color: violet; /* Transparent background for the logo section */
 
-  inset-inline-start: 1px; /* Aligns to the start (left) edge of the container */
+  inset-inline-start: 0px; /* Aligns to the start (left) edge of the container */
 }
 
 .overlay-text

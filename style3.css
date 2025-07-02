@@ -1145,7 +1145,7 @@ img {
 .timee span,
 .follow span {
   background-color: transparent; /* No background for the text itself */
-  color: var(--color-text-dark-alt); /* Dark gray text color using variable */
+  color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
   font-family: var(--font-family-primary); /* Ensures consistent font */
   /* Clamp for font size. Note: 0.955rem is approximately 15.28px. If 1vw does not typically push it beyond this, 
      the clamp might effectively act as a fixed size. Consider if you want more dynamic scaling. */
@@ -1300,7 +1300,7 @@ body.dark-mode .follow span {
 .optionn span {
   font-family: var(--font-family-primary); /* Ensures a consistent, high-quality font */
   font-weight: 700; /* Bold font for prominence and readability */
-  color: var(--color-text-dark); /* Dark text color for light mode */
+  color: #333333;
   
   /* Text truncation for long labels */
   text-overflow: ellipsis; /* Adds "..." if text overflows */
@@ -1412,19 +1412,15 @@ body.dark-mode .follow span {
 /* ==== CAPTION TEXT LABEL (.captiion span) ==== */
 /* Styles for the actual text content of the caption. */
 .captiion span {
-  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
-  font-weight: 700; /* Bold font for prominence */
-  font-size: var(--font-size-base-md); /* Responsive font size (0.96875rem approx 15.5px) */
-  color: black; /* Dark text color for light mode, using a variable */
-  text-align: center; /* Centers the text within its own space */
-  
-  /* Text truncation for single-line display */
-  white-space: nowrap; /* Prevents text from wrapping to the next line */
-  overflow: hidden; /* Hides any text that extends beyond the element's bounds */
-  text-overflow: ellipsis; /* Displays "..." to indicate truncated text */
-  
-  max-width: 90%; /* Limits the text width to prevent potential overlap with other elements */
-  padding: var(--spacing-xxxs) var(--spacing-xs); /* Responsive padding (4px 8px converted to rem) */
+  font-size: 15px;
+  font-weight: bold;
+  color: black;
+  text-align: center;
+  white-space: nowrap; /* Prevents text wrapping */
+  overflow: hidden; /* Hides overflowing text */
+  text-overflow: ellipsis; /* Shows "..." when text is too long */
+  max-width: 90%; /* Limits width to prevent overlap */
+  padding: 4px 8px; /* Balanced padding */
 
 
 }
@@ -1602,7 +1598,7 @@ body.dark-mode .follow span {
     font-family: var(--font-family-primary); /* Consistent, high-quality font */
     font-size: var(--font-size-sm); /* Responsive font size (14px converted to rem) */
     font-weight: 500; /* Medium font weight */
-    color: var(--color-text-dark-alt); /* Dark text color for light mode, using a variable */
+    color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
     
     display: flex; /* Uses flexbox for potential inner alignment (e.g., if content changes) */
     align-items: center; /* Vertically centers text */
@@ -1651,7 +1647,7 @@ body.dark-mode .follow span {
   margin: 0; /* Removes default margins */
   font-family: var(--font-family-primary); /* Consistent, high-quality font */
   font-weight: 500; /* Medium font weight */
-  color: var(--color-text-dark-alt); /* Dark text color for light mode, using a variable */
+  color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
   
   display: flex; /* Uses flexbox for potential inner alignment */
   align-items: center; /* Vertically centers text */
@@ -2138,7 +2134,7 @@ body.dark-mode textarea {
     font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
     font-size: var(--font-size-lg); /* Responsive font size (20px converted to rem) */
     font-weight: 700; /* Bold font for prominence and readability */
-    color: var(--color-text-dark); /* Dark text color for light mode */
+    color: #333333;
     
     margin-inline-start: var(--spacing-xs); /* Responsive left margin (10px converted to rem) */
     
@@ -2164,7 +2160,7 @@ body.dark-mode textarea {
   width: clamp(9.375rem, 30%, 18.75rem); /* Converted 150px and 300px to rem */
   border-style: none;
   height: auto; /* Height adjusts dynamically based on its content */
-  
+  background-color: transparent;
   display: flex; /* Enables a flexible column layout for its children */
   flex-direction: column; /* Arranges items vertically */
   align-items: center; /* Horizontally centers children within the column (this should already help!) */
@@ -2206,7 +2202,7 @@ html {
   
   height: auto; /* Adjusts based on content */
   
-  background-color: transparent;
+  background-color:transparent;
   
   margin-top: 8.5rem; /* 15px in rem */
   
@@ -2267,7 +2263,7 @@ justify-content: space-between;
   text-align: center; /* Centers the text within its own space */
   margin: 0; /* Removes default margins */
 
-  transition: color var(--transition-speed) var(--transition-ease); /* Smooth transition for dark mode */
+
 }
 
 /* Dark mode adjustment for profile name text */
@@ -2297,7 +2293,6 @@ justify-content: space-between;
   text-overflow: ellipsis; /* Displays "..." for truncated text */
   max-width: fit-content; /* Limits width to content size */
   
-  transition: background-color var(--transition-speed) var(--transition-ease); /* Smooth transition for hover effects */
 }
 
 /* Hover effect for improved UI feedback */
@@ -2315,7 +2310,7 @@ justify-content: space-between;
 .followers span {
   font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
   font-size: var(--font-size-base); /* Responsive font size (1.1rem approx 18px) */
-  font-weight: 500; /* Medium font weight */
+  font-weight: 700; /* Bold font for prominence */
   color: var(--color-text-dark-alt); /* Dark text color for light mode, using a variable */
   
   margin: 0; /* Removes default margins */
@@ -2325,7 +2320,6 @@ justify-content: space-between;
   text-overflow: ellipsis; /* Displays "..." for truncated text */
   flex-shrink: 1; /* Allows text to shrink if necessary */
 
-  transition: color var(--transition-speed) var(--transition-ease); /* Smooth transition for dark mode */
 }
 
 /* Dark mode adjustment for followers text */
@@ -2666,6 +2660,7 @@ justify-content: space-between;
   font-weight: 700; /* Bold font for prominence */
   font-size: var(--font-size-base-md); /* Responsive font size (0.96875rem approx 15.5px) */
   color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
+  
   
   /* Sizing & Flex Item Properties */
   height: 100%; /* Fills the height of its parent container for vertical centering */

@@ -838,9 +838,7 @@ opacity: 1;
     justify-content:space-evenly;
   }
   
-  .sidebar:hover {
-    width: 13%; /* Expands slightly on hover for better UX */
-  }
+
   
   .sidebar::-webkit-scrollbar {
     width: 6px;
@@ -944,14 +942,7 @@ opacity: 1;
     padding: 0px;
     border-style: ridge; /* Kept as provided */
   }
-/* ========================================================================== */
-/* CONTROL BUTTONS                                                            */
-/* Utilizes the new --icon-size variable.                                     */
-/* ========================================================================== */
-/* ========================================================================== */
-/* CONTROL BUTTONS                                                            */
-/* Image size set to a fixed 30px.                                            */
-/* ========================================================================== */
+
 
 .controls {
   position: absolute; /* Positions controls relative to .shorts-container */
@@ -1349,7 +1340,7 @@ opacity: 1;
 .comment:hover,
 .share:hover,
 .options:hover {
-  background-color: var(--color-border-light); /* Using your light border color for hover, close to #e0e0e0 */
+  background-color: gray;
 }
 
 /* Dark mode hover */
@@ -1584,7 +1575,7 @@ z-index: 0;
   flex-direction: column;
   padding: 1px;
   background-color: var(--color-bg-light); /* Default background color for light mode */
-  box-shadow: 0 2px 8px var(--color-shadow-light); /* Using shadow variable */
+
 }
 
 /* ========================================================================== */
@@ -1757,7 +1748,7 @@ z-index: 0;
 .dislikee:hover,
 .commentss:hover,
 .sharee:hover {
-  background-color: var(--color-border-light); /* Using a light border color for hover effect */
+  background-color: gray;
 }
 
 /* Dark mode styling for engagement buttons */
@@ -2237,7 +2228,7 @@ max-height: 75vh;
 @media (min-width: 481px) and (max-width: 768px) {
   .container
   {
-    background-color: transparent;
+    background-color: gray;
   }
 
 .sidebar
@@ -2301,6 +2292,13 @@ max-height: 75vh;
 margin: 0 auto;
 }
 
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
+  width: 30%;}
+
 .sidebar
 {
   background-color: transparent;
@@ -2320,36 +2318,44 @@ margin: 0 auto;
   left: 7%;
   gap: 1rem;
   height:50vh;
-
+border-style: ridge;
+gap: 1rem;
+padding-top: 0px;
   justify-content: center;
-  background-color: transparent;
+  background-color:green;
   border: 1px solid transparent; /* TEMP: remove in production */
-  margin: 3.5rem auto 0 0rem;
+  margin: 6.5rem auto 0 0rem;
 
 }
-
-.scroll-area
-{
+/* Scrollable area inside Shorts */
+.scroll-area {
   background-color: transparent;
   border-style: ridge;
+  padding-top: 0;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding-top: 0px;
 }
 
+/* 🔷 Short Video Item */
 .short-video {
-
-  max-width: 350px;
+  width: 100%;
+  max-width: 250px;
+  max-width: 300px;
   aspect-ratio: 9 / 16;
-  max-height: 100vh;
-  margin:9rem auto 0 8rem;
-
-
+  max-height: 90vh;
+  margin: 0 auto; /* Centers the video */
 }
 
 /* 🔷 Metadata Container */
 .metadata {
   position: absolute;
-  top: 22vh;
-  right: 24vw;
+  top:24rem;
+  right: 20vw;
+  border-radius: 7px;
   width: 5vw;
+  background-color: #0069d9;
 }
 
 /* 👇 Move both to left when comments are shown */
@@ -2358,27 +2364,27 @@ margin: 0 auto;
 }
 
 .shorts.show-comments .metadata {
-  margin-right: 42.5%;
+  margin-right: 48%;
   right: 10px;
 }
 
 
 .comment-container {
-  background-color: transparent;
-  top:9.5rem;
-  right: 7%; /* Position when shown */
-  width: 37%;
-  max-width: 400px;
+  background-color: violet;
+  top:21rem;
+  right: 5.5%; /* Position when shown */
+  width: 43%;
+  max-width: 600px;
   aspect-ratio: 9 / 16;
-  min-height: 69vh;
-  max-height: 75vh;
+  min-height: 60vh;
+  max-height: 65vh;
 
 }
 
 
 
 .commentt {
-  background-color: #FFFFFF;
+  background-color: firebrick;
   padding: 0px 0px;
 }
 
@@ -2650,9 +2656,7 @@ margin: 0 auto;
   width:5.5%; 
 }
 
-.sidebar:hover {
-  width: 18%; /* Expands slightly on hover for better UX */
-}
+
 
 .scroll-area
 {

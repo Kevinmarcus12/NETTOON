@@ -899,26 +899,32 @@ opacity: 1;
       background-color: grey;
     }
   
- 
-  .signup-container {
-    background-color: #F8F8FF; /* Ghost White */
-    border: 1px solid #ccc; /* Light grey border */
-    z-index: 11;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    width: 800px;
-    min-height: 700px;
-    max-height: 700px;
-    overflow-y: scroll;
-    overflow-x: hidden;
-    margin-top: 100px;
-    margin: 100px auto 0 auto; /* Top margin + horizontal centering */
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
-    justify-content: space-evenly;
-    padding-bottom: 20px;
-}
-
+    .signup-container {
+      background-color: #F8F8FF;
+      border: 1px solid #ccc;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+      width: 95vw;
+      max-width: 800px;
+      height: 90vh;
+      max-height: 90vh;
+      overflow-y: auto;
+      overflow-x: hidden;
+    
+      margin: 5vh auto 1vh auto; /* Top: 5vh | Bottom: 1vh | Centered horizontally */
+    
+      scrollbar-width: thin;
+      scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
+    
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    
+      padding: 0; /* 🛑 Removed all internal padding */
+    }
+    
 .dark-mode .signup-container
 {
   background-color: #222;
@@ -975,6 +981,7 @@ label {
     margin: 10px 0 5px;
     font-weight: bold;
     margin-top: 50px;
+    margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
 }
 input, select, textarea {
     width: 95%;
@@ -982,6 +989,7 @@ input, select, textarea {
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
+    margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
 }
 
 .phone-input {
@@ -1057,6 +1065,32 @@ input, select, textarea {
   color: black;
 }
 
+/* Container to wrap label + input */
+.form-group {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* ⬅️ This centers labels and inputs */
+}
+
+/* Adjust label styling */
+label {
+  display: block;
+  font-weight: bold;
+  text-align: center; /* ⬅️ Ensure label text is centered */
+  margin: 20px 0 10px;
+}
+
+input, select, textarea {
+  width: 100%;        /* 🟢 Full width */
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-sizing: border-box; /* Prevents padding from affecting width */
+}
+
+
 .dark-mode .reminder label
 {
 color: white;
@@ -1120,25 +1154,67 @@ filter: invert(1);
 }
 
 
-/* Mobile-first default styles (<=320px) */
-
-/* Small phones (up to 480px) */
-@media (max-width: 480px) {
-  .navbar { /* hide menu items, show hamburger */ }
-  .sidebar { display: none; }
-  .main-content { display: flex; flex-direction: column; }
-  .video-player { width: 100%; height: auto; }
-  button, .button { padding: 1rem; min-width: 48px; min-height: 48px; }
+/* Small Mobile Devices (Portrait phones, e.g., 320px - 480px) */
+/* Targets devices like older iPhones, basic Android phones */
+@media (min-width: 320px) and (max-width: 480px) {
+  /* Adjustments for slightly larger phone screens */
+  body {
+      font-size: 15px;
+  }
+  .video-thumbnail {
+      width: 100%; /* Full width thumbnails */
+  }
+  /* Specific layout for single-column mobile view */
 }
+
 
 /* Medium phones / small tablets (481px–768px) */
 @media (min-width: 481px) and (max-width: 768px) {
-  .navbar { /* show expanded nav or hamburger */ }
-  .layout { display: grid;
-             grid-template-columns: 1fr 1fr; 
-             grid-gap: 16px; }
-  .sidebar { display: block; /* optional sidebar view */ }
-  .main-content, .video-container { width: 100%; }
+
+
+  .container
+  {
+    background-color: saddlebrown;
+  }
+  
+  .nav
+  {
+    background-color: darkkhaki;
+    margin-left: 0px;
+  }
+  
+  .Table {
+    /* Flex Item Properties within .container */
+    flex: 0 0 20%; /* Prevents growing/shrinking and sets initial base width to 15% of parent */
+    height: 100%; /* Matches the height of its parent (.container) */
+  
+    background-color: violet; /* Transparent background for the logo section */
+  
+    inset-inline-start: 0px; /* Aligns to the start (left) edge of the container */
+  }
+  
+  .overlay-text
+  {
+    background-color: darkblue;
+    font-size: 0.7rem;
+    
+  }
+
+
+.signup-container
+{
+
+  
+  width: 95vw;
+  max-width: 800px;
+  height: 90vh;
+  max-height:80vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  margin: 10vh auto 1vh auto; /* Top: 5vh | Bottom: 1vh | Centered horizontally */
+
+}
 }
 
 /* Tablets / small laptops (769px–1024px) */
