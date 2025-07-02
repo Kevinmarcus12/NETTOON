@@ -872,7 +872,7 @@ opacity: 1;
     border-radius: 0px;
     box-sizing: border-box;
     padding: 0 0.9375rem; /* Converted from 15px */
-    margin: 3rem 0 2.5rem 0rem; /* Adjusted margin values */
+    margin: 4rem 0 0.5rem 0rem; /* Adjusted margin values */
     gap:5px;
     cursor: pointer;
   }
