@@ -2858,7 +2858,8 @@ margin-bottom: 5%;
   {
     background-color: darkblue;
     font-size: 0.7rem;
-    
+  
+    inset-inline-start: 0px;
   }
   .search
   {
@@ -2869,14 +2870,14 @@ margin-bottom: 5%;
   .upload
   {
     background-color: transparent;
-    width: 3vw;
-    height: 3vw;
+    width: 5vw;
+    height: 5vw;
   }
   
   .Notifications
   {
     background-color: transparent;
-    width: 3vw;
+    width: 3.5vw;
     height: 3vw;
   }
   
@@ -3038,11 +3039,23 @@ margin-bottom: 5%;
   margin-top: 5px;
 }
 
+/* Hover state for all icon containers */
+.viewss:hover,
+.commentss:hover,
+.likee:hover,
+.dislikee:hover,
+.optionn:hover,
+.timess:hover {
+    background-color:grey; /* Lighter gray on hover in light mode */
+
+}
+
+
 
 .scroll-area
 {
   background-color: transparent;
-  gap:0.2rem; /* Slight space between items */
+  gap:0.5rem; /* Slight space between items */
   border-style: ridge;
 }
 

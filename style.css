@@ -2450,13 +2450,16 @@ padding: 5px;
     position: absolute;
     top: 100%;
     right: 0.5%;
+    z-index:40;
     width: 30%;}
+    
 
   .suggestionss
   {
     width:100%; /* Occupies the remaining width after considering the sidebar and gap */
     left: 0%;  
     gap:5px;
+    z-index: 1;
     overflow-y: hidden;
     overflow-x: hidden;
     background-color: transparent;
@@ -2470,13 +2473,13 @@ padding: 5px;
   .sidebar
   {
     background-color:sienna; /* Default background color for light mode */
-    width:5.5%;
-    z-index: -1;
+    width:7%;
+  
     justify-content: flex-start;
   }
   
   .sidebar:hover {
-    width: 16.5%; /* Expands slightly on hover for better UX */
+    width: 28%; /* Expands slightly on hover for better UX */
   }
   
   .home
@@ -2487,6 +2490,7 @@ padding: 5px;
   .suggestionss
   {
     background-color: violet;
+    z-index: 10;
   }
   
   .rectanglee

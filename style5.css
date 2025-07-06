@@ -1954,6 +1954,8 @@ margin: 0 auto;
   max-width: 650px;
   min-height: 650px;
   max-height: 700px;
+  overflow-y: auto;
+  overflow-x: hidden;
   padding-top: 0rem; /* ✅ Moves inner content down without affecting sticky h2 */
 }
 
