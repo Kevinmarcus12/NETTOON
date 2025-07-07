@@ -272,7 +272,6 @@ body::-webkit-scrollbar-thumb {
 
   /* Appearance & Spacing */
   background-color: var(--color-bg-light); /* Default background color for light mode */
-  box-shadow: var(--shadow-md); /* Subtle shadow for depth */
   padding-inline-start: 0; /* Ensures no left padding pushes content initially */
   /* margin-inline: auto; is redundant here as width is 100% and position is fixed */
 }

@@ -272,7 +272,6 @@ body::-webkit-scrollbar-thumb {
 
   /* Appearance & Spacing */
   background-color: var(--color-bg-light); /* Default background color for light mode */
-  box-shadow: var(--shadow-md); /* Subtle shadow for depth */
   padding-inline-start: 0; /* Ensures no left padding pushes content initially */
   /* margin-inline: auto; is redundant here as width is 100% and position is fixed */
 }
@@ -817,27 +816,27 @@ opacity: 1;
     font-size: 0.6875em; /* Further reduce size for compact screens */
     bottom: -1.75rem; /* Adjust positioning */
   }
-}
-/* 🔥 Overlay Background (Blurs Everything Behind) */
+}/* 🔥 Overlay Background (Blurs Everything Behind) */
 .upload-overlay {
   position: fixed;
-  top: 0;
+  top: 1rem;
   left: 0;
   width: 100vw;
   height: 100vh;
   z-index: 0;
-  padding-top: 7rem; /* ✅ Pushes content without shifting container */
   display: flex;
-  justify-content: center;
-  align-items: flex-start; /* ✅ Allows margin-top to work */
+  justify-content: center;   /* Centers horizontally */
+  align-items: center;       /* Centers vertically */
+  background-color: rgba(0, 0, 0, 0.3); /* Optional dimmed background */
 }
 
 /* 🔥 Floating Upload Container */
 .upload-container {
   width: 90vw;
   max-width: 750px;
-  min-height: 700px;
-  max-height: 700px;
+  max-height: 90vh;          /* Makes sure it never exceeds viewport */
+  min-height: 500px;         /* Optional minimum height */
+  
   position: relative;
   display: flex;
   flex-direction: column;
@@ -845,18 +844,29 @@ opacity: 1;
   justify-content: flex-start;
 
   overflow-y: auto;
-  background-color: transparent;
+  background-color: white;
   padding: 2rem;
   border-radius: 0.8rem;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+
   z-index: 1;
   opacity: 0;
   transform: translateY(-50px); /* Animation start point */
   animation: popIn 0.5s ease-out forwards;
+
   text-align: center;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
 }
+
+/* 🔄 Pop-in Animation */
+@keyframes popIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 
 a {
   display: inline-block;
@@ -1943,7 +1953,6 @@ margin: 0 auto;
   right: 0.5%;
   width: 30%;}
 
-
 .upload-overlay {
   margin: 0 auto; /* ✅ Reset top margin */
 }
@@ -2026,7 +2035,7 @@ margin-bottom: 20px;
 
   .container
   {
-    background-color: var(--color-bg-light); /* Default background color for light mode */
+    background-color: violet; /* Default background color for light mode */
   margin-bottom: 50rem;
   }
   
@@ -2100,9 +2109,9 @@ margin: 0 auto;
   font-size:0.7rem;
 }
 
-.upload-overlay
+.upload-container
 {
-  margin: 7rem auto 0 auto; /* ✅ Margin-top now works */
+overflow-x: hidden;
 }
 
 
@@ -2127,7 +2136,7 @@ margin: 0 auto;
 
   .container
   {
-    background-color:#F5F5DC;
+    background-color:pink;
   }
   
   .Table

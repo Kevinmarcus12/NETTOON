@@ -101,9 +101,26 @@
             <label for="username">Username</label>
             <input type="text" id="username" placeholder="Choose a username" required>
 
-            <label for="dob">Date of Birth</label>
-            <input type="date" id="dob" required>
 
+            <div class="banner-upload">       
+              <span>Upload Background Banner</span>
+              <label for="bannerImageInput" class="banner-label">
+                <div class="banner-preview-wrapper">
+                  <img id="bannerPreview" src="18.png" alt="Banner Preview" />
+                </div>
+              </label>
+              <input type="file" id="bannerImageInput" accept="image/*" />
+            </div>
+            
+            <div class="profile-image-upload">
+              <label class="profile-image-label" for="profileImageInput">
+                <img id="profilePreview" src="14.png" alt="Profile Image" />
+              </label>
+              <input type="file" id="profileImageInput" accept="image/*" />
+            </div>
+            
+            
+            <label for="email">Phone Number</label>
             <div class="phone-input">
                 <select id="country-code">
                     <option value="+1">+1 (US)</option>
@@ -262,7 +279,7 @@
 
 <div class="reminder">
 
-<label for="text">Already Signed Up?</label><a href="index11.html"><label for="text" style="color:blue;font-weight: bold;">Sign In</label></a>
+<label for="text">Already Signed Up?</label><a href="index11.html"><label for="text" style="color:red;font-weight: bold;">Sign In</label></a>
 
 </div>
 

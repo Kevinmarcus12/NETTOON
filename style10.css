@@ -272,7 +272,6 @@ body::-webkit-scrollbar-thumb {
 
   /* Appearance & Spacing */
   background-color: var(--color-bg-light); /* Default background color for light mode */
-  box-shadow: var(--shadow-md); /* Subtle shadow for depth */
   padding-inline-start: 0; /* Ensures no left padding pushes content initially */
   /* margin-inline: auto; is redundant here as width is 100% and position is fixed */
 }
@@ -318,7 +317,7 @@ body::-webkit-scrollbar-thumb {
   
   /* Typography */
   font-family: var(--font-family-primary); /* Uses the primary brand font */
-  font-size: 1.3em; /* Sets the base font size for the logo text (24px) */
+  font-size: 0.8em; /* Sets the base font size for the logo text (24px) */
   font-weight: var(--font-weight-extrabold); /* Extra bold for prominence */
   
   /* Text Handling */
@@ -342,7 +341,7 @@ body::-webkit-scrollbar-thumb {
   
   /* Typography */
   /* Typography */
-  font-size: 1.3em; /* Sets the base font size for the logo text (24px) */
+  font-size: 0.8em; /* Sets the base font size for the logo text (24px) */
   letter-spacing: var(--spacing-xxxs); /* Adds subtle letter spacing (2px) */
   font-weight: inherit; /* Inherits font weight from parent (.overlay-text) */
   display: inline-block; /* Ensures consistent rendering with text-clip effect */
@@ -357,7 +356,7 @@ body::-webkit-scrollbar-thumb {
   -webkit-text-fill-color: transparent;    /* Makes the text transparent to reveal the clipped background */
   
   /* Typography */
-  font-size: 1.3em; /* Sets the base font size for the logo text (24px) */
+  font-size: 0.8em; /* Sets the base font size for the logo text (24px) */
   
   /* Spacing */
   margin-inline-start: var(--spacing-xxs); /* Adds a small space to the left (5px) */
@@ -912,17 +911,18 @@ opacity: 1;
       overflow-y: auto;
       overflow-x: hidden;
     
-      margin: 5vh auto 1vh auto; /* Top: 5vh | Bottom: 1vh | Centered horizontally */
+      margin: 7vh auto 1vh auto; /* Top: 5vh | Bottom: 1vh | Centered horizontally */
     
       scrollbar-width: thin;
       scrollbar-color: rgba(0, 0, 0, 0.4) transparent;
     
       display: flex;
       flex-direction: column;
-      align-items: center;
+   
       justify-content: flex-start;
     
       padding: 0; /* 🛑 Removed all internal padding */
+      padding-bottom:10px;
     }
     
 .dark-mode .signup-container
@@ -935,7 +935,7 @@ opacity: 1;
 h2 {
     position: sticky;
     top: 0;
-    z-index: 0;
+    z-index: 1;
     text-align: center;
     color: red;
     background-color:white;
@@ -944,8 +944,6 @@ h2 {
     padding: 5px 0; /* Adds some spacing inside */
     margin: 0; /* Removes any unwanted margin */
     border-radius: 7px;
-    font-weight: bold;
-
     font-weight: var(--font-weight-extrabold); /* Extra bold for prominence */
     font-size: 2rem;
 
@@ -975,6 +973,139 @@ h2 {
     border: 0.1rem solid #444;
 }
 
+.banner-upload {
+  display: none;
+  background-color: transparent;
+  width: 100%;
+  max-width: 100%;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.banner-upload span
+{
+  font-weight: bold;
+}
+
+.banner-label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  gap: 0.5rem;
+  width: 100%;
+}
+
+/* Hide input */
+#bannerImageInput {
+  display: none;
+}
+
+/* Banner preview container */
+.banner-preview-wrapper {
+  width: 100%;
+  aspect-ratio: 16 / 4; /* Clean responsive banner */
+  overflow: hidden;
+  border-radius: 0.75rem;
+  border: 2px solid #ccc;
+  padding: 0;
+  margin: 0;
+}
+
+/* Image fills banner area fully */
+.banner-preview-wrapper img,
+#bannerPreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: none;
+
+}
+
+/* Hover effect */
+.banner-label:hover #bannerPreview {
+  transform: scale(1.01);
+  transition: transform 0.2s ease;
+}
+
+.banner-label span {
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  font-weight: bold;
+  margin: 0;
+}
+.profile-image-upload {
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 1rem auto;
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  overflow: hidden;
+  position: relative;
+  padding-top:0px;
+padding-bottom: 10px;
+z-index: 0;
+}
+
+.profile-image-label {
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Hide file input */
+#profileImageInput {
+  display: none;
+}
+
+/* 🔥 Fill image preview completely inside container */
+.profile-image-upload img,
+#profilePreview {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: none;
+  display: block;
+  padding: 0;
+  margin: 0;
+  
+}
+
+/* 🔥 Fill image preview completely inside container */
+.dark-mode .profile-image-upload img
+{
+filter: invert(1);
+}
+
+/* 🔥 Fill image preview completely inside container */
+.dark-mode #profilePreview 
+{
+filter: invert(1);
+}
+
+/* Hover effect on the whole label area */
+.profile-image-label:hover img {
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+/* Upload instruction text */
+.profile-image-label span {
+  font-size: 0.95rem;
+  color: var(--color-text-dark);
+  margin-top: 0.5rem;
+}
+
 
 label {
     display: block;
@@ -984,7 +1115,8 @@ label {
     margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
 }
 input, select, textarea {
-    width: 95%;
+    width: 100%;
+    max-width: 100%;
     padding: 8px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
@@ -997,13 +1129,17 @@ input, select, textarea {
     align-items: center;
     border-radius: 5px;
     overflow: hidden;
-    width:99%;
-    max-width: 800px; /* Adjust as needed */
+    width:100%;
     background-color: transparent;
     gap:10px;
     margin-top: 20px;
     border-style:none;
-    border: 1px solid  transparent;
+    border: 1px solid #ccc;
+}
+
+.phone-input input
+{
+  border: 1px solid #ccc;
 }
 
 #country-code {    background-color: #f8f8f8;
@@ -1438,8 +1574,10 @@ h2
 
 /* Large desktops (1280px–1599px) */
 @media (min-width: 1280px) and (max-width: 1599px) {
-  .layout { grid-template-columns: 250px 4fr 2fr; }
-  .navbar, .sidebar, .content { padding: 2rem; }
+.signup-container
+{
+  margin: 7vh auto 1vh auto; /* Top: 5vh | Bottom: 1vh | Centered horizontally */
+}
 }
 
 /* Ultra-wide (1600px and up) */

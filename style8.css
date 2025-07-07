@@ -272,7 +272,6 @@ body::-webkit-scrollbar-thumb {
 
   /* Appearance & Spacing */
   background-color: var(--color-bg-light); /* Default background color for light mode */
-  box-shadow: var(--shadow-md); /* Subtle shadow for depth */
   padding-inline-start: 0; /* Ensures no left padding pushes content initially */
   /* margin-inline: auto; is redundant here as width is 100% and position is fixed */
 }
@@ -971,7 +970,7 @@ opacity: 1;
 
   /* Sizing & Appearance */
   height: var(--category-pill-height); /* Fixed height (30px) for the pill */
-  background-color: var(--color-bg-pill-light); /* Default background (Pale Grey) for light mode */
+  background-color: var(--color-bg-light); /* Default background color for light mode */
   border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
   
   /* Spacing & Positioning */
@@ -1022,10 +1021,11 @@ opacity: 1;
 /* These styles define the visual feedback for hovering over and selecting a category pill in light mode. */
 .rectanglee:hover {
   background-color: grey; /* Hover background (Gray) */
+
 }
 
 .rectanglee:hover span {
-  color: var(--color-text-pill-hover-light); /* Text color on hover (White) */
+  color:black;
 }
 
 /* Active Style (Light Mode) - MODIFIED */
@@ -1166,7 +1166,7 @@ opacity: 1;
   /* Positioning */
   position: absolute; /* Positions the grid relative to its parent, often <body> or a main wrapper */
   width: calc(100% - 4.9%); /* Occupies the remaining width after considering the sidebar and gap */
-  top: 6.7rem;        /* Positions the grid below the header and suggestions bar */
+  top: 6rem;        /* Positions the grid below the header and suggestions bar */
   left: 4.8%;         /* Aligns it to the right of the sidebar, maintaining a consistent gap */
   z-index: var(--z-index-content); /* Ensures it's layered correctly below header/sidebar */
 
@@ -1865,10 +1865,7 @@ body {
 @media (min-width: 320px) and (max-width: 480px) {
   /* Adjustments for slightly larger phone screens */
   body {
-      font-size: 15px;
-    overflow-y: auto;
-    overflow-x: hidden;
-    }
+      font-size: 15px;}
 
       .container {
         position: fixed;
@@ -2005,113 +2002,114 @@ body {
         filter: invert(1);
       }
 
-      .dropdown-content {
-        display: none;
-        position: absolute;
-        top: 100%;
-        right: 0.5%;
-        width: 90vw; /* Full-width on small screens */
-        max-width: 20rem;
-        max-height: 60vh;
-        background-color: #333;
-        box-shadow: 0px 0.5em 1em rgba(0, 0, 0, 0.2);
-        border-radius: 0.5em;
-        z-index: 30;
-        padding: 0.25rem 0; /* Much smaller vertical padding */
-        text-align: left;
-        align-items: flex-start;
-        overflow-y: auto;
-        overflow-x: hidden;
-        scrollbar-width: thin;
-        scrollbar-color: rgba(0, 0, 0, 0.5) white;
-      }
-      
-      .dropdown-content a {
-        color: black;
-        padding: 0.5rem 0.75rem; /* Reduced padding for a tighter feel */
-        text-decoration: none;
-        display: block;
-        font-size: 0.875rem;
-      }
-      
-      /* Profile Section */
-      .proofile {
-        width: 100%;
-        min-height: 2.2rem;
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        background-color: white;
-        padding: 0.4rem 0.6rem; /* Reduced padding */
-        border-radius: 0.375rem;
-        margin: 0.3rem 0.5rem; /* Smaller margins */
-      }
-      
-      /* Hover Effect */
-      .proofile:hover {
-        background-color: grey;
-        color: white;
-        transform: scale(1.02);
-        cursor: pointer;
-        box-shadow: none;
-      }
-      
-      /* Profile Image */
-      .proofile img {
-        width: 1.5rem;
-        height: 1.5rem;
-        border-radius: 50%;
-        margin-right: 0.4rem;
-      }
-      
-      /* Profile Name */
-      .proofile span {
-        font-weight: 600;
-        font-size: 0.85rem;
-        color: black;
-        margin-left: 0.2rem;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      
-      .proofile:hover span {
-        color: white;
-      }
-      
-      /* Remove bullet points */
-      .dropdown-content li {
-        list-style: none;
-      }
-      
-      /* Mobile responsiveness */
-      @media (max-width: 480px) {
-        .dropdown-content {
-          right: 2%;
-          width: 92vw;
-          padding: 0.25rem 0;
-        }
-      
-        .proofile {
-          padding: 0.3rem 0.5rem;
-          margin: 0.2rem 0.4rem;
-        }
-      
-        .proofile img {
-          width: 1.4rem;
-          height: 1.4rem;
-        }
-      
-        .proofile span {
-          font-size: 0.8rem;
-        }
-      
-        .dropdown-content a {
-          padding: 0.4rem 0.6rem;
-          font-size: 0.8rem;
-        }
-      }
-      
+
+   .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
+  width: 90vw; /* Full-width on small screens */
+  max-width: 20rem;
+  max-height: 60vh;
+  background-color: #333;
+  box-shadow: 0px 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  z-index: 30;
+  padding: 0rem 0; /* Much smaller vertical padding */
+  text-align: left;
+  align-items: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) white;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 0.5rem 0.75rem; /* Reduced padding for a tighter feel */
+  text-decoration: none;
+  display: block;
+  font-size: 0.875rem;
+}
+
+/* Profile Section */
+.proofile {
+  width: 100%;
+  min-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  padding: 0.4rem 0.6rem; /* Reduced padding */
+  border-radius: 0.375rem;
+  margin: 0.3rem 0.5rem; /* Smaller margins */
+}
+
+/* Hover Effect */
+.proofile:hover {
+  background-color: grey;
+  color: white;
+  transform: scale(1.02);
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* Profile Image */
+.proofile img {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+}
+
+/* Profile Name */
+.proofile span {
+  font-weight: 600;
+  font-size: 0.85rem;
+  color: black;
+  margin-left: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.proofile:hover span {
+  color: white;
+}
+
+/* Remove bullet points */
+.dropdown-content li {
+  list-style: none;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 480px) {
+  .dropdown-content {
+    right: 2%;
+    width: 92vw;
+    padding: 0.25rem 0;
+  }
+
+  .proofile {
+    padding: 0.3rem 0.5rem;
+    margin: 0.2rem 0.4rem;
+  }
+
+  .proofile img {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .proofile span {
+    font-size: 0.8rem;
+  }
+
+  .dropdown-content a {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
 
 
         .suggestionss {
@@ -2452,13 +2450,16 @@ padding: 5px;
     position: absolute;
     top: 100%;
     right: 0.5%;
+    z-index:40;
     width: 30%;}
+    
 
   .suggestionss
   {
     width:100%; /* Occupies the remaining width after considering the sidebar and gap */
     left: 0%;  
     gap:5px;
+    z-index: 1;
     overflow-y: hidden;
     overflow-x: hidden;
     background-color: transparent;
@@ -2513,7 +2514,7 @@ padding: 5px;
     {
       background-color:grey;
       width: clamp(48%, 58%, 48%);
-    margin-left: 7px;
+    margin-left: 5px;
     }
     
     .caption
@@ -2542,38 +2543,60 @@ padding: 5px;
     }
 
  
-.sectiionn 
-{
+.sectiion {
   background-color: saddlebrown;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem; /* Adds breathing room between .views and .time */
+  padding-inline: 0.1rem; /* Adds horizontal padding */
+  margin-block: 0.1rem; /* Adds vertical margin */
 }
 
-  .views,
-  .time,
-  .category {
-    flex: 1 1 0; /* Allows items to grow and shrink, with a base of 0 */
-    max-width: 33.3%; /* Limits the maximum width to one-third of the parent */
-    height: 1.8rem; /* Consistent height (28.8px converted to rem) */
-    background-color: transparent;  /* Ensures transparent background */
-    
-    margin-block: 0px; /* Responsive vertical margin (0.1rem approx 1.6px) */
+.views,
+.time {
+  flex: 1;
+  min-width: 40%;
+  max-width: 50%;
+  height: 1.8rem;
+  background-color: transparent;
+  padding-inline: 0.2rem;
+  border-radius: 0.375rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
 
-  }
+.views {
+  background-color: violet;
+  justify-content: flex-start;
+  gap: 0.5rem;
+}
 
+.time {
+  background-color: seagreen;
+  justify-content: flex-end;
+}
 
-  /* Specific styling for the .views section */
-  .views {
-    background-color: violet; 
-    margin-inline-start: 0; /* Removes any left margin */
-    gap: var(--spacing-xxs); /* Responsive spacing between icon and text (5px converted to rem) */
-    justify-content: flex-start; /* Aligns content to the start (left) */
-    margin-left:0px;
-  }
-  
-  /* Specific styling for the .time section */
-  .time {
-    background-color: seagreen;
-    justify-content: flex-end; /* Aligns content to the end (right) */
-  }
+  /* Views Icon */
+  .views img {
+    width: clamp(1.5rem, 1.5vw, 1.5rem); /* Responsive width for icons, scaling between 18px and 30px */
+    height: clamp(1.5rem, 1.5vw, 1.5rem); /* Responsive height for icons, maintaining aspect ratio */}
+
+/* Optional: Ensure icons/text scale nicely */
+.views span,
+.time span {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-dark-alt);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dark-mode .views span,
+.dark-mode .time span {
+  color: var(--color-text-light-alt);
+}
 
 
 
@@ -2820,6 +2843,8 @@ margin: 0 auto;
 }
 
 
+
+
 .sidebar
 {
   background-color: var(--color-bg-light); /* Default background color for light mode */
@@ -2879,6 +2904,9 @@ margin: 0 auto;
 /* Large Desktops / High-Resolution Screens (e.g., 1280px - 1599px) */
 /* For larger monitors or dual-monitor setups */
 @media (min-width: 1280px) and (max-width: 1599px) {
+
+
+
   .caption span {
     font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
     font-weight: 700;

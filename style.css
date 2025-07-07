@@ -272,7 +272,7 @@ body::-webkit-scrollbar-thumb {
 
   /* Appearance & Spacing */
   background-color: var(--color-bg-light); /* Default background color for light mode */
-  box-shadow: var(--shadow-md); /* Subtle shadow for depth */
+ 
   padding-inline-start: 0; /* Ensures no left padding pushes content initially */
   /* margin-inline: auto; is redundant here as width is 100% and position is fixed */
 }
@@ -971,7 +971,7 @@ opacity: 1;
 
   /* Sizing & Appearance */
   height: var(--category-pill-height); /* Fixed height (30px) for the pill */
-  background-color: var(--color-bg-pill-light); /* Default background (Pale Grey) for light mode */
+  background-color: var(--color-bg-light); /* Default background color for light mode */
   border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
   
   /* Spacing & Positioning */
@@ -1022,10 +1022,11 @@ opacity: 1;
 /* These styles define the visual feedback for hovering over and selecting a category pill in light mode. */
 .rectanglee:hover {
   background-color: grey; /* Hover background (Gray) */
+
 }
 
 .rectanglee:hover span {
-  color: var(--color-text-pill-hover-light); /* Text color on hover (White) */
+  color:black;
 }
 
 /* Active Style (Light Mode) - MODIFIED */
@@ -1166,7 +1167,7 @@ opacity: 1;
   /* Positioning */
   position: absolute; /* Positions the grid relative to its parent, often <body> or a main wrapper */
   width: calc(100% - 4.9%); /* Occupies the remaining width after considering the sidebar and gap */
-  top: 6.7rem;        /* Positions the grid below the header and suggestions bar */
+  top: 6rem;        /* Positions the grid below the header and suggestions bar */
   left: 4.8%;         /* Aligns it to the right of the sidebar, maintaining a consistent gap */
   z-index: var(--z-index-content); /* Ensures it's layered correctly below header/sidebar */
 
@@ -2904,6 +2905,9 @@ margin: 0 auto;
 /* Large Desktops / High-Resolution Screens (e.g., 1280px - 1599px) */
 /* For larger monitors or dual-monitor setups */
 @media (min-width: 1280px) and (max-width: 1599px) {
+
+
+
   .caption span {
     font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
     font-weight: 700;
