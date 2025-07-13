@@ -2336,14 +2336,14 @@ margin: 0 auto;
 
 .upload-overlay
 {
-margin: 9rem auto 0 auto; /* ✅ Margin-top now works */
+background-color: darkcyan;
 }
 
 .upload-container
 {
     max-width: 900px;
   min-height: 700px;
-  max-height: 700px;
+  max-height: 750px;
   overflow-y: auto;
   overflow-x: hidden;
 }

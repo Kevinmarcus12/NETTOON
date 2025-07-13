@@ -4408,7 +4408,7 @@ margin: 0 auto;
   { 
     max-width: 100%; height: auto; 
     margin-top: 60px;
-    background-color: transparent;
+    background-color: gray;
   width: 100%;
   max-width: 100%;
   flex-shrink:0;
@@ -4417,6 +4417,7 @@ margin: 0 auto;
 .containerr
 {
   background-color: transparent;
+  border-style: ridge;
 }
 
 
@@ -4443,14 +4444,16 @@ margin: 0 auto;
 .container-2
 {
   background-color: transparent;
-  max-height: 775px;
+  min-height: 780px;
+  max-height: 800px;
+  border-style: ridge;
 }
 
 .card
 {
-  background-color: transparent;
+  background-color: pink;
   max-height: 300px;
-  margin: 5px 0 15px 15px; /* Maintain original positioning */
+  margin: 5px 0 15px 13px; /* Maintain original positioning */
 }
 
 .pichaa {
@@ -4498,7 +4501,7 @@ margin: 0 auto;
 
 .container-3
 {
-  background-color: transparent;
+  background-color: fuchsia;
   height: auto;
   padding: 0px;
 }
@@ -4507,15 +4510,15 @@ margin: 0 auto;
 {
   position: absolute;
 width: 100%;
-height: 30px;
-background-color: transparent;
+height: 40px;
+background-color: salmon;
   z-index: 3;
 }
 
 .channel {
 
   height: 100%; /* Fully inherit from container-3 */
-  background-color: transparent;
+  background-color: forestgreen;
   margin: 0 auto;
   margin-top: 1.9rem; /* 50px */
   margin-bottom: 0px;
@@ -4523,8 +4526,9 @@ background-color: transparent;
 
 .channel img
 {
-  margin-right: 3%;
+  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
 }
+
 
 .profile
 {
@@ -4545,31 +4549,31 @@ background-color: transparent;
 {
   padding-bottom: 0rem;
 padding: 0px;
-background-color: transparent;
+background-color:aqua;
 }
 
 .series 
 {
-margin-top: 1.7rem;
+margin-top: 3rem;
   min-width: 30%;
   max-width: 35%;
-  margin-bottom: 0px;
+  margin-bottom: 1rem;
 }
 
 
 
   .container-1
   {
-    background-color: transparent;
+    background-color:rebeccapurple;
   gap: 1.5rem;
   width:100%; 
   }
 
   .kontainer
   {
-    background-color: transparent;
+    background-color:pink;
     width: clamp(28%, 37%, 32%);
-margin-left: 6px;
+  margin-left: 5px;
   }
 
 /* Caption Text */
@@ -4616,6 +4620,5 @@ margin-left: 6px;
   .navbar { background: #1f1f1f; }
   /* etc. */
 }
-
 
 

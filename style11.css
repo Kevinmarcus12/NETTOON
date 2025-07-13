@@ -1261,8 +1261,8 @@ margin: 0 auto;
 .login-container {
     width: 100%;
     max-width: 800px;
-    margin:30px auto 0 auto; /* Top margin + horizontal centering */
- height: 50vh;
+
+ height: 60vh;
   }
 
 

@@ -2746,7 +2746,7 @@ margin: 0 auto;
 
 .container
 {
-  background-color: brown;
+  background-color: peru;
 }
 
 .Table
@@ -2892,13 +2892,13 @@ margin: 0 auto;
 
 .comment-container {
 
-  top: 4rem;
+  top: 5rem;
   right: 7%; /* Position when shown */
   width: 37%;
-  max-width: 400px;
+  max-width: 450px;
   aspect-ratio: 9 / 16;
-  min-height: 90vh;
-  max-height: 95vh;
+  min-height: 85vh;
+  max-height: 85vh;
 
 }
 

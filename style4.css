@@ -3587,26 +3587,88 @@ margin-left: 8px;
 /* Ultra-wide (1600px and up) */
 @media (min-width: 1600px)
 { 
+  body {
+      font-size: 19px;
 .container
+{
+  background-color: darkcyan;
+}
+  
+
+.nav
 {
   background-color: transparent;
 }
 
+.overlay-text
+{
+   font-size: 1rem;
+}
+
+
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Notifications
+{
+  background-color: transparent;
+ width: 2vw;
+  height: 2vw;
+}
+
+.Account 
+{
+  background-color: transparent;
+  width: 2vw;
+  height: 2vw;
+}
+
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+
+.upload img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
   .container-2
   {
- background-color: transparent;
+ background-color: forestgreen;
   }
 
   .container-1
   {
-  gap: 3rem;
-  background-color: transparent;
+  gap: 1rem;
+  background-color: khaki;
   }
 
   .kontainer
   {
-    background-color: transparent;
-    width: clamp(28%, 35%, 30%);
+    background-color: darkcyan;
+    width: clamp(18%, 28%, 18%);
     margin-left: 1rem;
   }
 

@@ -2921,12 +2921,131 @@ margin: 0 auto;
 @media (min-width: 1600px) {
   body {
       font-size: 19px;
-  }
-  .main-layout {
-      max-width: 1920px; /* Maximize content width for ultra-wide */
-  }
-  .main-content {
-      grid-template-columns: repeat(6, 1fr); /* Even more columns, optimized for Browse */
-  }
-  /* Special layouts or higher resolution assets */
+.container
+{
+  background-color: darkcyan;
 }
+  
+
+.nav
+{
+  background-color: transparent;
+}
+
+.overlay-text
+{
+   font-size: 1.5rem;
+}
+
+
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Notifications
+{
+  background-color: transparent;
+ width: 2vw;
+  height: 2vw;
+}
+
+.Account 
+{
+  background-color: transparent;
+  width: 2vw;
+  height: 2vw;
+}
+
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+
+.upload img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
+.suggestionss
+{
+   top: 5.1%; /* Vertically positioned below the header (adjust variable as needed) */
+    /* Dynamic left positioning and width based on sidebar or main content area */
+    left: 0%; /* Example: 4.8% or specific width of sidebar + gap */
+    width:100%; /* Example: calc(100% - 4.9%) */
+  gap:2px;
+    z-index: 5;
+  overflow-y: hidden;
+  overflow-x: hidden;
+  background-color: sienna;
+}
+
+
+.sidebar
+{
+  background-color: var(--color-bg-light); /* Default background color for light mode */
+   width: 11%; 
+   z-index: -1;
+}
+
+.sidebar:hover {
+  width: 0%; /* Expands slightly on hover for better UX */
+}
+
+.home
+{
+  margin-left: 5px;
+}
+
+  .container-1
+  {
+    background-color:grey;
+  gap: 0.8rem;
+  width: calc(100% - 11.2%); /* Occupies the remaining width after considering the sidebar and gap */
+  top: 6.1rem;        /* Positions the grid below the header and suggestions bar */
+  left: 11%; 
+  }
+  
+  .kontainer
+  {
+    background-color: darkkhaki;
+    width: clamp(28%, 37%, 32%);
+    margin-inline-start:10px; /* Maintains your specified left margin for precise grid alignment */
+  margin-block-end: 1%; /* Consistent bottom margin (8px) for vertical spacing */
+  }
+  
+  
+  .videoo {
+    width: 100%;
+    height: auto;
+  }
+  
+  .videoo video {
+    width: 100%;
+    height: 17rem; /* 200px */
+  
+  }
+  
+
+
+
+}}

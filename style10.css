@@ -279,7 +279,6 @@ body::-webkit-scrollbar-thumb {
 /* Dark Mode adjustment for the main header container */
 .dark-mode .container {
   background-color: var(--color-dark-mode-bg-primary); /* Darker background for dark mode */
-  box-shadow: var(--shadow-dark-md); /* More pronounced shadow in dark mode */
 }
 
 
@@ -1582,9 +1581,37 @@ h2
 
 /* Ultra-wide (1600px and up) */
 @media (min-width: 1600px) {
-  .layout { grid-template-columns: 300px 5fr 3fr; }
-  .header, .footer { padding: 3rem 5rem; }
-  .video-player { width: auto; height: 900px; /* larger fixed height or aspect fit */ }
+.signup-container {
+  background-color: #F8F8FF; /* Ghost White */
+  z-index: 11;
+  width: 850px;
+  min-height: 700px;
+  max-height: 750px;
+
+
+  padding-bottom: 20px;
+}
+
+h2
+{
+  font-size: 1.5rem;
+}
+
+.reminder {
+  width: 50%;
+  height: 30px;  /* Vertically center the label */
+  background:violet;
+  margin: 60px auto 1rem auto; /* Top margin + horizontal centering */
+  gap: 30px;
+}
+
+.reminder label {
+  margin: 0; /* No need for auto margin if parent is flex-centered */
+  font-weight: 750;
+  color: black;
+}
+
+
 }
 
 /* Dark mode override */
