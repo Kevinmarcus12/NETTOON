@@ -1,0 +1,173 @@
+
+
+/* Mobile-first base styles */
+body {
+    font-size: clamp(0.95rem, 1vw, 1.125rem);
+    line-height: 1.6;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    color: #111;
+    scroll-behavior: smooth;
+  }
+  
+  .layout {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .navbar,
+  .sidebar,
+  .main-content,
+  .video-player {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+  
+  button, .button {
+    padding: 0.75rem 1.25rem;
+    min-width: 44px;
+    min-height: 44px;
+    font-size: 1rem;
+    border-radius: 0.5rem;
+  }
+  
+  
+  
+  @media (max-width: 480px) {
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      padding: 1rem;
+    }
+  
+    .sidebar {
+      display: none;
+    }
+  
+    .main-content {
+      padding: 1rem;
+      flex-direction: column;
+    }
+  
+    .video-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+  
+    .button, button {
+      width: 100%;
+      font-size: 1rem;
+    }
+  }
+  
+  
+  @media (min-width: 481px) and (max-width: 768px) {
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      padding: 1rem;
+    }
+  
+    .navbar {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  
+    .sidebar {
+      display: none;
+    }
+  
+    .video-player {
+      width: 100%;
+      aspect-ratio: 16 / 9;
+    }
+  }
+  
+  
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1.5rem;
+      padding: 1.5rem;
+    }
+  
+    .sidebar {
+      display: block;
+      background: #f5f5f5;
+      padding: 1rem;
+    }
+  
+    .video-player {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+  }
+  
+  
+  @media (min-width: 1025px) and (max-width: 1279px) {
+    .layout {
+      display: grid;
+      grid-template-columns: 220px 3fr 1.5fr;
+      gap: 2rem;
+      padding: 2rem;
+    }
+  
+    .sidebar {
+      display: block;
+    }
+  
+    .navbar {
+      padding: 1.5rem 2rem;
+    }
+  
+    .video-player {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  
+  
+  @media (min-width: 1280px) and (max-width: 1599px) {
+    .layout {
+      grid-template-columns: 260px 4fr 2fr;
+      padding: 2.5rem;
+    }
+  
+    .navbar, .sidebar, .main-content {
+      padding: 1.5rem;
+    }
+  
+    .video-player {
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+    }
+  }
+  
+  
+  @media (min-width: 1600px) {
+    .layout {
+      grid-template-columns: 300px 5fr 3fr;
+      padding: 3rem 4rem;
+      gap: 2.5rem;
+    }
+  
+    .header,
+    .footer {
+      padding: 3rem 6rem;
+    }
+  
+    .video-player {
+      width: 100%;
+      height: clamp(540px, 50vw, 900px);
+      border-radius: 1rem;
+    }
+  }
+  
+   

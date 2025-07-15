@@ -875,6 +875,7 @@ opacity: 1;
   margin-left:20px; /* Keeping original margin-left */
   flex-direction: column; /* Stack profile, caption, video, section vertically */
   flex-grow: 1; /* Allows it to take up available space in the .video-container row (on desktop) */
+  border-style:none;
 }
 
 /* Dark Mode for containerr */
@@ -888,7 +889,7 @@ opacity: 1;
   width: 100%;
   height: 2.7rem; /* Flexible height */
   max-width: 100%;
-  border-radius: 0.4375rem;
+  border-radius: 0;
   background-color:transparent;
   align-items: center;
   margin-top: 0px;
@@ -919,7 +920,7 @@ opacity: 1;
   min-width: 30%; /* Prevent excessive shrinking */
   max-width: 100%; /* Limit maximum width */
   height: 30px;
-  margin-left: 7rem;
+  margin-left: 6rem;
   margin-top:5px;
   background-color:transparent;
   border-radius: 0;
@@ -951,7 +952,7 @@ opacity: 1;
   position: relative;
   width: 100%;
   max-width: 100%;
-  max-height: 30px;
+  max-height: 35px;
   height: auto; /* Allow dynamic height */
   background-color:transparent;
   margin-top: 0px;
@@ -973,7 +974,7 @@ opacity: 1;
   overflow: hidden; /* Hide overflow */
   text-overflow: ellipsis; /* Add ellipsis if text overflows */
   max-width: 100%; /* Ensure text stays within bounds */
-  padding: 3px;
+  padding: 2px;
   margin: 0; /* Remove unnecessary margin */
 }
 /* No changes needed to your CSS for this fix. It's already correct. */

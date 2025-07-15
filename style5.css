@@ -819,7 +819,7 @@ opacity: 1;
 }/* 🔥 Overlay Background (Blurs Everything Behind) */
 .upload-overlay {
   position: fixed;
-  top: 1rem;
+  top: 1.5em;
   left: 0;
   width: 100vw;
   height: 100vh;

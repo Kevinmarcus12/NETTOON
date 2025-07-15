@@ -914,7 +914,7 @@ opacity: 1;
   min-width: 30%; /* Prevent excessive shrinking */
   max-width: 100%; /* Limit maximum width */
   height: 30px;
-  margin-left: 7rem;
+  margin-left: 6rem;
   margin-top:5px;
   background-color:transparent;
   border-radius: 0;
