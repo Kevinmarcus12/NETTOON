@@ -1064,6 +1064,7 @@ opacity: 1;
   position: relative; /* For potential absolute overlays on the video itself */
   width: 100%;
   max-width: 500px;
+  cursor: pointer;
   aspect-ratio: 9 / 16;
   max-height: calc(100% - var(--spacing-xxl)); /* Adjusted: Subtracts less (64px) to make video taller and start higher */
   border-radius: var(--border-radius-lg); /* Modern rounded corners */
@@ -1076,10 +1077,11 @@ opacity: 1;
 .short-video video {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Fills the container, cropping as needed */
+  object-fit:cover; /* Fills the container, cropping as needed */
   border-radius: inherit; /* Inherit border-radius from parent .short-video */
   display: block;
-  pointer-events: none; /* Allows clicks to pass through to the .short-video container for custom controls */
+  pointer-events:all; /* Allows clicks to pass through to the .short-video container for custom controls */
+  cursor: pointer;
 }
 
 .profile {
@@ -1266,8 +1268,8 @@ opacity: 1;
 .metadata {
   position: absolute; /* Positions relative to the .shorts container */
   top: 24vh; /* Positions from the top of the viewport */
-  right: 18vw; /* Positions from the right of the viewport */
-  width: 5vw; /* Scales width with viewport */
+  right: 19.5vw; /* Positions from the right of the viewport */
+  width: 4vw; /* Scales width with viewport */
   /* Recommendation: Consider max-width or a rem-based width for better control on extreme screen sizes,
      e.g., max-width: 80px; width: clamp(50px, 5vw, 80px); to prevent buttons from becoming too small or too large. */
   
@@ -1276,7 +1278,7 @@ opacity: 1;
   justify-content: flex-start;
   align-items: center; /* Centers buttons horizontally within this container */
   
-  background-color: transparent; /* No background for the container itself */
+  background-color:transparent; /* No background for the container itself */
   border-radius: var(--border-radius-custom-md); /* Using your 12px variable */
   gap: var(--spacing-md); /* Spacing between the engagement buttons */
   padding: 0;
@@ -1429,7 +1431,7 @@ opacity: 1;
 
 /* Move the metadata container to the left when comments are shown */
 .shorts.show-comments .metadata {
-  margin-right: 46%; /* Pushes the metadata container further left by this amount */
+  margin-right: 48%; /* Pushes the metadata container further left by this amount */
   right: 10px; /* Also adjusts its absolute 'right' position */
 }
 

@@ -2261,7 +2261,7 @@ body {
 /* Caption (title) */
 .caption {
   height: 2rem;
-  background-color: fuchsia;
+  background-color: beige;
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
