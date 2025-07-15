@@ -182,6 +182,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   });
 
+
+  
+
   
 
   document.getElementById('submitCommentBtn').addEventListener('click', function () {
@@ -390,3 +393,60 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
+
+  
+let userInteracted = false;
+
+// Unlock autoplay with sound on first user interaction
+window.addEventListener('click', () => {
+  userInteracted = true;
+}, { once: true });
+
+document.querySelectorAll('.kontainer').forEach(kontainer => {
+  const video = kontainer.querySelector('video');
+  let hoverTimeout;
+  let lastTime = 0;
+
+  // Hover starts playback with optional sound
+  kontainer.addEventListener('mouseenter', () => {
+    hoverTimeout = setTimeout(() => {
+      video.currentTime = lastTime;
+
+      if (userInteracted) {
+        video.muted = false; // Sound ON after user click
+      } else {
+        video.muted = true;  // Fallback silent autoplay
+      }
+
+      video.play();
+    }, 300); // Add delay like YouTube
+  });
+
+  // Hover out: pause and reset to poster
+  kontainer.addEventListener('mouseleave', () => {
+    clearTimeout(hoverTimeout);
+    lastTime = video.currentTime;
+    video.pause();
+    video.load(); // Reset to show poster
+  });
+
+  // Optional: toggle mute state on video click
+  video.addEventListener('click', () => {
+    video.muted = !video.muted;
+  });
+});
+
+
+
+const option = document.querySelector('.option');
+const popup = document.querySelector('.option-popup');
+
+option.addEventListener('click', (e) => {
+  e.stopPropagation(); // Prevent click bubbling
+  popup.classList.toggle('hidden');
+});
+
+// Hide when clicking outside
+document.addEventListener('click', () => {
+  popup.classList.add('hidden');
+});

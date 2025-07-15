@@ -1108,6 +1108,7 @@ img {
 /* These override the general 'flex: 1.5' to give them more space. */
 .viewss {
   flex: 1.5; 
+  margin-left: 0.5rem;
 }
 
 .follow {
@@ -1152,6 +1153,78 @@ img {
   text-align: center; /* Centers the text */
   margin: 0; /* Removes default margins */
 }
+
+
+.option {
+  position: relative;
+  background-color: saddlebrown;
+  margin-right: 0.5rem;
+}
+
+.option-popup {
+  position: absolute;
+  bottom: 100%;
+  right: 0;
+  margin-bottom: 0.5rem;
+  background-color: #333;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  padding: 0.5rem;
+  min-width: 155px;
+
+  display: flex;           /* Make children display in a row */
+  flex-direction: column;     /* Default, but explicit */
+  flex-wrap: nowrap;       /* Prevents children from wrapping */
+  gap: 0.5rem;             /* Space between Share and Download */
+}
+
+
+/* Base style */
+.option-popup .popup-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  width: 100%;
+  padding: 0.2rem 0.2rem;
+  font-size: 0.9rem;
+  color: #111;
+  cursor: pointer;
+  white-space: nowrap;
+  background-color: white; 
+  border-radius: 0.4rem;
+  transition: background-color 0.2s;
+}
+
+/* Light/dark image size and style */
+.option-popup .popup-item img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  transition: filter 0.3s;
+}
+
+/* Dark mode styling */
+.dark-mode .option-popup .popup-item {
+  background-color: #333;
+  color: white;
+}
+
+.dark-mode .option-popup .popup-item img {
+  filter: invert(1) brightness(1.2);
+}
+
+/* Hover effect */
+.option-popup .popup-item:hover {
+  background-color: grey;
+  color: white;
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
 
 /* Dark mode for label text */
 body.dark-mode .viewss span,
@@ -4075,7 +4148,7 @@ border-style:ridge;
 .container-2
 {
   background-color: violet;
-  max-height: 415px;
+  max-height: 412px;
   gap:8px;
   float: none; 
   border-style: none; 

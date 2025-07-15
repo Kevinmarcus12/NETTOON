@@ -2783,6 +2783,7 @@ margin: 0 auto;
 .overlay-text
 {
   font-size: 1.2rem;
+  margin-left: 0.25rem;
 }
 
 
@@ -2834,6 +2835,18 @@ margin: 0 auto;
 margin: 0 auto;
 }
 
+.dropdown-content a {
+  padding: 4px 6px;
+}
+
+/* Profile Section */
+.proofile {
+  width: 100%;
+  min-height: 1.875em; /* 30px */
+  padding: 0.25em; /* 10px */
+
+}
+
 .suggestionss
 {
   gap:10px;
@@ -2841,9 +2854,6 @@ margin: 0 auto;
   overflow-x: hidden;
   background-color: transparent;
 }
-
-
-
 
 .sidebar
 {
@@ -2871,7 +2881,7 @@ margin: 0 auto;
   {
     background-color: pink;
     width: clamp(28%, 37%, 32%);
-    margin-inline-start:0.75%; /* Maintains your specified left margin for precise grid alignment */
+    margin-inline-start:0.77%; /* Maintains your specified left margin for precise grid alignment */
   }
   
 .caption
