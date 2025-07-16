@@ -1500,6 +1500,8 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
   gap:2px;
 }
 
+
+
 /* Hover state for all icon containers */
 .viewss:hover,
 .commentss:hover,

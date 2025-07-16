@@ -151,3 +151,27 @@ document.addEventListener("DOMContentLoaded", () => {
     defaultContainer.style.display = "flex";
   }
 });
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".opttions").forEach(opt => {
+    const popup = opt.querySelector(".opttions-popup");
+
+    opt.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      // Close others
+      document.querySelectorAll(".opttions-popup").forEach(p => {
+        if (p !== popup) p.classList.add("hidden");
+      });
+
+      popup.classList.toggle("hidden");
+    });
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".opttions-popup").forEach(p => p.classList.add("hidden"));
+  });
+});

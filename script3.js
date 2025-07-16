@@ -433,3 +433,45 @@ option.addEventListener('click', (e) => {
 document.addEventListener('click', () => {
   popup.classList.add('hidden');
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".sidebarr").forEach(sidebar => {
+    const popup = sidebar.querySelector(".sidebarr-popup");
+
+    sidebar.addEventListener("click", (e) => {
+      e.stopPropagation();
+      document.querySelectorAll(".sidebarr-popup").forEach(p => {
+        if (p !== popup) p.classList.add("hidden");
+      });
+      popup.classList.toggle("hidden");
+    });
+  });
+
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".sidebarr-popup").forEach(p => p.classList.add("hidden"));
+  });
+});
+
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelectorAll(".opttions").forEach(opt => {
+    const popup = opt.querySelector(".opttions-popup");
+
+    opt.addEventListener("click", (e) => {
+      e.stopPropagation();
+
+      // Close others
+      document.querySelectorAll(".opttions-popup").forEach(p => {
+        if (p !== popup) p.classList.add("hidden");
+      });
+
+      popup.classList.toggle("hidden");
+    });
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".opttions-popup").forEach(p => p.classList.add("hidden"));
+  });
+});

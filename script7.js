@@ -274,3 +274,73 @@ document.querySelectorAll('.shorts').forEach(shortsContainer => {
         // If you still want a play overlay on pause, you'd integrate logic similar to the main player.
     });
 });
+
+
+  // Toggle share popup
+  document.querySelectorAll('.share-icon').forEach(icon => {
+    icon.addEventListener('click', function (e) {
+      e.stopPropagation();
+      const popup = this.parentElement.querySelector('.share-popup');
+      popup.classList.toggle('hidden');
+    });
+  });
+
+  // Hide share popup when clicking outside
+  document.addEventListener('click', function () {
+    document.querySelectorAll('.share-popup').forEach(p => p.classList.add('hidden'));
+  });
+
+  // Copy share link
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const input = this.previousElementSibling;
+      input.select();
+      document.execCommand('copy');
+      this.textContent = "Copied!";
+      setTimeout(() => this.textContent = "Copy", 1500);
+    });
+  });
+
+
+
+
+document.querySelectorAll('.options').forEach(option => {
+  const popup = option.querySelector('.metadata-popup');
+
+  option.addEventListener('click', (e) => {
+    e.stopPropagation(); // Prevent click bubbling
+    popup.classList.toggle('hidden');
+
+    // Close other open popups
+    document.querySelectorAll('.metadata-popup').forEach(p => {
+      if (p !== popup) p.classList.add('hidden');
+    });
+  });
+});
+
+// Close all popups when clicking outside
+document.addEventListener('click', () => {
+  document.querySelectorAll('.metadata-popup').forEach(p => {
+    p.classList.add('hidden');
+  });
+});
+
+
+
+ // Toggle the shareee popup
+ document.querySelectorAll('.shareee').forEach(shareee => {
+  const icon = shareee.querySelector('.reply-icon');
+  const popup = shareee.querySelector('.shareee-popup');
+
+  icon.addEventListener('click', (e) => {
+    e.stopPropagation();
+    popup.classList.toggle('hidden');
+  });
+});
+
+// Close all shareee popups when clicking outside
+document.addEventListener('click', () => {
+  document.querySelectorAll('.shareee-popup').forEach(popup => {
+    popup.classList.add('hidden');
+  });
+});
