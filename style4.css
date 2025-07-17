@@ -2138,7 +2138,119 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
   .profilee-name span {
     font-size: 0.875rem;
   }
-}/* ==== CAPTION CONTAINER (.caption) ==== */
+}
+
+.opttions {
+  position: relative;
+  background-color:transparent;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.opttions img {
+  width: 15px;
+  height: 15px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+
+/* === Popup Styling === */
+.opttions-popup {
+  position: absolute;
+  top: 0;
+  right: -1%;
+  transform: translate(-5% /* Center horizontally, float above */);
+  background-color: #333;
+  border: 1px solid #ccc;
+  border-radius: 0.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 5000;
+  padding: 0.1rem 0.5rem;
+  min-width: 150px;
+  padding-bottom: 0px;
+}
+
+.opttions-popup .popup-item {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.1rem 0.1rem;
+  margin-top: 3px;
+  margin-bottom: 5px;
+  font-size: 0.9rem;
+  color: #111;
+  background-color: white;
+  border-radius: 0.4rem;
+  white-space: nowrap;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
+}
+
+.opttions-popup .popup-item:hover {
+  background-color: grey;
+  color: white;
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .opttions-popup .popup-item:hover {
+  background-color: grey;
+  color: white;
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* === Icon Styling === */
+.opttions-popup .popup-item img {
+  width: 1.3rem;
+  height: 1.3rem;
+  object-fit: contain;
+  transition: filter 0.3s;
+}
+
+/* === Dark Mode === */
+.dark-mode .opttions-popup  {
+  background-color: #333;
+  color: white;
+}
+
+
+/* === Dark Mode === */
+.dark-mode .opttions-popup .popup-item {
+  background-color: #333;
+  color: white;
+}
+
+.dark-mode .opttions-popup .popup-item img {
+  filter: invert(1) brightness(1.2);
+}
+
+.hidden {
+  display: none !important;
+}
+
+/* Reset unwanted icon housing styles */
+.opttions-popup .popup-item img,
+.shareee-popup .popup-item img,
+.metadata-popup .popup-item img,
+.optionn-popup .popup-item img,
+.share-popup .popup-item img {
+  width: 1.3rem;
+  height: 1.3rem;
+  object-fit: contain;
+  background: none !important;  /* Remove any background */
+  border: none !important;      /* Remove border */
+  padding: 0 !important;        /* Remove internal spacing */
+  border-radius: 0 !important;  /* Remove circular shape */
+  box-shadow: none !important;  /* Remove glow/shadow */
+}
+
+
+
+
+
+/* ==== CAPTION CONTAINER (.caption) ==== */
 /* This container holds the video title or description within a video card. */
 .caption {
   /* Sizing & Layout */

@@ -2004,8 +2004,8 @@ z-index: 0;
 .shareee-popup {
   position: absolute;
   bottom: 120%;
-  right: 1%;
-  transform: translateX(-1%);
+  left: -1%;
+  transform: translate(-80% /* Center horizontally, float above */);
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 0.5rem;

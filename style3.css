@@ -2790,15 +2790,16 @@ justify-content: space-between;
 .opttions-popup {
   position: absolute;
   top: 0;
- left: 30%;
-  transform: translate(-50% /* Center horizontally, float above */);
-  background-color: white;
+  right: -1%;
+  transform: translate(-5% /* Center horizontally, float above */);
+  background-color: #333;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   z-index: 5000;
-  padding: 0.5rem 0;
-  min-width: 145px;
+  padding: 0.1rem 0.5rem;
+  min-width: 150px;
+  padding-bottom: 0px;
 }
 
 .opttions-popup .popup-item {
@@ -2806,7 +2807,7 @@ justify-content: space-between;
   align-items: center;
   gap: 0.4rem;
   padding: 0.1rem 0.1rem;
-  margin-top: 0px;
+  margin-top: 3px;
   margin-bottom: 5px;
   font-size: 0.9rem;
   color: #111;
@@ -2819,7 +2820,14 @@ justify-content: space-between;
 .opttions-popup .popup-item:hover {
   background-color: grey;
   color: white;
-  transform: scale(1.05);
+  transform: scale(1.03);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .opttions-popup .popup-item:hover {
+  background-color: grey;
+  color: white;
+  transform: scale(1.03);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -2830,6 +2838,13 @@ justify-content: space-between;
   object-fit: contain;
   transition: filter 0.3s;
 }
+
+/* === Dark Mode === */
+.dark-mode .opttions-popup  {
+  background-color: #333;
+  color: white;
+}
+
 
 /* === Dark Mode === */
 .dark-mode .opttions-popup .popup-item {
@@ -2860,6 +2875,7 @@ justify-content: space-between;
   border-radius: 0 !important;  /* Remove circular shape */
   box-shadow: none !important;  /* Remove glow/shadow */
 }
+
 
 /* ==== CAPTION CONTAINER (.caption) ==== */
 /* This container holds the video title or description within a video card. */
