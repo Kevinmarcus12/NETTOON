@@ -2139,7 +2139,6 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
     font-size: 0.875rem;
   }
 }
-
 .opttions {
   position: relative;
   background-color:transparent;
@@ -2162,7 +2161,7 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
   top: 0;
   right: -1%;
   transform: translate(-5% /* Center horizontally, float above */);
-  background-color: #333;
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -2172,33 +2171,35 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
   padding-bottom: 0px;
 }
 
+.dark-mode .opttions-popup
+{
+  background-color: #333;
+}
+
 .opttions-popup .popup-item {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.1rem 0.1rem;
+  padding: 0rem 0rem;
   margin-top: 3px;
   margin-bottom: 5px;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   color: #111;
   background-color: white;
   border-radius: 0.4rem;
   white-space: nowrap;
   transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-
 .opttions-popup .popup-item:hover {
   background-color: grey;
   color: white;
-  transform: scale(1.03);
+  transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .opttions-popup .popup-item:hover {
   background-color: grey;
-  color: white;
-  transform: scale(1.03);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
 }
 
 /* === Icon Styling === */
@@ -2208,13 +2209,6 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
   object-fit: contain;
   transition: filter 0.3s;
 }
-
-/* === Dark Mode === */
-.dark-mode .opttions-popup  {
-  background-color: #333;
-  color: white;
-}
-
 
 /* === Dark Mode === */
 .dark-mode .opttions-popup .popup-item {
@@ -2245,6 +2239,7 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
   border-radius: 0 !important;  /* Remove circular shape */
   box-shadow: none !important;  /* Remove glow/shadow */
 }
+
 
 
 

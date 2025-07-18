@@ -1165,20 +1165,23 @@ img {
   bottom: 100%;
   right: 0;
   margin-bottom: 0.5rem;
-  background-color: #333;
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 50;
   padding: 0.5rem;
   min-width: 155px;
-
   display: flex;           /* Make children display in a row */
   flex-direction: column;     /* Default, but explicit */
   flex-wrap: nowrap;       /* Prevents children from wrapping */
   gap: 0.5rem;             /* Space between Share and Download */
 }
 
+.dark-mode .option-popup
+{
+  background-color: #333;
+}
 
 /* Base style */
 .option-popup .popup-item {
@@ -1187,7 +1190,7 @@ img {
   gap: 0.4rem;
   width: 100%;
   padding: 0.2rem 0.2rem;
-  font-size: 0.9rem;
+  font-size: 0.75rem;
   color: #111;
   cursor: pointer;
   white-space: nowrap;
@@ -2792,7 +2795,7 @@ justify-content: space-between;
   top: 0;
   right: -1%;
   transform: translate(-5% /* Center horizontally, float above */);
-  background-color: #333;
+  background-color: white;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
@@ -2802,33 +2805,35 @@ justify-content: space-between;
   padding-bottom: 0px;
 }
 
+.dark-mode .opttions-popup
+{
+  background-color: #333;
+}
+
 .opttions-popup .popup-item {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.1rem 0.1rem;
+  padding: 0rem 0rem;
   margin-top: 3px;
   margin-bottom: 5px;
-  font-size: 0.9rem;
+  font-size: 0.7rem;
   color: #111;
   background-color: white;
   border-radius: 0.4rem;
   white-space: nowrap;
   transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
-
 .opttions-popup .popup-item:hover {
   background-color: grey;
   color: white;
-  transform: scale(1.03);
+  transform: scale(1.05);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .opttions-popup .popup-item:hover {
   background-color: grey;
-  color: white;
-  transform: scale(1.03);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+
 }
 
 /* === Icon Styling === */
@@ -2838,13 +2843,6 @@ justify-content: space-between;
   object-fit: contain;
   transition: filter 0.3s;
 }
-
-/* === Dark Mode === */
-.dark-mode .opttions-popup  {
-  background-color: #333;
-  color: white;
-}
-
 
 /* === Dark Mode === */
 .dark-mode .opttions-popup .popup-item {
@@ -2875,7 +2873,6 @@ justify-content: space-between;
   border-radius: 0 !important;  /* Remove circular shape */
   box-shadow: none !important;  /* Remove glow/shadow */
 }
-
 
 /* ==== CAPTION CONTAINER (.caption) ==== */
 /* This container holds the video title or description within a video card. */

@@ -473,3 +473,19 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".opttions-popup").forEach(p => p.classList.add("hidden"));
   });
 });
+
+
+document.addEventListener("DOMContentLoaded", function () {
+  const trigger = document.getElementById("popupTrigger");
+  const menu = document.getElementById("popupMenu");
+
+  document.addEventListener("click", function (event) {
+    // If click is inside the trigger, toggle popup
+    if (trigger.contains(event.target)) {
+      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
+    } else {
+      // If click is outside, close the popup
+      menu.style.display = "none";
+    }
+  });
+});

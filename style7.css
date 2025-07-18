@@ -1412,7 +1412,7 @@ opacity: 1;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 999;
-  padding: 0.1rem 0.2rem;
+  padding: 0.5rem 0.5rem ;
   min-width: 140px;
 }
 
@@ -1423,7 +1423,7 @@ opacity: 1;
   gap: 0.4rem;
   width: 100%;
   max-width: 100%;
-  padding: 0.2rem 0.2rem;
+  padding: 0.3rem;
   font-size: 0.9rem;
   color: #111;
   cursor: pointer;
@@ -1993,47 +1993,51 @@ z-index: 0;
 /* COMMENT INPUT AREA (.commentt)                                             */
 /* Container for the comment textarea and action buttons.                     */
 /* ========================================================================== */
+/* Container for share button */
 .shareee {
   position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  padding: 5px;
+  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
 }
 
+
+
+/* Pop-up container */
 .shareee-popup {
   position: absolute;
   bottom: 120%;
   left: -1%;
-  transform: translate(-80% /* Center horizontally, float above */);
+  transform: translate(-80%);
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.5rem ;
   min-width: 145px;
-  
 }
 
+/* Individual pop-up items */
 .shareee-popup .popup-item {
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.5rem 0.5rem;
+  padding: 0.3rem;
   font-size: 0.9rem;
   color: #111;
   cursor: pointer;
-  margin-top: 5px;
-  margin-bottom: 5px;
+  margin: 5px 0;
   white-space: nowrap;
   background-color: white;
   border-radius: 0.4rem;
-  transition: background-color 0.2s;
+  transition: background-color 0.2s, transform 0.2s, box-shadow 0.2s;
 }
 
-
-/* Light mode hover effect */
+/* Hover effects for light mode */
 .shareee-popup .popup-item:hover {
   background-color: grey;
   color: #000;
@@ -2041,30 +2045,29 @@ z-index: 0;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Dark mode background and text */
+/* Dark mode base styles */
 .dark-mode .shareee-popup {
   background-color: #333;
   color: white;
 }
 
-
-/* Dark mode background and text */
+/* Dark mode items */
 .dark-mode .shareee-popup .popup-item {
   background-color: #333;
   color: white;
 }
 
-/* Dark mode image filtering */
+/* Dark mode image icons */
 .dark-mode .shareee-popup .popup-item img {
-  filter: invert(1) brightness(1.2);
+  filter: invert(1) ;
 }
 
-/* Dark mode hover effect */
+/* Hover effect in dark mode */
 .dark-mode .shareee-popup .popup-item:hover {
   background-color: #555;
   color: white;
   transform: scale(1.05);
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+
 }
 
 
