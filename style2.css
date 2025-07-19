@@ -1668,6 +1668,12 @@ padding-bottom: 20px;
   cursor: pointer;
 }
 
+.dark-mode .optionss  img {
+filter: invert(1);
+}
+
+
+
 .popup-options {
   position: absolute;
   top: 120%;
