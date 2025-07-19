@@ -475,17 +475,31 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  const trigger = document.getElementById("popupTrigger");
-  const menu = document.getElementById("popupMenu");
+document.addEventListener("DOMContentLoaded", () => {
+  const triggers = document.querySelectorAll(".popupTrigger");
 
-  document.addEventListener("click", function (event) {
-    // If click is inside the trigger, toggle popup
-    if (trigger.contains(event.target)) {
-      menu.style.display = menu.style.display === "flex" ? "none" : "flex";
-    } else {
-      // If click is outside, close the popup
-      menu.style.display = "none";
-    }
+  triggers.forEach(trigger => {
+    trigger.addEventListener("click", function (e) {
+      e.stopPropagation();
+
+      const currentPopup = this.nextElementSibling;
+
+      // Hide all other popups
+      document.querySelectorAll(".popupMenu").forEach(menu => {
+        if (menu !== currentPopup) {
+          menu.classList.remove("show");
+        }
+      });
+
+      // Toggle current one
+      currentPopup.classList.toggle("show");
+    });
+  });
+
+  // Close all popups when clicking outside
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".popupMenu").forEach(menu => {
+      menu.classList.remove("show");
+    });
   });
 });
