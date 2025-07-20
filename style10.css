@@ -1573,9 +1573,16 @@ h2
 
 /* Large desktops (1280px–1599px) */
 @media (min-width: 1280px) and (max-width: 1599px) {
+
+  .container
+
+{
+  background-color: darkblue;
+}
+
 .signup-container
 {
-  margin: 7vh auto 1vh auto; /* Top: 5vh | Bottom: 1vh | Centered horizontally */
+  margin: 9.5vh auto 1vh auto; /* Top: 5vh | Bottom: 1vh | Centered horizontally */
 }
 }
 
