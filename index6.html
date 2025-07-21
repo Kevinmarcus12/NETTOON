@@ -115,7 +115,8 @@
             <h3>Series Title</h3>
             <input type="text" placeholder="Enter Series title">
           </div>
-        
+  
+          
           <div class="Description">
             <h3>Series Description</h3>
             <textarea placeholder="Enter Series description (Optional)"></textarea>
@@ -135,11 +136,24 @@
         <div class="preview-container" id="previewContainer">
 
         </div>
+
+        <div class="Episodess">
         
         <div class="title">
           <h3>Episode Title</h3>
           <input type="text" placeholder="Enter Episode title">
         </div>
+
+        <label for="episodeSelect">Select Episode Number:</label>
+        <select id="episodeSelect" name="episodeNumber" class="episode-dropdown">
+          <option value="">-- Episode Number --</option>
+          <option value="1"> 1</option>
+          <option value="2"> 2</option>
+          <option value="3"> 3</option>
+          <option value="4"> 4</option>
+          <option value="5"> 5</option>
+          <!-- Add more episodes as needed -->
+        </select>
       
         <div class="Description">
           <h3>Episode Description</h3>
@@ -148,7 +162,7 @@
 
       <h3>Add Episode Video and Preview Thumbnail</h3>
 
-      <div class="uploads">
+      <div class="uploadss">
           <!-- Video Upload -->
           <div class="video">
               <img src="upload (2).png" alt="Click to upload video" class="upload-poster">
@@ -163,11 +177,23 @@
       </div>
       
       <!-- Preview Container -->
-      <div class="Episode preview-container">
+      <div class="preview-container" id="previewContainer">
 
       </div>
 
-        
+    </div>
+
+      <div class="Episodes">
+<div class="Add">
+   <span>Add Episode</span>
+</div>
+<div class="delete">
+    <span>delete Episode</span>
+ </div>
+
+      </div>  
+
+
             <!-- Upper Section -->
             <div class="upper-container">
                 <div class="metadata-group">
@@ -297,6 +323,14 @@
                             <option value="flashing-lights">Flashing Lights/Strobe Effects (Photosensitivity)</option>
                             <option value="addiction-detailed">Detailed Addiction/Substance Abuse</option>
                             <option value="gore-mutilation">Gore/Mutilation</option>
+                            <option value="none">None (Safe for All)</option>
+                            <option value="mild-violence">Mild Violence</option>
+                            <option value="strong-violence">Strong Violence</option>
+                            <option value="horror-elements">Horror Elements</option>
+                            <option value="explicit-language">Explicit Language</option>
+                            <option value="mature-themes">Mature Themes</option>
+                            <option value="sexual-content">Sexual Content</option>
+                            <option value="substance-abuse">Substance Abuse</option>
                             <option value="discrimination-explicit">Explicit Discrimination/Hate Speech (Racism, Sexism, etc.)</option>
                             <option value="other">Other (Please specify in description)</option>
                         </select>
@@ -306,20 +340,7 @@
                         </div>
                     </div>
             
-                
-                <div class="metadata-group">
-                    <label for="content-warning">Content Warnings</label>
-                    <select id="content-warning">
-                        <option value="none">None (Safe for All)</option>
-                        <option value="mild-violence">Mild Violence</option>
-                        <option value="strong-violence">Strong Violence</option>
-                        <option value="horror-elements">Horror Elements</option>
-                        <option value="explicit-language">Explicit Language</option>
-                        <option value="mature-themes">Mature Themes</option>
-                        <option value="sexual-content">Sexual Content</option>
-                        <option value="substance-abuse">Substance Abuse</option>
-                    </select>
-                </div>
+
                 
                 <div class="metadata-group">
                     <label for="rating">Age Rating</label>

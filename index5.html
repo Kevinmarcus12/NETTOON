@@ -243,33 +243,49 @@
                         <input type="text" id="tagInput" placeholder="e.g., Anime, Superhero, Kenya">
                     </div>
                 </div>
+             
                 <div class="metadata-group">
-                    <label for="audience">Target Audience</label>
-                    <select id="audience">
-                        <option value="all">All Audiences (General Content)</option>
-                        <option value="kids">Kids (3-12) – Safe & Educational</option>
-                        <option value="teens">Teens (13-17) – Teen-Focused Content</option>
-                        <option value="young-adults">Young Adults (18-24) – Youth-Oriented Themes</option>
-                        <option value="adults">Adults (25+) – Mature Themes</option>
-                        <option value="family">Family-Friendly – Suitable for All</option>
-                        <option value="mature">Mature (18+) – Explicit Content</option>
-                        <option value="restricted">Restricted (21+) – Heavy Themes & Graphic Content</option>
+                    <label for="content-rating">Content Rating</label>
+                    <select id="content-rating">
+                        <option value="" disabled selected>Select a content rating</option>
+                        <option value="G">G - General Audience (Suitable for all ages)</option>
+                        <option value="PG">PG - Parental Guidance (Some material may not be suitable for young children)</option>
+                        <option value="PG-7">PG-7 - Parental Guidance Recommended (Content suitable for ages 7+, with adult guidance)</option>
+                        <option value="PG-13">PG-13 - Parental Guidance Recommended (Content suitable for ages 13+, with adult guidance)</option>
+                        <option value="PG-16">PG-16 - Parental Guidance Recommended (Content suitable for ages 16+, with adult guidance)</option>
+                        <option value="R">R - Restricted (Content suitable for ages 18+ only)</option>
                     </select>
-                </div>
                 
-                <div class="metadata-group">
-                    <label for="content-warning">Content Warnings</label>
-                    <select id="content-warning">
-                        <option value="none">None (Safe for All)</option>
-                        <option value="mild-violence">Mild Violence</option>
-                        <option value="strong-violence">Strong Violence</option>
-                        <option value="horror-elements">Horror Elements</option>
-                        <option value="explicit-language">Explicit Language</option>
-                        <option value="mature-themes">Mature Themes</option>
-                        <option value="sexual-content">Sexual Content</option>
-                        <option value="substance-abuse">Substance Abuse</option>
-                    </select>
-                </div>
+                    <div class="metadata-group">
+                        <label for="specific-content-warning">Specific Content Warning</label>
+                        <select id="specific-content-warning" name="specificContentWarning">
+                            <option value="" selected disabled>Select if applicable</option>
+                            <option value="none-additional">No additional specific warnings</option>
+                            <option value="graphic-violence-detailed">Graphic/Explicit Violence</option>
+                            <option value="sexual-assault">Sexual Assault/Non-Consensual Content</option>
+                            <option value="self-harm-suicide">Self-Harm/Suicide Themes</option>
+                            <option value="animal-cruelty">Animal Cruelty/Abuse</option>
+                            <option value="disturbing-imagery">Potentially Disturbing Imagery/Themes</option>
+                            <option value="flashing-lights">Flashing Lights/Strobe Effects (Photosensitivity)</option>
+                            <option value="addiction-detailed">Detailed Addiction/Substance Abuse</option>
+                            <option value="gore-mutilation">Gore/Mutilation</option>
+                            <option value="none">None (Safe for All)</option>
+                            <option value="mild-violence">Mild Violence</option>
+                            <option value="strong-violence">Strong Violence</option>
+                            <option value="horror-elements">Horror Elements</option>
+                            <option value="explicit-language">Explicit Language</option>
+                            <option value="mature-themes">Mature Themes</option>
+                            <option value="sexual-content">Sexual Content</option>
+                            <option value="substance-abuse">Substance Abuse</option>
+                            <option value="discrimination-explicit">Explicit Discrimination/Hate Speech (Racism, Sexism, etc.)</option>
+                            <option value="other">Other (Please specify in description)</option>
+                        </select>
+                        <div class="metadata-notes">
+                            <label for="content-rating">This section is for highly specific or potentially triggering warnings. These are distinct from general content ratings and descriptors.</p>
+                        If you select "Other," please provide details in your series/episode description or dedicated warning screen.</label>
+                        </div>
+                    </div>
+            
                 
                 <div class="metadata-group">
                     <label for="rating">Age Rating</label>
