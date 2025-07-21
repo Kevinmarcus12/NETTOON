@@ -970,7 +970,7 @@ opacity: 1;
 
   /* Sizing & Appearance */
   height: var(--category-pill-height); /* Fixed height (30px) for the pill */
-  background-color: var(--color-bg-light); /* Default background color for light mode */
+  background-color: var(--color-bg-metadata-light); /* **YouTube-inspired light gray background** */
   border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
   
   /* Spacing & Positioning */

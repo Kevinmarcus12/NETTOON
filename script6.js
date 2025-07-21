@@ -446,3 +446,14 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
   
+
+
+  const episodeSelect = document.getElementById("episodeSelect");
+  const maxEpisodes = 50;
+
+  for (let i = 1; i <= maxEpisodes; i++) {
+    const option = document.createElement("option");
+    option.value = i;
+    option.textContent = `Episode ${i}`;
+    episodeSelect.appendChild(option);
+  }

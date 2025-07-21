@@ -55,6 +55,9 @@ document.addEventListener("DOMContentLoaded", function() {
       lightIcon.addEventListener("click", toggleMode);
   }
 });
+
+
+
 document.querySelector(".account-dropdown").onclick = function(event) {
     event.preventDefault(); // Prevent the default anchor behavior
     var dropdown = document.getElementById("accountDropdown");
@@ -475,3 +478,4 @@ document.addEventListener("DOMContentLoaded", () => {
     document.querySelectorAll(".opttions-popup").forEach(p => p.classList.add("hidden"));
   });
 });
+

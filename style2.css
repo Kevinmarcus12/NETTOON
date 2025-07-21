@@ -3835,7 +3835,7 @@ max-width: clamp(25rem, 40vw, 45rem); /* Refined responsive width using clamp: e
 
 
 .container-1 {
-  background-color: grey;
+  background-color: transparent;
   gap: 0.6rem;
   justify-content: flex-start;
   margin: 0 auto;
@@ -3845,7 +3845,7 @@ max-width: clamp(25rem, 40vw, 45rem); /* Refined responsive width using clamp: e
 }
 
 .kontainer {
-  background-color:pink;
+  background-color: transparent;
   width: clamp(28%, 37%, 32%);
   margin-left: 5px;
   border-style: ridge;
@@ -4066,12 +4066,12 @@ max-width: clamp(25rem, 40vw, 45rem); /* Refined responsive width using clamp: e
   margin: 0 auto; /* 🔥 Centers the container */
   gap: 0.6rem;
   justify-content:flex-start; /* center items inside */
-  background-color: gray;
+  background-color: transparent;
 }
 
 .kontainer
 {
-  background-color:pink;
+  background-color: transparent;
   width: clamp(28%, 37%, 32%);
 margin-left: 5px;
 }
@@ -4107,11 +4107,6 @@ margin-left: 5px;
 /* Large desktops (1281px–1599px) */
 @media (min-width: 1281px) and (max-width: 1400px) {
  
-.container-1
-{
-  background-color: darkcyan;
-}
-
 
 }
 

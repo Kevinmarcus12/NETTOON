@@ -983,7 +983,7 @@ opacity: 1;
 
   /* Sizing & Appearance */
   height: var(--category-pill-height); /* Fixed height (30px) for the pill */
-  background-color: var(--color-bg-light); /* Default background color for light mode */
+  background-color: var(--color-bg-metadata-light); /* **YouTube-inspired light gray background** */
   border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
   
   /* Spacing & Positioning */
@@ -1191,7 +1191,7 @@ opacity: 1;
   justify-content: flex-start; /* Aligns video cards to the start (left) of the container */
   
   /* Appearance & Spacing */
-  background-color:transparent; /* Default background color for light mode */
+  background-color: var(--color-bg-light); /* Default background color for light mode */
   border-radius: var(--border-radius-none); /* No border radius, for a clean rectangular grid area */
   border-style: none; /* Applied a 'ridge' border style as per your original code.
                           Consider if a 'none' or a subtle 'solid' border from variables
