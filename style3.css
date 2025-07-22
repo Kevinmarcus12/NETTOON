@@ -4569,7 +4569,7 @@ border-style: none;
 {
   background-color: transparent;
   padding-bottom: 0px;
-  border-style: none; /* No border style */
+  border-style:none; 
 }
 
 .optionnn
@@ -4581,6 +4581,11 @@ border-style: none;
 {
   background-color: transparent;
 margin-bottom: 0.5rem;
+}
+
+.profile
+{  background-color: transparent;
+  margin-bottom: 1.1rem;
 }
 
 
@@ -4603,7 +4608,7 @@ background-color: transparent;
 
   background-color: transparent;
 gap: 1.7rem;
-border-style: none; /* No border style */
+border-style:none; 
 }
 
 .kontainer

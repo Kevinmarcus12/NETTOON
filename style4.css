@@ -1744,7 +1744,7 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
 .tab {
   border-radius: var(--border-radius-xs); /* Consistent small rounded corners (8px) */
   background-color: transparent; /* Transparent background by default */
-  color: var(--color-text-primary); /* Default text color for tabs in light mode */
+  color: black; /* Default text color for tabs in light mode */
   border-block-end: 3px solid black; /* Default transparent bottom border */
   border-block-start: 3px solid black; /* Default transparent top border */
   /* NO TRANSITIONS as per user request */
@@ -1777,8 +1777,13 @@ border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px
   }
   
   .tab.active-tab span {
-      color: white; /* Ensures text color matches active tab background */
+      color: black; /* Ensures text color matches active tab background */
   }
+
+  .dark-mode .tab.active-tab span {
+    color: white; /* Ensures text color matches active tab background */
+}
+
 }
 
 :root {
