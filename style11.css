@@ -1183,7 +1183,14 @@ margin: 0 auto;
   {
 background-color:grey;
   }
-    
+
+.login-container {
+    width: 100%;
+    max-width: 500px;
+    margin:100px auto 0 auto; /* Top margin + horizontal centering */
+  
+  }
+  
 }
 
 /* Ultra-wide (1600px and up) */
