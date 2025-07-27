@@ -137,62 +137,57 @@
 
         </div>
 
-        <div class="Episodess">
-        
-        <div class="title">
-          <h3>Episode Title</h3>
-          <input type="text" placeholder="Enter Episode title">
-        </div>
-
-        <label for="episodeSelect">Select Episode Number:</label>
-        <select id="episodeSelect" name="episodeNumber" class="episode-dropdown">
-          <option value="">-- Episode Number --</option>
-          <option value="1"> 1</option>
-          <option value="2"> 2</option>
-          <option value="3"> 3</option>
-          <option value="4"> 4</option>
-          <option value="5"> 5</option>
-          <!-- Add more episodes as needed -->
-        </select>
-      
-        <div class="Description">
-          <h3>Episode Description</h3>
-          <textarea placeholder="Enter Episode description (Optional)"></textarea>
-      </div>
-
-      <h3>Add Episode Video and Preview Thumbnail</h3>
-
-      <div class="uploadss">
-          <!-- Video Upload -->
-          <div class="video">
-              <img src="upload (2).png" alt="Click to upload video" class="upload-poster">
-              <input type="file" id="fileInputVideoMovies" class="file-input" accept="video/*" onchange="previewMovieVideo(event)">
+        <div id="episodesWrapper">
+            <div class="Episodess">
+              <div class="title">
+                <h3>Episode Title</h3>
+                <input type="text" placeholder="Enter Episode title">
+              </div>
+          
+              <label for="episodeSelect">Select Episode Number:</label>
+              <select name="episodeNumber" class="episode-dropdown">
+                <option value="">-- Episode Number --</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+              </select>
+          
+              <div class="Description">
+                <h3>Episode Description</h3>
+                <textarea placeholder="Enter Episode description (Optional)"></textarea>
+              </div>
+          
+              <h3>Add Episode Video and Preview Thumbnail</h3>
+              <div class="uploadss">
+                <div class="video">
+                  <img src="upload (2).png" alt="Click to upload video" class="upload-poster">
+                  <input type="file" class="file-input" accept="video/*">
+                </div>
+          
+                <div class="thumbnail">
+                  <img src="image-upload.png" alt="Click to upload thumbnail" class="upload-poster">
+                  <input type="file" class="file-input" accept="image/*">
+                </div>
+              </div>
+          
+              <div class="preview-container"></div>
+          
+              <!-- Delete button, hidden for first -->
+              <div class="delete" style="display: none;">
+                <span class="delete-btn">Delete Episode</span>
+              </div>
+            </div>
           </div>
-      
-          <!-- Thumbnail Upload -->
-          <div class="thumbnail">
-              <img src="image-upload.png" alt="Click to upload thumbnail" class="upload-poster">
-              <input type="file" id="fileInputThumbnailMovies" class="file-input" accept="image/*" onchange="previewMovieThumbnail(event)">
+          
+          <!-- Add Episode Button -->
+          <div class="Episodes">
+            <div class="Add">
+              <span id="addEpisodeBtn">Add Episode</span>
+            </div>
           </div>
-      </div>
-      
-      <!-- Preview Container -->
-      <div class="preview-container" id="previewContainer">
-
-      </div>
-
-    </div>
-
-      <div class="Episodes">
-<div class="Add">
-   <span>Add Episode</span>
-</div>
-<div class="delete">
-    <span>delete Episode</span>
- </div>
-
-      </div>  
-
+          
 
             <!-- Upper Section -->
             <div class="upper-container">

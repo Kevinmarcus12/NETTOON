@@ -475,6 +475,26 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+document.addEventListener("DOMContentLoaded", function () {
+  document.querySelectorAll(".sidebarr").forEach(sidebar => {
+    const popup = sidebar.querySelector(".sidebarr-popup");
+
+    sidebar.addEventListener("click", (e) => {
+      e.stopPropagation();
+      document.querySelectorAll(".sidebarr-popup").forEach(p => {
+        if (p !== popup) p.classList.add("hidden");
+      });
+      popup.classList.toggle("hidden");
+    });
+  });
+
+  document.addEventListener("click", () => {
+    document.querySelectorAll(".sidebarr-popup").forEach(p => p.classList.add("hidden"));
+  });
+});
+
+
+
 document.addEventListener("DOMContentLoaded", () => {
   const triggers = document.querySelectorAll(".popupTrigger");
 

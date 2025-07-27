@@ -457,3 +457,31 @@ document.addEventListener("DOMContentLoaded", function () {
     option.textContent = `Episode ${i}`;
     episodeSelect.appendChild(option);
   }
+
+
+
+  document.getElementById("addEpisodeBtn").addEventListener("click", function () {
+    const wrapper = document.getElementById("episodesWrapper");
+    const firstEpisode = wrapper.querySelector(".Episodess");
+    const clone = firstEpisode.cloneNode(true);
+
+    // Clear inputs in the clone
+    clone.querySelectorAll("input, textarea, select").forEach(input => {
+      if (input.type === "file") {
+        input.value = "";
+      } else {
+        input.value = "";
+      }
+    });
+
+    // Show the delete button in clone
+    const deleteBtn = clone.querySelector(".delete");
+    deleteBtn.style.display = "block";
+
+    // Add delete functionality
+    deleteBtn.querySelector(".delete-btn").addEventListener("click", () => {
+      clone.remove();
+    });
+
+    wrapper.appendChild(clone);
+  });

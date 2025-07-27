@@ -1179,18 +1179,12 @@ margin: 0 auto;
 
 /* Large desktops (1280px–1599px) */
 @media (min-width: 1280px) and (max-width: 1599px) {
-  .container
-  {
-background-color:grey;
-  }
+.login-container
+{
+  background-color: saddlebrown;
+  margin:150px auto 0 auto; /* Top margin + horizontal centering */
+}
 
-.login-container {
-    width: 100%;
-    max-width: 500px;
-    margin:100px auto 0 auto; /* Top margin + horizontal centering */
-  
-  }
-  
 }
 
 /* Ultra-wide (1600px and up) */
@@ -1198,17 +1192,17 @@ background-color:grey;
 
 .container
 {
-  background-color: brown;
+  background-color: var(--color-bg-light); /* Default background color for light mode */
 }
 
 .Table
 {
-  background-color: honeydew;
+  background-color: transparent;
 }
 
 .overlay-text
 {
-  background-color: navajowhite;
+  background-color: transparent;
   font-size: 1.5rem;
 }
 

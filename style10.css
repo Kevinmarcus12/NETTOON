@@ -1183,6 +1183,33 @@ input, select, textarea {
     background: blue;
 }
 
+.consent-wrapper
+{
+  background-color: saddlebrown;
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+gap: 5px;
+padding: auto;
+justify-content: flex-start;
+}
+
+.consent-item
+{
+  width: 50%;
+  background-color: seagreen;
+  justify-content: flex-start;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.consent-item label
+{
+  float: left;
+  margin-left: 0px;
+}
+
+
 .reminder {
   width: 50%;
   height: 30px;
@@ -1575,14 +1602,23 @@ h2
 @media (min-width: 1280px) and (max-width: 1599px) {
 .signup-container
 {
-  margin: 7vh auto 1vh auto; /* Top: 5vh | Bottom: 1vh | Centered horizontally */
+  margin: 7.5vh auto 0.5vh auto; /* Top: 5vh | Bottom: 1vh | Centered horizontally */
 }
+
+h2 {
+
+  padding: 2px 0; /* Adds some spacing inside */
+  font-size: 1.5rem;
+
+}
+
+
 }
 
 /* Ultra-wide (1600px and up) */
 @media (min-width: 1600px) {
 .signup-container {
-  background-color: #F8F8FF; /* Ghost White */
+  background-color: var(--color-bg-light); /* Default background color for light mode */
   z-index: 11;
   width: 850px;
   min-height: 700px;
@@ -1600,7 +1636,7 @@ h2
 .reminder {
   width: 50%;
   height: 30px;  /* Vertically center the label */
-  background:violet;
+  background:transparent;
   margin: 60px auto 1rem auto; /* Top margin + horizontal centering */
   gap: 30px;
 }

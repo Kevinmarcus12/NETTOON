@@ -11,7 +11,7 @@ html {
   scroll-behavior: smooth;
 
   /*
-   * Universal Box-Sizing Model:
+   * Universal Box-Sizing Model:   
    * Sets 'border-box' globally for predictable and intuitive box model calculations.
    * This ensures that padding and border are included within an element's specified width/height,
    * simplifying layout calculations significantly.
@@ -2742,7 +2742,7 @@ margin: 0 auto;
 
 .short-video {
 
-  max-width: 450px;
+  max-width: 400px;
   aspect-ratio: 9 / 16;
   max-height: 90vh;
 
@@ -2766,8 +2766,8 @@ margin: 0 auto;
 /* 🔷 Metadata Container */
 .metadata {
   position: absolute;
-
-  right: 18vw;
+top:20rem;
+  right: 22vw;
   width: 5vw;
 }
 
@@ -2777,7 +2777,7 @@ margin: 0 auto;
 }
 
 .shorts.show-comments .metadata {
-  margin-right: 43%;
+  margin-right: 50%;
   right: 10px;
 }
 
@@ -2788,9 +2788,9 @@ background-color: transparent;
   width: 37%;
   max-width: 400px;
   aspect-ratio: 9 / 16;
-  min-height: 90vh;
-  max-height: 90vh;
-
+  min-height: 75vh;
+  max-height: 80vh;
+top: 20%;
 }
 
 
@@ -2964,13 +2964,67 @@ margin: 0 auto;
 
 .profile
 {
-  bottom: 13%;
+  bottom: 15%;
 }
 /* Move the profile up when caption expands */
 .profile.shift-up {
-  margin-bottom: 0.5rem; /* ~15px, tweak to taste */
+  margin-bottom: 1.8rem; /* ~15px, tweak to taste */
 }
 
+/* 🔷 Shorts Container */
+.shorts-container {
+
+  width: calc(100% - 5.7%);
+  left: 5.6%;
+  gap: 1rem;
+  justify-content: center;
+  background-color: darkcyan;
+  border: 5px solid red; /* TEMP: remove in production */
+  margin: 0rem auto 0 0rem;
+
+}
+
+.short-video {
+
+  max-width: 420px;
+  aspect-ratio: 9 / 16;
+  max-height: 90vh;
+
+
+
+}
+
+/* 🔷 Metadata Container */
+.metadata {
+  background-color: saddlebrown;
+  position: absolute;
+  top: 30vh;
+  right: 25vw;
+  width: 5vw;
+  border-radius: 7px;
+}
+
+.comment-container {
+background-color: salmon;
+  top: 9rem;
+  right: 7%; /* Position when shown */
+  width: 37%;
+  max-width: 400px;
+  aspect-ratio: 9 / 16;
+  min-height: 80vh;
+  max-height: 85vh;
+
+}
+
+/* 👇 Move both to left when comments are shown */
+.shorts.show-comments .short-video {
+  margin-left: 100px;
+}
+
+.shorts.show-comments .metadata {
+  margin-right: 50%;
+  right: 10px;
+}
 
 }
 
@@ -2979,17 +3033,17 @@ margin: 0 auto;
 
 .container
 {
-  background-color: peru;
+  background-color: var(--color-bg-light); /* Default background color for light mode */
 }
 
 .Table
 {
-  background-color: honeydew;
+  background-color: transparent;
 }
 
 .overlay-text
 {
-  background-color: navajowhite;
+  background-color: transparent;
   font-size: 1.5rem;
 }
 
@@ -3052,7 +3106,7 @@ margin: 0 auto;
 
 .sidebar
 {
-  background-color: khaki;
+  background-color: transparent;
   width:10%; 
 }
 
@@ -3073,7 +3127,7 @@ margin: 0 auto;
 
 .scroll-area
 {
-  background-color:violet transparent;
+  background-color: transparent;
 }
 
 /* 🔷 Shorts Container */
@@ -3083,15 +3137,16 @@ margin: 0 auto;
   left: 10%;
   gap: 1rem;
   justify-content: center;
-  background-color: lawngreen;
+  background-color: transparent;
   border: 1px solid transparent; /* TEMP: remove in production */
   margin: 3.3rem auto 0 0rem;
-
+  border-style: ridge;
 }
 
 .shorts
 {
-  background-color: darkgreen;
+  background-color: transparent;
+  border-style: ridge;
 }
 
 .short-video {
@@ -3100,7 +3155,7 @@ margin: 0 auto;
   aspect-ratio: 9 / 16;
   max-height: 90vh;
   margin:5rem auto 0 35rem;
-
+  border-style: ridge;
 
 }
 
@@ -3121,6 +3176,7 @@ margin: 0 auto;
   top: 24vh;
   right: 32vw;
   width: 5vw;
+  border-style: ridge;
 }
 
 .comment-container {
@@ -3132,6 +3188,7 @@ margin: 0 auto;
   aspect-ratio: 9 / 16;
   min-height: 85vh;
   max-height: 85vh;
+  border-style: ridge;
 
 }
 

@@ -1315,9 +1315,12 @@ textarea {
   padding-bottom: 10px;
   background-color: darksalmon;
   border-style: ridge;
+  border: 1px solid #ccc;
   border-radius: 0.8rem;
   box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
 }
+
+
 
 /* 🌙 Dark Mode */
 .dark-mode .Episodess {
@@ -1379,7 +1382,7 @@ cursor: pointer;
 
 .delete
 {
-
+  display: none;
   width: 23%;
   height: 30px;
   background-color: saddlebrown;
@@ -1402,6 +1405,10 @@ cursor: pointer;
 {
   background-color: purple;
   color: white;
+}
+
+.preview-container:has(.preview-content) ~ .Episodess {
+  margin-top: 2rem;
 }
 
 
@@ -2437,17 +2444,17 @@ overflow-x: hidden;
   
 .container
 {
-  background-color: brown;
+  background-color: var(--color-bg-light); /* Default background color for light mode */
 }
 
 .Table
 {
-  background-color: honeydew;
+  background-color: transparent;
 }
 
 .overlay-text
 {
-  background-color: navajowhite;
+  background-color: transparent;
   font-size: 1rem;
 }
 
@@ -2510,7 +2517,7 @@ margin: 0 auto;
 
 .upload-overlay
 {
-background-color: darkcyan;
+background-color:transparent;
 }
 
 .upload-container

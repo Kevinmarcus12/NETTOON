@@ -2874,7 +2874,7 @@ margin: 0 auto;
 
   .container
   {
-    background-color: fuchsia; /* Default background color for light mode */
+    background-color: var(--color-bg-light); /* Default background color for light mode */
   }
 
 .nav
@@ -2937,16 +2937,32 @@ margin: 0 auto;
 margin: 0 auto;
 }
 
+.dropdown-content
+{
+  top: 100%;
+  right: 0.5%;
+  width: 24%;
+  min-width: 10em;
+  max-height: 20em;
+  padding: 2px 3px;
+}
+
+
 .dropdown-content a {
-  padding: 4px 6px;
+  padding: 2px 3px;
 }
 
 /* Profile Section */
 .proofile {
   width: 100%;
   min-height: 1.875em; /* 30px */
-  padding: 0.25em; /* 10px */
+  padding: 0.1em; /* 10px */
 
+}
+
+.proofile span
+{
+  font-size: 15px;
 }
 
 .suggestionss
@@ -2956,6 +2972,12 @@ margin: 0 auto;
   overflow-x: hidden;
   background-color: transparent;
 }
+
+.rectanglee span
+{
+  font-size: 0.7rem; /* Adjust for better fit */
+}
+
 
 .sidebar
 {
@@ -2974,30 +2996,47 @@ margin: 0 auto;
 
   .container-1
   {
-    background-color: grey;
+    background-color:transparent;
   gap: 0.5rem;
   margin: 0 auto; /* ✅ Centers the block */
   }
   
   .kontainer
   {
-    background-color: pink;
+    background-color:transparent;
     width: clamp(28%, 37%, 32%);
     margin-inline-start:0.77%; /* Maintains your specified left margin for precise grid alignment */
   }
   
-.caption
+  .profilee img
 {
-  height: 2rem;  /* Consistent height (30px) for single-line captions */
-  background-color: fuchsia;
+  width:1.9rem ;
+  height:1.9rem ;
+  margin-left: 5px;
 }
 
-  .caption span
+  .caption
   {
-    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
-    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
-    font-weight: 700; /* Bold font for prominence */
+    height: 1.5rem;  /* Consistent height (30px) for single-line captions */
+    background-color: fuchsia;
   }
+  
+    .caption span
+    {
+      font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+      font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+      font-weight: 700; /* Bold font for prominence */
+      margin-top: 5px;
+      margin-bottom: 0px;
+    }
+
+    .opttions img {
+      width: 17px;
+      height: 17px;
+      margin-top: 0px;
+     
+    }
+    
 
   .videoo {
     width: 100%;
@@ -3035,7 +3074,7 @@ margin: 0 auto;
       font-size: 19px;
 .container
 {
-  background-color: darkcyan;
+  background-color: var(--color-bg-light); /* Default background color for light mode */
 }
   
 
@@ -3108,7 +3147,6 @@ margin: 0 auto;
     z-index: 5;
   overflow-y: hidden;
   overflow-x: hidden;
-  background-color: gray;
 }
 
 
@@ -3130,7 +3168,7 @@ margin: 0 auto;
 
   .container-1
   {
-    background-color:grey;
+    background-color:transparent;
   gap: 0.8rem;
   width: calc(100% - 11.2%); /* Occupies the remaining width after considering the sidebar and gap */
   top: 6.1rem;        /* Positions the grid below the header and suggestions bar */
@@ -3139,7 +3177,7 @@ margin: 0 auto;
   
   .kontainer
   {
-    background-color: darkkhaki;
+    background-color:transparent;
     width: clamp(28%, 37%, 32%);
     margin-inline-start:10px; /* Maintains your specified left margin for precise grid alignment */
   margin-block-end: 1%; /* Consistent bottom margin (8px) for vertical spacing */

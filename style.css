@@ -2252,7 +2252,7 @@ body {
         .rectanglee {
           flex: 0 0 auto;             /* ✅ Prevent resize/shrink */
           min-width: fit-content;     /* Only as wide as needed */
-          padding: 0.3rem 0.75rem;
+          padding: 0.3rem 0.3rem;
           height: 2rem;
           background-color: var(--color-bg-pill-light);
           border-radius: 5px;
@@ -2373,10 +2373,18 @@ body {
   text-overflow: ellipsis;
 }
 
+.opttions img {
+  width: 17px;
+  height: 17px;
+  margin-top: 0px;
+ 
+}
+
+
 /* Caption (title) */
 .caption {
   height: 2rem;
-  background-color: beige;
+  background-color: transparent;
   display: flex;
   align-items: center;
   padding: 0 0.5rem;
@@ -2391,6 +2399,7 @@ body {
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
+  color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
 }
 
 /* Video Section */
@@ -2958,7 +2967,10 @@ margin: 0 auto;
   background-color: transparent;
 }
 
-
+.rectanglee span
+{
+  font-size: 0.7rem; /* Adjust for better fit */
+}
 
 
 .sidebar
@@ -2989,20 +3001,38 @@ margin: 0 auto;
     width: clamp(28%, 37%, 32%);
     margin-inline-start:0.75%; /* Maintains your specified left margin for precise grid alignment */
   }
-  
-.caption
+
+  .profilee img
 {
-  height: 2rem;  /* Consistent height (30px) for single-line captions */
-  background-color: fuchsia;
+  width:1.9rem ;
+  height:1.9rem ;
+  margin-left: 5px;
 }
 
-  .caption span
+  
+  .caption
   {
-    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
-    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
-    font-weight: 700; /* Bold font for prominence */
+    height: 1.5rem;  /* Consistent height (30px) for single-line captions */
+    background-color: fuchsia;
   }
+  
+    .caption span
+    {
+      font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+      font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+      font-weight: 700; /* Bold font for prominence */
+      margin-top: 5px;
+      margin-bottom: 0px;
+    }
 
+    .opttions img {
+      width: 17px;
+      height: 17px;
+      margin-top: 0px;
+     
+    }
+    
+  
   .videoo {
     width: 100%;
     height: auto;
@@ -3038,7 +3068,7 @@ margin: 0 auto;
       font-size: 19px;
 .container
 {
-  background-color: darkcyan;
+  background-color: var(--color-bg-light); /* Default background color for light mode */
 }
   
 
@@ -3111,7 +3141,8 @@ margin: 0 auto;
     z-index: 5;
   overflow-y: hidden;
   overflow-x: hidden;
-  background-color: sienna;
+  background-color: transparent;
+  border-style: ridge;
 }
 
 
@@ -3120,6 +3151,7 @@ margin: 0 auto;
   background-color: var(--color-bg-light); /* Default background color for light mode */
    width: 11%; 
    z-index: -1;
+     border-style: ridge;
 }
 
 .sidebar:hover {
@@ -3133,19 +3165,21 @@ margin: 0 auto;
 
   .container-1
   {
-    background-color:grey;
+    background-color: transparent;
   gap: 0.8rem;
   width: calc(100% - 11.2%); /* Occupies the remaining width after considering the sidebar and gap */
   top: 6.1rem;        /* Positions the grid below the header and suggestions bar */
   left: 11%; 
+  border-style: ridge;
   }
   
   .kontainer
   {
-    background-color: darkkhaki;
+    background-color: transparent;
     width: clamp(28%, 37%, 32%);
     margin-inline-start:10px; /* Maintains your specified left margin for precise grid alignment */
   margin-block-end: 1%; /* Consistent bottom margin (8px) for vertical spacing */
+  border-style: ridge;
   }
   
   

@@ -2263,17 +2263,17 @@ overflow-x: hidden;
   
 .container
 {
-  background-color: brown;
+  background-color:transparent;
 }
 
 .Table
 {
-  background-color: honeydew;
+  background-color:transparent;
 }
 
 .overlay-text
 {
-  background-color: navajowhite;
+  background-color:transparent;
   font-size: 1rem;
 }
 
@@ -2336,7 +2336,7 @@ margin: 0 auto;
 
 .upload-overlay
 {
-background-color: darkcyan;
+background-color:transparent;
 }
 
 .upload-container

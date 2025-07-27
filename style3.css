@@ -867,6 +867,7 @@ opacity: 1;
   box-shadow: var(--color-shadow); /* Subtle shadow for depth */
   border: none; /* No border style */
   display: flex;
+  border-style: none; /* No border style */
   margin-left:20px; /* Keeping original margin-left */
   flex-direction: column; /* Stack profile, caption, video, section vertically */
   flex-grow: 1; /* Allows it to take up available space in the .video-container row (on desktop) */
@@ -946,7 +947,7 @@ opacity: 1;
   position: relative;
   width: 100%;
   max-width: 100%;
-  max-height: 30px;
+  max-height: 35px;
   height: auto; /* Allow dynamic height */
   background-color:transparent;
   margin-top: 0px;
@@ -968,7 +969,7 @@ opacity: 1;
   overflow: hidden; /* Hide overflow */
   text-overflow: ellipsis; /* Add ellipsis if text overflows */
   max-width: 100%; /* Ensure text stays within bounds */
-  padding: 3px;
+  padding: 2px;
   margin: 0; /* Remove unnecessary margin */
 }
 /* No changes needed to your CSS for this fix. It's already correct. */
@@ -1107,7 +1108,7 @@ img {
 /* Specific flex adjustments for .viewss, .follow, and .timee */
 /* These override the general 'flex: 1.5' to give them more space. */
 .viewss {
-  flex: 1.5; 
+  flex: 1.8; 
   margin-left: 0.5rem;
 }
 
@@ -1116,7 +1117,7 @@ img {
 }
 
 .timee {
-  flex: 2.5;
+  flex: 2;
 }
 
 /* Responsive icon styling for all interactive elements */
@@ -1288,7 +1289,7 @@ body.dark-mode .follow span {
   
   /* Flexible and Responsive Sizing */
   flex-basis: 38%; /* Provides a base width, allowing it to grow or shrink */
-  max-width: clamp(20rem, 37vw, 40rem); /* Refined responsive width using clamp: ensures a min width (20rem), scales with viewport (37vw), and has a max width (40rem) for very large screens. This prevents distortion and ensures optimal use of space. */
+  max-width: clamp(22rem, 39vw, 42rem); /* Refined responsive width using clamp: ensures a min width (20rem), scales with viewport (37vw), and has a max width (40rem) for very large screens. This prevents distortion and ensures optimal use of space. */
   height: auto; /* Height adapts to content */
   max-height: 32.3rem; /* Set max height for scrollable content (555px converted to rem for consistency) */
   
@@ -1310,7 +1311,8 @@ body.dark-mode .follow span {
   flex-wrap: wrap; /* Allows child items to wrap to the next line within the container */
   flex-direction: row; /* Arranges items in rows (horizontally) initially */
   justify-content: flex-start; /* Aligns content to the start of the flex container */
-  border-style: none;; /* No border style */
+  
+  border-style: none; /* No border style */
   z-index: 2; /* Ensures it's layered correctly on the page */
 
   /* Custom Scrollbar Styling (Webkit Browsers - Chrome, Safari) */
@@ -1348,79 +1350,178 @@ body.dark-mode .follow span {
 /* This likely serves as a sticky header or option bar within a scrolling container. */
 .optionn {
   width: 100%; /* Ensures it spans the full width of its parent */
-  height: 1.875rem; /* Consistent height (30px converted to rem) */
-  
+  height: 1.875rem; /* Consistent height (30px converted to rem) *
   background-color:#F5F5F5; /* Uses a variable for a pale gray background in light mode */
-  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
+  border-radius: var(--border-radius-md); /* Consistent smooth rounded edges using a variable */
   border: none; /* Removes any default border */
-  
    z-index: 1;
   position: sticky; /* Keeps the element visible at the top when scrolling */
   top: 0; /* Sticks it to the top edge of its scroll container */
-  
   display: flex; /* Uses flexbox for precise alignment of inner elements */
   justify-content: space-between; /* Distributes space to align items to both ends (e.g., left and right) */
   align-items: center; /* Vertically centers content within the option bar */
-  padding: 0 var(--spacing-md); /* Responsive inner padding (15px converted to rem) */
 
+margin-bottom: 5px;
+padding-top: 20px;
+background-color: #F5F5F5;
+padding-bottom: 20px;
 }
 
-/* Dark mode adjustments for .optionn */
-.dark-mode .optionn {
-  background-color: var(--color-bg-dark-card); /* Darker background for dark mode */
+
+/* Make sure all items inside optionn are evenly distributed */
+.All, .Playlist, .Sci-fi, .WatchMojo, .Watch {
+  flex-grow: 2; /* Allows elements to expand */
+  min-width:10%; /* Prevents elements from shrinking too much */
+  height: 30px;
+  background-color: #F5F5F5; /* Pale Grey */
+  margin: 5px; /* Reduce spacing to fit items in one row */
+  border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  cursor: pointer;
 }
 
-/* ==== LABEL STYLING WITHIN .optionn ==== */
-.optionn span {
-  font-family: var(--font-family-primary); /* Ensures a consistent, high-quality font */
-  font-weight: 700; /* Bold font for prominence and readability */
+/* Light mode hover */
+.All:hover,
+.Playlist:hover,
+.Sci-fi:hover,
+.WatchMojo:hover,
+.Watch:hover {
+  background-color: gray;
+}
+
+.All:hover span,
+.Playlist:hover span,
+.Sci-fi:hover span,
+.WatchMojo:hover span,
+.Watch:hover span {
+  color: white; /* change text color too */
+}
+
+/* Dark mode hover */
+.dark-mode .All:hover,
+.dark-mode .Playlist:hover,
+.dark-mode .Sci-fi:hover,
+.dark-mode .WatchMojo:hover,
+.dark-mode .Watch:hover {
+  background-color: #4a4b4d;
+}
+
+.dark-mode .All:hover span,
+.dark-mode .Playlist:hover span,
+.dark-mode .Sci-fi:hover span,
+.dark-mode .WatchMojo:hover span,
+.dark-mode .Watch:hover span {
+  color: white; /* contrast for dark background */
+}
+
+/* Label Styling */
+.All span, .Playlist span, .Sci-fi span, .WatchMojo span, .Watch span {
+  flex-grow: 1.5;
+  font-weight: bold;
   color: #333333;
-  
-  /* Text truncation for long labels */
-  text-overflow: ellipsis; /* Adds "..." if text overflows */
-  white-space: nowrap; /* Prevents text from wrapping to the next line */
-  overflow: hidden; /* Hides any text that overflows its container */
-  
-  max-width: 100%; /* Ensures text doesn't push parent width */
-  display: flex; /* Uses flexbox for potential inner icon/text alignment */
-  align-items: center; /* Vertically centers content */
-  justify-content: center; /* Horizontally centers content */
-
-  transition: color var(--transition-speed) var(--transition-ease); /* Smooth transition for dark mode */
+  text-align: center;
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.9rem; /* Adjust for better fit */
+  cursor: pointer;
 }
 
-/* Dark mode adjustments for .optionn span */
-.dark-mode .optionn span {
-  color: var(--color-text-light); /* Lighter text color for dark mode */
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .optionn {
+    height: 40px; /* Reduce height */
+    padding: 0;
+  }
+
+  .All, .Playlist, .Sci-fi, .WatchMojo, .Watch {
+    min-width: 60px; /* Allow smaller elements */
+    font-size: 0.8rem; /* Reduce font size */
+    height: 25px;
+    margin: 3px;
+  }
 }
 
-/* ==== SCROLLER CONTAINER (.scroller) ==== */
-/* This container holds items that will be scrolled. */
-.scroller {
-  position: relative; /* Allows positioning of child elements */
-  width: 100%; /* Spans the full width of its parent */
-  height: 100%; /* Takes full height of its parent, enabling scrolling if parent has max-height */
-  
-  padding: 0; /* No inner padding */
-  margin-block-end: 0; /* No bottom margin */
-  margin-block-start: 0; /* No top margin */
-  border-radius: 0; /* No border-radius */
-  gap:  15px 15px; /* 5px vertically, 10px horizontally */
-  background-color: transparent; /* No background */
-  
-  display: flex; /* Uses flexbox for arranging child items */
-  flex-wrap: wrap; /* Allows child items to wrap to the next line */
-
-  
-  justify-content: flex-start; /* Aligns content to the start (left) */
+/* Reset default .All appearance in dark mode */
+ .All {
+  background-color: #F5F5F5;
 }
+
+ .All span {
+  color: #333333;
+}
+
+/* Keep the correct active tab styles */
+ .optionn .active {
+  background-color: black;
+}
+
+ .optionn .active span {
+  color: white;
+}
+
+
+/* Reset default .All appearance in dark mode */
+.dark-mode .All {
+  background-color: #2a2d2f;
+}
+
+.dark-mode .All span {
+  color: white;
+}
+
+/* Keep the correct active tab styles */
+.dark-mode .optionn .active {
+  background-color: white;
+}
+
+.dark-mode .optionn .active span {
+  color: black;
+}
+
+.video-group {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin-bottom: 0px;
+  border-radius: 0rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap:  5px 5px; /* 5px vertically, 10px horizontally */
+  margin-top: 0px;
+  justify-content: flex-start;
+}
+
+.square1 {
+  background-color: transparent; /* light gray-blue for All */
+}
+
+.square2 {
+  background-color: transparent; /* light gray-blue for All */
+}
+
+.square3 {
+  background-color: transparent; /* light gray-blue for All */
+}
+
+.square4 {
+  background-color: transparent; /* light gray-blue for All */
+}
+
+
 
 .card {
   position: relative; /* Allows for absolute positioning of child elements (e.g., badges, overlays) */
   width: 30%; /* Maintains your specified width, which acts as a base in a flex container */
   max-height: 14.375rem; /* Sets a maximum height (230px converted to rem) to control card size */
-  
-  border-style: none;/* Ensures a clean, transparent background for the card */
+  background-color:transparent;
   /* flex: 0 1 47%; - This property is noted as "Keep original flex behavior". 
      However, 'flex-basis: 47%' is often used directly for initial sizing within a flex container. 
      The 'flex: 0 1 47%' shorthand means:
@@ -1429,13 +1530,12 @@ body.dark-mode .follow span {
      flex-basis: 47% (initial size)
      This is a valid and responsive flex property. */
   flex: 0 1 47%; 
-  
+  margin-left: 5px;
   border: none; /* Removes any default border */
-  border-style: none; /* Explicitly sets border style to none */
+  border-style:none; /* Explicitly sets border style to none */
   border-radius: 0.4375rem;
   
   /* Margins for spacing the cards */
-  margin: 33px 0 15px 10px; /* Maintain original positioning */
   
   cursor: pointer; /* Indicates that the card is interactive and clickable */
   z-index: 0; /* Controls stacking order, typically handled by parent for overall layout */
@@ -1452,39 +1552,204 @@ body.dark-mode .follow span {
 }
 /* Special styling for the very first card */
 .card:first-of-type {
-  background-color: var(--color-special-card-light); /* Uses a variable for the pink background in light mode */
+  background-color:transparent; /* Uses a variable for the pink background in light mode */
   /* If this card should stand out, consider adding a subtle border or different shadow */
 }
 
-/* Dark mode adjustments for the first card specifically */
-.dark-mode .card:nth-child(1) { /* nth-child(1) targets the first card, same as first-of-type here */
-  background-color: var(--color-dark-mode-bg-secondary); /* Darker background for cards in dark mode */
-  border: 0.1px solid transparent; /* Keeps your specified subtle border. If meant as a highlight, consider a specific color variable here. */
+
+/* Dark Mode for containerr */
+.dark-mode .card:nth-child(1) {
+  background-color: var(--color-bg-dark-card); /* Darker card background */
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.4);
+  border: 0.1px solid transparent;
   border-radius: var(--border-radius-md); /* Ensures consistent rounding using a variable */
 }
 
-/* ==== CAPTION CONTAINER (.captiion) ==== */
-/* This container holds the video title/caption within a card. */
-.captiion {
-  width: 100%; /* Ensures it takes the full width of its parent card */
-  height: auto; /* Height adjusts dynamically based on its content */
-  background-color: transparent; /* Maintains a clean, transparent background */
-  
-  display: flex; /* Uses flexbox for precise alignment of the caption text */
-  align-items: center; /* Vertically centers the text within this container */
-  justify-content: center; /* Horizontally centers the text within this container */
-  
-  overflow: hidden; /* Ensures that any overflowing content (like long text) is hidden */
-  flex: 1; /* Allows this element to grow and shrink within a flex parent */
-  margin: 0; /* Removes any default or unnecessary outer margins */
-  padding: var(--spacing-xxs) 0; /* Responsive vertical padding (5px converted to rem), no horizontal padding */
-
-  /* Consider adding a min-height if you want a consistent height for single-line captions,
-     even if they are short, for better visual consistency in a grid layout. */
+.card img {
+  display: block; /* Prevents line-height space under image */
 }
 
-/* ==== CAPTION TEXT LABEL (.captiion span) ==== */
-/* Styles for the actual text content of the caption. */
+.card::after,
+.card::before {
+  content: none;
+  display: none;
+}
+
+
+
+/* Profile container */
+.profille {
+  display:none;
+  width: 99%;
+  height: auto;
+  background-color: transparent;
+  margin-bottom: 0px;
+  border-radius: 7px;
+  align-items: center; /* Ensure proper alignment */
+  padding: 1px 1px;
+  gap: 8px; /* Adds space between image and text */
+}
+
+/* Profile Image */
+.profille-image img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0; /* Prevent shrinking */
+  margin-top: 3px;
+}
+
+.dark-mode .profille-image img
+{
+  filter: invert(1);
+}
+
+
+/* Profile Name */
+.profille-name {
+  background-color: transparent;
+  flex-grow: 1; /* Allow text to take available space */
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 7px;
+  padding-left: 5px;
+}
+
+/* Profile Name Label */
+.profille-name span {
+  color: #36454F;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15.5px;
+  flex-shrink: 1;
+  max-width: 100%;
+  padding: 3px;
+}
+
+.optionss
+{
+  background-color: transparent;
+}
+
+.optionss {
+  position: relative;
+  background-color:transparent;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.optionss  img {
+  width: 15px;
+  height: 15px;
+  margin-top: 1px;
+  cursor: pointer;
+}
+
+.dark-mode .optionss  img {
+filter: invert(1);
+}
+
+
+
+.popup-options {
+  position: absolute;
+  top: 120%;
+  right: 0;
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0px 4px 16px rgba(0, 0, 0, 0.1);
+  padding: 0.5rem 0.5rem;
+  display: none;
+  min-width: 150px;
+  z-index: 100;
+  flex-direction: column;
+}
+
+
+.dark-mode .popup-options
+{
+  background-color: #333;
+}
+
+
+.popup-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0.2rem 0.2rem;
+  font-size: 0.75rem;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  white-space: nowrap;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  border-radius: 0.4rem;
+}
+
+.popup-item:hover {
+  background-color: #f2f2f2;
+}
+
+.popup-item img {
+  width: 1.5rem;
+  height: 1.5rem;
+  object-fit: contain;
+  transition: filter 0.3s;
+}
+
+/* Dark mode styling */
+.dark-mode .optionss  .popup-item {
+  background-color: #333;
+  color: white;
+}
+
+
+
+/* Hover effect */
+.optionss  .popup-item:hover {
+  background-color: grey;
+  color: white;
+  transform: scale(1.05);
+  cursor: pointer;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+
+
+.dark-mode .optionss  .popup-item img {
+  filter: invert(1) brightness(1.2);
+}
+
+
+
+.optionss:hover .popup-options {
+  display: flex;
+}
+
+
+.captiion {
+  width: 100%; /* Ensures full width inside the card */
+  height: auto; /* Adjusts based on content */
+  background-color: transparent;
+  display: flex;
+  align-items: center; /* Centers items vertically */
+  justify-content: center; /* Centers items horizontally */
+  overflow: hidden;
+  flex: 1; /* Expands to fill available space */
+  margin: 0; /* Removes unnecessary margins */
+  padding: 5px 0; /* Adds slight spacing without breaking alignment */
+}
+
+/* Caption Label */
 .captiion span {
   font-size: 15px;
   font-weight: bold;
@@ -1495,61 +1760,45 @@ body.dark-mode .follow span {
   text-overflow: ellipsis; /* Shows "..." when text is too long */
   max-width: 90%; /* Limits width to prevent overlap */
   padding: 4px 8px; /* Balanced padding */
-
-
 }
 
-/* Dark mode adjustments for .captiion span */
-.dark-mode .captiion span {
-  color: var(--color-text-light); /* Lighter text color for dark mode */
-}
-
-/* 📱 MOBILE ADJUSTMENTS */
+/* 📱 Mobile Adjustments */
 @media (max-width: 768px) {
-  .captiion span { /* CORRECTED: Changed from '.captiion label' to '.captiion span' to match your HTML and previous styling */
-    font-size: var(--font-size-sm); /* Slightly smaller font for mobile (14px converted to rem) */
-    padding: var(--spacing-xxxs) 0.375rem; /* Adjusted spacing for smaller screens (4px 6px converted to rem) */
-    max-width: 85%; /* Slightly reduces max-width to prevent overflow in tighter mobile spaces */
+  .captiion label {
+    font-size: 14px; /* Slightly smaller font for mobile */
+    padding: 4px 6px; /* Adjust spacing for smaller screens */
+    max-width: 85%; /* Prevents text overflow in tight spaces */
   }
 }
-/* ==== THUMBNAIL/VIDEO CONTAINER (.pichaa) ==== */
-/* This container likely holds a video thumbnail or a small video preview. */
+
 .pichaa {
-  width: 100%; /* Ensures it spans the full width of its parent */
-  height: 7.8125rem; /* Consistent height (125px converted to rem) */
-  
-  overflow: hidden; /* Clips any content (like video edges) that might exceed the border-radius */
-  border-radius: var(--border-radius-sm); /* Smooth rounded edges using a variable (7px approx 0.4375rem) */
-  
-  display: flex; /* Uses flexbox for precise alignment of inner elements */
-  align-items: center; /* Vertically centers content (e.g., video) */
-  justify-content: center; /* Horizontally centers content (e.g., video) */
-  
-  margin-block-start: var(--spacing-xxs); /* Responsive top margin (5px converted to rem) */
-  background-color: var(--color-bg-placeholder); /* Uses a variable for a fallback background color (gray) */
+  width: 100%;
+  height: 125px;
+  overflow: hidden;
+  border-radius: 7px;
+  display: flex; /* Ensures proper alignment */
+  align-items: center; /* Centers video */
+  justify-content: center;
+  margin-top: 0px;
+  background-color: black; /* Adds a fallback background for better contrast */
 }
 
-/* Dark mode adjustment for .pichaa */
-.dark-mode .pichaa {
-  background-color: var(--color-bg-placeholder-dark); /* Darker fallback background for dark mode */
-}
-
-/* ==== VIDEO ELEMENT INSIDE .pichaa ==== */
-/* Styles for the actual <video> tag within the .pichaa container. */
+/* Video inside .pichaa */
 .pichaa video {
-  width: 100%; /* Ensures the video fills the container's width */
-  height: 100%; /* Ensures the video fills the container's height */
-  object-fit: cover; /* **CRITICAL:** Ensures the video covers the entire area without stretching or distortion, cropping if necessary */
-  border-radius: 0.4375rem; /* 7px */
-  display: block; /* Removes any default inline-block spacing below the video element */
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures video fills the container without distortion */
+  border-radius: 7px;
+  transition: transform 0.3s ease-in-out; /* Smooth scaling on hover */
 }
 
-
+/* 📱 Mobile Optimization */
 @media (max-width: 768px) {
   .pichaa {
-    height: 6.25rem; /* Adjusted height for smaller screens (100px converted to rem) */
+    height: 100px; /* Adjusts height for smaller screens */
   }
 }
+
 
 /* ==== VIDEO OVERLAY TEXT (.overlay-texttt) ==== */
 /* This element likely displays information like video duration over a video thumbnail/player. */
@@ -1569,7 +1818,7 @@ body.dark-mode .follow span {
   
   /* Positioning within the parent */
   left: 2%; /* Positioned 2% from the left edge of its parent */
-  bottom: 20%; /* Positioned 24% from the bottom edge of its parent */
+  bottom: 15%; /* Positioned 24% from the bottom edge of its parent */
   
   border-radius: 0.4375rem;
   padding: 0.375rem var(--spacing-md); /* Responsive padding (6px 12px converted to rem) */
@@ -1586,48 +1835,38 @@ body.dark-mode .follow span {
 
 }
 
-/* Dark mode adjustments for .overlay-texttt */
-.dark-mode .overlay-texttt {
-  /* Often, overlays don't change color significantly in dark mode if they're already dark,
-     but you could define a separate var if needed: */
-  /* background-color: var(--color-overlay-dark-bg-dark-mode); */ 
-}
 
 
+/* 📱 Mobile Optimization */
 @media (max-width: 768px) {
   .overlay-texttt {
-    font-size: var(--font-size-xs); /* Smaller font size for mobile (12px converted to rem) */
-    padding: var(--spacing-xxxs) var(--spacing-xs); /* Adjusted padding for smaller screens (4px 8px converted to rem) */
-    min-width: 12%; /* Slightly increased min-width for mobile */
-    max-width: 25%; /* Slightly increased max-width for mobile */
-    bottom: 10%; /* Adjusted vertical position for mobile */
+    font-size: 12px;
+    padding: 4px 8px;
+    min-width: 12%;
+    max-width: 25%;
+    bottom: 10%;
   }
 }
+.sectiion {
+  position:relative;
+  width: 100%;
+  height: auto; /* Allow it to grow if needed */
+  background-color: transparent;  /* No background */
+  margin: 0px 0; /* Equal vertical margin for spacing */
+  border-radius: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0; /* Reset padding (was invalid before) */
+  box-sizing: border-box;
+  padding-bottom: 0px;
+}
 
+.sectiion span {
+  margin: 0;
+  padding: 0;
+}
 
-/* ==== MAIN SECTION CONTAINER (.sectiion) ==== */
-/* This container likely acts as a bar or header within your layout,
-   displaying elements like views and episode information. */
-   .sectiion {
-    width: 100%; /* Ensures it spans the full width of its parent */
-    height: auto; /* Allows its height to adjust based on its content */
-    
-    background-color: transparent; /* Uses a variable for the background color (maroon) */
-    margin-block: var(--spacing-xxxs); /* Responsive vertical margin (4px converted to rem) */
-    border-radius: 0.4375rem;
-    
-    display: flex; /* Enables a flexible, horizontal layout for its child elements */
-    justify-content: space-between; /* Distributes space to push items to the start and end */
-    align-items: center; /* Vertically centers the items within this section */
-    flex-wrap: nowrap; /* Ensures items stay in a single row, preventing wrapping */
-    padding: var(--spacing-xxxs) var(--spacing-xs); /* Responsive inner padding (2px 8px converted to rem) */
-  }
-  
-  /* Dark mode adjustment for .sectiion */
-  .dark-mode .sectiion {
-    background-color: var(--color-background-dark-primary); /* Darker background for dark mode */
-  }
-  
 
 
   /* 🟡 Views Section */
@@ -1636,10 +1875,8 @@ body.dark-mode .follow span {
     position: relative; /* Allows for absolute positioning of child elements within it */
     max-width: 41%; /* Controls the maximum width of the views section */
     height: 1.5625rem; /* Consistent height (25px converted to rem) */
-    margin-block: var(--spacing-xxxs); /* Responsive vertical margin (4px converted to rem) */
-    
-    background-color: transparent;/* No background for the section itself */
-    border-radius: 0.4375rem;
+    background-color: transparent;  /* No background */
+    border-radius: 0.5rem;
     
     display: flex; /* Uses flexbox to align the icon and text */
     align-items: center; /* Vertically centers the icon and text */
@@ -1692,17 +1929,17 @@ body.dark-mode .follow span {
   .dark-mode .viewsss span {
     color: var(--color-text-light-alt); /* Lighter text color for dark mode */
   }
-/* 🔴 Episode Section */
-/* This container displays episode information. */
-.Episode {
+
+/* Right: Time */
+.timmee {
   width: 50%; /* Sets the width of the episode section */
   max-width: 11.25rem; /* Explicit max-width (180px converted to rem) */
   height: 1.5625rem; /* Consistent height (25px converted to rem) */
   margin-block: var(--spacing-xxxs); /* Responsive vertical margin (4px converted to rem) */
   
-  background-color: transparent; /* No background */
-  border-radius: 0.4375rem;
-  
+  background-color: transparent;  /* No background */
+  border-radius: 0.5rem;
+    padding-bottom: 0px;
   font-size: var(--font-size-sm); /* Responsive font size (14px converted to rem) */
   
   display: flex; /* Uses flexbox to align content */
@@ -1716,8 +1953,7 @@ body.dark-mode .follow span {
   white-space: nowrap; /* Prevents text from wrapping */
 }
 
-/* Episode Text */
-.Episode span {
+.timmee span {
   margin: 0; /* Removes default margins */
   font-family: var(--font-family-primary); /* Consistent, high-quality font */
   font-weight: 500; /* Medium font weight */
@@ -1727,7 +1963,6 @@ body.dark-mode .follow span {
   align-items: center; /* Vertically centers text */
   justify-content: center; /* Horizontally centers text */
   text-align: center; /* Centers the text within its own space */
-  
   /* Text Truncation */
   overflow: hidden; /* Hides overflowing text */
   text-overflow: ellipsis; /* Displays "..." for truncated text */
@@ -1735,29 +1970,10 @@ body.dark-mode .follow span {
   max-width: 100%; /* Ensures text doesn't push parent width */
 
 }
-
-/* Dark Mode for Episode Text */
-.dark-mode .Episode span {
-  color: var(--color-text-light-alt); /* Lighter text color for dark mode */
+.timmee span {
+  margin: 0;
+  padding: 0;
 }
-@media (max-width: 768px) {
-  .viewsss,
-  .Episode {
-    width: 45%; /* Adjusts width for both sections on smaller screens */
-  }
-
-  .viewsss span,
-  .Episode span {
-    font-size: var(--font-size-xs); /* Smaller font size for mobile (12px converted to rem) */
-  }
-
-  .viewsss img {
-    width: 0.875rem; /* Fixed width for icons on mobile (14px converted to rem) */
-    height: 0.875rem; /* Fixed height for icons on mobile, maintaining aspect ratio */
-    margin-inline-end: 0.1875rem; /* Responsive right margin for icons (3px converted to rem) */
-  }
-}
-
 
 
 .comment-container {
@@ -1864,8 +2080,10 @@ background-color:transparent;
   background-color:transparent;
   border-radius: 7px;
   margin-top: 10px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
   overflow: hidden;
+  overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .commentt.display textarea {
@@ -2174,14 +2392,20 @@ font-size: 14px;
   position: absolute;
   bottom: 120%; /* Show above the icon */
 right: 0.5%;
-  transform: translateX(-50%);
+  transform: translateX(-1%);
   background-color: white;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   z-index: 999;
-  padding: 0.5rem 0;
+  padding: 0.3rem 0.3rem;
   min-width: 150px;
+}
+
+.dark-mode .sidebarr-popup
+{
+  background-color: #333;
+
 }
 
 /* Shared popup item styling */
@@ -2189,7 +2413,7 @@ right: 0.5%;
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  padding: 0.2rem 0.2rem;
+  padding: 0.1rem 0.1rem;
   margin-top: 5px;
   margin-bottom: 5px;
   font-size: 0.9rem;
@@ -2203,9 +2427,10 @@ right: 0.5%;
 /* Light mode hover */
 .sidebarr-popup .popup-item:hover {
   background-color: #e0e0e0;
-  transform: scale(0.5);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  color: #000;
+  color: white;
+  transform: scale(1.05);
+  cursor: pointer;
+
 }
 
 /* Dark mode */
@@ -2221,7 +2446,6 @@ right: 0.5%;
 /* Dark mode hover */
 .dark-mode .sidebarr-popup .popup-item:hover {
   background-color: #555;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
   color: white;
 }
@@ -2241,14 +2465,15 @@ right: 0.5%;
   flex-direction: row;
   align-items: center;
   justify-content: flex-start;
-  background-color: transparent;
+  background-color:transparent;
   border-radius: var(--border-radius-md);
-  border-style: ridge;
+  border-style: none;
   margin-top: 2rem;
   overflow-y: hidden;
   overflow-x: hidden;
   padding: 0; /* Important: no vertical spacing */
   overflow: hidden;
+  padding-bottom: 0px;
 }
    .optionnn {
     position: absolute; /* Positions the element precisely within its parent (.container-3) */
@@ -2257,7 +2482,7 @@ right: 0.5%;
     width: 100%; /* Spans the full width of its parent */
     height: 2rem; /* Consistent height (50px converted to rem) */
     
-    background-color: transparent; /* Light background using a variable (#FFFFFF) */
+    background-color:transparent;/* Light background using a variable (#FFFFFF) */
     border-style: none; /* No border style */
     border-radius: 0; /* No border-radius for the element itself, will be applied to parent if needed */
     overflow: hidden; /* Hides any overflowing content */
@@ -2304,22 +2529,25 @@ right: 0.5%;
      and a fluid width (30%) relative to its parent. */
   width: clamp(9.375rem, 30%, 18.75rem); /* Converted 150px and 300px to rem */
   border-style: none;
-  height: auto; /* Height adjusts dynamically based on its content */
-  background-color: transparent;
+  height: 100%; /* Height adjusts dynamically based on its content */
+  background-color:transparent;
   display: flex; /* Enables a flexible column layout for its children */
   flex-direction: column; /* Arranges items vertically */
   align-items: center; /* Horizontally centers children within the column (this should already help!) */
   justify-content: center; /* Vertically centers children within the column */
+  top: 20px;
+
 }
 
 /* ==== CHANNEL PROFILE IMAGE (.channel img) ==== */
 /* Styles for the channel's profile picture or avatar. */
 .channel img {
-  width: 80%; /* Takes 80% of the channel container's width */
+  width: 75%; /* Takes 80% of the channel container's width */
   aspect-ratio: 1 / 1; /* Ensures the image remains perfectly circular (width/height ratio) */
   border-radius: 50%; /* Creates a circular shape for the image */
   object-fit: cover; /* Ensures the image covers the entire area without distortion, cropping if necessary */
-  
+  margin-bottom: 0rem;
+
   margin-block-start: var(--spacing-xs); /* Responsive top margin (10px converted to rem) */
   position: relative; /* Useful if you plan to add overlays or badges on top of the image */
 
@@ -2341,20 +2569,21 @@ html {
 }
 .profile {
 
-  position: absolute;
+  position: relative;
   
  width: 100%;
   
-  height: auto; /* Adjusts based on content */
+  height: 25px; /* Adjusts based on content */
   
   background-color:transparent;
   
-  margin-top: 8.5rem; /* 15px in rem */
+
+
   
   min-height: var(--min-height-profile-section); /* Minimum height (35px converted to rem) */
    display: flex;
-  
-  margin: 15.5rem auto 0 auto;
+  margin-bottom: 1rem;
+
   
 justify-content: space-between;
   
@@ -2482,12 +2711,66 @@ justify-content: space-between;
 }
 /* ✅ Tablee fix */
 .Tablee {
+  position:absolute;
+  width: 75.5%;
+  height: 100%;
+  float: right;
+  right: 0rem;
+  background-color:transparent;
+z-index: 0;
+padding-bottom: 0rem;
+border-style: none;
+}
+
+.left
+{
+  display: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 1000;
+  margin-top: 8rem;
+  float: left;
+  margin-left: 1rem;
+}
+
+.left img
+{
+
+width: 100%;
+height: inherit;
+
+}
+
+.right
+{
+  display: none;
+  position:absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 5000;
+  margin-top: 0rem;
+  float: left;
+  margin-left: 10rem;
+}
+
+.right img
+{
+
+width: 100%;
+height: inherit;
+
+}
+
+
+
+.Episodesss
+{
   position: relative;
+  background-color:transparent;
   width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: row;
-  background-color: transparent;
   overflow-x: auto;
   overflow-y: hidden;
   gap: 1rem;
@@ -2496,8 +2779,10 @@ justify-content: space-between;
   scroll-behavior: smooth;
   align-items: stretch; /* Ensures children fill full height */
   box-sizing: border-box;
-  padding-bottom: 5rem;
+  flex-direction: row;
+  margin-bottom: 0px;
 }
+
 
 /* ✅ Series fix */
 .series {
@@ -2506,14 +2791,13 @@ justify-content: space-between;
   min-width: 35%;
   max-width: 40%;
   height: 12.5rem; /* Consistent height (200px converted to rem) */
-  margin: 2.5rem 0 0 0.625rem; /* Left gap only */
+  margin: 2.6rem 0 0 0.625rem; /* Left gap only */
   background-color: transparent;
   border-radius: 0.4375rem;
   max-height: 100%;
   cursor: pointer;
   overflow: hidden;
-  z-index: 10;
-  margin-bottom: 5rem;
+margin-bottom: 0rem;
 }
 
 .series img {
@@ -2524,8 +2808,6 @@ justify-content: space-between;
   object-fit: cover;
 
 }
-
-
 
 
 .series img:hover {
@@ -3081,7 +3363,62 @@ margin-bottom: 5%;
     bottom: 3%; /* Further adjusted vertical position */
     left: 3%; /* Maintains horizontal position */
   }
-}/* ==== GENERAL SECTION CONTAINER (.sectiionn) ==== */
+}
+
+.display
+{
+  display: flex;
+  width: 100%;
+  height:30px;
+position: absolute;
+background-color: rgba(0, 0, 0, 0.65); /* Slightly darker for better readability */
+z-index: 1000;
+top:0%;
+gap:5px;
+justify-content: flex-start;
+padding: 0px;
+border-radius: 0rem;
+}
+
+.display img
+{
+  position: absolute;
+  z-index: 1000;
+  width: 7%;
+  height:80%;
+margin-bottom: 1rem;
+  margin-left: 5px;
+  padding: 1px;
+  margin-top:0%;
+  filter: invert(1);
+}
+
+.display span
+{
+  position: relative;
+  float: right;
+  margin-left: 40px;
+  margin-bottom: 5px;
+  margin-top: 4px;
+  color: var(--color-text-light); /* White text color, using a variable */
+  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+  /* Responsive font size: scales between 0.75rem (12px) and 1rem (16px), fluidly with viewport width */
+  font-size: clamp(0.6rem, 0.9vw, 1rem);
+}
+
+.display span:nth-child(3)
+{
+background-color: transparent;
+margin-left: 1px;
+padding: 2px;
+margin-top: 2px;
+}
+
+
+
+
+
+/* ==== GENERAL SECTION CONTAINER (.sectiionn) ==== */
 /* This container likely acts as a flexible bar within your video card,
    displaying views, time, and category information. */
 .sectiionn {
@@ -3444,11 +3781,47 @@ body {
   background-color: #181818;
 }
 
-  .dark-mode .optionn{
-   background-color: #2a2d2f;;
-  }
-  .dark-mode .optionn span  {
-    color:#FFFFFF;}
+
+.dark-mode .optionn {
+  background-color: #121212; 
+}
+
+
+.dark-mode .Playlist{
+  background-color: #2a2d2f;
+}
+
+
+.dark-mode .Playlist span {
+  color:#FFFFFF;
+}
+
+.dark-mode .Sci-fi{
+  background-color: #2a2d2f;
+}
+
+
+.dark-mode .Sci-fi span {
+  color:#FFFFFF;
+}
+
+.dark-mode .WatchMojo{
+  background-color: #2a2d2f;
+}
+
+
+.dark-mode .WatchMojo span {
+  color:#FFFFFF;
+}
+
+.dark-mode .Watch{
+  background-color: #353839;
+}
+
+.dark-mode .Watch label {
+  color:#FFFFFF;
+}
+
 
     .dark-mode .optionnn{
       background-color: transparent;
@@ -3985,7 +4358,7 @@ border-style:ridge;
 {
   background-color: transparent;
   border-style:ridge;
-  margin-left: 2px;
+  margin-left: 5px;
 }
 
 
@@ -4030,9 +4403,9 @@ flex: 2;
 .container-2
 {
 background-color:darkgoldenrod; 
-max-height: 360px;
+max-height: 439px;
 border-style:ridge;
-margin-right: 0.1rem; 
+margin-right: 0.3rem; 
 flex-basis: 39%; /* Provides a base width, allowing it to grow or shrink */
 max-width: clamp(25rem, 40vw, 45rem); /* Refined responsive width using clamp: ensures a min width (20rem), scales with viewport (37vw), and has a max width (40rem) for very large screens. This prevents distortion and ensures optimal use of space. */
 }
@@ -4044,7 +4417,7 @@ max-width: clamp(25rem, 40vw, 45rem); /* Refined responsive width using clamp: e
 
 .card
 {
-  margin: 5px 0 5px 8px; /* Maintain original positioning */
+  margin: 10px 0 10px 6.5px; /* Maintain original positioning */
   background-color: darkcyan;
 }
 
@@ -4104,7 +4477,7 @@ background-color:saddlebrown; /* Darker background for dark mode */
   height: 100%; /* Fully inherit from container-3 */
   background-color: darkcyan;
   margin: 0 auto;
-  margin-top: 1.9rem; /* 50px */
+  margin-top: 0rem; /* 50px */
   margin-bottom: 0px;
 }
 
@@ -4116,30 +4489,36 @@ background-color:saddlebrown; /* Darker background for dark mode */
 .profile
 {
   position: relative;
+  background-color: saddlebrown;
   margin-top: 0rem; /* 15px in rem */
 }
 
 .profile-name span  {
     font-size: 1rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.9rem;
 }
 
 /* Followers label styling */
 .followers span  {
   font-size: 1rem;
+  margin-bottom: 0.9rem;
+  margin-top: 0.5rem;
 }
 
 .Table
 {
 height: 100%;
-background-color: rebeccapurple;
+background-color: transparent;
+  border-style: ridge;
 }
 
 .series 
 {
-margin-top: 2.2rem;
+margin-top: 2.4rem;
   min-width: 43%;
   max-width: 45%;
-  height: 9.5rem; /* 200px */
+  height: 11rem; /* 200px */
   margin-bottom: 5px;
   z-index: -1;
 }
@@ -4264,13 +4643,13 @@ border-style:ridge;
   width: 100%;
   max-width: 100%;
   flex-shrink:0;
-  border-style: none;
+  border-style: ridge;
   border-radius: 0px;
   }
 
 .containerr
 {
-  background-color: transparent;
+  background-color: seagreen;
   border-style: none;
 }
 
@@ -4309,7 +4688,7 @@ border-style:ridge;
 
 /* Increase space for time and follow buttons */
 .viewss {
-  flex:1.5;
+  flex:2.2;
   gap:0px;
 }
 
@@ -4337,17 +4716,18 @@ border-style:ridge;
 .container-2
 {
   background-color: transparent;
-  max-height: 460px;
+  max-height: 415px;
   gap:8px;
   float: none; 
-  border-style: none; 
+  border-style: ridge; 
+  right: 0.2rem;
 }
 
 
 .card {
   position: relative;
-  margin: 20px 0 19px 6px; /* Maintain original positioning */
-  background-color: transparent;
+  margin: 10px 0 10px 6px; /* Maintain original positioning */
+  background-color: gray;
 }
 
 .pichaa {
@@ -4392,7 +4772,7 @@ border-style:ridge;
   background-color: transparent;
   height: auto;
   padding: 0px;
-  border-style: none;
+  border-style:ridge;
 }
 
 .optionnn
@@ -4400,16 +4780,16 @@ border-style:ridge;
   position: absolute;
 width: 100%;
 height: 30px;
-background-color: transparent;
+background-color: seagreen;
   z-index: 3;
 }
 
 .channel {
 
   height: 100%; /* Fully inherit from container-3 */
-  background-color: transparent;
+  background-color:salmon;
   margin: 0 auto;
-  margin-top: 1.9rem; /* 50px */
+  margin-top: 0rem; /* 50px */
   margin-bottom: 0px;
 }
 
@@ -4422,7 +4802,8 @@ background-color: transparent;
 {
   position: relative;
   margin-top: 0rem; /* 15px in rem */
-  background-color: transparent;
+  background-color: darkblue;
+  margin-bottom: 0px;
 }
 
 .profile-name span  {
@@ -4436,7 +4817,7 @@ background-color: transparent;
 
 .Table
 {
-  background-color: transparent;
+  background-color:gray;
   padding-bottom: 0rem;
 padding: 0px;
 }
@@ -4447,7 +4828,7 @@ margin-top: 2.5rem;
   min-width: 40%;
   max-width: 40%;
   height: 11.5rem; /* 200px */
-  margin-bottom:1rem;
+  margin-bottom:0rem;
 }
 
 .overlay-textttt {
@@ -4458,24 +4839,31 @@ margin-top: 2.5rem;
 
 .container-1
 {
-  background-color:transparent;
+  background-color:gray;
 gap: 1rem;
 margin: 0 auto; /* ✅ Centers the block */
 }
 
 .kontainer
 {
-  background-color: transparent;
+  background-color:pink;
   width: clamp(24%, 34%, 29%);
-margin-left: 30px;
+margin-left: 25px;
 border-style: none;
+}
+
+.profilee img
+{
+  width:1.9rem ;
+  height:1.9rem ;
+  margin-left: 5px;
 }
 
 
 .caption
 {
-  height: 2rem;  /* Consistent height (30px) for single-line captions */
-  background-color: transparent;
+  height: 1.5rem;  /* Consistent height (30px) for single-line captions */
+  background-color: fuchsia;
 }
 
   .caption span
@@ -4483,8 +4871,18 @@ border-style: none;
     font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
     font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
     font-weight: 700; /* Bold font for prominence */
+    margin-top: 5px;
+    margin-bottom: 0px;
   }
 
+  .opttions img {
+    width: 17px;
+    height: 17px;
+    margin-top: 0px;
+   
+  }
+  
+  
 .videoo {
   width: 100%;
   height: auto;
@@ -4565,6 +4963,7 @@ border-style: none;
   margin: 33px 0 15px 10px; /* Maintain original positioning */
 }
 
+/*
 .container-3
 {
   background-color: transparent;
@@ -4577,30 +4976,7 @@ border-style: none;
   background-color: transparent;
 }
 
-.channel
-{
-  background-color: transparent;
-margin-bottom: 0.5rem;
-}
-
-.profile
-{  background-color: transparent;
-  margin-bottom: 1.1rem;
-}
-
-
-.Tablee
-{
-  padding-bottom: 0rem;
-padding: 0px;
-margin-bottom: 0px;
-background-color: transparent;
-}
-
-.series
-{
-  margin-bottom: 0.5rem;
-}
+ */
 
 
 .container-1
@@ -4709,10 +5085,11 @@ margin: 0 auto;
   { 
     max-width: 100%; height: auto; 
     margin-top: 60px;
-    background-color: gray;
+    background-color: transparent;
   width: 100%;
   max-width: 100%;
   flex-shrink:0;
+  border-style: ridge;
   }
 
 .containerr
@@ -4752,8 +5129,9 @@ margin: 0 auto;
 
 .card
 {
-  background-color: pink;
+  background-color: transparent;;
   max-height: 300px;
+  border-style: ridge;
   margin: 5px 0 15px 13px; /* Maintain original positioning */
 }
 
@@ -4802,7 +5180,7 @@ margin: 0 auto;
 
 .container-3
 {
-  background-color: fuchsia;
+  background-color: transparent;
   height: auto;
   padding: 0px;
 }
@@ -4812,14 +5190,14 @@ margin: 0 auto;
   position: absolute;
 width: 100%;
 height: 40px;
-background-color: salmon;
+background-color: transparent;
   z-index: 3;
 }
 
 .channel {
 
   height: 100%; /* Fully inherit from container-3 */
-  background-color: forestgreen;
+  background-color: transparent;
   margin: 0 auto;
   margin-top: 1.9rem; /* 50px */
   margin-bottom: 0px;
@@ -4850,7 +5228,8 @@ background-color: salmon;
 {
   padding-bottom: 0rem;
 padding: 0px;
-background-color:aqua;
+border-style: ridge;
+background-color: transparent;
 }
 
 .series 
@@ -4858,6 +5237,7 @@ background-color:aqua;
 margin-top: 3rem;
   min-width: 30%;
   max-width: 35%;
+  border-style: ridge;
   margin-bottom: 1rem;
 }
 
@@ -4865,16 +5245,18 @@ margin-top: 3rem;
 
   .container-1
   {
-    background-color:rebeccapurple;
+    background-color: transparent;
   gap: 1.5rem;
   width:100%; 
+  border-style: ridge;
   }
 
   .kontainer
   {
-    background-color:pink;
+    background-color: transparent;
     width: clamp(28%, 37%, 32%);
   margin-left: 5px;
+  border-style: ridge;
   }
 
 /* Caption Text */

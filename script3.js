@@ -438,21 +438,33 @@ document.addEventListener('click', () => {
 });
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  document.querySelectorAll(".sidebarr").forEach(sidebar => {
-    const popup = sidebar.querySelector(".sidebarr-popup");
 
-    sidebar.addEventListener("click", (e) => {
-      e.stopPropagation();
-      document.querySelectorAll(".sidebarr-popup").forEach(p => {
-        if (p !== popup) p.classList.add("hidden");
+
+document.addEventListener("DOMContentLoaded", () => {
+  const buttons = document.querySelectorAll(".optionn > div");
+  const sections = document.querySelectorAll(".video-group");
+
+  buttons.forEach((button, index) => {
+    button.addEventListener("click", () => {
+      sections.forEach((sec, i) => {
+        sec.style.display = i === index ? "flex" : "none";
       });
-      popup.classList.toggle("hidden");
     });
   });
 
-  document.addEventListener("click", () => {
-    document.querySelectorAll(".sidebarr-popup").forEach(p => p.classList.add("hidden"));
+  // Default: Show "All" only
+  sections.forEach((sec, i) => {
+    sec.style.display = i === 0 ? "flex" : "none";
+  });
+});
+
+
+const tabs = document.querySelectorAll('.optionn > div');
+
+tabs.forEach(tab => {
+  tab.addEventListener('click', () => {
+    tabs.forEach(t => t.classList.remove('active')); // remove from all
+    tab.classList.add('active'); // add to clicked
   });
 });
 
