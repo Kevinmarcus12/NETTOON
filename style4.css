@@ -3940,13 +3940,13 @@ margin: 0 auto;
   .container-2
   {
     background-color: transparent;
-    border-style: ridge;
+   border-style: none;
   }
 
   .container-1
   {
   gap: 1rem;
-  border-style: ridge;
+    border-style: none;
   background-color: transparent;
   }
 
@@ -3955,7 +3955,7 @@ margin: 0 auto;
     background-color: transparent;
     width: clamp(18%, 28%, 18%);
     margin-left: 1rem;
-    border-style: ridge;
+   border-style: none;
   }
 
     .views

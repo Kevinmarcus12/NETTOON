@@ -3142,7 +3142,7 @@ margin: 0 auto;
   overflow-y: hidden;
   overflow-x: hidden;
   background-color: transparent;
-  border-style: ridge;
+  border-style: none;
 }
 
 
@@ -3150,13 +3150,10 @@ margin: 0 auto;
 {
   background-color: var(--color-bg-light); /* Default background color for light mode */
    width: 11%; 
-   z-index: -1;
-     border-style: ridge;
+   z-index: 10;
+     border-style: none;
 }
 
-.sidebar:hover {
-  width: 0%; /* Expands slightly on hover for better UX */
-}
 
 .home
 {
@@ -3170,7 +3167,7 @@ margin: 0 auto;
   width: calc(100% - 11.2%); /* Occupies the remaining width after considering the sidebar and gap */
   top: 6.1rem;        /* Positions the grid below the header and suggestions bar */
   left: 11%; 
-  border-style: ridge;
+  border-style: none;
   }
   
   .kontainer
@@ -3179,7 +3176,7 @@ margin: 0 auto;
     width: clamp(28%, 37%, 32%);
     margin-inline-start:10px; /* Maintains your specified left margin for precise grid alignment */
   margin-block-end: 1%; /* Consistent bottom margin (8px) for vertical spacing */
-  border-style: ridge;
+  border-style: none;
   }
   
   

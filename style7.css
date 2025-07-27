@@ -3140,13 +3140,13 @@ margin: 0 auto;
   background-color: transparent;
   border: 1px solid transparent; /* TEMP: remove in production */
   margin: 3.3rem auto 0 0rem;
-  border-style: ridge;
+ border-style: none;
 }
 
 .shorts
 {
   background-color: transparent;
-  border-style: ridge;
+ border-style: none;
 }
 
 .short-video {
@@ -3155,7 +3155,7 @@ margin: 0 auto;
   aspect-ratio: 9 / 16;
   max-height: 90vh;
   margin:5rem auto 0 35rem;
-  border-style: ridge;
+ border-style: none;
 
 }
 
@@ -3176,19 +3176,19 @@ margin: 0 auto;
   top: 24vh;
   right: 32vw;
   width: 5vw;
-  border-style: ridge;
+  border-style: none;
 }
 
 .comment-container {
 
-  top: 5rem;
+  top: 7rem;
   right: 7%; /* Position when shown */
   width: 37%;
   max-width: 450px;
   aspect-ratio: 9 / 16;
   min-height: 85vh;
   max-height: 85vh;
-  border-style: ridge;
+ border-style: ridge;
 
 }
 

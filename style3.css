@@ -2768,19 +2768,12 @@ height: inherit;
 {
   position: relative;
   background-color:transparent;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
   gap: 1rem;
   padding: 0;           /* Remove internal space */
   margin: 0;            /* Remove outer space */
-  scroll-behavior: smooth;
-  align-items: stretch; /* Ensures children fill full height */
-  box-sizing: border-box;
-  flex-direction: row;
+
   margin-bottom: 0px;
+  padding-bottom: 1rem;
 }
 
 
@@ -2791,7 +2784,7 @@ height: inherit;
   min-width: 35%;
   max-width: 40%;
   height: 12.5rem; /* Consistent height (200px converted to rem) */
-  margin: 2.6rem 0 0 0.625rem; /* Left gap only */
+  margin: 2.5rem 0 0 0.625rem; /* Left gap only */
   background-color: transparent;
   border-radius: 0.4375rem;
   max-height: 100%;
@@ -2813,6 +2806,14 @@ margin-bottom: 0rem;
 .series img:hover {
   transform: scale(1.03);
   opacity: 0.95;
+}
+
+.display
+{
+  width: 100%;
+position: relative;
+  height: 30px;
+  background-color: saddlebrown;
 }
 
 .overlay-textttt {
@@ -5089,13 +5090,13 @@ margin: 0 auto;
   width: 100%;
   max-width: 100%;
   flex-shrink:0;
-  border-style: ridge;
+  border-style: none;
   }
 
 .containerr
 {
   background-color: transparent;
-  border-style: ridge;
+  border-style: none;
 }
 
 
@@ -5122,16 +5123,15 @@ margin: 0 auto;
 .container-2
 {
   background-color: transparent;
-  min-height: 780px;
-  max-height: 800px;
-  border-style: ridge;
+   max-height: 766px;
+  border-style: none;
 }
 
 .card
 {
   background-color: transparent;;
   max-height: 300px;
-  border-style: ridge;
+  border-style: none;
   margin: 5px 0 15px 13px; /* Maintain original positioning */
 }
 
@@ -5176,69 +5176,167 @@ margin: 0 auto;
   height: 1.5vw;
 
 }
- 
 
-.container-3
-{
-  background-color: transparent;
+.container-3 {
+  position: relative;
+  width: 100%;
   height: auto;
-  padding: 0px;
+  background-color:transparent;
+  border-style: none;
+  margin-top: 2rem;
+
 }
 
-.optionnn
-{
-  position: absolute;
-width: 100%;
-height: 40px;
-background-color: transparent;
-  z-index: 3;
-}
+   .optionnn {
+    position: absolute; /* Positions the element precisely within its parent (.container-3) */
+    top: 0; /* Sticks it to the top edge of the parent */
+    left: 0; /* Aligns it to the left edge of the parent */
+    width: 100%; /* Spans the full width of its parent */
+    height: 2rem; /* Consistent height (50px converted to rem) */
+    
+    background-color:transparent;/* Light background using a variable (#FFFFFF) */
+  border-style: none;
 
+  }
+  
+ 
 .channel {
+  position: relative; /* Allows for precise positioning of child elements within it */
+  
+  /* Responsive Width */
+  /* Uses clamp() to ensure responsive scaling with defined min (150px) and max (300px) widths,
+     and a fluid width (30%) relative to its parent. */
+  width: clamp(9.375rem, 30%, 18.75rem); /* Converted 150px and 300px to rem */
+ border-style: none;
+  height: 100%; /* Height adjusts dynamically based on its content */
+margin-bottom: 1rem;
+  top: 28px;
 
-  height: 100%; /* Fully inherit from container-3 */
-  background-color: transparent;
-  margin: 0 auto;
-  margin-top: 1.9rem; /* 50px */
+}
+
+/* ==== CHANNEL PROFILE IMAGE (.channel img) ==== */
+/* Styles for the channel's profile picture or avatar. */
+.channel img {
+  width: 75%; /* Takes 80% of the channel container's width */
+  aspect-ratio: 1 / 1; /* Ensures the image remains perfectly circular (width/height ratio) */
+  border-radius: 50%; /* Creates a circular shape for the image */
+  object-fit: cover; /* Ensures the image covers the entire area without distortion, cropping if necessary */
+  margin-bottom: 0rem;
+
+  margin-block-start: var(--spacing-xs); /* Responsive top margin (10px converted to rem) */
+
+  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
+
+ 
+}
+
+/* ✅ Tablee fix */
+.Tablee {
+  position:absolute;
+  width: 84.2%;
+  height: 100%;
+  float: right;
+  right: 0rem;
+  background-color:transparent;/* Light background using a variable (#FFFFFF) */
+z-index: 0;
+padding-bottom: 0rem;
+  border-style: none;
+}
+
+.left
+{
+  display: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 1000;
+  margin-top: 8rem;
+  float: left;
+  margin-left: 1rem;
+}
+
+.left img
+{
+
+width: 100%;
+height: inherit;
+
+}
+
+.right
+{
+  display: none;
+  position:absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 5000;
+  margin-top: 0rem;
+  float: left;
+  margin-left: 10rem;
+}
+
+.right img
+{
+
+width: 100%;
+height: inherit;
+
+}
+
+.display
+{
+  display: none;
+}
+
+.Episodesss
+{
+  position: relative;
+  background-color:transparent;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 1rem;
+  padding: 0;           /* Remove internal space */
+  margin: 0;            /* Remove outer space */
+  scroll-behavior: smooth;
+  align-items: stretch; /* Ensures children fill full height */
+  box-sizing: border-box;
+  flex-direction: row;
   margin-bottom: 0px;
 }
 
-.channel img
-{
-  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
-}
 
-
-.profile
-{
+/* ✅ Series fix */
+.series {
   position: relative;
-  margin-top: 0rem; /* 15px in rem */
-}
-
-.profile-name span  {
-    font-size: 1rem;
-}
-
-/* Followers label styling */
-.followers span  {
-  font-size: 1rem;
-}
-
-.Table
-{
-  padding-bottom: 0rem;
-padding: 0px;
-border-style: ridge;
-background-color: transparent;
-}
-
-.series 
-{
-margin-top: 3rem;
+  flex: 0 0 auto;
   min-width: 30%;
   max-width: 35%;
-  border-style: ridge;
-  margin-bottom: 1rem;
+  height: 15rem; /* Consistent height (200px converted to rem) */
+  margin: 2.3rem 0 0 0.625rem; /* Left gap only */
+  background-color: transparent;
+  border-radius: 0.4375rem;
+  max-height: 100%;
+  cursor: pointer;
+  overflow: hidden;
+margin-bottom: 0rem;
+}
+
+.series img {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.4375rem;
+  max-width: 100%;
+  object-fit: cover;
+
+}
+
+
+.series img:hover {
+  transform: scale(1.03);
+  opacity: 0.95;
 }
 
 
@@ -5248,7 +5346,7 @@ margin-top: 3rem;
     background-color: transparent;
   gap: 1.5rem;
   width:100%; 
-  border-style: ridge;
+  border-style: none;
   }
 
   .kontainer
@@ -5256,7 +5354,7 @@ margin-top: 3rem;
     background-color: transparent;
     width: clamp(28%, 37%, 32%);
   margin-left: 5px;
-  border-style: ridge;
+  border-style: none;
   }
 
 /* Caption Text */
