@@ -3893,382 +3893,7 @@ body {
 /* Medium phones / small tablets (481px–768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   
-.container
-{
-  background-color: saddlebrown;
-}
 
-.nav
-{
-  background-color: darkkhaki;
-}
-
-.overlay-text
-{
-  font-size: 0.9rem;
-}
-
-.search
-{
-  background-color: seagreen;
-  height:30px;
-}
-
-.upload
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-.Notifications
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-.Account 
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-.upload
-{
-  background-color: transparent;
-  width: 3vw;
-  height: 3vw;
-}
-
-
-.upload img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
-}
-
-.Notifications img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
-}
-
-
-.Account img {
-  width: 100%;
-  height:  100%;
-margin: 0 auto;
-}
-
-.dropdown-content {
-  display: none;
-  position: absolute;
-  top: 100%;
-  right: 0.5%;
-  width: 30%;}
-
-.video-container {
-  width: 100%;
-  flex-direction: column;           /* Stack elements vertically */
-  align-items: flex-start;          /* Align everything to the left */
-  gap: var(--spacing-md);
-  background-color: transparent;
-  border-style: ridge;
-}
-
-.containerr {
-  width: 100%;                      /* Full width on tablets */
-  margin-left: 0;                   /* Remove margin-left */
-  border-style: ridge;
-}
-
-.captionn h3
-{
-  font-size: clamp(1rem, 1.1vw, 1.5rem);
-}
-
-.sectionn 
-{
-  background-color: saddlebrown;
-}
-
-/* Increase space for time and follow buttons */
-.viewss {
-  flex: 2.1;
-}
-
-/* Increase space for time and follow buttons */
-.follow {
-  flex: 2.1;
-}
-
-.timee {
-  flex: 2;
-}
-
-/* Label styling for text within interactive elements */
-.viewss span,
-.commentss span,
-.likess span,
-.dislikee span,
-.timee span,
-.follow span {
-  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
-
-}
-
-
-.container-2 {
-
-  float: none;                      /* Remove float for better layout control */
-  width: 100%;                      /* Full width */
-  max-width: 100%;
-  margin-top: 0.5rem;               /* Spacing from the top or previous section */
-  margin-left: 0;                   /* Reset any horizontal spacing */
-  align-self: flex-start;           /* Align with the left edge */
-  border-style: ridge;
-}
-
-.optionn
-{
-  background-color: darkmagenta;
-}
-
-.All span, .Playlist span, .Sci-fi span, .WatchMojo span, .Watch span {
-  flex-grow: 1.5;
-  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
-}
-
-.video-group
-{ 
-background-color: saddlebrown;
-}
-
-.card
-{
-  background-color:chartreuse;
-  margin-left: 13px;
-  margin-top: 10px;
-  margin-bottom: 20px;
-  max-height: 300px;
-  min-width: 30%;
-  max-width: 31%;
-border-style: ridge;
-}
-
-.pichaa {
-  width: 100%;
-  height: 10rem; /* 200px */}
-
-  .overlay-texttt
-  {
-margin-bottom: 6%;
-padding: 5px 5px;
-  }
-
-.sectiion
-{
-  background-color: transparent;
-  gap:0rem;
-    padding: 0px 0px;
-}
-
-.viewsss
-{
-  flex: 1.6;
-  background-color: transparent;
-
-  border-radius: 7px;
-}
-
-
-.timmee
-{
-  flex: 1.3;
-  background-color: transparent;
-  border-radius: 7px;
-}
-
-.viewsss span, .timmee span
-{
-  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
-}
-
-.comment-container {
-
-z-index: 1000;
-
-
-}
-
-
-.container-3
-{
-  background-color: transparent;
-  height: auto;
-  padding: 0px;
-  border-style: ridge;
-}
-
-.optionnn
-{
-  position: absolute;
-width: 100%;
-height: 30px;
-background-color: fuchsia;
-  z-index: 3;
-  
-}
-
-.optionnn span
-{
-  font-size: clamp(1rem, 1vw, 1rem); 
-}
-
-.channel {
-
-  height: 100%; /* Fully inherit from container-3 */
-  background-color: forestgreen;
-  margin: 0 auto;
-  margin-top: 1.6rem; /* 50px */
-  margin-bottom: 0px;
-}
-
-.channel img
-{
-  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
-  margin-top: 2rem; /* 15px in rem */
-}
-
-.profile
-{
-  position: relative;
-  margin-top: 2rem; /* 15px in rem */
-  margin-bottom: 0px;
-  background-color: darkgoldenrod;
-}
-
-.profile-name span  {
-    font-size: 1rem;
-}
-
-/* Followers label styling */
-.followers span  {
-  font-size: 1rem;
-}
-
-.Tablee
-{
-  background-color:gray;
-  padding-bottom: 0rem;
-padding: 0px;
-height: 100%;
-margin-bottom: 0rem;
-}
-
-.series 
-{
-margin-top: 1.5rem;
-  min-width: 45%;
-  max-width: 50%;
-  height: 11rem; /* 200px */
-  margin-top:3rem;
-  margin-bottom: 1.5rem;
-}
-
-.overlay-textttt {
-
-  padding: 0.1rem 0.1rem; 
-  left: 40%;
-  bottom: 15%;
-}
-
-.container-1 {
-  top: 0.5rem;
-  background-color: grey;
-  gap: 0.6rem;
-  justify-content: flex-start;
-  margin: 0 auto;
-  border-style: ridge;
-  width: 100%;         /* ✅ Keep it slightly narrow if needed */
-  left: 0 !important; /* ✅ Cancel previous left: 5% */
-}
-
-.kontainer
-{
-  background-color:pink;
-  width: clamp(48%, 58%, 48%);
-margin-left: 5px;
-border-style:ridge;
-}
-
-.caption
-{
-height: 2rem;  /* Consistent height (30px) for single-line captions */
-background-color: fuchsia;
-}
-
-.caption span
-{
-  font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
-  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
-  font-weight: 700; /* Bold font for prominence */
-}
-
-
-.videoo {
-  width: 100%;
-  height: auto;
-}
-
-.videoo video {
-  width: 100%;
-  height: 10rem; /* 200px */
-
-}
-
-.sectiionn 
-{
-  background-color: saddlebrown;
-}
-
-  .views,
-  .time,
-  .category {
-    flex: 1 1 0; /* Allows items to grow and shrink, with a base of 0 */
-    max-width: 33.3%; /* Limits the maximum width to one-third of the parent */
-    height: 1.8rem; /* Consistent height (28.8px converted to rem) */
-    background-color: transparent;  /* Ensures transparent background */
-    
-    margin-block: 0px; /* Responsive vertical margin (0.1rem approx 1.6px) */
-
-  }
-
-
-  /* Specific styling for the .views section */
-  .views {
-    background-color: violet; 
-    margin-inline-start: 0; /* Removes any left margin */
-    gap: var(--spacing-xxs); /* Responsive spacing between icon and text (5px converted to rem) */
-    justify-content: flex-start; /* Aligns content to the start (left) */
-    margin-left:0px;
-  }
-  
-  /* Specific styling for the .time section */
-  .time {
-    background-color: seagreen;
-    justify-content: flex-end; /* Aligns content to the end (right) */
-  }
-
-
-
-}
-
-/* Tablets / small laptops (769px–1024px) */
-@media (min-width: 769px) and (max-width: 1024px) {
-  
   .container
   {
     background-color: var(--color-bg-light); /* Default background color for light mode */
@@ -4350,16 +3975,17 @@ margin: 0 auto;
   margin-top: 60px;
   background-color: transparent;
 width: 100%;
+gap:10px; /* Space between main elements inside (1rem approx 16px) */
 max-width: 100%;
 flex-shrink:0;
-border-style:ridge;
+border-style: ridge;
 }
 
 .containerr
 {
-  background-color: transparent;
-  border-style:ridge;
-  margin-left: 5px;
+background-color: transparent;
+  border-style: ridge;
+  margin-left: 10px;
 }
 
 
@@ -4368,16 +3994,9 @@ border-style:ridge;
 font-size: clamp(1rem, 1.1vw, 1.5rem);
 }
 
-.sectionn {
-  width: 100%; /* Spans full width of its parent */
-  max-width: 100%; /* Keeps your specified max-width */
-background-color: darkcyan;
-gap: 3px; /* Responsive spacing between elements using a variable (0.5em approx 8px) */
-}
-
 /* Increase space for time and follow buttons */
 .viewss {
-flex: 1.5;
+flex: 2.1;
 }
 
 /* Increase space for time and follow buttons */
@@ -4396,7 +4015,7 @@ flex: 2;
 .dislikee span,
 .timee span,
 .follow span {
-  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
+font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
 
 }
 
@@ -4404,7 +4023,7 @@ flex: 2;
 .container-2
 {
 background-color:darkgoldenrod; 
-max-height: 439px;
+max-height: 450px;
 border-style:ridge;
 margin-right: 0.3rem; 
 flex-basis: 39%; /* Provides a base width, allowing it to grow or shrink */
@@ -4418,7 +4037,7 @@ max-width: clamp(25rem, 40vw, 45rem); /* Refined responsive width using clamp: e
 
 .card
 {
-  margin: 10px 0 10px 6.5px; /* Maintain original positioning */
+  margin: 8px 0 10px 6.5px; /* Maintain original positioning */
   background-color: darkcyan;
 }
 
@@ -4466,99 +4085,202 @@ gap:0.1rem;
 
 .optionnn
 {
-  position: absolute;
-width: 100%;
 height: 30px;
 background-color:saddlebrown; /* Darker background for dark mode */
 
 }
 
 .channel {
+  position: relative; /* Allows for precise positioning of child elements within it */
+  width: clamp(5rem, 25%, 15rem); /* Converted 150px and 300px to rem */
+  background-color:brown;
 
-  height: 100%; /* Fully inherit from container-3 */
-  background-color: darkcyan;
-  margin: 0 auto;
-  margin-top: 0rem; /* 50px */
-  margin-bottom: 0px;
+
+
 }
 
-.channel img
-{
+/* ==== CHANNEL PROFILE IMAGE (.channel img) ==== */
+/* Styles for the channel's profile picture or avatar. */
+.channel img {
+  width: 75%; /* Takes 80% of the channel container's width */
+  aspect-ratio: 1 / 1; /* Ensures the image remains perfectly circular (width/height ratio) */
+  border-radius: 50%; /* Creates a circular shape for the image */
+  object-fit: cover; /* Ensures the image covers the entire area without distortion, cropping if necessary */
+  margin-bottom: 0rem;
+
+  margin-right:3500px; /* Responsive top margin (10px converted to rem) */
+  position: relative; /* Useful if you plan to add overlays or badges on top of the image */
+
+  /* ⭐ ADDITION: Force horizontal centering using auto margins ⭐ */
   margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
+
+ 
 }
 
-.profile
-{
+
+.profile {
+
   position: relative;
-  background-color: saddlebrown;
-  margin-top: 0rem; /* 15px in rem */
-}
-
-.profile-name span  {
-    font-size: 1rem;
-    margin-top: 0.5rem;
-    margin-bottom: 0.9rem;
-}
-
-/* Followers label styling */
-.followers span  {
-  font-size: 1rem;
-  margin-bottom: 0.9rem;
-  margin-top: 0.5rem;
-}
-
-.Table
-{
-height: 100%;
-background-color: transparent;
-  border-style: ridge;
-}
-
-.series 
-{
-margin-top: 2.4rem;
-  min-width: 43%;
-  max-width: 45%;
-  height: 11rem; /* 200px */
-  margin-bottom: 5px;
-  z-index: -1;
-}
-
-.overlay-textttt {
-
-  padding: 0.1rem 0.1rem; 
-
-}
-
-.container-1 {
-  background-color: transparent;
-  gap: 0.3rem;
-  justify-content: flex-start;
-border-style:ridge;
-  width: 100%;         /* ✅ Keep it slightly narrow if needed */
-  left: 0 !important; /* ✅ Cancel previous left: 5% */
-}
-
-.kontainer {
-  background-color: transparent;
-  width: clamp(28%, 37%, 32%);
-  margin-left: 5px;
-  border-style:ridge;
-}
-  
-.caption
-{
-  height: 2rem;  /* Consistent height (30px) for single-line captions */
-  background-color: fuchsia;
-}
-
-  .caption span
-  {
-    font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
-    font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
-    font-weight: 700; /* Bold font for prominence */
+ width: 100%;
+  height: 30px; /* Adjusts based on content */
+  background-color:yellow;
+  margin-bottom: 1rem;
   }
 
+.profile-name span {
+  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+  font-size: var(--font-size-base); /* Responsive font size (1.1rem approx 18px) */
+  font-weight: 700; /* Bold font for prominence */
+}
+
+
+/* ==== FOLLOWERS TEXT LABEL (.followers span) ==== */
+/* Styles for the actual follower count text. */
+.followers span {
+  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+  font-size: var(--font-size-base); /* Responsive font size (1.1rem approx 18px) */
+  flex-shrink: 1; /* Allows text to shrink if necessary */
+
+}
+
+
+/* 📱 MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+  .followers {
+    width: 100%; /* Ensures full width on smaller screens */
+    justify-content: center; /* Centers content horizontally */
+    margin: var(--spacing-xxs-half) 0; /* Adds responsive spacing between elements */
+  }
+}
+/* ✅ Tablee fix */
+.Tablee {
+  position:absolute;
+  width: 75.5%;
+  height: 100%;
+  float: right;
+  right: 0rem;
+  background-color:transparent;
+z-index: 0;
+padding-bottom: 0rem;
+border-style: none;
+}
+
+.left
+{
+  display: none;
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 1000;
+  margin-top: 8rem;
+  float: left;
+  margin-left: 1rem;
+}
+
+.left img
+{
+
+width: 100%;
+height: inherit;
+
+}
+
+.right
+{
+  display: none;
+  position:absolute;
+  width: 30px;
+  height: 30px;
+  z-index: 5000;
+  margin-top: 0rem;
+  float: left;
+  margin-left: 10rem;
+}
+
+.right img
+{
+
+width: 100%;
+height: inherit;
+
+}
+
+
+
+.Episodesss
+{
+
+  background-color:pink;
+  width: 100%;
+  height: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  gap: 1rem;
+  padding: 0;           /* Remove internal space */
+  margin: 0;            /* Remove outer space */
+  margin-bottom: 0px;
+  padding-bottom: 3.2rem;
+}
+
+
+/* ✅ Series fix */
+.series {
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 30%;
+  max-width: 35%;
+
+  margin: 1.9rem 0 0rem 0.625rem; /* Left gap only */
+margin-bottom: 11rem;
+}
+
+
+.overlay-textttt {
+  position: absolute;
+  min-width: 10%;
+  max-width: 23%;
+  height: auto; /* Dynamic height */
+  background-color: rgba(0, 0, 0, 0.6); /* Semi-transparent dark overlay */
+  color: white;
+  left: 40%;
+  bottom: 15%;
+  border-radius: 0.4375rem; /* 7px */
+  padding: 0.3rem 0.5rem; /* Increased padding for better readability */
+  font-size: clamp(1rem, 1.2vw, 1.125rem); /* Responsive font size */
+
+}
+
+  .container-1 {
+    background-color: transparent;
+    gap: 0.6rem;
+    justify-content: flex-start;
+    margin: 0 auto;
+    border-style: ridge;
+    width: 100%;         /* ✅ Keep it slightly narrow if needed */
+    left: 0 !important; /* ✅ Cancel previous left: 5% */
+  }
+  
+  .kontainer {
+    background-color: transparent;
+    width: clamp(28%, 37%, 32%);
+    margin-left: 5px;
+    border-style: ridge;
+  }
+  
+  .caption
+  {
+    height: 2rem;  /* Consistent height (30px) for single-line captions */
+    background-color: fuchsia;
+  }
+  
+    .caption span
+    {
+      font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+      font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+      font-weight: 700; /* Bold font for prominence */
+    }
+  
+  
   .videoo {
     width: 100%;
     height: auto;
@@ -4566,7 +4288,8 @@ border-style:ridge;
   
   .videoo video {
     width: 100%;
-    height: 10rem;
+    height: 12rem; /* 200px */
+  
   }
 
 
