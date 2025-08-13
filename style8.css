@@ -2778,6 +2778,12 @@ padding: 5px;
 margin: 0 auto;
 }
 
+
+.dropdown-content 
+{
+  z-index: 20;
+}
+
 .suggestionss
 {
   width:100%; /* Occupies the remaining width after considering the sidebar and gap */
@@ -2785,19 +2791,23 @@ margin: 0 auto;
   gap:5px;
   overflow-y: hidden;
   overflow-x: hidden;
-  background-color: transparent;
+  background-color: saddlebrown;
+  z-index: 2;
 }
 
-.rectanglee span
+.rectanglee
 {
+  background-color: seagreen;
+  font-weight: var(--font-weight-bold); /* Bold font weight */
   font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
 }
+
 
 .sidebar
 {
   background-color:sienna; /* Default background color for light mode */
   width:5.5%;
-  z-index: -1;
+  z-index: 1;
 }
 
 .sidebar:hover {
@@ -2807,17 +2817,6 @@ margin: 0 auto;
 .home
 {
   margin-left: 0px;
-}
-
-.suggestionss
-{
-  background-color: saddlebrown;
-}
-
-.rectanglee
-{
-  background-color: seagreen;
-  font-weight: var(--font-weight-bold); /* Bold font weight */
 }
 
   .container-1
@@ -2859,7 +2858,7 @@ margin: 0 auto;
   
   .videoo video {
     width: 100%;
-    height: 10rem; /* 200px */
+    height: 12rem; /* 200px */
   
   }
 

@@ -2214,68 +2214,81 @@ margin-bottom: 20px;
 /* Tablets / small laptops (769px–1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
 
-  .container
-  {
-    background-color: violet; /* Default background color for light mode */
-  margin-bottom: 50rem;
-  }
-  
-  .nav
-  {
-    background-color: transparent;
-  }
-  
+  body {
+    font-size: 17px;
+}
 
-.search input[type="search"] {
 
-  min-height: 20px;
-  max-height: 25px;
+.container
+{
+  background-color: darkgreen; /* Default background color for light mode */
+}
 
+
+
+.nav
+{
+background-color: transparent;
+}
+
+.overlay-text
+{
+font-size: 1.1rem;
 }
 
 
 .upload
 {
-  background-color: transparent;
-  width: 3.3vw;
-  height: 3.3vw;
+background-color: transparent;
+width: 3vw;
+height: 3vw;
 }
-
 
 .Notifications
 {
-  background-color: transparent;
-  width: 3.3vw;
-  height: 3.3vw;
+background-color: transparent;
+width: 3vw;
+height: 3vw;
 }
-
 
 .Account 
 {
-  background-color: transparent;
-  width: 3.3vw;
-  height: 3.3vw;
+background-color: transparent;
+width: 3vw;
+height: 3vw;
+}
+
+.upload
+{
+background-color: transparent;
+width: 3vw;
+height: 3vw;
 }
 
 
 .upload img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
+width: 100%;
+height:  100%;
+margin: 0 auto;
 }
 
 .Notifications img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
+width: 100%;
+height:  100%;
+margin: 0 auto;
 }
 
 
-
 .Account img {
-  width: 100%;
-  height:  100%;
+width: 100%;
+height:  100%;
 margin: 0 auto;
+}
+
+
+.dropdown-content 
+{
+z-index: 20;
 }
 
 
@@ -2290,9 +2303,21 @@ margin: 0 auto;
   font-size:0.7rem;
 }
 
+.upload-overlay {
+  position: fixed;
+  top: 1.5rem;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
 .upload-container
 {
 overflow-x: hidden;
+width: 90vw;
+max-width: 750px;
+max-height: 90vh;          /* Makes sure it never exceeds viewport */
+min-height: 500px;
 }
 
 

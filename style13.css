@@ -1,462 +1,691 @@
+/* ========================================================================== */
+/* GLOBAL CSS RESET & BASE STYLES                                             */
+/* Establishes a consistent baseline for all elements across browsers.        */
+/* ========================================================================== */
+
 html {
-  scroll-behavior: smooth; /* Enables smooth scrolling on anchor links */
-  box-sizing: border-box; /* Ensures padding/border don’t break layout */
+  /*
+   * Ensures smooth scrolling behavior when navigating to anchor links.
+   * Enhances user experience by providing a fluid transition rather than an abrupt jump.
+   */
+  scroll-behavior: smooth;
+
+  /*
+   * Universal Box-Sizing Model:
+   * Sets 'border-box' globally for predictable and intuitive box model calculations.
+   * This ensures that padding and border are included within an element's specified width/height,
+   * simplifying layout calculations significantly.
+   */
+  box-sizing: border-box;
+
+  /*
+   * Base Font Settings for Accessibility and Scalability:
+   * 'font-size: 100%' ensures the base font size is relative to the user's browser default settings
+   * (typically 16px). This is crucial for accessibility, allowing users to scale text.
+   * All 'rem' units throughout the stylesheet will be based on this root font size.
+   * 'font-family' provides a default fallback before the main body font is applied.
+   */
+  font-size: 100%; /* 1rem = 16px by default */
+  font-family: 'Segoe UI', sans-serif; /* Fallback font before Poppins is loaded/applied */
+}
+
+/*
+* Inherit Box-Sizing for All Elements:
+* Applies 'box-sizing: inherit' to all elements and pseudo-elements.
+* This practice allows any element to inherit the 'box-sizing' value set on its parent (html in this case),
+* providing consistent box model behavior throughout the entire document structure.
+*/
+*,
+*::before,
+*::after {
+  margin: 0;   /* Resets default browser margins for all elements */
+  padding: 0;  /* Resets default browser paddings for all elements */
+  box-sizing: inherit; /* Ensures consistent box-sizing inherited from html */
+}
+
+/* ========================================================================== */
+/* CSS ROOT VARIABLES (DESIGN TOKENS)                                         */
+/* Defines a centralized system for design values (colors, spacing, etc.).    */
+/* These variables act as design tokens, enabling rapid theming, consistency, */
+/* and future-proofing your UI across the entire application.                */
+/* ========================================================================== */
+
+:root {
+  /* ---------------------------------------------------------------------- */
+  /* Spacing System (using 'rem' for scalable and consistent dimensions)    */
+  /* Defines a modular scale for all internal and external spacing,         */
+  /* padding, and margins, ensuring visual harmony and predictability.      */
+  /* ---------------------------------------------------------------------- */
+  --spacing-xxxs: 0.125rem; /* 2px - For very fine adjustments */
+  --spacing-xxs: 0.25rem;   /* 4px */
+  --spacing-xs: 0.5rem;     /* 8px */
+  --spacing-sm: 1rem;       /* 16px */
+  --spacing-md: 1.5rem;     /* 24px */
+  --spacing-lg: 2rem;       /* 32px */
+  --spacing-xl: 3rem;       /* 48px */
+  --spacing-xxl: 4rem;      /* 64px */
+  --spacing-xxxl: 6rem;     /* 96px - For large sections */
+
+  /* ---------------------------------------------------------------------- */
+  /* Color Palette (organized for Light Mode and Dark Mode theming)         */
+  /* Provides a comprehensive set of semantic colors for various UI states. */
+  /* ---------------------------------------------------------------------- */
+
+  /* Brand/Accent Colors (adapt as per your brand guidelines) */
+  --color-brand-primary: #ff5722; /* A vibrant orange for primary actions/accents */
+  --color-brand-secondary: #007bff; /* A complementary blue for secondary elements */
+  --color-brand-accent: #673ab7; /* A complementary purple for highlights */
+
+  /* Text Colors */
+  --color-text-light: #f8f9fa; /* Text color for dark backgrounds */
+  --color-text-dark: #212529;  /* Default text color for light backgrounds (high contrast) */
+  --color-text-muted: #6c757d; /* Lighter text for secondary information/placeholders */
+
+  /* Background Colors */
+  --color-bg-light: #ffffff; /* Default background for most content (white) */
+  --color-bg-light-alt: #f8f9fa; /* Slightly off-white for subtle section separation */
+  --color-bg-overlay: rgba(0, 0, 0, 0.7); /* For modals, popups, etc. */
+
+  /* Border & Shadow Colors */
+  --color-border-light: #e0e0e0; /* Light border color for light mode */
+  --color-shadow-light: rgba(0, 0, 0, 0.1); /* Subtle shadow for light mode */
+
+  /* Dark Mode Counterparts (These will be updated by a '.dark-mode' class) */
+  --color-dark-mode-bg-primary: #121212; /* Primary dark background */
+  --color-dark-mode-bg-secondary: #1e1e1e; /* Secondary dark background for sections/cards */
+  --color-dark-mode-text-primary: #e0e0e0; /* Light text for dark backgrounds */
+  --color-dark-mode-text-secondary: #b0b0b0; /* Muted light text for dark backgrounds */
+  --color-dark-mode-border: #333333; /* Darker borders for dark mode */
+  --color-dark-mode-shadow: rgba(0, 0, 0, 0.3); /* More pronounced shadow for dark mode */
+  --color-dark-mode-accent-overlay: rgba(255, 255, 255, 0.08); /* Subtle highlight in dark mode */
+
+  /* ---------------------------------------------------------------------- */
+  /* Typography System (Scalable font sizes and line heights)               */
+  /* Defines a clear hierarchy for text elements, ensuring readability      */
+  /* and visual balance across different screen sizes.                      */
+  /* ---------------------------------------------------------------------- */
+
+  --font-family-primary: 'Poppins', sans-serif; /* Main content font, modern & legible */
+  --font-family-secondary: 'Segoe UI', sans-serif; /* Alternative/fallback font */
+  --font-family-display: 'Montserrat', sans-serif; /* Optional: For bold headings/branding */
+
+  /* Fluid Font Sizes (using clamp() for responsive scaling) */
+  /* These variables define the min, preferred (viewport-based), and max font sizes */
+  --font-size-xxs: clamp(0.75rem, 0.9vw, 0.875rem); /* ~12px to 14px */
+  --font-size-xs: clamp(0.875rem, 1.1vw, 1rem);     /* ~14px to 16px */
+  --font-size-sm: clamp(0.8rem, 0.8vw, 0.8rem);    /* ~16px to 18px */
+  --font-size-base: clamp(1rem, 1.3vw, 1.25rem);    /* ~16px to 20px (default body text) */
+  --font-size-md: clamp(1.125rem, 1.5vw, 1.5rem);  /* ~18px to 24px */
+  --font-size-lg: clamp(1.25rem, 1.8vw, 1.75rem);  /* ~20px to 28px */
+  --font-size-xl: clamp(1.5rem, 2.2vw, 2rem);      /* ~24px to 32px */
+  --font-size-xxl: clamp(2rem, 3vw, 2.5rem);       /* ~32px to 40px */
+  --font-size-heading: clamp(2.5rem, 4vw, 3.5rem); /* ~40px to 56px - for main headings */
+
+  /* Line Heights for Readability */
+  --line-height-text: 1.6; /* Optimal line height for body text */
+  --line-height-heading: 1.2; /* Tighter line height for headings */
+  --line-height-tight: 1.0; /* For very compact text */
+
+  /* Font Weights */
+  --font-weight-light: 300;
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* ---------------------------------------------------------------------- */
+  /* Layout & Component Standards                                           */
+  /* Defines reusable properties for common UI elements and structural layout.*/
+  /* ---------------------------------------------------------------------- */
+
+  --container-max-width: 1440px; /* Maximum width for main content containers */
+  --border-radius-sm: 0.25rem; /* Small rounded corners (4px) */
+  --border-radius-md: 0.5rem;  /* Medium rounded corners (8px) - default for cards/buttons */
+  --border-radius-lg: 1rem;    /* Large rounded corners (16px) */
+  --border-radius-full: 50%;   /* For perfect circles (e.g., avatars) */
+
+  /* Box Shadows (subtle depth for UI elements) */
+  --shadow-sm: 0 1px 3px var(--color-shadow-light); /* Light, subtle shadow */
+  --shadow-md: 0 4px 6px var(--color-shadow-light); /* Medium depth shadow */
+  --shadow-lg: 0 8px 15px var(--color-shadow-light); /* Deeper shadow */
+
+  /* Transitions (for smooth UI interactions) */
+  --transition-duration-fast: 0.15s;
+  --transition-duration-normal: 0.3s;
+  --transition-duration-slow: 0.5s;
+  --transition-timing-ease: ease-in-out; /* Standard easing function */
+  --transition-timing-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Bouncy spring effect */
+}
+
+/* Dark Mode Theme Variables (applied when a '.dark-mode' class is active on a parent) */
+.dark-mode {
+  /* Background Colors */
+  --color-bg-light: var(--color-dark-mode-bg-primary); /* Overrides light background */
+  --color-bg-light-alt: var(--color-dark-mode-bg-secondary);
+
+  /* Text Colors */
+  --color-text-dark: var(--color-dark-mode-text-primary);
+  --color-text-muted: var(--color-dark-mode-text-secondary);
+
+  /* Border & Shadow Colors */
+  --color-border-light: var(--color-dark-mode-border);
+  --color-shadow-light: var(--color-dark-mode-shadow);
+}/* ========================================================================== */
+/* GENERAL BODY STYLING                                                       */
+/* Defines the foundational styles for the entire document body.              */
+/* ========================================================================== */
+
+body {
+  /* Layout & Sizing */
+  display: flex;         /* Enables Flexbox for full-page layout */
+  flex-direction: column; /* Stacks content vertically (e.g., header, main, footer) */
+  min-height: 100vh;     /* Ensures the body takes at least the full viewport height,
+                            allowing a sticky footer pattern if content is short. */
+  margin: 0;             /* Removes default browser margin for the body */
+
+  /* Typography */
+  font-family: var(--font-family-primary); /* Primary font for all body text */
+  font-size: var(--font-size-base);     /* Base font size, fluidly scales via clamp() in :root */
+  line-height: var(--line-height-text); /* Optimal line height for text readability */
+  color: var(--color-text-dark);        /* Default text color for light mode */
+
+  /* Appearance */
+  background-color: var(--color-bg-light); /* Default background color for light mode */
+
+  /* Overflow & Scrolling Behavior */
+  overflow-x: hidden; /* Prevents horizontal scrollbar, crucial for responsive designs */
+  overflow-y: hidden;   /* Allows vertical scrolling when content exceeds viewport height */
+  -webkit-overflow-scrolling: touch; /* Enhances smooth scrolling on iOS devices */
+
+  /* Custom Scrollbar Styling (Firefox) */
+  scrollbar-width: thin; /* Sets the scrollbar to a thin style */
+  /* Defines thumb and track colors for Firefox scrollbars */
+  scrollbar-color: var(--color-brand-primary) var(--color-bg-light); 
+}
+
+/* Custom Scrollbar Styling (WebKit Browsers: Chrome, Edge, Safari) */
+/* Targets the scrollbar track (the background area of the scrollbar). */
+body::-webkit-scrollbar {
+  width: 0.6rem; /* Sets a consistent width for the vertical scrollbar */
+}
+
+/* Targets the scrollbar track (the background area of the scrollbar). */
+body::-webkit-scrollbar-track {
+  background: var(--color-bg-light); /* Matches the body background for a cohesive look */
+}
+
+/* Targets the scrollbar thumb (the draggable part of the scrollbar). */
+body::-webkit-scrollbar-thumb {
+  background-color: var(--color-brand-primary); /* Uses brand primary color for visual emphasis */
+  border-radius: var(--border-radius-md); /* Applies rounded corners to the scrollbar thumb */
+  border: 2px solid var(--color-bg-light); /* Adds a subtle border for definition */
 }
 
 
-  
-  body {
-    justify-content: center; /* Centers content vertically if needed */
-    align-items: center; /* Centers content horizontally */
-    text-align: center; /* Keeps text centered */
-    background-color: white; 
-    font-family: 'Poppins', sans-serif;
-    overflow-y:hidden;
-    overflow-x: hidden;
-    margin: 0; 
-    min-height: 100vh; /* Ensures full height on all screens */
-  }
-  
-  
-  .container {
-    position: fixed;
-    background-color: white; 
-    display: flex;
-    flex: 1;
-    flex-wrap: nowrap;
-    flex-direction: column;
-    object-fit: cover;
-    top: 0px;
-    float: left;
-    width: 100%;
-    height: auto;
-    max-height:54px ;
-    border-radius: 0px;
-    left: 0px;
-    border-style: none;
-    z-index: 10;
-    margin-bottom: 0px;
-    justify-content: space-between;
-  }
-  
-  .Table {
-    position: relative;
-    min-width: 10%;  /* Slightly increased for better proportions */
-    max-width: 13.1%;
-    height: 3rem;  /* Adjusted for better spacing */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: transparent;
-  }
-  
-  .overlay-text {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    font-size: 1.25rem; /* Increased size for better readability */
-    font-weight: 800; /* Slightly bolder */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    z-index: 3;
-    background-color:transparent;
-    margin-left: 0px;
-  }
-  
-  /* NET and TOON Styling */
-  .net-text {
-    background:red;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.3em;
-    letter-spacing: 2px;
-  }
-  
-  .toon-text {
-    background: black;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-size: 1.3em;
-    margin-left: 5px;
-  }
-  
-  /* Dark Mode */
-  .dark-mode .net-text {
-    background:red;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .dark-mode .toon-text {
-    background:yellow;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-  }
-  
-  .dark-mode .shorts-text {
-    background:red;
-    color: white;
-  }
-  
-  
-  /* Remove underline from anchor tags */
-  a, .net-text, .toon-text {
-    text-decoration: none;
-  }
-  
-  .nav {
-    position: absolute;
-    width: 87%;
-    float: left;
-    margin-left: 13vw; /* Keeps navigation aligned on all screen sizes */
-    height: auto;
-    background-color:transparent; 
-    display: flex;
-    flex-wrap: nowrap;
-    flex-direction: row;
-    align-items: center; /* Center items vertically */
-    justify-content: space-around; /* Ensure equal spacing */
-    gap: 5vw; /* Adjusts dynamically */
-    max-height: 5.3vh; /* Scales well across different devices */
-    margin-bottom: 1vh;
-  }
-  
-  /* Main search container */
-  .search {
-    display: flex;
-    position: relative;
-    width: 90%;
-    max-width: 850px; /* was 600px */
-    height: auto;
-    background-color:transparent; 
-    margin: 2vh auto;
-    border-radius: 7px;
-    align-items: center;
-    border: 0.3px solid #ccc;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease-in-out;
-    margin-top: 15px;
-    margin-left: 40px;
-  }
-  
-  /* Search input field */
-  .search input[type="search"] {
-    flex: 1;
-    height: 4.5vh;
-    min-height: 30px;
-    max-height: 30px;
-    border-radius: 7px;
-    background-color: transparent;
-    border: none;
-    padding: 0.7rem 3rem 0.7rem 2.5rem;
-    color: #333;
-    font-size: 1rem;
-    outline: none;
-    transition: all 0.3s ease-in-out;
-  }
-  
-  /* Search input focus effect */
-  .search input[type="search"]:focus {
-    border: 1px solid white;
-    box-shadow: 0px 0px 8px none;
-  }
-  
-  
-  /* Clear button */
-  .clear-btn {
-    position: absolute;
-    right: 1rem;
-    background: none;
-    border: none;
-    cursor: pointer;
-    font-size: 1.2rem;
-    color: #666;
-    display: none; /* Hidden by default */
-  }
-  
-  /* Show clear button when text is entered */
-  .search input[type="search"]:valid ~ .clear-btn {
-    display: block;
-  }
-  
-  
-  /* Dark mode input */
-  body.dark-mode .search input[type="search"] {
-    color: #fff;
-  }
-  
-  /* Placeholder styling */
-  .search input[type="search"]::placeholder {
-    color: #36454F;
-    font-size: 0.9rem; /* Ensures readability */
-  }
-  
-  body.dark-mode .search input[type="search"]::placeholder {
-    color: #D3D3D3;
-  }
-  
-  /* Search Icon Styling */
-  .search .search-icon {
-    position: absolute;
-    right: 12px; /* Adjust distance for better alignment */
-    top: 50%;
-    transform: translateY(-50%);
-    width: 1.5rem;
-    height: 1.5rem;
-    min-width: 20px;
-    min-height: 20px;
-    background-color:transparent;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  /* Hide the clear button across all browsers */
-  .search input[type="search"]::-webkit-search-decoration,
-  .search input[type="search"]::-webkit-search-cancel-button,
-  .search input[type="search"]::-webkit-search-results-button,
-  .search input[type="search"]::-webkit-search-results-decoration {
-    display: none; 
-  }
-  
-  /* Prevent autofill background color change */
-  .search input[type="search"]:-webkit-autofill,
-  .search input[type="search"]:-webkit-autofill:hover,
-  .search input[type="search"]:-webkit-autofill:focus,
-  .search input[type="search"]:-webkit-autofill:active {
-    background-color:none !important;
-    color: #333 !important;
-    -webkit-box-shadow: 0 0 0px 1000px white inset !important;
-    box-shadow: 0 0 0px 1000px white inset !important;
-    transition: background-color 5000s ease-in-out 0s; /* Prevent flickering */
-  }
-  
-  
-  
-  .upload {
-    position: relative;
-    width: 3vw;
-    height: 3vw;
-    background-color: transparent;
-    margin-top: 0;
-    margin-left: 1vw;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-  
-  }
-  
-  /* Upload Icon */
-  .upload img {
-    width: 2.4vw;
-    height: 2.4vw;
-    padding: 0.5vh;
-    object-fit: contain;
-  
-  }
-  
-  
-  /* Tooltip Styling */
-  .tooltip {
-    position: absolute;
-    top: 110%; /* Positioned below the icon */
-    left: 50%;
-    transform: translateX(-50%);
-    background: rgba(0, 0, 0, 0.8);
-    color: white;
-    font-size: 0.9rem;
-    padding: 0.4rem 0.7rem;
-    border-radius: 0.3rem;
-    white-space: nowrap;
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
-  }
-  
-  /* Show tooltip on hover */
-  .upload:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(3px);
-  }
-  
-  /* Responsive Adjustments */
-  @media screen and (max-width: 768px) {
-    .upload {
-      width: 5vw;
-      height: 5vw;
-    }
-  
-    .upload img {
-      width: 3.5vw;
-      height: 3.5vw;
-    }
-  
-    .tooltip {
-      font-size: 0.8rem;
-      padding: 0.3rem 0.6rem;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .upload {
-      width: 7vw;
-      height: 7vw;
-    }
-  
-    .upload img {
-      width: 5vw;
-      height: 5vw;
-    }
-  
-    .tooltip {
-      font-size: 0.75rem;
-      padding: 0.2rem 0.5rem;
-    }
-  }
-  /* Notifications Icon */
-  .Notifications {
-    position: relative;
-    width: 3vw;
-    height: 3vw;
-    background-color: transparent;
-    margin: 0.3125rem 0 0.1875rem 1.25rem; /* Top, Right, Bottom, Left */
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  
-  }
-  
-  /* Icon inside the Notification button */
-  .Notifications img {
-    width: 2vw;
-    height: 2vw;
-  
-  }
-  
-  
-  
-  /* Notification Dropdown */
-  .Notification-container {
-    display: none; /* Hidden by default */
-    position: absolute;
-    width: 24%;
-    min-width: 11.25em; /* 180px */
-    height: auto;
-    max-height: 30em; /* Prevents excessive height */
-    background-color: #333; /* Dark mode background */
-    color: white;
-    top: 100%; /* Positioned below the icon */
-    right: 1%;
-    border-radius: 0.5em;
-    box-shadow: 0px 0.5em 1em rgba(0, 0, 0, 0.2);
-    overflow-y: auto; /* Enables scrolling for multiple notifications */
-    z-index: 30;
-    scrollbar-width: thin;
-    scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
-    padding: 1rem;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
-  }
-  
-  /* Active class to show dropdown smoothly */
-  .Notification-container.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* Responsive Adjustments */
-  @media screen and (max-width: 768px) {
-    .Notifications {
-      width: 4vw;
-      height: 4vw;
-    }
-  
-    .Notifications img {
-      width: 3vw;
-      height: 3vw;
-    }
-  
-    .Notification-container {
-      width: 40%;
-      right: 2%;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .Notifications {
-      width: 6vw;
-      height: 6vw;
-    }
-  
-    .Notifications img {
-      width: 4vw;
-      height: 4vw;
-    }
-  
-    .Notification-container {
-      width: 60%;
-      right: 5%;
-    }
-  }
-  /* Account Icon */
-  .Account {
-    position: relative;
-    width: 3vw;
-    height: 3vw;
-    background-color: transparent;
-    margin: 0 1.5625rem 0.1875rem 0; /* Right, Bottom */
-  
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    cursor: pointer;
-    float: right;
-    margin-right: 1rem;
-  
-  }
-  
-  /* Profile Image inside Account Icon */
-  .Account img {
-    width: 2vw;
-    height: 2vw;
-    border-radius: 50%;
-  
-    margin-top: 6px;
-  }
+/* ========================================================================== */
+/* HEADER & FOOTER GENERAL STYLING                                            */
+/* Provides base styles common to both the header and footer sections.        */
+/* ========================================================================== */
 
-  .dark-mode .Account img
+.header,
+.footer {
+  width: 100%; /* Ensures both header and footer span the full width of the viewport */
+  padding: var(--spacing-md) 0; /* Applies consistent vertical padding (e.g., 24px), no horizontal padding */
+  
+  /* Appearance */
+  background-color: var(--color-dark-mode-bg-primary); /* Uses a dark background variable, suitable for header/footer */
+  color: var(--color-text-light); /* Uses a light text color for contrast on dark backgrounds */
+}
+
+
+/* ========================================================================== */
+/* HEADER CONTAINER SPECIFIC STYLING                                          */
+/* Defines styles for the main fixed header bar at the top of the viewport.  */
+/* (Specific layout/content for the header goes here if it's not .header)    */
+/* ========================================================================== */
+
+/* The comment block indicates that specific header layout/content styles
+ would follow here if 'header' refers to a wrapper. If '.header' is the
+ main header element, then the styles above are sufficient.
+ No changes needed based on the provided input, just clarification. *//* ========================================================================== */
+/* HEADER COMPONENT STYLING                                                   */
+/* Defines the main fixed header bar at the top of the viewport, including    */
+/* the platform logo/title and general header layout.                         */
+/* ========================================================================== */
+
+/* ==== MAIN HEADER CONTAINER (.container) ==== */
+.container {
+  /* Positioning */
+  position: fixed; /* Keeps the header at the top of the viewport when scrolling */
+  top: 0;          /* Aligns to the very top */
+  left: 0;         /* Aligns to the very left */
+  z-index:1000; /* Ensures it stays on top of other content */
+
+  /* Sizing & Layout */
+  width: 100%;     /* Spans the full width of the screen */
+  height: 3rem;    /* Fixed height for the header (48px based on 16px root font-size) */
+  display: flex;   /* Enables flexbox layout for arranging children (logo, nav) */
+  flex-direction: row; /* Arranges children horizontally */
+  align-items: center; /* Vertically centers children within the header */
+  justify-content: space-between; /* Distributes space to push logo to left, nav to right */
+
+  /* Appearance & Spacing */
+  background-color: var(--color-bg-light); /* Default background color for light mode */
+  padding-inline-start: 0; /* Ensures no left padding pushes content initially */
+  /* margin-inline: auto; is redundant here as width is 100% and position is fixed */
+}
+
+/* Dark Mode adjustment for the main header container */
+.dark-mode .container {
+  background-color: var(--color-dark-mode-bg-primary); /* Darker background for dark mode */
+  box-shadow: var(--shadow-dark-md); /* More pronounced shadow in dark mode */
+}
+
+
+/* ==== LOGO/TITLE SECTION CONTAINER (.Table) ==== */
+/* This flexible container holds the platform's main title/logo. */
+.Table {
+  /* Flex Item Properties within .container */
+  flex: 0 0 15%; /* Prevents growing/shrinking and sets initial base width to 15% of parent */
+  height: 100%; /* Matches the height of its parent (.container) */
+  
+  /* Internal Layout */
+  display: flex;   /* Enables flexbox for its content (.overlay-text) */
+  align-items: center; /* Vertically centers content within the Table container */
+  
+  /* Appearance & Positioning */
+  background-color: transparent; /* Transparent background for the logo section */
+  position: relative; /* Allows for absolute positioning of its children (e.g., .overlay-text) */
+  inset-inline-start: 0; /* Aligns to the start (left) edge of the container */
+}
+
+
+/* ==== OVERLAY TEXT CONTAINER (.overlay-text) ==== */
+/* This absolutely positioned container holds the actual text of the logo,
+ allowing for special text-clipping effects. */
+ .overlay-text {
+  /* Positioning */
+  position: absolute; /* Positions precisely within its parent (.Table) */
+  inset: 0;           /* Stretches to cover the entire parent (top, right, bottom, left at 0) */
+  z-index: var(--z-index-logo-text); /* Ensures logo text is layered correctly */
+  
+  /* Layout */
+  display: flex;       /* Enables flexbox for centering the text content */
+  align-items: center; /* Vertically centers the text */
+  justify-content: center; /* Horizontally centers the text */
+  
+  /* Typography */
+  font-family: var(--font-family-primary); /* Uses the primary brand font */
+  font-size: 1.3em; /* Sets the base font size for the logo text (24px) */
+  font-weight: var(--font-weight-extrabold); /* Extra bold for prominence */
+  
+  /* Text Handling */
+  white-space: nowrap; /* Prevents the text from wrapping */
+  overflow: hidden;    /* Hides any text that overflows its container */
+  text-overflow: ellipsis; /* Adds "..." if text is truncated */
+  
+  /* Appearance & Spacing */
+  background-color: transparent; /* Transparent background for the text overlay */
+  padding-inline-start: 0; /* Ensures no left padding */
+}
+
+
+/* ==== "NET" TEXT STYLING (.net-text) ==== */
+/* Styles for the "NET" part of the logo title, using a background clipped to text. */
+.net-text {
+  /* Background Clip for Text Effect */
+  background: red; /* Uses the vibrant brand primary color (red) */
+  -webkit-background-clip: text;           /* Clips the background to the shape of the text */
+  -webkit-text-fill-color: transparent;    /* Makes the text transparent to reveal the clipped background */
+  
+  /* Typography */
+  /* Typography */
+  font-size: 1.3em; /* Sets the base font size for the logo text (24px) */
+  letter-spacing: var(--spacing-xxxs); /* Adds subtle letter spacing (2px) */
+  font-weight: inherit; /* Inherits font weight from parent (.overlay-text) */
+  display: inline-block; /* Ensures consistent rendering with text-clip effect */
+}
+
+/* ==== "TOON" TEXT STYLING (.toon-text) ==== */
+/* Styles for the "TOON" part of the logo title. */
+.toon-text {
+  /* Background Clip for Text Effect */
+  background: var(--color-text-dark); /* Default dark text color for light mode (black) */
+  -webkit-background-clip: text;           /* Clips the background to the shape of the text */
+  -webkit-text-fill-color: transparent;    /* Makes the text transparent to reveal the clipped background */
+  
+  /* Typography */
+  font-size: 1.3em; /* Sets the base font size for the logo text (24px) */
+  
+  /* Spacing */
+  margin-inline-start: var(--spacing-xxs); /* Adds a small space to the left (5px) */
+  
+  font-weight: inherit; /* Inherits font weight from parent */
+  display: inline-block; /* Ensures consistent rendering with text-clip effect */
+}
+
+
+/* ========================================================================== */
+/* DARK MODE THEME ADJUSTMENTS FOR HEADER                                     */
+/* Styles applied when a '.dark-mode' class is active on a parent element     */
+/* (e.g., <body> or <html>), overriding light mode defaults.                */
+/* ========================================================================== */
+
+/* Dark Mode adjustment for "NET" text background */
+.dark-mode .net-text {
+  background: red; /* Keeps brand primary color vibrant in dark mode */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dark Mode adjustment for "TOON" text background */
+.dark-mode .toon-text {
+  background: yellow; /* Uses light text for contrast in dark mode (yellow) */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Dark Mode adjustment for a hypothetical "SHORTS" text element */
+/* (This class was only present in your dark mode section of original code) */
+.dark-mode .shorts-text {
+  background: var(--color-brand-primary); /* Example: Use brand primary for background */
+  color: var(--color-text-light); /* Use light text color for contrast */
+  /* If this is also intended to be text-clipped, add those properties here */
+  /* -webkit-background-clip: text; */
+  /* -webkit-text-fill-color: transparent; */
+}
+
+
+/* ========================================================================== */
+/* GLOBAL LINK STYLING                                                        */
+/* Ensures consistent appearance for all anchor tags and specific text.       */
+/* ========================================================================== */
+
+/* Removes the default underline from all anchor tags for a cleaner look. */
+a {
+  text-decoration: none;
+}
+
+/* Explicitly ensures no underline for .net-text and .toon-text,
+ especially if they are nested within an <a> tag. */
+.net-text,
+.toon-text {
+  text-decoration: none; 
+}/* ========================================================================== */
+/* NAVIGATION SECTION STYLING (.nav)                                          */
+/* This section occupies the remaining space in the header and contains       */
+/* the main navigation links, positioned to the right.                        */
+/* ========================================================================== */
+
+
+.nav {
+  /* Flex Item Properties (within the .container header) */
+  flex-grow: 1; /* Allows the navigation section to take up all available horizontal space */
+  height: 100%; /* Ensures the navigation section matches the height of its parent header */
+  
+  /* Flex Container Properties (for arranging navigation links/items) */
+  display: flex;   /* Enables flexbox for aligning internal navigation items */
+  align-items: center; /* Vertically centers the navigation items */
+  justify-content: space-around; /* Distributes navigation items with equal space around them */
+  gap: 5vw; /* Fluid spacing between navigation items, scales with viewport width */
+  
+  /* Appearance */
+  background-color: transparent; /* Ensures a transparent background for the navigation area */
+  
+  /* Positioning & Spacing */
+  margin-inline-start: 0; /* Ensures no left margin, relying on justify-content for spacing */
+}
+
+/*
+* NOTE ON REDUNDANT BLOCKS:
+* The following .container and .nav blocks are duplicates of definitions found elsewhere
+* in your CSS. While keeping them here as per your original provided code,
+* it's important to be aware that they might be redundant and could be removed
+* if the properties are consistently defined in single locations.
+*/
+.container {
+  display: flex;
+  flex-direction: row; /* Defines children layout as a row */
+}
+
+.nav {
+  flex-grow: 1;
+  height: 100%;
+}
+
+.search {
+  display: flex;
+  position: relative;
+  width: 100%;
+  max-width: 850px;
+  height:30px;
+  left: 2%;
+  background-color:transparent;
+  margin: 15px auto;
+  border-radius: 7px;
+  align-items: center;
+  border: 0.3px solid #ccc;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden; /* Ensures hidden children don't leak out */
+}
+
+.dark-mode .search
 {
-  filter: invert(1);
+  background-color: transparent;
 }
 
-  
-  /* Dropdown Wrapper */
-  .account-dropdown {
-    position: relative;
-    display: inline-block;
+.search input[type="search"] {
+  flex: 1;
+  height: 4.5vh;
+height: 100%;
+  border-radius: 7px;
+  background-color:transparent;
+  border: none;
+  color: #333;
+  font-size: 1rem;
+  outline: none;
+  transition: all 0.3s ease-in-out;
+}
+
+
+.search input[type="search"]:focus {
+  border: 1px solid white;
+  box-shadow: none;
+}
+
+
+.search input[type="search"]:valid ~ .clear-btn {
+  display: block;
+}
+
+body.dark-mode .search input[type="search"] {
+  color: #fff;
+}
+
+.search input[type="search"]::placeholder {
+  color: #36454F;
+  font-size: 0.9rem;
+}
+
+body.dark-mode .search input[type="search"]::placeholder {
+  color: #D3D3D3;
+}
+
+/* Optional mobile support */
+@media (max-width: 480px) {
+  .search {
+    width: 95%;
+    padding: 0.25rem;
   }
-  
-  
-.dropdown-content {
+
+  .search input[type="search"] {
+    font-size: 0.95rem;
+    padding: 0.5rem 2rem 0.5rem 1.5rem;
+  }
+
+  .clear-btn {
+    font-size: 1rem;
+    right: 0.75rem;
+  }
+}
+
+/* Search icon to the left */
+.search .search-icon {
+  position: absolute;
+  right: 0.8rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  padding: 1px;
+  background-color: transparent;
+  align-items: center;
+  justify-content: center;
+}
+
+
+/* Clear button to the right */
+.clear-btn {
+  position: absolute;
+  right: 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 1.2rem;
+  color: red;
+  display: none;
+}
+
+.search input[type="search"] {
+  padding-left: 2rem; /* make room for icon */
+  padding-right: 3.5rem; /* make room for clear button */
+}
+
+
+.upload {
+  position: relative;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  margin-top: 0;
+  margin-left: 1vw;
+  border-radius: 50%;
+}
+
+.upload img {
+  width: 3vw;
+  height:3vw;
+  margin-top: 0.2vh;
+  padding: 0.5vh;
+  margin-left: 0vw;
+}
+
+
+.upload:hover .tooltip
+{
+visibility: visible;
+opacity: 1;
+
+}
+
+/* Notifications Icon */
+.Notifications {
+  position: relative;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.Notifications img {
+  width: 2vw;
+  height: 2vw;
+  margin-top: 0.4375rem;
+}
+
+/* Notification Dropdown */
+.Notification-container {
   display: none;
   position: absolute;
   top: 100%;
   right: 1%;
+  width: 24%;
+  min-width: 11.25em;
+  max-height: 30em;
+  padding: 1rem;
+
+  background-color: #333;
+  color: white;
+  border-radius: 0.5em;
+  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
+
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+
+  z-index: 30;
+}
+
+/* Active class to show the container */
+.Notification-container.active {
+  display: block;
+}
+
+.Theme {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.Theme img {
+  width: 1.6875em;
+  height: 1.6875em;
+  border-radius: 50%;
+  margin-left: 1em;
+}
+.Account {
+  position: relative;
+  width: 3vw;
+  height: 3vw;
+  background-color: transparent;
+  margin-top: 0.3125rem; /* 5px */
+  margin-right: 1rem;     /* 16px */
+  margin-bottom: 0.1875rem; /* 3px */
+  display: flex;
+  align-items: center;
+  border-radius: 50%;
+  float: right;
+}
+
+.Account img {
+  width: 2vw;
+  height: 2vw;
+  margin-left: 0.4rem; /* 5px */
+  border-radius: 50%;
+  object-fit: cover; /* Ensures proper scaling inside circle */
+}
+
+/* Dark mode adjustment */
+.dark-mode .Account img {
+  filter: invert(1);
+}
+
+/* Dropdown wrapper */
+.account-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
   width: 24%;
   min-width: 11.25em;
   max-height: 25em;
@@ -464,7 +693,7 @@ html {
   box-shadow: 0px 0.5em 1em rgba(0, 0, 0, 0.2);
   border-radius: 0.5em;
   z-index: 30;
-  padding: 0.5em 0;
+  padding: 0em 0;
   text-align: left;
   align-items: flex-start;
   overflow-y: auto;
@@ -489,7 +718,7 @@ html {
 
 /* Profile Section */
 .proofile {
-  width: 85%;
+  width: 100%;
   min-height: 1.875em; /* 30px */
   display: flex;
   align-items: center;
@@ -501,7 +730,7 @@ html {
   padding: 0.625em; /* 10px */
   border-radius: 0.4375em; /* 7px */
   max-width: 90%;
-  transition: all 0.3s ease-in-out;
+  margin: 0 auto;
 }
 
 /* Hover Effect */
@@ -524,7 +753,7 @@ html {
 }
 
 /* Profile Name */
-.proofile label {
+.proofile span {
   font-weight: bold;
   font-size: 0.875em; /* 14px */
   color: black;
@@ -538,7 +767,7 @@ html {
 }
 
 /* Change text color on hover */
-.proofile:hover label {
+.proofile:hover span{
   color: white;
 }
 
@@ -547,120 +776,66 @@ html {
   list-style: none; /* Remove bullet points */
 }
 
-  
-  /* Tooltip Base */
-  .tooltip {
-    position: absolute;
-    bottom: -2rem; /* Positions below the icon */
-    left: 50%;
-    transform: translateX(-50%) translateY(5px); /* Subtle offset */
-    background-color: #333;/* Slightly darker for better contrast */
-    color: white;
-    z-index: 10;
-    padding: 0.5em 1em; /* More padding for readability */
-    border-radius: 0.375em; /* Smooth rounded corners */
-    white-space: nowrap;
-    font-size: 0.875em; /* Optimized for readability */
-    visibility: hidden;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out, transform 0.2s ease-in-out;
-    pointer-events: none; /* Prevents accidental hover issues */
-  }
-  
-  /* Tooltip Hover Effect */
-  .upload:hover .tooltip, 
-  .Notifications:hover .tooltip, 
-  .Account:hover .tooltip {
-    visibility: visible;
-    opacity: 1;
-    transform: translateX(-50%) translateY(0);
-  }
-  
-  /* Responsive Adjustments */
-  @media screen and (max-width: 768px) {
-    .tooltip {
-      font-size: 0.75em; /* Reduce text size on smaller screens */
-      padding: 0.4em 0.6em;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .tooltip {
-      font-size: 0.6875em; /* Further reduce size for compact screens */
-      bottom: -1.75rem; /* Adjust positioning */
-    }
-  }
-  .overlay {
-    position: absolute; /* Ensures it stays positioned over its parent */
-    bottom: 1.875rem; /* 30px */
-    width: 12.5rem; /* 200px */
-    height: 3.125rem; /* 50px */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    background: rgba(0, 0, 0, 0.7);
-    color: #fff;
-    border-radius: 0.4375rem; /* 7px */
-    transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
-    opacity: 0; /* Initially hidden */
-    transform: translateY(10px); /* Subtle movement effect */
-  }
-  
-  /* Overlay Text Styling */
-  .overlay h3 {
-    color: white;
-    font-size: 1rem;
-    font-weight: 700;
-    margin: 0;
-    padding: 0 0.5rem; /* Adds a bit of spacing inside */
-  }
-  
-  /* Show overlay on hover */
-  .parent-container:hover .overlay {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  
-  /* ✅ Responsive Adjustments */
-  @media screen and (max-width: 768px) {
-    .overlay {
-      width: 10rem; /* Slightly smaller for tablets */
-      height: 2.8rem;
-      font-size: 0.9rem;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .overlay {
-      width: 8.5rem; /* Adjust for smaller screens */
-      height: 2.5rem;
-      font-size: 0.8rem;
-      bottom: 1rem; /* Adjust positioning */
-    }
-    .overlay h3 {
-      font-size: 0.75rem;
-    }
-  }
-  
 
+
+.tooltip {
+  position: absolute;
+  top: 100%; /* Show below the upload icon */
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: white;
+  padding: 0.4em 0.6em;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  white-space: nowrap;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+}
+
+
+/* Tooltip Hover Effect */
+.upload:hover .tooltip, 
+.Notifications:hover .tooltip, 
+.Account:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .tooltip {
+    font-size: 0.75em; /* Reduce text size on smaller screens */
+    padding: 0.4em 0.6em;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .tooltip {
+    font-size: 0.6875em; /* Further reduce size for compact screens */
+    bottom: -1.75rem; /* Adjust positioning */
+  }
+}
 /* ==== Base Container ==== */
 .container-1 {
-  position: absolute;
+  position: relative;
   width: 100%;
   max-height: 100vh;
   display: flex;
   flex-direction: column;
-  background-color: saddlebrown;
-  padding: 10px;
+  background-color: violet;
+  padding: 0px;
   margin: 0;
   box-sizing: border-box;
   z-index: 2;
   margin-top: 3.0rem;
   border-radius: 0px;
   border: 0.1px solid transparent;
-  padding-bottom: 50px;
-  padding-top:10px;
+  padding-bottom: 0px;
+  padding-top:1rem;
   border-style: ridge;
 }
 
@@ -676,7 +851,7 @@ html {
   width: 100%;
   height: auto;
   height: 30px;
-  background-color:darkcyan;
+  background-color:white;
   z-index: 10;
   display: flex;
   padding: 0px;
@@ -699,31 +874,85 @@ html {
 }
 
 .dark-mode .Heading {
-  background-color: #181818;; /* Black background for Dark Mode */
+  background-color:transparent; /* Black background for Dark Mode */
 }
 
 .dark-mode .Heading span {
   color: #ffffff;
 }
 
+
+
+/* ==== Scrollable Section ==== */
+.Scroller {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow-y:scroll;
+  overflow-x: hidden;
+  scrollbar-width: auto;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  background-color:salmon;
+  border-radius: 0px;
+  border: 1px solid transparent;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
+/* Dark mode adjustments */
+.dark-mode .Scroller {
+  scrollbar-color: rgba(7, 4, 4, 0.5) grey;
+}
+
+
+
+
+/* ==== Playlist Layout ==== */
+.Playlist {
+  position: relative;
+  display: flex;
+  height:auto;
+  max-height: 650px;
+  flex-direction:column;
+  width: 100%;
+  background-color: gray;
+  padding: 0px;
+  gap: 1rem;
+  border-style: ridge;
+  margin-top: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-bottom: 20px;
+  border-radius: 7px;
+  border: 0.1px solid transparent;
+}
+
+
+
 .Segment
 {
-position: relative;
-top: 0;
+  position: sticky;
+  top: 0;
+  z-index: 5;
 width: 100%;
 height: 30px;
-background-color:violet;
-z-index: 10;
+background-color: #F5F5F5;
 display: flex;
 padding: 0px;
 margin: 0;
 align-items: center;
 padding-left: 0%;
 border-radius: 0px;
+margin-top:0px;
 padding-top: 0px;
 padding-bottom: 0px;
 margin-bottom: 0px;
 
+}
+
+.dark-mode .Segment
+{
+  background-color: #2a2d2f;
 }
 
 .Segment span {
@@ -735,48 +964,157 @@ margin-bottom: 0px;
 
 }
 
-
-/* ==== Scrollable Section ==== */
-.Scroller {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow-y: auto;
-  overflow-x: hidden;
-  scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
-  background-color:sienna;
-  border-radius: 0px;
-  border: 1px solid transparent;
+.dark-mode .Segment span 
+{
+  color:#FFFFFF;
 }
 
-/* Dark mode adjustments */
-.dark-mode .Scroller {
-  scrollbar-color: rgba(0, 0, 0, 0.5) grey;
+.Heading, .Segment {
+  padding: 0.5rem 0.5rem;
+  height: auto;
 }
 
-/* ==== Playlist Layout ==== */
-.Playlist {
+
+.Playlist:first-of-type > .Segment:first-of-type {
+  margin-top: 1rem;
+  background: white;
+}
+
+.dark-mode .Playlist:first-of-type > .Segment:first-of-type {
+  margin-top: 1rem;
+  background-color: #2a2d2f;
+}
+
+
+
+
+.playlist-item {
   position: relative;
   display: flex;
   flex-direction: row;
-  width: 99.5%;
-  background-color: gray;
-  padding: 0px;
+  width: 100%;
+  background-color: rebeccapurple;
+  margin-bottom: 0rem;
+  padding-bottom: 0px;
+  padding: 0.5rem;
   gap: 1rem;
-  border-style: ridge;
-  margin-top: 5px;
-  margin-bottom: 0px;
-  border-radius: 7px;
-  border: 0.1px solid transparent;
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
-/*
-.dark-mode .Playlist hr
+/* Optional responsiveness */
+@media (max-width: 768px) {
+  .playlist-item {
+    flex-direction: column;
+  }
+}
+
+.left-section {
+  flex: 1;
+  margin-top: 0px;
+  max-width: 45%;
+  background-color: transparent;
+  margin-bottom: 0px;
+}
+
+
+
+.Container
 {
-  border: 100px solid red;
+width: 100%;
+height: 100%; /* or a defined px/rem/vh */
+background-color: seagreen;
+display: flex;
+flex-direction: row;
+margin-top: 0px;
+flex-wrap: wrap;
+padding-top: 0px;
+padding-bottom: 0px;
+padding: 0px;
+}
+
+
+.scroll-area {
+  width: 100%;
+  height: 100%;
+  overflow-x:scroll;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  z-index: 0;
+ padding-bottom: 0px;
+ margin-bottom:0px;
+  gap: 0.3rem; /* Slight space between items */
+  padding: 0rem 0rem;
+  scrollbar-width: thin;
+  overflow-y:hidden;
+  overflow-x: auto;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  scroll-snap-type: x mandatory; /* changed to x for horizontal */
+}
+
+/* Dark mode adjustments */
+.dark-mode .scroll-area {
+  scrollbar-color: rgba(7, 4, 4, 0.5) grey;
+}
+
+
+
+.shorts {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 9 / 16;
+  max-height: 70vh;
+  margin: 0; /* remove margin */
+  overflow: hidden;
+  border-radius: 12px;
+  flex-shrink: 0;
+  padding: 20px;
+  margin-bottom: 0px;
+  scroll-snap-align: start;
+  background-color: transparent;
+}
+  
+  /* 🔷 Video Element */
+  .shorts video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+  
+
+
+/* Play overlay button */
+.play-overlay {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+/*
+.dark-mode .play-overlay
+{
+  filter: invert(1);
 }
   */
+
+.overlay-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
 
 .dark-mode .Playlist {
   border: 1px solid transparent;
@@ -791,23 +1129,51 @@ margin-bottom: 0px;
 /* ==== Right Content Section ==== */
 .right-section {
   width: 58%;
-  background-color: transparent;
+  background-color: yellow;
   display: flex;
   flex-direction: column;
   gap: 0;
   border-radius: 7px;
   margin-right: 1%;
-  margin-top:1.3%;
+  margin-top:0%;
   padding: 0px;
   height: 100%;
+  flex: 2;
+  margin-bottom: 0px;
 }
+
+
+.Playlist {
+  gap: 0;
+  margin-top: 0;
+  padding: 0;
+}
+
+.Segment {
+  padding: 0;
+  margin: 0;
+}
+
+.Heading, .Segment {
+  padding: 0;
+  margin: 0;
+  height: 30px;
+}
+
+.playlist-item {
+  margin: 0;
+  padding: 0.5rem; /* optional */
+}
+
+.playlist-item:not(:first-child) {
+  margin-top: 1rem;
+}
+
 
 /* ==== About Section ==== */
 .About {
   height: auto;
-  min-height: 190px;
-  max-height: 190px;
-  background-color: transparent;
+  background-color:magenta;
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -818,41 +1184,63 @@ margin: 0;
 padding-bottom: 0px;
 }
 
+/* 1st Playlist (Series) */
+.Playlist:nth-of-type(1) .About {
+  background-color: transparent;
+  max-height: 260px;
+  margin-top: 0.5rem;
+}
+
+/* 1st Playlist (Series) */
+.Playlist:nth-of-type(3) .About {
+  background-color: transparent;
+  max-height: 300px;
+}
+
+
+
 /* ==== Description Area ==== */
 .description {
   height: auto;
   width: 100%;
-  height: auto;
+  height:100%;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
   scroll-behavior: smooth;
-  background-color: transparent;
+  background-color: fuchsia;
   display: flex;
+  flex: 1;
   flex-direction: column;
   overflow-y:auto;
 padding: 0px;
 }
 
-/* 
+
 .description span
 {
   position: relative;
-top: 1%;
+margin-top: 3%;
 }
-*/
+
+/* 1st Playlist (Series) */
+.Playlist:nth-of-type(3) .description span
+{
+  background-color: transparent;
+margin-top: 3%;
+}
+
 
 /* ==== Horizontal Scroll Video Row ==== */
 .vidoes {
   position: relative;
   width: 100%;
-  background-color: transparent;
+  background-color:darkgoldenrod;
   display: flex;
-  min-height: 150px;
-  max-height: 200px;
+ height: 100%;
   flex-direction: row;
   justify-content: flex-start;
-  gap: 16rem;
-  overflow-x: scroll;
+  gap: 1rem;
+  overflow-x: auto;
   overflow-y: hidden;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
@@ -875,17 +1263,76 @@ top: 1%;
 
 /* ==== Card Styling ==== */
 .cards {
-  position: absolute;
-  width: 33%;
+  position: relative; /* or remove this line entirely */
+  width: 200px; /* fixed width ensures spacing behaves as expected */
   padding: 0px;
   height: 120px;
   background-color: transparent;
   border-radius: 7px;
   cursor: pointer;
   top:11%;
-  margin-left: 0.1%;
+  margin-left: 3%;
   flex-shrink: 0; /* Don't shrink in horizontal layout */
 }
+
+
+/* 1st Playlist (Series) */
+.Playlist:nth-of-type(1) .right-section {
+  background: transparent;
+}
+.Playlist:nth-of-type(1) .About .description {
+  background: transparent;
+  height: 100%;
+}
+
+/* 2nd Playlist (Shorts) */
+.Playlist:nth-of-type(2) .right-section {
+  background-color: transparent;
+}
+.Playlist:nth-of-type(2) .vidoes .cards {
+  border: 0px  solid transparent;
+}
+
+/* 3rd Playlist (Movies) */
+.Playlist:nth-of-type(3) .right-section {
+  background: transparent;
+}
+.Playlist:nth-of-type(3) .vidoes .cards {
+  border: 0px  solid transparent;
+}
+
+/* 4th Playlist (Playlist) */
+.Playlist:nth-of-type(4) .right-section {
+  background: transparent;
+}
+
+.Playlist:nth-of-type(4) {
+  background:transparent;
+margin-bottom: 50px;
+}
+
+.Playlist:nth-of-type(4) .vidoes {
+  background:transparent;
+  margin-top: 2%;
+height: 100%;
+}
+
+.Playlist:nth-of-type(4) .kontainer {
+  background: transparent;
+  margin-top: 5%;
+
+}
+
+
+
+.Playlist:nth-of-type(4) .vidoes .cards {
+  border: 0px  solid transparent;
+  margin-top: 4.5%;
+  margin-left: 3%;
+  height: 150px;
+  width: 250px; /* fixed width ensures spacing behaves as expected */
+}
+
 
 .overlay-textttt {
   position: absolute;
@@ -897,7 +1344,7 @@ top: 1%;
  right:5%;
   bottom: 7%;
   border-radius: 0.4375rem; /* 7px */
-  padding: 0.375rem 0.625rem; /* Increased padding for better readability */
+  padding: 0.1rem 0.1rem; /* Increased padding for better readability */
   font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
@@ -941,7 +1388,7 @@ border-radius: 7px;
   left: 5%;
   bottom: 7%;
   border-radius: 7px;
-  padding: 6px 12px; /* Slightly better spacing */
+  padding: 0.1rem 0.1rem; /* Increased padding for better readability */
   font-size: 14px;
   white-space: nowrap;
   overflow: hidden;
@@ -971,17 +1418,23 @@ border-radius: 7px;
   /* Individual Video Containers */
   .kontainer {
     position: relative;
-    width: clamp(95%, 30%, 32%);
+    width: clamp(100%, 30%, 32%);
     height: auto;
     background-color: transparent;
     border-radius: 0.5rem;
     cursor: pointer;
-  margin-left: 10px;
+  margin-left: 0px;
   margin-bottom:10px;
-  margin-top:10px;
+  margin-top:25%;
   cursor: pointer;
   }
   
+.kontainer:nth-child(3)
+{
+  margin-bottom: 30px;
+
+}
+
   
   /* Video Thumbnails */
   .kontainer img {
@@ -1031,516 +1484,298 @@ border-radius: 7px;
     }
   }
   
-  /* Profile Section */
-  .profilee {
-    width: 90.8%;
-    height: 2rem; /* 40px */
-    border-radius: 0rem; /* 7px */
-    background-color: transparent;
-    display: flex;
-    align-items: center;
-    gap: 0.625rem; /* 10px */
-    padding: 0.3125rem 1rem; /* Adds subtle spacing */
-    margin-bottom: 0rem;
-    max-width: 100%;
-  }
+/* Profile Section */
+.profilee {
+  display: flex;
+  width: 100%;
+  height: 2rem; /* 40px */
+  border-radius: 0rem; /* 7px */
+  background-color: transparent;
+  align-items: center;
+  gap: 0.625rem; /* 10px */
+  padding: 0rem; /* Adds subtle spacing */
+  margin-bottom: 0rem;
+  max-width: 100%;
+}
+
+/* Profile Image */
+.profilee img {
+  width: 2.2rem; /* 35px converted to rem */
+  height: 2.2rem;
+  border-radius: 50%;
+  margin-left: 1%;
+  object-fit: cover;
+  background-color: transparent;
+}
+
+.dark-mode .profilee img
+{
+  filter: invert(1);
+}
+
+/* Profile Name Container */
+.profilee-name {
+  flex-grow: 1;
+  height: 100%;
+  background-color: transparent;
+  border-radius: 0rem;
+  font-size: 1.125rem;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+/* Profile Name Label */
+.profilee-name span {
+  font-size: 1.125rem; /* Adjusted for better scaling */
+  font-weight: 700;
+  color: #36454F;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  padding: 0.3125rem;
+  margin-left: 0px;
   
-  /* Profile Image */
-  .profilee img {
-    width: 2.2rem; /* 35px converted to rem */
-    height: 2.2rem;
-    border-radius: 50%;
-    object-fit: cover;
-    background-color: transparent;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .profilee {
+    padding: 0.3125rem 0.75rem;
   }
 
-  .dark-mode .profilee img
-  {
-    filter: invert(1);
+  .profilee img {
+    width: 2.2rem;
+    height: 2.2rem;
   }
-  
-  /* Profile Name Container */
-  .profilee-name {
-    flex-grow: 1;
-    height: auto;
-    background-color: transparent;
-    border-radius: 0rem;
-    font-size: 1.125rem;
-    display: flex;
+
+  .profilee-name span{
+    font-size: 0.9375rem; /* Slightly smaller text */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profilee {
+    flex-direction: row;
     align-items: center;
-    overflow: hidden;
-    white-space: nowrap;
+    padding: 0.3125rem 0.5rem;
   }
-  
-  /* Profile Name Label */
+
+  .profilee img {
+    width: 2rem;
+    height: 2rem;
+  }
+
   .profilee-name span {
-    font-size: 1.125rem; /* Adjusted for better scaling */
-    font-weight: 700;
-    color: #36454F;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    padding: 0.3125rem;
-    margin-left: 10px;
+    font-size: 0.875rem;
   }
-  
-  /* Responsive Adjustments */
-  @media screen and (max-width: 768px) {
-    .profilee {
-      padding: 0.3125rem 0.75rem;
-    }
-  
-    .profilee img {
-      width: 2.2rem;
-      height: 2.2rem;
-    }
-  
-    .profilee-name span {
-      font-size: 0.9375rem; /* Slightly smaller text */
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .profilee {
-      flex-direction: row;
-      align-items: center;
-      padding: 0.3125rem 0.5rem;
-    }
-  
-    .profilee img {
-      width: 2rem;
-      height: 2rem;
-    }
-  
-    .profilee-name span {
-      font-size: 0.875rem;
-    }
-  }
-  
-  .caption {
-    width: 94%;
-    height: 1.875rem; /* 30px */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    background-color: transparent;
-    padding: 0 0.625rem; /* Adds slight padding for better spacing */
-  }
-  
-  /* Caption Text */
-  .caption span {
-    color: black;
-    font-weight: 700;
-    font-size: 0.96875rem; /* 15.5px */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    text-align: center;
-    max-width: 100%;
-  }
-  
-  /* Responsive Adjustments */
-  @media screen and (max-width: 768px) {
-    .caption {
-      height: auto; /* Allows for multiple lines if necessary */
-      flex-wrap: wrap;
-      text-align: center;
-    }
-  
-    .caption span {
-      font-size: 0.9375rem; /* Slightly smaller for mobile */
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .caption {
-      height: auto;
-      padding: 0.3125rem; /* Adjusted for compact screens */
-    }
-  
-    .caption span {
-      font-size: 0.875rem; /* Smaller font size */
-    }
-  }
-  .videoo {
-    position: relative;
-    width: 100%;
-    height: auto;
-    margin-top: 0.0625rem; /* 1px */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  .videoo video {
-    width: 100%;
-    height: 16rem; /* 200px */
-    object-fit: cover;
-    border-radius: 0.4375em; /* Converted from 7px */
-    display: block;
-    pointer-events: none;
-  }
-  
-  
-  /* Responsive Adjustments */
-  @media screen and (max-width: 768px) {
-    .videoo video {
-      height: 10rem; /* Adjusted for tablets */
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .videoo video {
-      height: 8.5rem; /* Adjusted for mobile */
-    }
-  }
-  .overlay-textt {
-    position: absolute;
-    min-width: 12%; /* Slightly increased for better visibility */
-    max-width: 25%;
-    height: auto; /* Allows dynamic height */
-    background-color: rgba(0, 0, 0, 0.65); /* Slightly darker for better contrast */
-    color: white;
-    left: 2%;
-    bottom: 4.5%; /* Adjusted for better alignment */
-    border-radius: 0.4375rem; /* 7px */
-    padding: 0.4rem 0.6rem; /* Slightly increased padding for better spacing */
-    font-size: clamp(0.75rem, 1.2vw, 1rem); /* Responsive font size */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    word-break: break-word;
-  
-  }
-  
-  
-  /* Mobile Adjustments */
-  @media screen and (max-width: 768px) {
-    .overlay-textt {
-      max-width: 35%;
-      font-size: clamp(0.7rem, 2vw, 0.875rem);
-      bottom: 3.5%;
-      left: 3%;
-    }
-  }
-  
-  @media screen and (max-width: 480px) {
-    .overlay-textt {
-      max-width: 45%;
-      font-size: 0.75rem;
-      padding: 0.3rem 0.5rem;
-      bottom: 3%;
-      left: 3%;
-    }
-  }
-  
-  .sectiionn {
-    display: flex;
-    width: 100%;
-    height: auto;
-    background-color: transparent;
-    margin-top: 1px;
-    border-radius: 0rem; /* 7px */
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: nowrap; /* Prevent wrapping */
-    gap: 0.3125rem; /* 5px */
-  }
-  
-  /* Common Styling for All Sections */
-  .views, .time, .category {
-    height: 1.875rem; /* 30px */
-    background-color: transparent;
-    margin: 0.3125rem 0;
-    border-radius: 0rem;
-    display: flex;
-    align-items: center;
-    overflow: hidden;
-  }
-  
-  /* Views Section */
-  .views {
-    max-width: 25%;
-    min-width: 22%;
-    display: flex;
-    align-items: center;
-    gap: 0.1875rem; /* 3px */
-  }
-  
-  .views img {
-    width: 1.8vw;
-    height: 1.8vw;
-    margin-left: 1rem;
-  }
-  
-  .views span {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-shrink: 1;
-    max-width: 100%;
-    color: #36454F;
-    font-size: clamp(0.75rem, 1vw, 0.875rem); /* Responsive */
-  }
-  
-  /* Time Section */
-  .time {
-    flex-grow: 1;
-    max-width: 30%;
-    min-width: 27%;
-    margin: 0.3125rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-color: transparent;
-  }
-  
-  .time span {
-    margin: 0;
-    font-size: clamp(0.875rem, 1vw, 1rem); /* Responsive font size */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    max-width: 100%;
-    color: #36454F;
-  }
-  
-  /* Category Section */
-  .category {
-    display: flex;
-    width: 30%;
-    margin: 0.3125rem;
-    align-items: center;
-    justify-content: center;
-    border-radius: 0.4375rem;
-    flex: 2;
-    max-width: 11.25rem; /* 180px */
-  }
-  
-  /* Show Category Section on Larger Screens */
-  @media screen and (min-width: 1024px) {
-    .category {
-      display: flex;
-    }
-  }
-  
-  .category span {
-    margin: 0;
-    display: flex;
-    align-items: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    flex-shrink: 1;
-    max-width: 100%;
-    color: black;
-    font-size: 15px;
-  }
-  
-  
-     
-  /* Small phones */
-  @media (max-width: 375px) {}
-  
-  /* Large phones */
-  @media (max-width: 600px) 
-  {
-    .container
-    {
-      background-color: transparent;
-  
-    }
-  
-    .Table
-    {
-      background-color: transparent;
-  height: 58px;
-    }
-  
-    .overlay-text
-    {
-      background-color: transparent;
-  font-size: 18px;
-  margin-top: 7px;
-    }
-  
-    .nav
-    {
-      background-color: transparent;
-  float: left;
-  margin-left: 205px;
-  
-    }
-  
-    .container-1
-    {
-      background-color: transparent;
-    
-     }
-  
-     .kontainer
-     {
+}
+
+.caption {
   width: 100%;
-  margin-top: 30px;
-     }
-  
-     .videoo video
-     {
-  height: 320px;
-  width: 99%;
-     }
-  
-  
-  
-   }
-  
-  
-  /* Tablets */
-  @media (min-width: 601px) and (max-width: 991px)
-   {
-  
-   }
-  
-  /* Laptops */
-  @media (min-width: 992px) and (max-width: 1440px)
-   {
+  height: 1.875rem; /* 30px */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background-color: transparent;
+  padding: 0 0.625rem; /* Adds slight padding for better spacing */
+}
+
+/* Caption Text */
+.caption span {
+  color: black;
+  height: 100%;
+  font-weight: 700;
+  font-size: 0.96875rem; /* 15.5px */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  max-width: 100%;
+  margin-top: 3%;
+}
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .caption {
+    height: auto; /* Allows for multiple lines if necessary */
+    flex-wrap: wrap;
+    text-align: center;
   }
-  
-  
-  
-  /* Desktops */
-  @media (min-width: 1441px) and (max-width: 1920px)
-   {
-  .body
-  {
-    background-color: transparent;
-  
-  
+
+  .caption span {
+    font-size: 0.9375rem; /* Slightly smaller for mobile */
   }
-  
-  .Table
-  {
-    background-color: white;
-  
+}
+
+@media screen and (max-width: 480px) {
+  .caption {
+    height: auto;
+    padding: 0.3125rem; /* Adjusted for compact screens */
   }
-  
-  .overlay-text
-  {
-    background-color: white;
-  width: 80%;
-  height: 57px;
-  margin-top: 0px;
-  
-  
+
+  .caption span {
+    font-size: 0.875rem; /* Smaller font size */
   }
-  
-  
-  .nav
-  {
-    width: 100%;
-    background-color: blueviolet;
-  gap:2px;
+}
+.videoo {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-top: 0.0625rem; /* 1px */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.videoo video {
+  width: 100%;
+  height: 12.5rem; /* 200px */
+  object-fit: cover;
+  border-radius: 0.4375em; /* Converted from 7px */
+  display: block;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  pointer-events: none;
+}
+
+
+/* Responsive Adjustments */
+@media screen and (max-width: 768px) {
+  .videoo video {
+    height: 10rem; /* Adjusted for tablets */
   }
-  
-  .fx-gap
-  {
-  width: 30%;
-  
+}
+
+@media screen and (max-width: 480px) {
+  .videoo video {
+    height: 8.5rem; /* Adjusted for mobile */
   }
-  
-  .upload
-  {
-    float: left;
-  margin-left: 2px;
-  
+}
+.overlay-textt {
+  position: absolute;
+  min-width: 12%; /* Slightly increased for better visibility */
+  max-width: 25%;
+  height: auto; /* Allows dynamic height */
+  background-color: rgba(0, 0, 0, 0.65); /* Slightly darker for better contrast */
+  color: white;
+  left: 2%;
+  bottom: 4%; /* Adjusted for better alignment */
+  border-radius: 0.4375rem; /* 7px */
+  padding: 0.4rem 0.6rem; /* Slightly increased padding for better spacing */
+  font-size: clamp(0.75rem, 1.2vw, 1rem); /* Responsive font size */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  word-break: break-word;
+
+}
+
+
+/* Mobile Adjustments */
+@media screen and (max-width: 768px) {
+  .overlay-textt {
+    max-width: 35%;
+    font-size: clamp(0.7rem, 2vw, 0.875rem);
+    bottom: 3.5%;
+    left: 3%;
   }
-  
-  .Notifications
-  {
-  
-    float: left;
-  margin-left: 2px;
+}
+
+@media screen and (max-width: 480px) {
+  .overlay-textt {
+    max-width: 45%;
+    font-size: 0.75rem;
+    padding: 0.3rem 0.5rem;
+    bottom: 3%;
+    left: 3%;
   }
-  
-  
-  .Theme
-  {
-  
-    float: left;
-  margin-left: 2px;
+}
+
+.sectiionn {
+  display: flex;
+  width: 100%;
+  background-color: transparent;
+  margin-top: 1px;
+  border-radius: 7px;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.2rem;
+  padding: 0 0rem; /* Optional: adds horizontal padding for breathing space */
+  margin-bottom: 1px;
+}
+
+.views, .time, .category {
+  flex: 1 1 0;
+  max-width: 33.3%;
+  height: 1.8rem;
+  background-color: transparent;
+  margin: 0.1rem 0; /* Equal top and bottom margin */
+  border-radius: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  min-width: 0;
+}
+
+
+/* Remove margin-left from views */
+.views {
+  margin-left: 0;
+}
+
+/* Image inside views */
+.views img {
+  width: 1.8vw;
+  height: 1.8vw;
+  margin-right: 0.3rem;
+}
+
+/* Text in views */
+.views span,
+.time span,
+.category span {
+  margin: 0;
+  display: flex;
+  align-items: center;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: black;
+  font-size: clamp(0.75rem, 1vw, 0.875rem);
+}
+
+/* Optional: Adjust for smaller screens */
+@media screen and (max-width: 768px) {
+  .sectiionn {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
   }
-  
-  
-  .Account
-  {
-  
-    float:right;
-  margin-right: 300px;
+
+  .views,
+  .time,
+  .category {
+    flex: 1 1 100%;
+    max-width: 100%;
+    justify-content: center;
   }
-  
-  
-  
-  .kontainer
-  {
-  width: 24%;
+
+  .views img {
+    max-width: 20px;
   }
+}
+
   
-   }
-  
-  /* Smart TVs and 4K Screens */
-  @media (min-width: 1921px)
-   {
-  
-    .body
-    {
-      background-color: transparent;
     
-    
-    }
-    
-    .Table
-    {
-      background-color: green;
-    
-    }
-    
-    .overlay-text
-    {
-      background-color: blue;
-    width: 65%;
-    height: 57px;
-    margin-top: 0px;
-    
-    
-    }
-    
-    
-    .nav
-    {
-      width: 100%;
-      background-color: transparent;
-    gap:2px;
-    }
-  
-    .fx {
-   
-      margin-left: 10px;
-      background-color: transparent;
-    }
-    
-  
-  
-   }
-  
   .dark-mode .nav input[type="text"]  {
     color:   #F5F5DC; 
   }
@@ -1637,3 +1872,164 @@ border-radius: 7px;
   }
   
    
+
+  /* Mobile-first default styles (<=320px) */
+
+/* Small phones (up to 480px) */
+@media (max-width: 480px) {
+  .navbar { /* hide menu items, show hamburger */ }
+  .sidebar { display: none; }
+  .main-content { display: flex; flex-direction: column; }
+  .video-player { width: 100%; height: auto; }
+  button, .button { padding: 1rem; min-width: 48px; min-height: 48px; }
+}
+
+/* Medium phones / small tablets (481px–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .navbar { /* show expanded nav or hamburger */ }
+  .layout { display: grid;
+             grid-template-columns: 1fr 1fr; 
+             grid-gap: 16px; }
+  .sidebar { display: block; /* optional sidebar view */ }
+  .main-content, .video-container { width: 100%; }
+}
+
+/* Tablets / small laptops (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .layout { grid-template-columns: 1fr 2fr; } 
+  .navbar { /* full nav, horizontal */ }
+  .sidebar { /* visible with full functionality */ }
+  .video-player { max-width: 100%; height: auto; }
+}
+
+/* Desktops (1025px–1279px) */
+@media (min-width: 1025px) and (max-width: 1279px) {
+  .layout { grid-template-columns: 200px 3fr 1fr; }
+  .navbar { /* large nav layout */ }
+  .sidebar { padding: 20px; }
+  .main-content { max-width: 100%; }
+}
+
+/* Large desktops (1280px–1599px) */
+@media (min-width: 1280px) and (max-width: 1599px) {
+  .layout { grid-template-columns: 250px 4fr 2fr; }
+  .navbar, .sidebar, .content { padding: 2rem; }
+}
+
+/* Ultra-wide (1600px and up) */
+@media (min-width: 1600px) {
+
+  
+.container
+{
+  background-color: brown;
+}
+
+.Table
+{
+  background-color: honeydew;
+}
+
+.overlay-text
+{
+  background-color: navajowhite;
+  font-size: 1.5rem;
+}
+
+.nav
+{
+  background-color: transparent;
+}
+
+.search input[type="search"] {
+
+  min-height: 20px;
+  max-height: 25px;
+
+}
+
+
+.upload
+{
+  background-color: transparent;
+  width: 2.5vw;
+  height: 2.5vw;
+}
+
+.Notifications
+{
+  background-color: transparent;
+  width: 2vw;
+  height: 2vw;
+}
+
+.Account 
+{
+  background-color: transparent;
+  width: 2vw;
+  height: 2vw;
+}
+
+
+
+.upload img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
+
+/* Caption Text */
+.caption span {
+  font-weight: 700;
+  font-size: 0.9rem; /* 15.5px */
+}
+
+.videoo {
+  width: 100%;
+  height: auto;
+}
+
+.videoo video {
+  width: 100%;
+  height: 17.5rem; /* 200px */
+
+}
+
+  .views
+  {
+    background-color: transparent;
+  }
+
+
+.views img {
+  width: clamp(24px, 4.5vw, 30px);
+  height: clamp(24px, 4.5vw, 30px);
+  background-color: transparent;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+
+}
+
+/* Dark mode override */
+@media (prefers-color-scheme: dark) {
+  body { background: #121212; color: #e0e0e0; }
+  .navbar { background: #1f1f1f; }
+  /* etc. */
+}

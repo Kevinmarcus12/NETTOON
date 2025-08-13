@@ -996,69 +996,77 @@ opacity: 1;
 /* Tablets / small laptops (769px–1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
 
-  .container
-  {
-    background-color: firebrick;
-  
-  }
-  
-  .nav
-  {
-    background-color: bisque;
-  }
-  
+  body {
+    font-size: 17px;
+}
 
-.search input[type="search"] {
 
-  min-height: 20px;
-  max-height: 25px;
+.container
+{
+  background-color: darkgreen; /* Default background color for light mode */
+}
 
+
+
+.nav
+{
+background-color: transparent;
+}
+
+.overlay-text
+{
+font-size: 1.1rem;
 }
 
 
 .upload
 {
-  background-color: rebeccapurple;
-  width: 3.3vw;
-  height: 3.3vw;
+background-color: transparent;
+width: 3vw;
+height: 3vw;
 }
-
 
 .Notifications
 {
-  background-color: rebeccapurple;
-  width: 3.3vw;
-  height: 3.3vw;
+background-color: transparent;
+width: 3vw;
+height: 3vw;
 }
-
 
 .Account 
 {
-  background-color: rebeccapurple;
-  width: 3.3vw;
-  height: 3.3vw;
+background-color: transparent;
+width: 3vw;
+height: 3vw;
+}
+
+.upload
+{
+background-color: transparent;
+width: 3vw;
+height: 3vw;
 }
 
 
 .upload img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
+width: 100%;
+height:  100%;
+margin: 0 auto;
 }
 
 .Notifications img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
+width: 100%;
+height:  100%;
+margin: 0 auto;
 }
-
 
 
 .Account img {
-  width: 100%;
-  height:  100%;
+width: 100%;
+height:  100%;
 margin: 0 auto;
 }
+
 
 
 .Table
@@ -1071,6 +1079,13 @@ margin: 0 auto;
   background-color: transparent;
   font-size: 1.1rem;
 }
+
+.login-container {
+    width: 100%;
+    max-width: 500px;
+margin-top: 7rem;
+ height: 70vh;
+  }
 }
 
 /* Desktops (1025px–1279px) */

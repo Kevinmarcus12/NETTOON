@@ -2742,10 +2742,10 @@ margin: 0 auto;
 
 .short-video {
 
-  max-width: 400px;
+  max-width: 380px;
   aspect-ratio: 9 / 16;
   max-height: 90vh;
-
+top: 1rem;
 
 
 }
@@ -2766,9 +2766,10 @@ margin: 0 auto;
 /* 🔷 Metadata Container */
 .metadata {
   position: absolute;
-top:20rem;
-  right: 22vw;
-  width: 5vw;
+top:8rem;
+background-color: firebrick;
+  right: 20vw;
+  width: 8vw;
 }
 
 /* 👇 Move both to left when comments are shown */
@@ -2777,7 +2778,7 @@ top:20rem;
 }
 
 .shorts.show-comments .metadata {
-  margin-right: 50%;
+  margin-right: 49.5%;
   right: 10px;
 }
 
@@ -2789,8 +2790,8 @@ background-color: transparent;
   max-width: 400px;
   aspect-ratio: 9 / 16;
   min-height: 75vh;
-  max-height: 80vh;
-top: 20%;
+  max-height: 90vh;
+  top: 3.5rem;
 }
 
 
@@ -2978,8 +2979,8 @@ margin: 0 auto;
   left: 5.6%;
   gap: 1rem;
   justify-content: center;
-  background-color: darkcyan;
-  border: 5px solid red; /* TEMP: remove in production */
+  background-color: transparent;
+  border: 5px solid transparent; /* TEMP: remove in production */
   margin: 0rem auto 0 0rem;
 
 }
@@ -2996,7 +2997,7 @@ margin: 0 auto;
 
 /* 🔷 Metadata Container */
 .metadata {
-  background-color: saddlebrown;
+  background-color: transparent;
   position: absolute;
   top: 30vh;
   right: 25vw;
@@ -3005,8 +3006,8 @@ margin: 0 auto;
 }
 
 .comment-container {
-background-color: salmon;
-  top: 9rem;
+  background-color: transparent;
+  top: 8.8rem;
   right: 7%; /* Position when shown */
   width: 37%;
   max-width: 400px;
@@ -3140,13 +3141,13 @@ margin: 0 auto;
   background-color: transparent;
   border: 1px solid transparent; /* TEMP: remove in production */
   margin: 3.3rem auto 0 0rem;
- border-style: none;
+  border-style: ridge;
 }
 
 .shorts
 {
   background-color: transparent;
- border-style: none;
+  border-style: ridge;
 }
 
 .short-video {
@@ -3155,7 +3156,7 @@ margin: 0 auto;
   aspect-ratio: 9 / 16;
   max-height: 90vh;
   margin:5rem auto 0 35rem;
- border-style: none;
+  border-style: ridge;
 
 }
 
@@ -3176,19 +3177,19 @@ margin: 0 auto;
   top: 24vh;
   right: 32vw;
   width: 5vw;
-  border-style: none;
+  border-style: ridge;
 }
 
 .comment-container {
 
-  top: 7rem;
+  top: 5rem;
   right: 7%; /* Position when shown */
   width: 37%;
   max-width: 450px;
   aspect-ratio: 9 / 16;
   min-height: 85vh;
   max-height: 85vh;
- border-style: ridge;
+  border-style: ridge;
 
 }
 

@@ -3379,7 +3379,6 @@ body {
 }
 /* Mobile-first default styles (<=320px) */
 
-
 /* Small Mobile Devices (Portrait phones, e.g., 320px - 480px) */
 /* Targets devices like older iPhones, basic Android phones */
 @media (min-width: 320px) and (max-width: 480px) {
@@ -3398,7 +3397,7 @@ body {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        background-color: pink;
+        background-color: var(--color-bg-light);
         padding: 0;
         box-shadow: var(--shadow-md);
       }
@@ -3411,14 +3410,15 @@ body {
         align-items: center;
         margin-left: 2px;
         padding-left: 8rem;
-        background-color: violet;
+        background-color: transparent;
       }
     
       .overlay-text {
         font-size: 1rem;
         padding: 0;
+        margin-left: 1px;
         white-space: nowrap;
-        background-color: sandybrown;
+        background-color: transparent;
       }
     
       .nav {
@@ -3428,15 +3428,20 @@ body {
         align-items: center;
         gap: 0.1rem;
         padding-right: 0.1rem;
-        background-color: grey;
+        background-color: transparent;
         margin-left: 0rem;
       }
     
       .search {
         position: relative;
         flex: 0.9;
-        height: 2.2rem;
-        background-color:forestgreen;
+        width: 100%;
+        max-width: 900px;
+        height:30px;
+        left: 0%;
+        background-color:transparent;
+        margin: 0px auto;
+        background-color: transparent;
         border: 0.5px solid #ccc;
         border-radius: 5px;
         margin: 0 auto;
@@ -3444,14 +3449,16 @@ body {
         display: flex;
         align-items: center;
         box-shadow: none;
-        max-width: 100%;
+   
       }
     
       .search input[type="search"] {
-        flex: 1;
+        flex: 2;
+        width: 100%;
+        max-width: 100%;
         height: 100%;
         font-size: 0.9rem;
-        padding: 0 0.5rem;
+        padding: 0 0rem;
         background-color: transparent;
         border: none;
         color: #333;
@@ -3522,6 +3529,19 @@ body {
         filter: invert(1);
       }
 
+      .Account {
+        margin-top: 0.3125rem; /* 5px */
+        margin-right: 0.5rem;     /* 16px */
+        margin-bottom: 0.1875rem; /* 3px */
+
+      }
+      
+      .Account img {
+        margin-left: 0.4rem; /* 5px */
+
+      }
+      
+
 
    .dropdown-content {
   display: none;
@@ -3567,7 +3587,7 @@ body {
 
 /* Hover Effect */
 .proofile:hover {
-  background-color: grey;
+  background-color: transparent;
   color: white;
   transform: scale(1.02);
   cursor: pointer;
@@ -3585,7 +3605,7 @@ body {
 /* Profile Name */
 .proofile span {
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.5rem;
   color: black;
   margin-left: 0.2rem;
   white-space: nowrap;
@@ -3605,8 +3625,8 @@ body {
 /* Mobile responsiveness */
 @media (max-width: 480px) {
   .dropdown-content {
-    right: 2%;
-    width: 92vw;
+    right: 1%;
+    width: 10vw;
     padding: 0.25rem 0;
   }
 
@@ -3630,16 +3650,20 @@ body {
   }
 }
 
+
+
+
 .video-container
 {
   position: fixed;
   width: 100%;
 max-width: 100%;
   border-radius: 0;
-  border-style: ridge;
+  border-style:ridge;
   padding: 0;
   margin-top: 47px;
   z-index: 10;
+  margin-bottom: 20rem;
 }
 
 .containerr
@@ -3647,7 +3671,7 @@ max-width: 100%;
   width: 100%;
   margin-left: 0px;
   border-radius: 0;
-  background-color: darkcyan;
+  background-color: var(--color-bg-light);
   padding: 0;
   width: 100%;
   max-width: 100%;
@@ -3666,45 +3690,57 @@ max-width: 100%;
   height: 30px;
   z-index: 1; /* Ensures it's above the video */
 }
-
 .profillee
 {
-  background-color:gold;
-  height: 30px;
+  background-color: gray;
+  height: 35px;
+  border-radius: 0px;
+
 }
 
-.profillee-name
-{
-  background-color: chartreuse;
-  margin-top: 0px;
-}
 
 .profillee img {
   width: clamp(2rem, 12%, 2rem); /* Responsive width */
   height: auto;
   margin-bottom: 10px;
+  margin-left: 5px;
 }
+
+
+.profillee-name
+{
+  background-color: cadetblue;
+  margin-top: 0px;
+  height: 100%;
+  margin-left: 45px;
+}
+
+.profillee-name span
+{
+  font-size: clamp(1rem, 1vw, 1rem); /* Ensure balance between small & large screens */
+}
+
 
 .captionn
 {
-  background-color: rebeccapurple;
+  background-color: transparent;
 }
 
 .captionn h3
 {
-  font-size: clamp(1rem, 1.1vw, 1.5rem);
+  font-size: clamp(0.9rem, 1vw, 1.4rem);
 }
 
 .sectionn
 {
-  background-color: darkorchid;
+  background-color: transparent;
   border-radius: 0;
   gap:3px;
 }
-
 /* Increase space for time and follow buttons */
 .viewss {
-  flex: 2.2;
+  flex: 2.6;
+  margin-left: 0px;
 }
 
 /* Increase space for time and follow buttons */
@@ -3719,12 +3755,14 @@ max-width: 100%;
 .option
 {
   flex: 1;
+  margin-right: 0px;
 }
 
 .commentss 
 {
   gap:0px;
 }
+
 
 
 
@@ -3779,20 +3817,23 @@ max-width: 100%;
 
 
 .container-1 {
-  top: 0rem;
+  top: 23.8rem;
   width: 100%;
   left: 0;
-  background-color: grey;
+  border-style: ridge;
+  border-color: transparent;
+  background-color:chartreuse;
   border-radius: 0;
   display: flex;
   flex-direction: column;
   gap: 0rem; /* Removed gap between kontainers */
   padding: 0;
   margin: 0;
+
 }
 
 .kontainer {
-  background-color: pink;
+  background-color:sienna;
   width: 100%;
   margin: 0;
   padding: 0;
@@ -3807,7 +3848,7 @@ max-width: 100%;
   display: flex;
   align-items: center;
   gap: 0.4rem;
-  background-color: darkcyan;
+  background-color: transparent;
   border-radius: 0;
   margin: 0;
   padding: 0.3rem 0.5rem;
@@ -3831,7 +3872,7 @@ max-width: 100%;
 }
 
 .profilee-name span {
-  font-size: 0.8rem;
+  font-size: clamp(1rem, 1vw, 1rem); /* Ensure balance between small & large screens */
   font-weight: 600;
   margin: 0;
   padding: 0;
@@ -3857,6 +3898,7 @@ max-width: 100%;
   padding: 0 0.5rem;
   border-radius: 0;
   margin: 0;
+  z-index: 1000;
 }
 
 .caption span {
@@ -4262,7 +4304,8 @@ background-color: fuchsia;
 
 /* Tablets / small laptops (769px–1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
- .container
+  
+  .container
   {
     background-color: var(--color-bg-light); /* Default background color for light mode */
   
@@ -4864,13 +4907,13 @@ margin: 0 auto;
   width: 100%;
   max-width: 100%;
   flex-shrink:0;
-  border-style: none;
+  border-style: ridge;
   }
 
 .containerr
 {
   background-color: transparent;
-  border-style: none;
+  border-style: ridge;
 }
 
 
@@ -4898,7 +4941,7 @@ margin: 0 auto;
 {
   background-color: transparent;
   max-height: 785px;
-   border-style: none;
+    border-style: ridge;
 }
 
 .card
@@ -4906,7 +4949,7 @@ margin: 0 auto;
   background-color: transparent;
   max-height: 300px;
   margin: 1px 0 12px 7px; /* Maintain original positioning */
-  border-style: none;
+  border-style: ridge;
 }
 
 .pichaa {
@@ -4955,7 +4998,7 @@ margin: 0 auto;
     background-color: transparent;
   gap: 1.5rem;
   width:100%; 
-  border-style: none;
+  border-style: ridge;
   }
 
   .kontainer
@@ -4963,7 +5006,7 @@ margin: 0 auto;
     background-color: transparent;
     width: clamp(28%, 37%, 32%);
 margin-left: 6px;
-  border-style: none;
+border-style: ridge;
   }
 
 /* Caption Text */

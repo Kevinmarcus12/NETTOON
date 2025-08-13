@@ -1534,7 +1534,7 @@ padding-bottom: 20px;
   border: none; /* Removes any default border */
   border-style:none; /* Explicitly sets border style to none */
   border-radius: 0.4375rem;
-  
+  margin: 22px 0 22px 10px; /* Maintain original positioning */
   /* Margins for spacing the cards */
   
   cursor: pointer; /* Indicates that the card is interactive and clickable */
@@ -1976,24 +1976,24 @@ filter: invert(1);
 }
 
 
+
 .comment-container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  width: 100%;
+  width: 98%;
   max-height: 600px;
   overflow-y: auto;
-  background-color: transparent;
+  background:transparent;
   padding-bottom: 0px; /* Reserve space for sticky input */
-  margin-left: 0%;
+  margin-left: 1%;
   border-radius: 7px;
   border: 0.1px solid #ccc;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
   top:1em;
 }
-
 
 .comment-count {
   position: sticky; /* Make it sticky */
@@ -2241,9 +2241,6 @@ font-size: 14px;
 }
 
 
-
-
-
 .comment-actions {
   display: none;
   justify-content: flex-end;
@@ -2380,6 +2377,7 @@ font-size: 14px;
   text-overflow: ellipsis;
 }
 
+
 .sidebarr {
   position: relative;
   display: flex;
@@ -2427,6 +2425,7 @@ right: 0.5%;
 /* Light mode hover */
 .sidebarr-popup .popup-item:hover {
   background-color: #e0e0e0;
+  background-color: gray;
   color: white;
   transform: scale(1.05);
   cursor: pointer;
@@ -2454,7 +2453,6 @@ right: 0.5%;
 .hidden {
   display: none !important;
 }
-
 
 
 .container-3 {
@@ -2582,7 +2580,7 @@ html {
   
   min-height: var(--min-height-profile-section); /* Minimum height (35px converted to rem) */
    display: flex;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 
   
 justify-content: space-between;
@@ -2675,8 +2673,8 @@ justify-content: space-between;
 }
 
 /* Dark mode hover effect for followers */
-.dark-mode .followers:hover {
-  background-color: var(--color-bg-hover-dark); /* Darker background on hover in dark mode */
+.dark-mode .followers, .profile-name :hover {
+  background-color:none; /* Darker background on hover in dark mode */
 }
 
 /* ==== FOLLOWERS TEXT LABEL (.followers span) ==== */
@@ -2768,12 +2766,19 @@ height: inherit;
 {
   position: relative;
   background-color:transparent;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: auto;
+  overflow-y: hidden;
   gap: 1rem;
   padding: 0;           /* Remove internal space */
   margin: 0;            /* Remove outer space */
-
+  scroll-behavior: smooth;
+  align-items: stretch; /* Ensures children fill full height */
+  box-sizing: border-box;
+  flex-direction: row;
   margin-bottom: 0px;
-  padding-bottom: 1rem;
 }
 
 
@@ -2784,7 +2789,7 @@ height: inherit;
   min-width: 35%;
   max-width: 40%;
   height: 12.5rem; /* Consistent height (200px converted to rem) */
-  margin: 2.5rem 0 0 0.625rem; /* Left gap only */
+  margin: 2.8rem 0 0 0.625rem; /* Left gap only */
   background-color: transparent;
   border-radius: 0.4375rem;
   max-height: 100%;
@@ -2808,12 +2813,9 @@ margin-bottom: 0rem;
   opacity: 0.95;
 }
 
-.display
+.series img:nth-child(2)
 {
-  width: 100%;
-position: relative;
-  height: 30px;
-  background-color: saddlebrown;
+  display: none;
 }
 
 .overlay-textttt {
@@ -3866,34 +3868,1021 @@ body {
 }
 /* Mobile-first default styles (<=320px) */
 
-/* Small phones (up to 480px) */
+/* Mobile-first default styles (<=320px) */
+
+/* Small Mobile Devices (Portrait phones, e.g., 320px - 480px) */
+/* Targets devices like older iPhones, basic Android phones */
+@media (min-width: 320px) and (max-width: 480px) {
+  /* Adjustments for slightly larger phone screens */
+  body {
+      font-size: 15px;}
+
+      .container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        height: 3rem;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        background-color: var(--color-bg-light); /* Default background color for light mode */
+        padding: 0;
+        box-shadow: var(--shadow-md);
+      }
+    
+      .Table {
+        flex-grow: 5;
+        flex: 0 0 auto;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        margin-left: 2px;
+        padding-left: 8rem;
+        background-color: transparent;
+      }
+    
+      .overlay-text {
+        font-size: 1rem;
+        padding: 0;
+        margin-left: 1px;
+        white-space: nowrap;
+        background-color: transparent;
+      }
+    
+      .nav {
+        flex-grow: 01;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 0.1rem;
+        padding-right: 0.1rem;
+        background-color: transparent;
+        margin-left: 0rem;
+      }
+    
+      .search {
+        position: relative;
+        flex: 0.9;
+        width: 100%;
+        max-width: 900px;
+        height:30px;
+        left: 0%;
+        background-color:transparent;
+        margin: 0px auto;
+        background-color: transparent;
+        border: 0.5px solid #ccc;
+        border-radius: 5px;
+        margin: 0 auto;
+        padding: 0 0.5rem;
+        display: flex;
+        align-items: center;
+        box-shadow: none;
+   
+      }
+    
+      .search input[type="search"] {
+        flex: 2;
+        width: 100%;
+        max-width: 100%;
+        height: 100%;
+        font-size: 0.9rem;
+        padding: 0 0rem;
+        background-color: transparent;
+        border: none;
+        color: #333;
+        outline: none;
+      }
+    
+      .search .search-icon,
+      .clear-btn {
+        display: none; /* hide icons for compact header */
+      }
+    
+      .upload,
+      .Notifications,
+      .Account {
+        width: 2rem;
+        height: 2rem;
+        background-color: transparent;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      
+      .upload,
+      .Notifications
+       {
+      display:none;
+      }
+    
+      .upload img,
+      .Notifications img,
+      .Account img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 50%;
+      }
+    
+      .dropdown-content {
+        width: 90vw; /* Make dropdown full width on small screens */
+        right: 5%;
+      }
+    
+      .Notification-container {
+        width: 90vw;
+        max-height: 60vh;
+        right: 5%;
+        top: 3rem;
+        padding: 0.5rem;
+      }
+    
+      .dark-mode .container {
+        background-color: var(--color-dark-mode-bg-primary);
+        box-shadow: var(--shadow-dark-md);
+      }
+    
+      .dark-mode .search input[type="search"] {
+        color: #fff;
+      }
+    
+      .dark-mode .search input[type="search"]::placeholder {
+        color: #ccc;
+      }
+    
+      .dark-mode .Account img,
+      .dark-mode .upload img,
+      .dark-mode .Notifications img {
+        filter: invert(1);
+      }
+
+      .Account {
+        margin-top: 0.3125rem; /* 5px */
+        margin-right: 0.5rem;     /* 16px */
+        margin-bottom: 0.1875rem; /* 3px */
+
+      }
+      
+      .Account img {
+        margin-left: 0.4rem; /* 5px */
+
+      }
+      
+
+
+   .dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
+  width: 90vw; /* Full-width on small screens */
+  max-width: 20rem;
+  max-height: 60vh;
+  background-color: #333;
+  box-shadow: 0px 0.5em 1em rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  z-index: 30;
+  padding: 0rem 0; /* Much smaller vertical padding */
+  text-align: left;
+  align-items: flex-start;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(0, 0, 0, 0.5) white;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 0.5rem 0.75rem; /* Reduced padding for a tighter feel */
+  text-decoration: none;
+  display: block;
+  font-size: 0.875rem;
+}
+
+/* Profile Section */
+.proofile {
+  width: 100%;
+  min-height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: white;
+  padding: 0.4rem 0.6rem; /* Reduced padding */
+  border-radius: 0.375rem;
+  margin: 0.3rem 0.5rem; /* Smaller margins */
+}
+
+/* Hover Effect */
+.proofile:hover {
+  background-color: grey;
+  color: white;
+  transform: scale(1.02);
+  cursor: pointer;
+  box-shadow: none;
+}
+
+/* Profile Image */
+.proofile img {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  margin-right: 0.4rem;
+}
+
+/* Profile Name */
+.proofile span {
+  font-weight: 600;
+  font-size: 0.5rem;
+  color: black;
+  margin-left: 0.2rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.proofile:hover span {
+  color: white;
+}
+
+/* Remove bullet points */
+.dropdown-content li {
+  list-style: none;
+}
+
+/* Mobile responsiveness */
 @media (max-width: 480px) {
-  .navbar { /* hide menu items, show hamburger */ }
-  .sidebar { display: none; }
-  .main-content { display: flex; flex-direction: column; }
-  .video-player { width: 100%; height: auto; }
-  button, .button { padding: 1rem; min-width: 48px; min-height: 48px; }
-
-  .video-container 
-  { 
-    max-width: 100%; height: auto; 
-    background-color: transparent;
-  
-  
-  
+  .dropdown-content {
+    right: 1%;
+    width: 10vw;
+    padding: 0.25rem 0;
   }
 
-  .card {
-    flex: 1 1 100%;
-    max-width: 100%;
+  .proofile {
+    padding: 0.3rem 0.5rem;
+    margin: 0.2rem 0.4rem;
   }
+
+  .proofile img {
+    width: 1.4rem;
+    height: 1.4rem;
+  }
+
+  .proofile span {
+    font-size: 0.8rem;
+  }
+
+  .dropdown-content a {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.8rem;
+  }
+}
+
+
+
+
+.video-container
+{
+  position: fixed;
+  width: 100%;
+max-width: 100%;
+  border-radius: 0;
+  border-style: ridge;
+  padding: 0;
+  margin: 0;
+  margin-top: 47px;
+  z-index: 10;
+  margin-bottom: 20rem;
+  background-color: transparent;
+}
+
+.containerr
+{
+  width: 100%;
+  max-width: 100%;
+  margin-left: 0px;
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+  margin: 0;
+}
+
+.video
+{
+  border-radius: 0;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 0;
+max-width: 100%;
+}
+
+.video .video
+{
+  border-radius: 0;
+  width: 100%;
+  max-width: 100%;
+}
+
+.play-overlay {
+  width: 30px;
+  height: 30px;
+  z-index: 1; /* Ensures it's above the video */
+}
+
+.profillee
+{
+  background-color: transparent;
+  height: 35px;
+  border-radius: 0px;
 
 }
+
+.profillee-name
+{
+  background-color: transparent;
+  margin-top: 0px;
+  height: 100%;
+}
+
+.profillee img {
+  width: clamp(2rem, 12%, 2rem); /* Responsive width */
+  height: auto;
+  margin-bottom: 10px;
+}
+
+.captionn
+{
+  background-color: transparent;
+}
+
+.captionn h3
+{
+  font-size: clamp(0.9rem, 1vw, 1.4rem);
+}
+
+
+.sectionn
+{
+  background-color: transparent;
+  border-radius: 0;
+  gap:3px;
+}
+
+/* Increase space for time and follow buttons */
+.viewss {
+  flex: 2.6;
+  margin-left: 0px;
+}
+
+/* Increase space for time and follow buttons */
+.follow {
+  flex: 2.2;
+}
+
+.timee {
+  flex: 2.2;
+}
+
+.option
+{
+  flex: 1;
+  margin-right: 0px;
+}
+
+.commentss 
+{
+  gap:0px;
+}
+
+
+
+/* Responsive icon styling for all interactive elements */
+.viewss img,
+.commentss img,
+.likess img,
+.dislikee img,
+.follow img,
+.option img {
+  width: clamp(1.3rem, 2vw, 1.5rem); /* Responsive width for icons, scaling from 1.3rem to 1.5rem */
+  margin-right: var(--spacing-xs); /* Responsive spacing between icon and text (0.5rem approx 8px) */
+}
+
+/* Specific margin adjustment for .commentss img */
+.commentss img {
+  margin-top: var(--spacing-xxxs); /* Responsive top margin (2px approx 0.125rem) */
+  margin-left: 13px;
+}
+
+
+.option img
+{
+  float: left;
+  margin-left: 10px;
+}
+
+/* Label styling for text within interactive elements */
+.viewss span,
+.commentss span,
+.likess span,
+.dislikee span,
+.timee span,
+.follow span {
+  font-size: clamp(0.7rem, 0.7vw, 0.7rem); 
+
+}
+
+.commentss span
+{
+  float: right;
+  margin-right: 14px;
+}
+
+
+.container-2
+{
+  display: none;
+ 
+}
+
+.container-3
+{
+  background-color: darkblue;
+  margin-top: 23.5rem;
+  border-radius: 0px;
+}
+
+.optionn
+{
+  background-color: darkcyan;
+}
+
+.channel
+{
+  background-color: salmon;
+}
+
+
+
+
+
+.container-1 {
+  top: 11.5rem;
+  width: 100%;
+  left: 0;
+  border-style: none;
+  border-color: transparent;
+  background-color: transparent;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0rem; /* Removed gap between kontainers */
+  padding: 0;
+  margin: 0;
+}
+
+.kontainer {
+  background-color: transparent;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border-radius: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+/* Profile section (image + name) */
+.profilee {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  background-color: transparent;
+  border-radius: 0;
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profilee img {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin: 0;
+  padding: 0;
+}
+
+.profilee-name {
+  flex: 1;
+  display: flex;
+  align-items: center;
+}
+
+.profilee-name span {
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin: 0;
+  padding: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.opttions img {
+  width: 17px;
+  height: 17px;
+  margin-top: 0px;
+ 
+}
+
+
+/* Caption (title) */
+.caption {
+  height: 2rem;
+  background-color: transparent;
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  border-radius: 0;
+  margin: 0;
+}
+
+.caption span {
+  font-size: 0.8rem;
+  font-weight: 700;
+  font-family: var(--font-family-primary);
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
+}
+
+/* Video Section */
+.videoo {
+  width: 100%;
+  height: auto;
+  background-color: black;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.videoo video {
+  width: 100%;
+  height: 14rem;
+  object-fit: cover;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+}
+
+.overlay-textt {
+
+padding: 5px;
+
+}
+
+.sectiion {
+  display: flex;
+  flex-wrap: nowrap;               /* ❗ Prevent wrapping */
+  justify-content: space-between;  /* Spread out items */
+  align-items: center;
+  width: 100%;
+  height: 2rem;
+  padding: 0;
+  margin: 0;
+  background-color: transparent;
+  box-sizing: border-box;
+  gap: 0rem; /* Small gap between items */
+}
+
+/* All children share flex space equally */
+.views,
+.category,
+.time {
+  flex: 1 1 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  white-space: nowrap;
+  padding: 0.4rem 0.4rem;
+  height: 100%;
+  border-radius: 0;
+  box-sizing: border-box;
+}
+
+/* Alignments */
+.views     { justify-content: flex-start;  background-color: violet; }
+.category  { justify-content: center;      background-color: transparent; }
+.time      { justify-content: flex-end;    background-color: seagreen; }
+
+/* Icon sizing (inside .views) */
+.views img {
+  width: 5rem;
+
+  object-fit: contain;
+  margin-right: 0.2rem;
+}
+
+/* Text styling */
+.views span,
+.category span,
+.time span {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--color-text-dark-alt, #fff);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+}
+
 
 /* Medium phones / small tablets (481px–768px) */
 @media (min-width: 481px) and (max-width: 768px) {
   
+.container
+{
+  background-color: saddlebrown;
+}
 
+.nav
+{
+  background-color: darkkhaki;
+}
+
+.overlay-text
+{
+  font-size: 0.9rem;
+}
+
+.search
+{
+  background-color: seagreen;
+  height:30px;
+}
+
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Notifications
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.Account 
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+.upload
+{
+  background-color: transparent;
+  width: 3vw;
+  height: 3vw;
+}
+
+
+.upload img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+.Notifications img {
+  width: 100%;
+  height:  100%;
+  margin: 0 auto;
+}
+
+
+.Account img {
+  width: 100%;
+  height:  100%;
+margin: 0 auto;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  top: 100%;
+  right: 0.5%;
+  width: 30%;}
+
+.video-container {
+  width: 100%;
+  flex-direction: column;           /* Stack elements vertically */
+  align-items: flex-start;          /* Align everything to the left */
+  gap: var(--spacing-md);
+  background-color: transparent;
+  border-style: ridge;
+}
+
+.containerr {
+  width: 100%;                      /* Full width on tablets */
+  margin-left: 0;                   /* Remove margin-left */
+  border-style: ridge;
+}
+
+.captionn h3
+{
+  font-size: clamp(1rem, 1.1vw, 1.5rem);
+}
+
+.sectionn 
+{
+  background-color: saddlebrown;
+}
+
+/* Increase space for time and follow buttons */
+.viewss {
+  flex: 2.1;
+}
+
+/* Increase space for time and follow buttons */
+.follow {
+  flex: 2.1;
+}
+
+.timee {
+  flex: 2;
+}
+
+/* Label styling for text within interactive elements */
+.viewss span,
+.commentss span,
+.likess span,
+.dislikee span,
+.timee span,
+.follow span {
+  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
+
+}
+
+
+.container-2 {
+
+  float: none;                      /* Remove float for better layout control */
+  width: 100%;                      /* Full width */
+  max-width: 100%;
+  margin-top: 0.5rem;               /* Spacing from the top or previous section */
+  margin-left: 0;                   /* Reset any horizontal spacing */
+  align-self: flex-start;           /* Align with the left edge */
+  border-style: ridge;
+}
+
+.optionn
+{
+  background-color: darkmagenta;
+}
+
+.All span, .Playlist span, .Sci-fi span, .WatchMojo span, .Watch span {
+  flex-grow: 1.5;
+  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
+}
+
+.video-group
+{ 
+background-color: saddlebrown;
+}
+
+.card
+{
+  background-color:chartreuse;
+  margin-left: 13px;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  max-height: 300px;
+  min-width: 30%;
+  max-width: 31%;
+border-style: ridge;
+}
+
+.pichaa {
+  width: 100%;
+  height: 10rem; /* 200px */}
+
+  .overlay-texttt
+  {
+margin-bottom: 6%;
+padding: 5px 5px;
+  }
+
+.sectiion
+{
+  background-color: transparent;
+  gap:0rem;
+    padding: 0px 0px;
+}
+
+.viewsss
+{
+  flex: 1.6;
+  background-color: transparent;
+
+  border-radius: 7px;
+}
+
+
+.timmee
+{
+  flex: 1.3;
+  background-color: transparent;
+  border-radius: 7px;
+}
+
+.viewsss span, .timmee span
+{
+  font-size: clamp(0.75rem, 0.75vw, 0.75rem); 
+}
+
+.comment-container {
+
+z-index: 1000;
+
+
+}
+
+
+.container-3
+{
+  background-color: transparent;
+  height: auto;
+  padding: 0px;
+  border-style: ridge;
+}
+
+.optionnn
+{
+  position: absolute;
+width: 100%;
+height: 30px;
+background-color: fuchsia;
+  z-index: 3;
+  
+}
+
+.optionnn span
+{
+  font-size: clamp(1rem, 1vw, 1rem); 
+}
+
+.channel {
+
+  height: 100%; /* Fully inherit from container-3 */
+  background-color: forestgreen;
+  margin: 0 auto;
+  margin-top: 1.6rem; /* 50px */
+  margin-bottom: 0px;
+}
+
+.channel img
+{
+  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
+  margin-top: 2rem; /* 15px in rem */
+}
+
+.profile
+{
+  position: relative;
+  margin-top: 2rem; /* 15px in rem */
+  margin-bottom: 0px;
+  background-color: darkgoldenrod;
+}
+
+.profile-name span  {
+    font-size: 1rem;
+}
+
+/* Followers label styling */
+.followers span  {
+  font-size: 1rem;
+}
+
+.Tablee
+{
+  background-color:gray;
+  padding-bottom: 0rem;
+padding: 0px;
+height: 100%;
+margin-bottom: 0rem;
+}
+
+.series 
+{
+margin-top: 1.5rem;
+  min-width: 45%;
+  max-width: 50%;
+  height: 11rem; /* 200px */
+  margin-top:3rem;
+  margin-bottom: 1.5rem;
+}
+
+.overlay-textttt {
+
+  padding: 0.1rem 0.1rem; 
+  left: 40%;
+  bottom: 15%;
+}
+
+.container-1 {
+  top: 0.5rem;
+  background-color: grey;
+  gap: 0.6rem;
+  justify-content: flex-start;
+  margin: 0 auto;
+  border-style: ridge;
+  width: 100%;         /* ✅ Keep it slightly narrow if needed */
+  left: 0 !important; /* ✅ Cancel previous left: 5% */
+}
+
+.kontainer
+{
+  background-color:pink;
+  width: clamp(48%, 58%, 48%);
+margin-left: 5px;
+border-style:ridge;
+}
+
+.caption
+{
+height: 2rem;  /* Consistent height (30px) for single-line captions */
+background-color: fuchsia;
+}
+
+.caption span
+{
+  font-size: 13px; /* Responsive font size (0.96875rem approx 15.5px) */
+  font-family: var(--font-family-primary); /* Ensures consistent, high-quality font */
+  font-weight: 700; /* Bold font for prominence */
+}
+
+
+.videoo {
+  width: 100%;
+  height: auto;
+}
+
+.videoo video {
+  width: 100%;
+  height: 10rem; /* 200px */
+
+}
+
+.sectiionn 
+{
+  background-color: saddlebrown;
+}
+
+  .views,
+  .time,
+  .category {
+    flex: 1 1 0; /* Allows items to grow and shrink, with a base of 0 */
+    max-width: 33.3%; /* Limits the maximum width to one-third of the parent */
+    height: 1.8rem; /* Consistent height (28.8px converted to rem) */
+    background-color: transparent;  /* Ensures transparent background */
+    
+    margin-block: 0px; /* Responsive vertical margin (0.1rem approx 1.6px) */
+
+  }
+
+
+  /* Specific styling for the .views section */
+  .views {
+    background-color: violet; 
+    margin-inline-start: 0; /* Removes any left margin */
+    gap: var(--spacing-xxs); /* Responsive spacing between icon and text (5px converted to rem) */
+    justify-content: flex-start; /* Aligns content to the start (left) */
+    margin-left:0px;
+  }
+  
+  /* Specific styling for the .time section */
+  .time {
+    background-color: seagreen;
+    justify-content: flex-end; /* Aligns content to the end (right) */
+  }
+
+
+
+}
+
+/* Tablets / small laptops (769px–1024px) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  
   .container
   {
     background-color: var(--color-bg-light); /* Default background color for light mode */
@@ -4291,10 +5280,9 @@ margin-bottom: 11rem;
     height: 12rem; /* 200px */
   
   }
-
-
-
-}
+  
+  }
+  
 /* Desktops (1025px–1279px) */
 @media (min-width: 1025px) and (max-width: 1279px) 
 {  .container
@@ -4674,18 +5662,20 @@ border-style: none;
 .containerr
 {
   background-color: transparent;
- 
+  background-color: transparent;
 }
 
 .container-2
 {
   background-color: transparent;
+
 }
 
 .card
 {
-  margin: 33px 0 15px 10px; /* Maintain original positioning */
-}
+  margin: 22px 0 22px 10px; /* Maintain original positioning */
+  border-style:none;
+}  
 
 /*
 .container-3
@@ -4713,9 +5703,10 @@ border-style:none;
 
 .kontainer
 {
+
   background-color: transparent;
   width: clamp(28%, 35%, 30%);
-  margin-left: 1.4%;
+  margin-left: 1.5%;
  
 }
 
@@ -4813,13 +5804,13 @@ margin: 0 auto;
   width: 100%;
   max-width: 100%;
   flex-shrink:0;
-  border-style: none;
+  border-style: ridge;
   }
 
 .containerr
 {
   background-color: transparent;
-  border-style: none;
+  border-style: ridge;
 }
 
 
@@ -4846,15 +5837,16 @@ margin: 0 auto;
 .container-2
 {
   background-color: transparent;
-   max-height: 766px;
-  border-style: none;
+  min-height: 780px;
+  max-height: 800px;
+  border-style: ridge;
 }
 
 .card
 {
   background-color: transparent;;
   max-height: 300px;
-  border-style: none;
+  border-style: ridge;
   margin: 5px 0 15px 13px; /* Maintain original positioning */
 }
 
@@ -4899,167 +5891,69 @@ margin: 0 auto;
   height: 1.5vw;
 
 }
+ 
 
-.container-3 {
-  position: relative;
-  width: 100%;
+.container-3
+{
+  background-color: transparent;
   height: auto;
-  background-color:transparent;
-  border-style: none;
-  margin-top: 2rem;
-
+  padding: 0px;
 }
 
-   .optionnn {
-    position: absolute; /* Positions the element precisely within its parent (.container-3) */
-    top: 0; /* Sticks it to the top edge of the parent */
-    left: 0; /* Aligns it to the left edge of the parent */
-    width: 100%; /* Spans the full width of its parent */
-    height: 2rem; /* Consistent height (50px converted to rem) */
-    
-    background-color:transparent;/* Light background using a variable (#FFFFFF) */
-  border-style: none;
-
-  }
-  
- 
-.channel {
-  position: relative; /* Allows for precise positioning of child elements within it */
-  
-  /* Responsive Width */
-  /* Uses clamp() to ensure responsive scaling with defined min (150px) and max (300px) widths,
-     and a fluid width (30%) relative to its parent. */
-  width: clamp(9.375rem, 30%, 18.75rem); /* Converted 150px and 300px to rem */
- border-style: none;
-  height: 100%; /* Height adjusts dynamically based on its content */
-margin-bottom: 1rem;
-  top: 28px;
-
-}
-
-/* ==== CHANNEL PROFILE IMAGE (.channel img) ==== */
-/* Styles for the channel's profile picture or avatar. */
-.channel img {
-  width: 75%; /* Takes 80% of the channel container's width */
-  aspect-ratio: 1 / 1; /* Ensures the image remains perfectly circular (width/height ratio) */
-  border-radius: 50%; /* Creates a circular shape for the image */
-  object-fit: cover; /* Ensures the image covers the entire area without distortion, cropping if necessary */
-  margin-bottom: 0rem;
-
-  margin-block-start: var(--spacing-xs); /* Responsive top margin (10px converted to rem) */
-
-  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
-
- 
-}
-
-/* ✅ Tablee fix */
-.Tablee {
-  position:absolute;
-  width: 84.2%;
-  height: 100%;
-  float: right;
-  right: 0rem;
-  background-color:transparent;/* Light background using a variable (#FFFFFF) */
-z-index: 0;
-padding-bottom: 0rem;
-  border-style: none;
-}
-
-.left
+.optionnn
 {
-  display: none;
   position: absolute;
-  width: 30px;
-  height: 30px;
-  z-index: 1000;
-  margin-top: 8rem;
-  float: left;
-  margin-left: 1rem;
-}
-
-.left img
-{
-
 width: 100%;
-height: inherit;
-
+height: 40px;
+background-color: transparent;
+  z-index: 3;
 }
 
-.right
-{
-  display: none;
-  position:absolute;
-  width: 30px;
-  height: 30px;
-  z-index: 5000;
-  margin-top: 0rem;
-  float: left;
-  margin-left: 10rem;
-}
+.channel {
 
-.right img
-{
-
-width: 100%;
-height: inherit;
-
-}
-
-.display
-{
-  display: none;
-}
-
-.Episodesss
-{
-  position: relative;
-  background-color:transparent;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  overflow-x: auto;
-  overflow-y: hidden;
-  gap: 1rem;
-  padding: 0;           /* Remove internal space */
-  margin: 0;            /* Remove outer space */
-  scroll-behavior: smooth;
-  align-items: stretch; /* Ensures children fill full height */
-  box-sizing: border-box;
-  flex-direction: row;
+  height: 100%; /* Fully inherit from container-3 */
+  background-color: transparent;
+  margin: 0 auto;
+  margin-top: 1.9rem; /* 50px */
   margin-bottom: 0px;
 }
 
+.channel img
+{
+  margin-inline: auto; /* This pushes the image to the center horizontally within its flex container */
+}
 
-/* ✅ Series fix */
-.series {
+
+.profile
+{
   position: relative;
-  flex: 0 0 auto;
+  margin-top: 0rem; /* 15px in rem */
+}
+
+.profile-name span  {
+    font-size: 1rem;
+}
+
+/* Followers label styling */
+.followers span  {
+  font-size: 1rem;
+}
+
+.Table
+{
+  padding-bottom: 0rem;
+padding: 0px;
+border-style: ridge;
+background-color: transparent;
+}
+
+.series 
+{
+margin-top: 3rem;
   min-width: 30%;
   max-width: 35%;
-  height: 15rem; /* Consistent height (200px converted to rem) */
-  margin: 2.3rem 0 0 0.625rem; /* Left gap only */
-  background-color: transparent;
-  border-radius: 0.4375rem;
-  max-height: 100%;
-  cursor: pointer;
-  overflow: hidden;
-margin-bottom: 0rem;
-}
-
-.series img {
-  width: 100%;
-  height: 100%;
-  border-radius: 0.4375rem;
-  max-width: 100%;
-  object-fit: cover;
-
-}
-
-
-.series img:hover {
-  transform: scale(1.03);
-  opacity: 0.95;
+  border-style: ridge;
+  margin-bottom: 1rem;
 }
 
 
@@ -5069,7 +5963,7 @@ margin-bottom: 0rem;
     background-color: transparent;
   gap: 1.5rem;
   width:100%; 
-  border-style: none;
+  border-style: ridge;
   }
 
   .kontainer
@@ -5077,7 +5971,7 @@ margin-bottom: 0rem;
     background-color: transparent;
     width: clamp(28%, 37%, 32%);
   margin-left: 5px;
-  border-style: none;
+  border-style: ridge;
   }
 
 /* Caption Text */

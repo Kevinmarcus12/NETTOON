@@ -1187,24 +1187,35 @@ input, select, textarea {
 {
   background-color: saddlebrown;
   width: 100%;
+  height: 30px;
   display: flex;
   flex-wrap: nowrap;
 gap: 5px;
 padding: auto;
+margin-top: 20px;
 justify-content: flex-start;
 }
 
 .consent-item
 {
-  width: 50%;
+  width: 100%;
+  height:100%;
   background-color: seagreen;
   justify-content: flex-start;
-  margin-top: 5px;
+  margin-top: 0px;
   margin-bottom: 5px;
+  flex-wrap: nowrap;
 }
 
-.consent-item label
+.consent-item span
 {
+  float: left;
+  margin-left: 10px;
+}
+
+.consent-item input
+{
+  margin-top: 0px;
   float: left;
   margin-left: 0px;
 }
@@ -1382,70 +1393,82 @@ filter: invert(1);
 /* Tablets / small laptops (769px–1024px) */
 @media (min-width: 769px) and (max-width: 1024px) {
 
-  .container
-  {
-    background-color: firebrick;
-  
-  }
-  
-  .nav
-  {
-    background-color: bisque;
-  }
-  
+  body {
+    font-size: 17px;
+}
 
-.search input[type="search"] {
 
-  min-height: 20px;
-  max-height: 25px;
+.container
+{
+  background-color: darkgreen; /* Default background color for light mode */
+}
 
+
+
+.nav
+{
+background-color: transparent;
+}
+
+.overlay-text
+{
+font-size: 1.1rem;
 }
 
 
 .upload
 {
-  background-color: rebeccapurple;
-  width: 3.3vw;
-  height: 3.3vw;
+background-color: transparent;
+width: 3vw;
+height: 3vw;
 }
-
 
 .Notifications
 {
-  background-color: rebeccapurple;
-  width: 3.3vw;
-  height: 3.3vw;
+background-color: transparent;
+width: 3vw;
+height: 3vw;
 }
-
 
 .Account 
 {
-  background-color: rebeccapurple;
-  width: 3.3vw;
-  height: 3.3vw;
+background-color: transparent;
+width: 3vw;
+height: 3vw;
+}
+
+.upload
+{
+background-color: transparent;
+width: 3vw;
+height: 3vw;
 }
 
 
 .upload img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
-}
-
-.Notifications img {
-  width: 100%;
-  height:  100%;
-  margin: 0 auto;
-}
-
-
-
-.Account img {
-  width: 100%;
-  height:  100%;
+width: 100%;
+height:  100%;
 margin: 0 auto;
 }
 
+.Notifications img {
+width: 100%;
+height:  100%;
+margin: 0 auto;
+}
+
+
+.Account img {
+width: 100%;
+height:  100%;
+margin: 0 auto;
+}
+
+
+.dropdown-content 
+{
+z-index: 20;
+}
 
 .Table
 {
@@ -1463,16 +1486,17 @@ margin: 0 auto;
   background-color: #F8F8FF; /* Ghost White */
   z-index: 11;
   width: 800px;
-  min-height: 700px;
-  max-height: 700px;
+  min-height: 550px;
+  max-height: 600px;
 
-  margin: 7rem auto 0 auto; /* ✅ Margin-top now works */
+  margin: 4rem auto 0 auto; /* ✅ Margin-top now works */
   padding-bottom: 20px;
 }
 
 h2
 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
+  padding: 2px 0; /* Adds some spacing inside */
 }
 
 .reminder {

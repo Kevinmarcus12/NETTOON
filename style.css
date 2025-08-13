@@ -1994,7 +1994,7 @@ body {
         flex-direction: row;
         align-items: center;
         justify-content: space-between;
-        background-color: pink;
+        background-color: var(--color-bg-light);
         padding: 0;
         box-shadow: var(--shadow-md);
       }
@@ -2007,14 +2007,15 @@ body {
         align-items: center;
         margin-left: 2px;
         padding-left: 8rem;
-        background-color: violet;
+        background-color: transparent;
       }
     
       .overlay-text {
         font-size: 1rem;
         padding: 0;
+        margin-left: 1px;
         white-space: nowrap;
-        background-color: sandybrown;
+        background-color: transparent;
       }
     
       .nav {
@@ -2024,15 +2025,20 @@ body {
         align-items: center;
         gap: 0.1rem;
         padding-right: 0.1rem;
-        background-color: grey;
+        background-color: transparent;
         margin-left: 0rem;
       }
     
       .search {
         position: relative;
         flex: 0.9;
-        height: 2.2rem;
-        background-color:forestgreen;
+        width: 100%;
+        max-width: 900px;
+        height:30px;
+        left: 0%;
+        background-color:transparent;
+        margin: 0px auto;
+        background-color: transparent;
         border: 0.5px solid #ccc;
         border-radius: 5px;
         margin: 0 auto;
@@ -2040,14 +2046,16 @@ body {
         display: flex;
         align-items: center;
         box-shadow: none;
-        max-width: 100%;
+   
       }
     
       .search input[type="search"] {
-        flex: 1;
+        flex: 2;
+        width: 100%;
+        max-width: 100%;
         height: 100%;
         font-size: 0.9rem;
-        padding: 0 0.5rem;
+        padding: 0 0rem;
         background-color: transparent;
         border: none;
         color: #333;
@@ -2118,6 +2126,19 @@ body {
         filter: invert(1);
       }
 
+      .Account {
+        margin-top: 0.3125rem; /* 5px */
+        margin-right: 0.5rem;     /* 16px */
+        margin-bottom: 0.1875rem; /* 3px */
+
+      }
+      
+      .Account img {
+        margin-left: 0.4rem; /* 5px */
+
+      }
+      
+
 
    .dropdown-content {
   display: none;
@@ -2181,7 +2202,7 @@ body {
 /* Profile Name */
 .proofile span {
   font-weight: 600;
-  font-size: 0.85rem;
+  font-size: 0.5rem;
   color: black;
   margin-left: 0.2rem;
   white-space: nowrap;
@@ -2201,8 +2222,8 @@ body {
 /* Mobile responsiveness */
 @media (max-width: 480px) {
   .dropdown-content {
-    right: 2%;
-    width: 92vw;
+    right: 1%;
+    width: 10vw;
     padding: 0.25rem 0;
   }
 
@@ -2390,6 +2411,7 @@ body {
   padding: 0 0.5rem;
   border-radius: 0;
   margin: 0;
+  z-index: 1000;
 }
 
 .caption span {
@@ -2481,6 +2503,229 @@ padding: 5px;
 }
 
 }
+
+
+
+/* ==== Playlist Layout ==== */
+.Playlist {
+  position: relative;
+  display: flex;
+  height:auto;
+  max-height: 650px;
+  flex-direction:column;
+  width: 100%;
+  background-color: transparent;
+  padding: 0px;
+  gap: 1rem;
+  border-style: ridge;
+  margin-top: 20px;
+  padding-bottom: 0px;
+  padding-top: 0px;
+  margin-bottom: 20px;
+  border-radius: 7px;
+  border: 0.1px solid transparent;
+}
+
+
+
+.Segment
+{
+  position: sticky;
+  top: 0;
+  z-index: 5;
+width: 100%;
+height: 30px;
+background-color: #F5F5F5;
+display: flex;
+padding: 0px;
+margin: 0;
+align-items: center;
+padding-left: 0%;
+border-radius: 0px;
+margin-top:0px;
+padding-top: 0px;
+padding-bottom: 0px;
+margin-bottom: 0px;
+
+}
+
+.dark-mode .Segment
+{
+  background-color: #2a2d2f;
+}
+
+.Segment span {
+  padding-left: 1%;
+  color: #333333;
+  font-weight: bold;
+  font-size: 20px;
+  padding-top: 0px;
+
+}
+
+.dark-mode .Segment span 
+{
+  color:#FFFFFF;
+}
+
+.Heading, .Segment {
+  padding: 0.5rem 0.5rem;
+  height: auto;
+}
+
+
+.Playlist:first-of-type > .Segment:first-of-type {
+  margin-top: 1rem;
+  background: white;
+}
+
+.dark-mode .Playlist:first-of-type > .Segment:first-of-type {
+  margin-top: 1rem;
+  background-color: #2a2d2f;
+}
+
+
+
+
+.playlist-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: transparent;
+  margin-bottom: 0rem;
+  padding-bottom: 0px;
+  padding: 0.5rem;
+  gap: 1rem;
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+/* Optional responsiveness */
+@media (max-width: 768px) {
+  .playlist-item {
+    flex-direction: column;
+  }
+}
+
+.left-section {
+  flex: 1;
+  margin-top: 0px;
+  max-width: 45%;
+  background-color: transparent;
+  margin-bottom: 0px;
+}
+
+
+
+.Container
+{
+width: 100%;
+height: 100%; /* or a defined px/rem/vh */
+background-color: transparent;
+display: flex;
+flex-direction: row;
+margin-top: 0px;
+flex-wrap: wrap;
+padding-top: 0px;
+padding-bottom: 0px;
+padding: 0px;
+}
+
+
+.scroll-area {
+  width: 100%;
+  height: 100%;
+  overflow-x:scroll;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: transparent;
+  z-index: 0;
+ padding-bottom: 0px;
+ margin-bottom:0px;
+  gap: 0.3rem; /* Slight space between items */
+  padding: 0rem 0rem;
+  scrollbar-width: thin;
+  overflow-y:hidden;
+  overflow-x: auto;
+  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  scroll-snap-type: x mandatory; /* changed to x for horizontal */
+}
+
+/* Dark mode adjustments */
+.dark-mode .scroll-area {
+  scrollbar-color: rgba(7, 4, 4, 0.5) grey;
+}
+
+
+
+.shorts {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  aspect-ratio: 9 / 16;
+  max-height: 70vh;
+  margin: 0; /* remove margin */
+  overflow: hidden;
+  border-radius: 12px;
+  flex-shrink: 0;
+  padding: 20px;
+  margin-bottom: 0px;
+  scroll-snap-align: start;
+  background-color: transparent;
+}
+  
+  /* 🔷 Video Element */
+  .shorts video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+  }
+  
+
+
+/* Play overlay button */
+.play-overlay {
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 40px;
+  height: 40px;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+/*
+.dark-mode .play-overlay
+{
+  filter: invert(1);
+}
+  */
+
+.overlay-link {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+}
+
+.dark-mode .Playlist {
+  border: 1px solid transparent;
+}
+
+/* ==== Sidebar List ==== */
+.List {
+  width: 40%;
+  background-color: transparent;
+}
+
+
 
 /* Medium Mobile Devices / Small Tablets (Landscape phones, small tablets, e.g., 481px - 768px) */
 /* Targets devices like larger smartphones in landscape, smaller iPads in portrait */
@@ -2733,6 +2978,7 @@ padding: 5px;
   body {
       font-size: 17px;
   }
+
 
   .container
   {
@@ -3137,11 +3383,12 @@ margin: 0 auto;
     left: 0%; /* Example: 4.8% or specific width of sidebar + gap */
     width:100%; /* Example: calc(100% - 4.9%) */
   gap:2px;
-    z-index: 5;
+    z-index: 10;
   overflow-y: hidden;
   overflow-x: hidden;
   background-color: transparent;
-  border-style: none;
+  border-style: ridge;
+  justify-content: flex-start;
 }
 
 
@@ -3149,10 +3396,13 @@ margin: 0 auto;
 {
   background-color: var(--color-bg-light); /* Default background color for light mode */
    width: 11%; 
-   z-index: 10;
-     border-style: none;
+   z-index: 1;
+     border-style: ridge;
 }
 
+.sidebar:hover {
+  width: 0%; /* Expands slightly on hover for better UX */
+}
 
 .home
 {
@@ -3166,7 +3416,7 @@ margin: 0 auto;
   width: calc(100% - 11.2%); /* Occupies the remaining width after considering the sidebar and gap */
   top: 6.1rem;        /* Positions the grid below the header and suggestions bar */
   left: 11%; 
-  border-style: none;
+  border-style: ridge;
   }
   
   .kontainer
@@ -3175,7 +3425,7 @@ margin: 0 auto;
     width: clamp(28%, 37%, 32%);
     margin-inline-start:10px; /* Maintains your specified left margin for precise grid alignment */
   margin-block-end: 1%; /* Consistent bottom margin (8px) for vertical spacing */
-  border-style: none;
+  border-style: ridge;
   }
   
   
