@@ -1296,7 +1296,7 @@ body.dark-mode .follow span {
   /* Layout and Flow */
   float: right; /* Maintain float for its specific layout purpose, though often replaced by flex/grid in modern layouts, adhering to "don't tweak" for structural changes. */
   margin-top: 0; /* No top margin */
-  margin-right: 0.5%; /* Keeps your specified right margin */
+  margin-right:1%; /* Keeps your specified right margin */
   
   background-color:transparent;
   border-radius: 0.4375rem;
@@ -5662,7 +5662,7 @@ border-style: none;
 .containerr
 {
   background-color: transparent;
-  background-color: transparent;
+ 
 }
 
 .container-2
