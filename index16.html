@@ -1,31 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Episode Add/Delete Demo</title>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 20px; background:#f5f5f5; }
+    h2 { margin-bottom: 1rem; }
+    #episodesWrapper { max-width:900px; margin:0 auto; }
 
-<div class="card">
-    <a href="index4.html">
-        <div class="profille">
-            <div class="profille-image">
-                <img src="14.png" alt="Profile Image">
-            </div>
-            <div class="profille-name">
-              <span>Guest</span>
-            </div>
-        </div>
-    </a>
-    <div class="captiion">
-        <span>Arcane</span>
-    </div>
-    <a href="index2.html">
-        <div class="pichaa">
-            <video src="Arcane_ Season 2 _ Official Trailer.mp4" muted  loop poster="Arcane.png"></video>
-            <div class="overlay-texttt">0.00</div>
-        </div>
-    </a>
-    <div class="sectiion">
-        <div class="viewsss">
-            <img src="views.png" alt="Views">
-            <span>No views</span>
-        </div>
-        <div class="timmee">
-            <span>Just now</span>
-        </div>
+    .Episodess {
+      position: relative;
+      width:100%;
+      padding: 12px;
+      background-color: darksalmon;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      margin-bottom: 12px;
+      box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .Episodess input, 
+    .Episodess textarea, 
+    .Episodess select {
+      width: 100%; 
+      margin-top:6px; 
+      margin-bottom:6px; 
+      box-sizing:border-box; 
+      padding:6px; 
+    }
+
+    .Episodes { 
+      display:flex; 
+      justify-content:flex-start; 
+      gap:10px; 
+      max-width:900px; 
+      margin: 8px auto; 
+    }
+
+    .Add, .delete {
+      width:140px; 
+      height:36px; 
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      cursor:pointer; 
+      border-radius:6px; 
+      color:white;
+    }
+    .Add { background:saddlebrown; }
+    .Add:hover { background:purple; }
+
+    .delete { background:#b24; display:none; }
+    .delete:hover { background:red; }
+  </style>
+</head>
+<body>
+
+  <h2>Episode Add/Delete Demo</h2>
+
+  <div id="episodesWrapper">
+    <div class="Episodess">
+      <div class="title">
+        <h3>Episode Title</h3>
+        <input type="text" placeholder="Enter Episode title">
+      </div>
+
+      <label>Select Episode Number:</label>
+      <select name="episodeNumber" class="episode-dropdown">
+        <option value="">-- Episode Number --</option>
+        <option value="1">1</option><option value="2">2</option>
+        <option value="3">3</option><option value="4">4</option>
+        <option value="5">5</option>
+      </select>
+
+      <div class="Description">
+        <h3>Episode Description</h3>
+        <textarea placeholder="Enter Episode description (Optional)"></textarea>
+      </div>
+
+      <h3>Add Episode Video and Preview Thumbnail</h3>
+      <div class="uploadss">
+        <input type="file" class="file-input-video" accept="video/*">
+        <input type="file" class="file-input-img" accept="image/*">
+      </div>
+
+      <div class="preview-container"></div>
+
+      <!-- hidden on the first block, visible on clones -->
+      <div class="delete"><span class="delete-btn">Delete Episode</span></div>
     </div>
   </div>
+
+  <div class="Episodes">
+    <div class="Add" id="addEpisodeBtn"><span>Add Episode</span></div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const wrapper = document.getElementById('episodesWrapper');
+      const addBtn  = document.getElementById('addEpisodeBtn');
+      const template = wrapper.querySelector('.Episodess');
+
+      // Add Episode
+      addBtn.addEventListener('click', () => {
+        const clone = template.cloneNode(true);
+
+        // clear inputs in the clone
+        clone.querySelectorAll('input, textarea, select').forEach(el => {
+          if (el.tagName === 'SELECT') {
+            el.selectedIndex = 0;
+          } else if (el.type === 'file') {
+            const fresh = el.cloneNode(true); // reset file input
+            el.replaceWith(fresh);
+          } else {
+            el.value = '';
+          }
+        });
+
+        // show delete button on the clone
+        clone.querySelector('.delete').style.display = 'flex';
+
+        wrapper.appendChild(clone);
+      });
+
+      // Delete Episode
+      wrapper.addEventListener('click', (e) => {
+        if (e.target.closest('.delete')) {
+          const block = e.target.closest('.Episodess');
+          const total = wrapper.querySelectorAll('.Episodess').length;
+          if (total > 1) {
+            block.remove();
+          } else {
+            alert('At least one episode must remain.');
+          }
+        }
+      });
+    });
+  </script>
+</body>
+</html>
