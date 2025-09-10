@@ -57,6 +57,24 @@ window.onclick = function(event) {
     }
 };
 
+document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      // deactivate all buttons
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      // activate this one
+      btn.classList.add('active');
+  
+      // hide all panels
+      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
+  
+      // show target panel
+      const targetId = btn.getAttribute('data-target');
+      document.getElementById(targetId).classList.add('active');
+    });
+  });
+  
+
+
 function previewMovieVideo(event) {
     const file = event.target.files[0];
     if (file) {
@@ -448,40 +466,45 @@ document.addEventListener("DOMContentLoaded", function () {
   
 
 
-  const episodeSelect = document.getElementById("episodeSelect");
-  const maxEpisodes = 50;
 
-  for (let i = 1; i <= maxEpisodes; i++) {
-    const option = document.createElement("option");
-    option.value = i;
-    option.textContent = `Episode ${i}`;
-    episodeSelect.appendChild(option);
-  }
+  
+  document.addEventListener('DOMContentLoaded', () => {
+    const wrapper = document.getElementById('episodesWrapper');
+    const addBtn  = document.getElementById('addEpisodeBtn');
+    const template = wrapper.querySelector('.Episodess');
 
+    // Add Episode
+    addBtn.addEventListener('click', () => {
+      const clone = template.cloneNode(true);
 
+      // clear inputs in the clone
+      clone.querySelectorAll('input, textarea, select').forEach(el => {
+        if (el.tagName === 'SELECT') {
+          el.selectedIndex = 0;
+        } else if (el.type === 'file') {
+          const fresh = el.cloneNode(true); // reset file input
+          el.replaceWith(fresh);
+        } else {
+          el.value = '';
+        }
+      });
 
-  document.getElementById("addEpisodeBtn").addEventListener("click", function () {
-    const wrapper = document.getElementById("episodesWrapper");
-    const firstEpisode = wrapper.querySelector(".Episodess");
-    const clone = firstEpisode.cloneNode(true);
+      // show delete button on the clone
+      clone.querySelector('.delete').style.display = 'flex';
 
-    // Clear inputs in the clone
-    clone.querySelectorAll("input, textarea, select").forEach(input => {
-      if (input.type === "file") {
-        input.value = "";
-      } else {
-        input.value = "";
+      wrapper.appendChild(clone);
+    });
+
+    // Delete Episode
+    wrapper.addEventListener('click', (e) => {
+      if (e.target.closest('.delete')) {
+        const block = e.target.closest('.Episodess');
+        const total = wrapper.querySelectorAll('.Episodess').length;
+        if (total > 1) {
+          block.remove();
+        } else {
+          alert('At least one episode must remain.');
+        }
       }
     });
-
-    // Show the delete button in clone
-    const deleteBtn = clone.querySelector(".delete");
-    deleteBtn.style.display = "block";
-
-    // Add delete functionality
-    deleteBtn.querySelector(".delete-btn").addEventListener("click", () => {
-      clone.remove();
-    });
-
-    wrapper.appendChild(clone);
   });
