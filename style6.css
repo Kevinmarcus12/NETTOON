@@ -2933,6 +2933,12 @@ min-height: 500px;
 
 /* Large desktops (1280px–1599px) */
 @media (min-width: 1280px) and (max-width: 1599px) {
+
+.body
+{
+  background-color: white;
+}
+
   .upload-container
   {
     overflow-y: auto;

@@ -412,29 +412,21 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
-document.addEventListener('DOMContentLoaded', function() {
-    const dropdownToggle = document.querySelector('.dropdown-toggle');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
+document.querySelectorAll('.playlist-dropdown').forEach(dropdown => {
+  const toggleBtn = dropdown.querySelector('.dropdown-toggle');
+  const menu = dropdown.querySelector('.dropdown-menu');
 
-    // Toggle dropdown visibility
-    dropdownToggle.addEventListener('click', function() {
-        dropdownMenu.classList.toggle('show');
-    });
+  // Toggle on click
+  toggleBtn.addEventListener('click', () => {
+    menu.classList.toggle('show');
+  });
 
-    // Optional: Close dropdown when clicking outside of it
-    document.addEventListener('click', function(event) {
-        if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
-            dropdownMenu.classList.remove('show');
-        }
-    });
-
-    // Optional: Show input for new playlist when checkbox is checked
-    const createNewCheckbox = document.getElementById('createNew_new');
-    const newPlaylistInput = document.querySelector('.new-playlist-input');
-
-    createNewCheckbox.addEventListener('change', function() {
-        newPlaylistInput.style.display = this.checked ? 'block' : 'none';
-    });
+  // Close if clicking outside
+  document.addEventListener('click', (e) => {
+    if (!dropdown.contains(e.target)) {
+      menu.classList.remove('show');
+    }
+  });
 });
 
 document.addEventListener("DOMContentLoaded", function () {
