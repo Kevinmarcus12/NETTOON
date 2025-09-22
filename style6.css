@@ -981,7 +981,7 @@ opacity: 1;
 .Section {
   width: 100%;
   min-height: 3.5rem;            /* replaces fixed 50px */
-  background-color: #007bff;
+  background-color:transparent;
   display: flex;
   justify-content: space-between;
   align-items: center;           /* ✅ vertically centers items */
@@ -991,36 +991,47 @@ opacity: 1;
   box-shadow: 0 0.2rem 0.6rem rgba(0, 0, 0, 0.1); /* ✅ subtle depth */
 }
 
-/* 🆕 New Button Section */
-.New,
-.Existing {
-  flex: 0 0 9rem;                /* ✅ flexible but stable width */
-  height: 100%;                  /* fills parent height */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1rem;
-  font-weight: 600;
+/* Base tab styles */
+.tab-btn {
+  padding: 0.6rem 1.2rem;
   border-radius: 0.3rem;
   cursor: pointer;
-  transition: all 0.3s ease;     /* ✅ smooth hover effect */
+  transition: all 0.3s ease;
+  font-weight: 600;
+  background-color: #002d72; /* default navy */
+  color: #fff;               /* default text color */
+  border: none;
+  outline: none;
+  margin-right: 0.5rem;
 }
 
-.New {
-  background-color: #002d72;     /* deep navy */
+/* Hover */
+.tab-btn:hover {
+  transform: translateY(-0.15rem);
+  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+  background-color: #0056b3;
+}
+
+/* Active state for New */
+.tab-btn.active[data-target="newContent"] {
+  background-color: #007bff; /* bright blue */
   color: #fff;
 }
 
-.Existing {
-  background-color: #ffb6c1;     /* soft pink */
-  color: #333;
+/* Active state for Existing */
+.tab-btn.active[data-target="existingContent"] {
+  background-color: #28a745; /* green */
+  color: #fff;
 }
 
-/* ✨ Hover/Focus Effects */
-.New:hover,
-.Existing:hover {
-  transform: translateY(-0.15rem);  /* subtle lift */
-  box-shadow: 0 0.3rem 0.8rem rgba(0, 0, 0, 0.15);
+/* Tab content */
+.tab-content {
+  display: none;
+  margin-top: 1.5rem;
+}
+
+.tab-content.active {
+  display: block;
 }
 
 /* 📝 Tab Content Sections */

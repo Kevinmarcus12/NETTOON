@@ -57,22 +57,22 @@ window.onclick = function(event) {
     }
 };
 
-document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      // deactivate all buttons
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      // activate this one
-      btn.classList.add('active');
-  
-      // hide all panels
-      document.querySelectorAll('.tab-content').forEach(tc => tc.classList.remove('active'));
-  
-      // show target panel
-      const targetId = btn.getAttribute('data-target');
-      document.getElementById(targetId).classList.add('active');
+document.addEventListener("DOMContentLoaded", () => {
+    const tabButtons = document.querySelectorAll(".tab-btn");
+    const tabContents = document.querySelectorAll(".tab-content");
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        // Remove active classes
+        tabButtons.forEach(b => b.classList.remove("active"));
+        tabContents.forEach(c => c.classList.remove("active"));
+
+        // Add active to clicked tab + its content
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.target).classList.add("active");
+      });
     });
   });
-  
 
 
 function previewMovieVideo(event) {
