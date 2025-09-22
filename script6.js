@@ -412,40 +412,30 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+    const dropdownToggle = document.querySelector('.dropdown-toggle');
+    const dropdownMenu = document.querySelector('.dropdown-menu');
 
-document.getElementById("createPlaylistBtn").addEventListener("click", function () {
-    let playlistName = document.getElementById("newPlaylistName").value.trim();
-    
-    if (playlistName === "") {
-        alert("Please enter a playlist name.");
-        return;
-    }
+    // Toggle dropdown visibility
+    dropdownToggle.addEventListener('click', function() {
+        dropdownMenu.classList.toggle('show');
+    });
 
-    let playlistsContainer = document.getElementById("playlists-container");
+    // Optional: Close dropdown when clicking outside of it
+    document.addEventListener('click', function(event) {
+        if (!dropdownToggle.contains(event.target) && !dropdownMenu.contains(event.target)) {
+            dropdownMenu.classList.remove('show');
+        }
+    });
 
-    // Create new playlist item
-    let newPlaylist = document.createElement("div");
-    newPlaylist.classList.add("playlist-item");
+    // Optional: Show input for new playlist when checkbox is checked
+    const createNewCheckbox = document.getElementById('createNew_new');
+    const newPlaylistInput = document.querySelector('.new-playlist-input');
 
-    let newCheckbox = document.createElement("input");
-    newCheckbox.type = "checkbox";
-    newCheckbox.classList.add("playlist-checkbox");
-    newCheckbox.id = playlistName.toLowerCase().replace(/\s+/g, "-");
-
-    let newLabel = document.createElement("label");
-    newLabel.setAttribute("for", newCheckbox.id);
-    newLabel.textContent = playlistName;
-
-    // Append new elements
-    newPlaylist.appendChild(newCheckbox);
-    newPlaylist.appendChild(newLabel);
-    playlistsContainer.appendChild(newPlaylist);
-
-    // Clear input field
-    document.getElementById("newPlaylistName").value = "";
+    createNewCheckbox.addEventListener('change', function() {
+        newPlaylistInput.style.display = this.checked ? 'block' : 'none';
+    });
 });
-
-
 
 document.addEventListener("DOMContentLoaded", function () {
     const notificationIcon = document.getElementById("notification-icon");

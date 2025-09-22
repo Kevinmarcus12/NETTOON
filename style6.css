@@ -816,7 +816,7 @@ opacity: 1;
 /* 🌟 Overlay */
 .upload-overlay {
   position: fixed;
-  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0 */
+  inset: 0; /* covers full viewport */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -827,10 +827,9 @@ opacity: 1;
 
 /* 🌟 Upload Container */
 .upload-container {
-  width: 90vw; /* responsive width */
-  max-width: 60rem; /* ~960px */
+  width: 90vw;
+  max-width: 60rem; /* 960px */
   max-height: 90vh;
-  min-height: 46.875rem; /* 750px → rem */
   position: relative;
 
   display: flex;
@@ -838,20 +837,21 @@ opacity: 1;
   background-color: #fff;
   padding: 2rem;
   border-radius: 0.8rem;
-
   box-shadow: 0 0.625rem 1.875rem rgba(0, 0, 0, 0.3);
-
 
   /* Animation */
   opacity: 0;
   transform: translateY(-3.125rem);
   animation: popIn 0.5s ease-out forwards;
 
-  text-align: left;
-
-  /* ✅ Scroll handling */
-  overflow-y: auto;   
+  overflow-y: auto;
   overflow-x: hidden;
+}
+
+/* 🎯 Center titles only */
+.upload-container h2 {
+  text-align: center;
+  margin-bottom: 1rem;
 }
 
 /* 🌙 Dark Mode */
@@ -1494,7 +1494,7 @@ h3 {
   position: relative;
   width: 100%;
   padding: 1rem; /* Consistent spacing */
-  background: #fff5f0; /* Softer salmon tone for better readability */
+  background: transparent; /* Softer salmon tone for better readability */
   border: 1px solid #ddd; /* Subtler border */
   border-radius: 0.75rem; /* Smoother rounded corners */
   margin-bottom: 1rem; /* More consistent spacing */
@@ -1571,6 +1571,9 @@ h3 {
   font-weight: 600;
   color: #fff;
   transition: background 0.25s ease, transform 0.15s ease;
+
+  /* New spacing */
+  margin-left: 2%;
 }
 
 /* ➕ Add Button */
@@ -1672,111 +1675,118 @@ h3 {
   }
 }
 
-/* 🎯 Metadata Group Styling */
+/* ========================================================================== */
+/* METADATA & FORM STYLING                                                    */
+/* ========================================================================== */
+/* ========================================================================== */
+/* METADATA & FORM STYLING                                                    */
+/* ========================================================================== */
+
+/* Metadata Group Styling */
 .metadata-group {
   width: 100%;
-  max-width: 60rem; /* 960px cap for readability */
+  max-width: 60rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem; /* Slightly larger for breathing room */
+  gap: 1rem; /* Adjusted spacing */
   align-items: center;
   text-align: center;
-  background: rgba(255, 0, 0, 0.05); /* Subtle red tint instead of solid */
-  border-radius: 0.75rem;
-  padding: 1.5rem;
-  margin: 3rem auto 0; /* Center horizontally + spacing from top */
-  border: 1px solid rgba(0,0,0,0.1); /* Gentle border for structure */
+  background: rgba(255, 0, 0, 0.05);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin: 3rem auto 0;
+  border: 1px solid rgba(0, 0, 0, 0.1);
   transition: background 0.3s ease, border 0.3s ease;
 }
 
-/* 🎭 Label Styling */
+/* Label Styling */
 .metadata-group label {
-  font-weight: 600;
-  font-size: 1.125rem; /* ~18px but scalable with rem */
+  font-weight: bold;
+  font-size: 1rem;
   color: #222;
   letter-spacing: 0.5px;
-  transition: color 0.3s ease;
 }
 
-/* 🌙 Dark Mode Adaptation */
-.dark-mode .metadata-group {
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255,255,255,0.1);
-}
-
-.dark-mode .metadata-group label {
-  color: #f5f5f5;
-}
-/* 📝 Input & Select Field Refinement */
-select, input {
+/* Playlist Dropdown Container */
+.playlist-dropdown {
+  position: relative;
   width: 100%;
-  max-width: 28rem; /* Slightly narrower for balanced layout */
-  padding: 0.85rem 1rem; /* More balanced padding */
-  border-radius: 0.4rem; /* Softer corners */
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  background-color: #fff;
-  color: #222;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
-  box-sizing: border-box; /* Prevents layout shifts */
+  max-width: 28rem;
+  text-align: left;
 }
 
-/* 🔵 Focus Effects */
-input:focus,
-select:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.45);
-}
-
-/* 📌 Playlist Options Container */
-.playlist-options {
+/* Dropdown Toggle Button */
+.dropdown-toggle {
+  width: 100%;
+  text-align: left;
+  padding: 0.7rem 0.9rem;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem;
+  background: #f7f7f7;
+  cursor: pointer;
   display: flex;
-  flex-wrap: wrap;   /* Wrap neatly on small screens */
-  gap: 1rem 2rem;    /* Vertical + horizontal spacing */
-  justify-content: center; 
-  margin-top: 0.5rem;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* Each checkbox + label pair */
-.playlist-options .option {
+/* Dropdown menu hidden by default */
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  min-width: 100%;
+  background: #ffffff;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+  border-radius: 0.4rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  padding: 0.25rem 0;
+}
+
+/* Only shown when JS adds .show */
+.dropdown-menu.show {
+  display: block;
+}
+
+/* Playlist Options */
+.playlist-option {
   display: flex;
   align-items: center;
+  justify-content: flex-start;
   gap: 0.5rem;
-}
-
-/* Checkbox styling */
-.playlist-options input[type="checkbox"] {
-  transform: scale(1.2); /* Slightly bigger for accessibility */
+  padding: 0.4rem 0.75rem;
+  font-size: 0.95rem;
+  color: #222;
   cursor: pointer;
-  accent-color: #007bff; /* Modern browsers support checkbox color */
 }
 
-/* Label styling */
-.playlist-options label {
-  font-size: 1rem;
-  cursor: pointer;
-  transition: color 0.3s ease;
+.playlist-option:hover {
+  background: rgba(0, 123, 255, 0.08);
 }
 
-.playlist-options label:hover {
-  color: #007bff;
+/* Checkbox itself */
+.playlist-option input {
+  margin: 0;
+  flex-shrink: 0;
+}
+
+/* New Playlist Input */
+.new-playlist-input {
+  margin-top: 1rem;
 }
 
 
-/* 🌙 Dark Mode Support */
-.dark-mode select,
-.dark-mode input {
-  background-color: #1e1e1e;
-  color: #f1f1f1;
-  border: 1px solid #444;
+
+
+/* ========================================================================== */
+/* UTILITIES                                                                  */
+/* ========================================================================== */
+.hidden {
+  display: none !important;
 }
 
-.dark-mode select:focus,
-.dark-mode input:focus {
-  border-color: #4da3ff;
-  box-shadow: 0 0 6px rgba(77, 163, 255, 0.5);
-}
+
 /* 📌 Main Metadata Container */
 .metadata-container {
   display: flex;
@@ -2145,36 +2155,69 @@ select:focus {
   flex-direction: column; /* Stack elements vertically */
   gap: 1.2rem; /* Consistent gap instead of viewport units */
 }
-
-/* 🗨️ Meta Section for Comments */
 .meta {
   display: flex;
-  align-items: center;
-  gap: 0.75rem; /* Balanced spacing */
-  width: 100%;
+  align-items: center;     /* 🔥 aligns everything vertically */
+  justify-content: center; /* Center horizontally */
+  gap: 1rem;               /* Balanced spacing */
   max-width: 40rem;
+  margin: 3rem auto 3rem;     /* Center container on page */
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 0.5rem;
   padding: 0.75rem 1rem;
-  margin-top: 1.5rem;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  flex-wrap: wrap;
 }
 
-/* Focus Effect */
-.meta:focus-within {
-  border-color: #007bff;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.25);
-}
-
-/* 🔤 Meta Labels */
+/* Title text aligned inline with radios */
 .meta p {
   font-weight: 600;
-  margin-right: 0.75rem;
-  white-space: nowrap;
   font-size: 1rem;
   color: #333;
+  margin: 0;              /* remove extra margins */
+  display: flex;          /* 🔥 keeps same baseline */
+  align-items: center;    /* aligns with inputs */
+}
+
+/* Radio + label side by side */
+.meta .option {
+  display: flex;
+  align-items: center;   /* 🔥 aligns input & label inline */
+  gap: 0.35rem;
+}
+
+/* Radio Styling */
+.meta input[type="radio"] {
+  margin: 0;
+  cursor: pointer;
+  accent-color: #007bff;
+  transform: scale(1.05);
+  transition: transform 0.2s ease-in-out;
+}
+
+.meta input[type="radio"]:hover,
+.meta input[type="radio"]:focus-visible {
+  transform: scale(1.15);
+}
+
+/* Label Styling */
+.meta label {
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  transition: color 0.3s ease-in-out;
+}
+
+.meta label:hover {
+  color: #007bff;
+}
+
+.option label
+{
+margin-top: 1rem;
+
+
 }
 
 /* 🌙 Dark Mode Support */
@@ -2183,57 +2226,21 @@ select:focus {
   border-color: rgba(255, 255, 255, 0.2);
 }
 
-.dark-mode .meta p {
+.dark-mode .meta p,
+.dark-mode .meta label {
   color: #fff;
 }
 
 /* 📱 Mobile Optimization */
 @media (max-width: 768px) {
   .meta {
-    flex-direction: column; /* Stack on small screens */
+    flex-direction: column;
     align-items: flex-start;
     gap: 0.5rem;
   }
-
-  .meta p {
-    margin-right: 0; /* Reset spacing in vertical layout */
-  }
-}
-
-/* 🎯 Adjust Radio Button Spacing */
-.meta input[type="radio"] {
-  margin: 0 0.4rem 0 0; /* Tighter, consistent spacing */
-  cursor: pointer;
-  accent-color: #007bff; /* Modern browsers support custom radio color */
-  transform: scale(1.05); /* Slightly larger for better accessibility */
-  transition: transform 0.2s ease-in-out;
-}
-
-.meta input[type="radio"]:hover {
-  transform: scale(1.15);
-}
-
-/* 🏷️ Label Styling */
-.meta label {
-  font-weight: 500;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 0.95rem;
-  line-height: 1.4;
-  transition: color 0.3s ease-in-out;
-}
-
-/* Group input + label inline */
-.meta .option {
-  display: flex;
-  align-items: center;
-  gap: 0.35rem; /* Small space between radio and label */
 }
 
 
-.meta label:hover {
-  color: #007bff;
-}
 
 /* 🌙 Dark Mode Adjustments */
 .dark-mode .meta p,
@@ -2326,60 +2333,8 @@ button:focus {
     font-size: 1.05rem;
   }
 }
-/* 🎨 General Button Styling */
-button {
-  width: 50%;
-  min-width: 7.5rem;   /* 120px → more semantic */
-  max-width: 18.75rem; /* 300px → responsive upper bound */
-  height: 2.8rem;
-  background-color: #45a049;
-  color: #fff;
-  margin: 0.5rem 1vw 3vw;
-  border-radius: 0.5rem;
-  font-weight: 600;
-  font-size: 1.1rem;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  text-align: center;
-  display: inline-flex;
-  justify-content: center;
-  align-items: center;
-  white-space: nowrap;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  user-select: none; /* Prevents accidental text selection */
-}
 
-/* 🎭 First Button in a Container */
-button:first-child {
-  background: green;
-  color: #000;
-}
 
-/* 🚀 Hover & Active Effects */
-button:hover {
-  background-color: #2e7d32; /* Darker green for contrast */
-  transform: scale(1.05);
-}
-
-button:active {
-  transform: scale(0.97); /* Subtle press effect */
-}
-
-/* 🔵 Focus Accessibility */
-button:focus-visible {
-  outline: 2px solid #007bff;
-  outline-offset: 3px;
-}
-
-/* 📱 Mobile & Small Screens */
-@media (max-width: 768px) {
-  button {
-    width: 80%;
-    font-size: 1rem;
-    height: 2.5rem;
-  }
-}
 /* 🎨 Reset & Base Button Styling */
 button {
   all: unset; /* Removes browser defaults */
@@ -2397,21 +2352,6 @@ button {
   white-space: nowrap;
   transition: background-color 0.3s ease, transform 0.2s ease;
   user-select: none;
-}
-
-/* 🚀 Interactions */
-button:hover {
-  background-color: #0056b3; /* Darker shade on hover */
-  transform: translateY(-2px);
-}
-
-button:active {
-  transform: scale(0.97);
-}
-
-button:focus-visible {
-  outline: 2px solid #80bdff;
-  outline-offset: 3px;
 }
 
 /* ✅ Centering Titles Globally */
@@ -2438,6 +2378,48 @@ label {
   }
 }
 
+/* 🎭 First Button in a Container */
+button:first-child {
+  background: green;
+  color: #000;
+}
+
+/* 🚀 Hover & Active Effects */
+button:hover {
+  background-color: #2e7d32; /* Darker green for contrast */
+  transform: scale(1.05);
+}
+
+button:active {
+  transform: scale(0.97); /* Subtle press effect */
+}
+
+/* 🔵 Focus Accessibility */
+button:focus-visible {
+  outline: 2px solid #007bff;
+  outline-offset: 3px;
+}
+
+.upload-btn-wrapper {
+  display: flex;
+  justify-content: center; /* centers horizontally */
+  margin-top: 1.5rem;
+}
+
+.upload-btn-wrapper button {
+  width: 50%;
+  max-width: 18.75rem;
+}
+
+
+/* 📱 Mobile & Small Screens */
+@media (max-width: 768px) {
+  button {
+    width: 80%;
+    font-size: 1rem;
+    height: 2.5rem;
+  }
+}
 
 /* Light Mode Styles */
 .light-mode {
@@ -2841,7 +2823,7 @@ min-height: 500px;
   
   .Table
   {
-    background-color: transparent;
+    background-color: red;
   }
   
   .overlay-text
