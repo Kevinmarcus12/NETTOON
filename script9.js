@@ -77,40 +77,22 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
 
+  const videoUpload = document.getElementById("videoUpload");
+    const videoPreview = document.getElementById("videoPreview");
+    const previewContainer = document.getElementById("previewContainer");
+    const toggleMode = document.querySelector(".toggle-mode");
 
+    videoUpload.addEventListener("change", (e) => {
+      const file = e.target.files[0];
+      if (file) {
+        const url = URL.createObjectURL(file);
+        videoPreview.src = url;
+        previewContainer.style.display = "flex";
+      }
+    });
 
-document.getElementById('dob').addEventListener('change', function() {
-    let dob = new Date(this.value);
-    let today = new Date();
-    let age = today.getFullYear() - dob.getFullYear();
-    let parentConsent = document.getElementById('parent-consent');
-    
-    if (age < 13) {
-        parentConsent.style.display = 'block';
-        document.getElementById('parent-name').required = true;
-        document.getElementById('parent-email').required = true;
-    } else {
-        parentConsent.style.display = 'none';
-        document.getElementById('parent-name').required = false;
-        document.getElementById('parent-email').required = false;
-    }
-});
-
-document.getElementById("country").addEventListener("change", function () {
-    let selectedOption = this.options[this.selectedIndex];
-    let countryCode = selectedOption.getAttribute("data-code");
-    document.getElementById("country-code").value = countryCode || "";
-});
-
-document.getElementById('signup-form').addEventListener('submit', function(event) {
-    let password = document.getElementById('password').value;
-    let confirmPassword = document.getElementById('confirm-password').value;
-    let errorMessage = document.getElementById('password-error');
-
-    if (password !== confirmPassword) {
-        event.preventDefault(); // Prevent form submission
-        errorMessage.style.display = 'block';
-    } else {
-        errorMessage.style.display = 'none';
-    }
-});
+    toggleMode.addEventListener("click", () => {
+      document.body.classList.toggle("dark");
+      toggleMode.textContent =
+        document.body.classList.contains("dark") ? "☀️ Light Mode" : "🌙 Dark Mode";
+    });

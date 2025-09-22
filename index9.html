@@ -28,17 +28,18 @@
       </a>
     </div>
    
-
+    
+  
   <div class="nav">
 
-    <form action="index12.html" method="GET" class="search">
-      <input type="search" name="query" placeholder="Search Cartoons and Animations Series">
-        <a href="index12.html"><img src="search.png" class="search-icon" alt="Search"></a>
-    </form>
-    
+    <div class="search">
+      <input type="search" id="search" placeholder="Search Cartoon and Animation Series">
+      <a href="index12.html"><img src="search.png" class="search-icon" /></a>
+      <span class="tooltip">Search</span>
+    </div>
 
 
-  <a href="index5.html">
+  <a href="index6.html">
     <div class="upload">
         <img src="upload.png" alt="Upload Icon">
         <div class="tooltip">Upload</div>
@@ -72,10 +73,10 @@
               </div>
           </li></a>
 
-          <a href="index8.html"><li>
+          <a href="index.html"><li>
               <div class="proofile">
                   <img src="categories.png" alt="Profile Image">
-                  <span>Series Section</span>
+                  <span>Movies Section</span>
               </div>
           </li></a>
 
@@ -87,12 +88,14 @@
                 </div>
         </li></a>
 
-          <a href="index13.html"><li>
-              <div class="proofile">
-                  <img src="settings 2.png" alt="Profile Image">
-                  <span>Settings</span>
-              </div>
-          </li></a>
+
+        
+        <a href="index13.html"><li>
+          <div class="proofile">
+              <img src="settings 2.png" alt="Profile Image">
+              <span>Settings</span>
+          </div>
+      </li></a>
 
 
       
@@ -102,16 +105,55 @@
 
         </div>
         
+        </div>   
         </div>
 
-<div class="Container-1">
-
-<h1>Shorts Upload</h1>
 
 
-
+        <div class="upload-container">
+          <h2>Upload Nettoon Short</h2>
+      
+      <!-- Upload Video -->
+<div class="upload-group">
+  <label for="videoUpload">Upload Short Video</label>
+  <label class="file-label special-file-label" for="videoUpload">📹 Choose Video</label>
+  <input type="file" id="videoUpload" accept="video/*">
 </div>
 
+              <!-- Preview -->
+              <div class="preview-container" id="previewContainer">
+                <video id="videoPreview" controls></video>
+              </div>
+      
+          <!-- Title -->
+          <div class="upload-group">
+            <label for="title">Title</label>
+            <input type="text" id="title" placeholder="Enter a catchy title">
+          </div>
+      
+          <!-- Description -->
+          <div class="upload-group">
+            <label for="description">Description</label>
+            <textarea id="description" placeholder="Describe your short..."></textarea>
+          </div>
+      
+          <!-- Playlist -->
+          <div class="upload-group">
+            <label for="playlist">Add to Playlist</label>
+            <select id="playlist">
+              <option value="">-- Select Playlist --</option>
+              <option value="trending">🔥 Trending Shorts</option>
+              <option value="funny">😂 Funny Moments</option>
+              <option value="anime">🎬 Anime Cuts</option>
+              <option value="music">🎵 Music Shorts</option>
+            </select>
+          </div>
+      
+      
+      
+          <!-- Submit -->
+          <button class="btn-submit">Publish Short</button>
+        </div>
 
 
 
@@ -125,10 +167,10 @@
 
 
 
+        <script src="script9.js"></script>
 
+ 
 
-
-
+</main>
 </body>
 </html>
-
