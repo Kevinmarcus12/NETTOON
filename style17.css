@@ -824,12 +824,10 @@ opacity: 1;
   margin-top: 3rem;
   background-color: transparent;
 }
-
-/* Left Sidebar */
+/* Sidebar Base */
 .sidebar {
   width: 240px;
   background-color: transparent;
-  color: white;
   display: flex;
   flex-direction: column;
   padding-top: 20px;
@@ -841,6 +839,7 @@ opacity: 1;
   font-size: 1.2rem;
 }
 
+/* Sidebar Items */
 .menu-item {
   padding: 14px 20px;
   cursor: pointer;
@@ -850,17 +849,25 @@ opacity: 1;
   font-size: 1rem;
   border-left: 4px solid transparent;
   transition: 0.3s;
+  margin-bottom: 50px;
 }
 
 .menu-item i {
   width: 20px;
   text-align: center;
+  color: inherit; /* inherit mode color */
+}
+
+.menu-item span {
+  flex: 1;
+  color: inherit; /* ensures text follows mode */
 }
 
 .menu-item:hover,
 .menu-item.active {
   background: #2d313a;
-  border-left: 4px solid #ff4444;
+  color:white;
+  border-left: 4px solid transparent;
 }
 
 /* Right Content */
@@ -911,6 +918,11 @@ opacity: 1;
   color: #333;
 }
 
+.dark-mode .form-group label
+{
+  color: var(--color-text-light-alt); /* Lighter text color for dark mode */
+}
+
 .form-group input,
 .form-group textarea {
   padding: 12px;
@@ -939,12 +951,17 @@ opacity: 1;
   gap: 15px;
 }
 
+.dark-mode .profile-pic-wrapper img
+{
+filter: invert(1);
+}
+
 .profile-pic {
   width: 120px;
   height: 120px;
   border-radius: 50%;
   object-fit: cover;
-  border: 2px solid #ff4444;
+  border: 2px solid white;
   box-shadow: 0 2px 6px rgba(0,0,0,0.1);
 }
 
@@ -963,6 +980,7 @@ opacity: 1;
   cursor: pointer;
   transition: background 0.3s;
   align-self: flex-start;
+  margin-top: 1rem;
 }
 
 .save-btn:hover {
@@ -1219,7 +1237,6 @@ input:checked + .slider:before {
   font-size: 0.85rem;
   margin-top: 8px;
 }
-
 /* Payment list */
 .payments-list {
   list-style: none;
@@ -1268,6 +1285,10 @@ input:checked + .slider:before {
 .transactions-table th {
   background: #f9f9f9;
   font-weight: 600;
+}
+
+.dark-mode .transactions-table th {
+color: black;
 }
 
 /* Modal styling */
@@ -1327,15 +1348,14 @@ input:checked + .slider:before {
   margin: 15px 0;
   flex-wrap: wrap;
 }
-
 .plan-card {
   flex: 1;
   min-width: 200px;
-  border: 2px solid #eee;
+  border: 1px solid #eee;
   border-radius: 10px;
   padding: 20px;
   text-align: center;
-  background: #fafafa;
+  background: #ffffff; /* keep cards white in all modes */
   transition: transform 0.2s, border-color 0.2s;
 }
 
@@ -1349,11 +1369,18 @@ input:checked + .slider:before {
   color: #ff4444;
 }
 
+/* ✅ Always keep p and price text black */
+.plan-card p,
+.plan-card .price {
+  color: #000000;
+}
+
 .plan-card .price {
   margin: 10px 0;
   font-weight: bold;
   font-size: 1.1rem;
 }
+
 
 .select-plan-btn {
   background: #ff4444;
@@ -1449,6 +1476,7 @@ input:checked + .slider:before {
   background: #e53935;
 }
 
+
 /* Delete Account */
 .delete-warning {
   background: #fff3cd;
@@ -1518,13 +1546,24 @@ input:checked + .slider:before {
 }
 
 .modal {
+  display: block;
   background: white;
   padding: 30px;
   border-radius: 14px;
-  max-width: 420px;
+  width: 100%;
+    max-width: 500px;
+    height:auto;
+    margin:220px auto 0 23rem; /* Top margin + horizontal centering */
+    justify-content: space-between;
   text-align: center;
   box-shadow: 0 4px 20px rgba(0,0,0,0.2);
   animation: fadeIn 0.3s ease;
+}
+
+.dark-mode .modal
+{
+  background-color: #222;
+  color: white;
 }
 
 .modal h2 {
@@ -1533,7 +1572,7 @@ input:checked + .slider:before {
 }
 
 .modal-actions {
-  margin-top: 25px;
+  margin-top: 50px;
   display: flex;
   justify-content: space-between;
 }
@@ -1639,4 +1678,32 @@ input:checked + .slider:before {
 {
   filter: invert(1);
 
+}
+
+
+
+/* Light Mode */
+.light-mode .sidebar {
+  background-color: white;
+}
+
+.light-mode .menu-item span {
+  color: black;
+}
+
+.light-mode .menu-item i {
+  color: black;
+}
+
+/* Dark Mode */
+.dark-mode .sidebar {
+  background-color: #121212;
+}
+
+.dark-mode .menu-item span {
+  color: white;
+}
+
+.dark-mode .menu-item i {
+  color: white;
 }

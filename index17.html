@@ -107,14 +107,15 @@
           <!-- Sidebar -->
           <div class="sidebar">
             <h2>Settings</h2>
-            <div class="menu-item active" data-target="profile"><i class="fa fa-user"></i> Profile</div>
-            <div class="menu-item" data-target="account"><i class="fa fa-cog"></i> Account</div>
-            <div class="menu-item" data-target="notifications"><i class="fa fa-bell"></i> Notifications</div>
-            <div class="menu-item" data-target="privacy"><i class="fa fa-lock"></i> Privacy</div>
-            <div class="menu-item" data-target="payments"><i class="fa fa-credit-card"></i> Payments</div>
-            <div class="menu-item" data-target="subscription"><i class="fa fa-tv"></i> Subscription</div>
-            <div class="menu-item" data-target="delete"><i class="fa fa-trash"></i> Delete Account</div>
+            <div class="menu-item active" data-target="profile"><i class="fa-solid fa-user"></i> <span>Profile</span></div>
+            <div class="menu-item" data-target="account"><i class="fa-solid fa-cog"></i> <span>Account</span></div>
+            <div class="menu-item" data-target="notifications"><i class="fa-solid fa-bell"></i> <span>Notifications</span></div>
+            <div class="menu-item" data-target="privacy"><i class="fa-solid fa-lock"></i> <span>Privacy</span></div>
+            <div class="menu-item" data-target="payments"><i class="fa-solid fa-credit-card"></i> <span>Payments</span></div>
+            <div class="menu-item" data-target="subscription"><i class="fa-solid fa-tv"></i> <span>Subscription</span></div>
+            <div class="menu-item" data-target="delete"><i class="fa-solid fa-trash"></i> <span>Delete Account</span></div>
           </div>
+          
         
           <!-- Content -->
           <div class="content">
@@ -128,7 +129,7 @@
                 <div class="form-group profile-pic-group">
                   <label for="profilePic">Profile Picture</label>
                   <div class="profile-pic-wrapper">
-                    <img id="profilePicPreview" src="https://via.placeholder.com/120" alt="Profile Picture" class="profile-pic">
+                    <img id="profilePicPreview" src="14.png" alt="Profile Picture" class="profile-pic">
                     <input type="file" id="profilePic" accept="image/*">
                   </div>
                 </div>
@@ -177,25 +178,6 @@
       <label for="confirmNewPassword">Confirm New Password</label>
       <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required>
       <small id="passwordMatchMessage"></small>
-    </div>
-
-    <!-- Two-Factor Authentication -->
-    <div class="form-group toggle-group">
-      <label for="twoFactor">Two-Factor Authentication</label>
-      <label class="switch">
-        <input type="checkbox" id="twoFactor">
-        <span class="slider round"></span>
-      </label>
-    </div>
-
-    <!-- Login Activity -->
-    <div class="login-activity">
-      <h4><i class="fa fa-shield"></i> Recent Login Activity</h4>
-      <ul>
-        <li><i class="fa fa-desktop"></i> Chrome – Nairobi, Kenya <span class="time">2 hours ago</span></li>
-        <li><i class="fa fa-mobile"></i> Safari – iPhone, Kenya <span class="time">1 day ago</span></li>
-        <li><i class="fa fa-laptop"></i> Firefox – Windows, US <span class="time">3 days ago</span></li>
-      </ul>
     </div>
 
     <!-- Save Button -->
