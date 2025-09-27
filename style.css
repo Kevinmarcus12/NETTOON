@@ -613,14 +613,15 @@ opacity: 1;
   right: 1%;
   width: 24%;
   min-width: 11.25em;
-  max-height: 30em;
+  height: auto;
+  min-height: 30em;
   padding: 1rem;
 
   background-color: #333;
   color: white;
   border-radius: 0.5em;
   box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-
+overflow-x: hidden;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
@@ -632,6 +633,101 @@ opacity: 1;
 .Notification-container.active {
   display: block;
 }
+
+.Notification
+{
+  width: 90%;
+  height: 18%;
+  background-color: grey;
+  position: absolute;
+  display: block;
+margin-left: 0px;
+justify-content: flex-start;
+border-radius: var(--border-radius-md); /* Consistent medium rounded corners for the card */
+}
+
+.User-profile
+{
+  display: flex;
+  flex-wrap: nowrap;
+  width: 30%;
+  height: 40%;
+  float: left;
+  background-color: transparent;
+justify-content: space-between;
+}
+
+.User-profile img
+{
+width:30px;
+height: 30px;
+border-radius: 50%;
+float: left;
+
+}
+
+.User-profile span
+{
+width: 60%;
+height: 20px;
+background-color: transparent;
+float: right;
+margin-top: 0.3rem;
+right: 10%;
+}
+
+.account
+{
+width: 20%;
+height: 40%;
+background-color: transparent;
+float: right;
+
+}
+
+.account img
+{
+width: 100%;
+height: 100%;
+
+}
+
+
+
+.Content
+{
+  width: 100%;
+  height: 40px;
+  background-color: transparent;
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap:nowrap;
+justify-content: flex-start;
+
+}
+
+.Content span
+{
+color: white;
+float: left;
+
+}
+
+.timer
+{
+width: 160px;
+height: 20px;
+background-color: transparent;
+margin-top: 0.7rem;
+margin-right: 0.3rem;
+}
+
+.timer span
+{
+  font-size: 12px;
+}
+
+
 
 .Theme {
   display: flex;

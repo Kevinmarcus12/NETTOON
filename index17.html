@@ -69,28 +69,12 @@
               </div>
           </li></a>
 
-          <a href="index10.html"><li>
+          <a href="index17.html"><li>
             <div class="proofile">
-                <img src="add-user.png" alt="Profile Image">
-                <span>Sign up</span>
+                <img src="settings 2.png" alt="Profile Image">
+                <span>Settings</span>
             </div>
         </li></a>
-
-
-          <a href=""><li>
-            <div class="proofile">
-                    <img id="theme-toggle-light" src="theme.png" alt="Light Mode Icon" style="cursor: pointer; display: none;" />
-                    <img id="theme-toggle-dark" src="theme 2.png" alt="Dark Mode Icon" style="cursor: pointer;" />
-                    <span>Theme</span>
-                </div>
-        </li></a>
-
-        <a href="index13.html"><li>
-          <div class="proofile">
-              <img src="settings 2.png" alt="Profile Image">
-              <span>Settings</span>
-          </div>
-      </li></a>
 
       
       </ul>
@@ -109,6 +93,7 @@
             <h2>Settings</h2>
             <div class="menu-item active" data-target="profile"><i class="fa-solid fa-user"></i> <span>Profile</span></div>
             <div class="menu-item" data-target="account"><i class="fa-solid fa-cog"></i> <span>Account</span></div>
+            <div class="menu-item" data-target="display"><i class="fa-solid fa-adjust"></i><span>Display</span></div>
             <div class="menu-item" data-target="notifications"><i class="fa-solid fa-bell"></i> <span>Notifications</span></div>
             <div class="menu-item" data-target="privacy"><i class="fa-solid fa-lock"></i> <span>Privacy</span></div>
             <div class="menu-item" data-target="payments"><i class="fa-solid fa-credit-card"></i> <span>Payments</span></div>
@@ -130,8 +115,14 @@
                   <label for="profilePic">Profile Picture</label>
                   <div class="profile-pic-wrapper">
                     <img id="profilePicPreview" src="14.png" alt="Profile Picture" class="profile-pic">
-                    <input type="file" id="profilePic" accept="image/*">
+                  
+                    <!-- Hidden file input -->
+                    <input type="file" id="profilePic" accept="image/*" hidden>
+                  
+                    <!-- Clickable text -->
+                    <span id="uploadText" class="upload-text">Click here to upload a new picture</span>
                   </div>
+                  
                 </div>
         
                 <!-- Username -->
@@ -184,6 +175,54 @@
     <button type="submit" class="save-btn">Save Changes</button>
   </form>
 </div>
+
+
+<!-- Theme Section -->
+<div id="display" class="content-section">
+  <div class="content-header">
+    <i class="fa fa-adjust"></i> Theme
+  </div>
+  <p>Switch between Light and Dark mode.</p>
+
+  <div class="theme-toggle">
+    <label class="theme-switch">
+      <input type="checkbox" id="themeToggle">
+      <span class="theme-slider">
+        <img src="theme.png" alt="Light" class="icon-light" />
+        <img src="theme 2.png" alt="Dark" class="icon-dark" />
+      </span>
+    </label>
+  </div>
+
+
+
+    <!-- Font Size -->
+    <div class="form-group">
+      <label for="fontSize">Font Size</label>
+      <select id="fontSize" class="styled-select">
+        <option value="small">Small</option>
+        <option value="medium" selected>Medium</option>
+        <option value="large">Large</option>
+      </select>
+    </div>
+
+    <!-- Line Spacing -->
+    <div class="form-group">
+      <label for="lineSpacing">Line Spacing</label>
+      <select id="lineSpacing" class="styled-select">
+        <option value="normal" selected>Normal</option>
+        <option value="wide">Wide</option>
+      </select>
+    </div>
+
+
+    <!-- Save Button -->
+    <button type="button" class="save-btn" id="saveDisplay">Save Changes</button>
+
+  </form>
+</div>
+
+
 
           <!-- Notifications -->
 <div id="notifications" class="content-section">
@@ -495,7 +534,7 @@
 
 <!-- Confirmation Modal -->
 <div id="deleteModal" class="modal-overlay">
-  <div class="modal">
+  <div class="modal-content">
     <h2><i class="fa fa-exclamation-circle"></i> Confirm Deletion</h2>
     <p>
       Are you absolutely sure you want to delete your Nettoon account?
@@ -509,6 +548,7 @@
     </div>
   </div>
 </div>
+
 
         </div>
         

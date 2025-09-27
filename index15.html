@@ -1,1087 +1,811 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
-  <link rel="icon" href="icons/logo.png" type="image/x-icon" />
-  <title>Nettoon.com</title>
-  <link rel="stylesheet" href="style12.css" />
-</head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nettoon Settings</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background: #f5f6fa;
+      color: #333;
+      display: flex;
+      height: 100vh;
+    }
 
-<body class="light-mode">
+    /* Sidebar */
+    .sidebar {
+      width: 250px;
+      background: #121212;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      padding: 20px 0;
+    }
 
-  <main>
-    <div class="container">
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 1.3rem;
+    }
 
-      <!-- Header / Logo -->
-      <div class="Table">
-        <a href="index.html">
-          <div class="overlay-text">
-            <span class="net-text">NET</span><span class="toon-text">TOON</span>
-          </div>
-        </a>
-      </div>
+    .sidebar button {
+      background: none;
+      border: none;
+      color: #ccc;
+      padding: 15px 20px;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-      <style>
+    .sidebar button i {
+      margin-right: 12px;
+      font-size: 1.1rem;
+    }
 
+    .sidebar button:hover,
+    .sidebar button.active {
+      background: #1f1f1f;
+      color: #fff;
+    }
 
-/* ✅ TITLE AND DESCRIPTION CONTAINER */
-.title, .Description {
-  width: 100%; /* Full width for flexibility */
-  height: auto;
-  padding: 1rem;
-  border-radius: 0.4rem; /* Slightly smoother rounded edges */
-  box-sizing: border-box; /* Prevents layout shift due to padding */
-  background-color: transparent; /* Keeps the section clean */
-  margin-bottom: 1.5rem; /* More breathing room between sections */
-}
+    /* Main content */
+    .content {
+      flex: 1;
+      padding: 30px;
+      overflow-y: auto;
+    }
 
-.Description:nth-child(1)
-{
-  margin-top: 3rem;
-}
+    .content-section {
+      display: none;
+    }
 
-/* ✅ TITLE AND DESCRIPTION CONTAINER */
-.dark-mode .title input, textarea {
-  background-color:transparent; /* Keeps the section clean */
-}
+    .content-section.active {
+      display: block;
+    }
 
+    .content-header {
+      display: flex;
+      align-items: center;
+      font-size: 1.3rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #444;
+    }
 
-/* ✅ Text Styling for Titles and Descriptions */
-.title h3, .Description h3 {
-  color: black;
-  font-size: 1.3rem; /* Slightly larger for emphasis */
-  font-weight: 600; /* Bolder look for better readability */
-}
+    .content-header i {
+      margin-right: 10px;
+      color: #ff4757;
+    }
 
-/* ✅ Dark mode support */
-.dark-mode .title h3, .dark-mode .Description h3 {
-  color: #f1f1f1; /* Slightly off-white for less strain on eyes */
-}
+    /* Forms */
+    form {
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+      max-width: 500px;
+    }
 
+    label {
+      display: block;
+      margin: 15px 0 5px;
+      font-weight: 600;
+    }
 
-.episode-dropdown {
-  padding: 8px 12px;
-  font-size: 16px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #fff;
-  margin-bottom: 10px;
-  width: 100%;
-  max-width: 85%;
-  margin-top: 30px;
-  margin-bottom: 50px;
-}
+    input, textarea, select {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border 0.2s;
+    }
 
-label {
-  display: block;
-  margin-bottom: 5px;
-  font-weight: bold;
-}
+    input:focus, textarea:focus, select:focus {
+      border-color: #ff4757;
+    }
 
+    button[type="submit"], .danger-btn {
+      margin-top: 15px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
 
+    button[type="submit"] {
+      background: #ff4757;
+      color: #fff;
+    }
 
-/* ✅ General Input and Textarea Styling */
-input, textarea {
-  width: 100%;
-  padding: 0.9rem; /* Slightly more padding for better UX */
-  background-color: white;
-  border-radius: 0.3rem;
-  font-family: Arial, sans-serif;
-  border: 1px solid #ccc;
-  font-size: 1rem;
-  box-sizing: border-box;
-  margin-bottom: 1.2rem; /* More spacing between fields */
-}
+    button[type="submit"]:hover {
+      background: #e84118;
+    }
 
-/* ✅ Input & Textarea Focus Effect (For Better UX) */
-input:focus, textarea:focus {
-  border-color: #007bff; /* Highlights when selected */
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-  outline: none;
-}
+    .danger-btn {
+      background: #e74c3c;
+      color: #fff;
+    }
 
-/* ✅ Dark Mode for Input and Textarea */
-.dark-mode input, .dark-mode textarea {
-  background-color: #222;
-  color: #fff;
-  border: 1px solid #555;
-}
+    .danger-btn:hover {
+      background: #c0392b;
+    }
 
-/* ✅ Mobile-Friendly Adjustments */
-@media (max-width: 768px) {
-  .title h3, .Description h3 {
-    font-size: 1.15rem; /* Slightly smaller for compact screens */
-  }
+    img.preview {
+      max-width: 80px;
+      margin-top: 10px;
+      border-radius: 8px;
+    }
 
-  input, textarea {
-    padding: 0.75rem;
-    font-size: 0.95rem;
-  }
-}
+    ul {
+      margin-top: 10px;
+      padding-left: 20px;
+    }
 
-/* ✅ Ultra Small Devices (Mobile) */
-@media (max-width: 480px) {
-  .title, .Description {
-    padding: 0.8rem;
-  }
-
-  input, textarea {
-    padding: 0.7rem;
-    font-size: 0.9rem;
-  }
-}
-/* ✅ Universal Focus Effect for Input & Textarea */
-input:focus,
-textarea:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
-
-}
-
-/* ✅ Textarea Styling (Future-Proof & Adjustable) */
-textarea {
-  resize: vertical; /* Allows flexible resizing */
-  height: 200px; /* Initial optimal height */
-  min-height: 150px; /* Ensures a minimum spacious height */
-  max-width: 100%;
-  font-size: 1rem;
-  background-color:white;
-}
-
-/* ✅ Description Section Styling */
-.Description textarea {
-  padding: 0.9rem; /* Slightly more padding for comfort */
-  font-size: 1rem;
-  border-radius: 0.4rem;
-  border: 1px solid #ccc;
-  resize: vertical;
-  font-family: Arial, sans-serif;
-  background-color: #f9f9f9;
-
-}
-
-/* ✅ Dark Mode Support */
-.dark-mode .Description textarea {
-  background-color: #222;
-  color: #fff;
-  border: 1px solid #555;
-}
-
-/* ✅ Buttons - Modern, Responsive & Scalable */
-.submit-button {
-  display: inline-block;
-  padding: 0.9rem 1.8rem;
-  background-color: #007bff;
-  color: white;
-  border: none;
-  border-radius: 0.3rem;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600; /* Slightly bolder for a strong CTA */
-  transition: background-color 0.3s ease, transform 0.2s ease-in-out;
-}
-
-/* ✅ Button Hover & Click Effects */
-.submit-button:hover {
-  background-color: #0056b3;
-  transform: translateY(-2px); /* Subtle hover lift effect */
-}
-
-.submit-button:active {
-  transform: scale(0.98); /* Slight click effect */
-}
-
-/* ✅ Button Focus State */
-.submit-button:focus {
-  outline: none;
-  box-shadow: 0 0 6px rgba(0, 123, 255, 0.5);
-}
-
-/* ✅ Responsive Optimizations */
-@media (max-width: 768px) {
-  textarea {
-    height: 180px; /* Slightly smaller for mobile screens */
-  }
-
-  .submit-button {
-    width: 100%; /* Full width button for better usability */
-    text-align: center;
-  }
-}
-
-@media (max-width: 480px) {
-  textarea {
-    height: 160px; /* Further optimized for smaller screens */
-    font-size: 0.95rem;
-  }
-
-  .submit-button {
-    font-size: 0.95rem;
-    padding: 0.8rem 1.5rem;
-  }
-}
-
-.uploads {
-  position: relative;
-  width: 90%;
-  max-width: 60rem; /* 960px equivalent */
-  height: auto;
+/* Profile Form Styling */
+.profile-form {
   display: flex;
-  flex-wrap: wrap; /* Enables stacking for smaller screens */
-  justify-content: center;
-  background-color:transparent;
-  border-radius: 0.5rem;
-  padding: 1.5rem; /* Slightly increased for better spacing */
-  gap: 1.2rem; /* Consistent spacing */
-  border: 0.05rem solid #ccc;
-  margin-bottom: 3rem;
+  flex-direction: column;
+  gap: 20px;
 }
 
-.uploadss {
-  position: relative;
-  width: 90%;
-  max-width: 60rem; /* 960px equivalent */
-  height: auto;
+.form-group {
   display: flex;
-  flex-wrap: wrap; /* Enables stacking for smaller screens */
-  justify-content: center;
-  background-color:transparent;
-  border-radius: 0.5rem;
-  padding: 1.5rem; /* Slightly increased for better spacing */
-  gap: 1.2rem; /* Consistent spacing */
-  border: 0.05rem solid #444;
-  margin-bottom: 0.5rem;
-  margin-left: 2rem;
-  margin-top: 1rem;
+  flex-direction: column;
 }
 
-
-/* Hide File Inputs */
-.file-input {
-  display: none;
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 8px;
+  color: #333;
 }
 
-/* 📌 Video & Thumbnail Upload Boxes */
-.video, .thumbnail {
-  flex: 1 1 48%; /* Responsive width */
-  max-width: 22rem; /* Increases flexibility */
-  min-width: 12rem; /* Prevents breaking on smaller screens */
-  height: auto;
-  aspect-ratio: 16/9; /* Maintains aspect ratio */
-  background-color: #f9f9f9;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  border-radius: 0.5rem;
-  border: 0.1rem dashed #ccc;
-
-}
-
-/* ✨ Hover Effect for Better Interactivity */
-.video:hover, .thumbnail:hover {
-  border-color: goldenrod;
-  background-color: beige;
-  transform: scale(1.02); /* Subtle zoom effect */
-}
-
-.upload-poster {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  object-position: center;
-  border-radius: 0.5rem;
-}
-
-
-
-/* 🖼️ Preview Container - Hidden by Default */
-.preview-container {
-  display: none; /* Remains hidden until activated */
-  width: 100%;
-  height: auto;
-  flex-wrap: nowrap;
-  justify-content: center;
-  background-color:transparent;
-  border-radius: 0.5rem;
-  margin-top: 0.2rem;
-  padding: 1.2rem;
-  margin-bottom: 2rem;
-  gap: 0.7rem;
-  border: 0.05rem solid #ccc;
-  transition: all 0.3s ease-in-out; /* Smooth appearance effect */
-}
-
-/* ✅ Appears When Active */
-.preview-container.active {
-  display: flex; /* Becomes visible when triggered */
-}
-
-/* 🎥 Previewed Videos & Images */
-.preview-container video,
-.preview-container img {
-  flex: 1 1 48%; /* Responsive width */
-  max-width: 22rem; /* Slightly increased for better scaling */
-  height: auto;
-  aspect-ratio: 16/9;
-  border-radius: 0.5rem;
-  object-fit: cover;
-  padding: 0.5rem;
-  transition: transform 0.2s ease-in-out;
-}
-#episodesWrapper { max-width:900px; margin:0 auto; }
-
-.Episodess {
-  position: relative;
-  width:100%;
+.form-group input,
+.form-group textarea {
   padding: 12px;
-  background-color: darksalmon;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-color: #ff4444;
+  outline: none;
+}
+
+/* Profile Picture */
+.profile-pic-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-pic-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.profile-pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #ff4444;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#profilePic {
+  cursor: pointer;
+}
+
+/* Save Button */
+.save-btn {
+  background: #ff4444;
+  color: white;
+  border: none;
+  padding: 14px 20px;
+  font-size: 1rem;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: background 0.3s;
+  align-self: flex-start;
+}
+
+.save-btn:hover {
+  background: #e63939;
+}
+
+/* Account Form */
+.account-form .form-group {
+  margin-bottom: 20px;
+}
+
+.account-form label {
+  font-weight: bold;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.account-form input {
+  width: 100%;
+  padding: 10px;
   border: 1px solid #ccc;
   border-radius: 8px;
-  margin-bottom: 12px;
-  box-shadow: 0px 4px 10px rgba(0,0,0,0.2);
-}
-
-.Episodess input, 
-.Episodess textarea, 
-.Episodess select {
-  width: 100%; 
-  margin-top:6px; 
-  margin-bottom:6px; 
-  box-sizing:border-box; 
-  padding:6px; 
-}
-
-.Episodes { 
-  display:flex; 
-  justify-content:flex-start; 
-  gap:10px; 
-  max-width:900px; 
-  margin: 8px auto; 
-}
-
-.Add, .delete {
-  width:140px; 
-  height:36px; 
-  display:flex; 
-  align-items:center; 
-  justify-content:center; 
-  cursor:pointer; 
-  border-radius:6px; 
-  color:white;
-}
-.Add { background:saddlebrown; }
-.Add:hover { background:purple; }
-
-.delete { background:#b24; display:none; }
-.delete:hover { background:red; }
-
-/* 📱 Mobile Optimization */
-@media (max-width: 48rem) { /* 768px equivalent */
-  .uploads {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .video, .thumbnail {
-    flex-basis: 100%;
-    max-width: 95%; /* Slightly reduced for better spacing */
-  }
-
-  .preview-container video,
-  .preview-container img {
-    flex-basis: 100%;
-    max-width: 95%;
-  }
-}
-
-
-.metadata-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  padding: 2vw;
-  border-radius: 0.625rem;
-  align-items: center; /* Centers children horizontally */
-  justify-content: center; /* Centers children vertically */
-  width: 100%;
-  max-width: 600px; /* Increased width for better spacing */
-  margin: 0 auto; /* Centers the whole container */
-  background-color: green;
-  text-align: center; /* Centers text inside */
-}
-
-.upper-container,
-.lower-container {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-  align-items: center;
-  justify-content: center; /* Ensures vertical centering */
-  width: 100%;
-  max-width: 900px;
-  margin: 0 auto; /* Ensures center alignment */
-  background-color: transparent;
-  text-align: center;
-}
-
-
-/* 🎯 Ensure All Inner Elements Are Centered */
-.metadata-container * {
-  align-self: center; /* Forces every element inside to align at the center */
-}
-
-/* 📱 Mobile Adjustments */
-@media (max-width: 768px) {
-  .metadata-container {
-    width: 95%;
-    padding: 1.5rem;
-    gap: 1.5rem;
-  }
-
-  .upper-container,
-  .lower-container {
-    width: 90%;
-    gap: 1rem;
-  }
-}
-
-
-/* 🎯 Metadata Group Styling */
-.metadata-group {
-  width: 100%; /* Ensures full width */
-  max-width: 90rem; /* Prevents stretching on large screens */
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;
-  text-align: center;
-  background-color:red;
-  border-radius: 0.625rem;
-  margin-top: 60px;
-}
-
-/* 🎭 Label Styling */
-.metadata-group label {
-  text-align: center;
-  font-weight: bold;
-  font-size: 18px;
-  color: black;
-}
-
-/* 🌙 Dark Mode Adaptation */
-.dark-mode .metadata-group label {
-  color: white;
-}
-
-/* 📝 Input & Select Field Refinement */
-select, input {
-  width: 100%;
-  max-width: 30rem; /* Slightly reduced to fit UI */
-  padding: 0.75rem;
-  border-radius: 0.3rem;
-  border: 1px solid #ccc;
   font-size: 1rem;
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-/* 🔵 Focus Effects */
-input:focus,
-select:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
-  transition: box-shadow 0.3s ease-in-out;
 }
 
-/* 📌 Main Metadata Container */
-.metadata-container {
-  display: flex;
-  flex-direction: column; /* Ensures items stack in sequence */
-  align-items: center;
-  width: 100%;
-  gap: 2rem; /* Adds consistent spacing */
-  padding: 2vw;
-  border-radius: 0.625rem;
+.account-form small.note {
+  font-size: 0.85rem;
+  color: gray;
 }
 
-/* 🎯 Metadata Group Styling */
-.metadata-group {
-  width: 90%; /* Makes it fully responsive */
-  max-width: 50rem; /* Prevents excessive stretching */
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  align-items: center;
-  text-align: center;
-  background: transparent;
-  border-radius: 0.625rem;
-  transition: transform 0.2s ease-in-out;
-}
-
-/* 🏷️ Label Styling */
-.metadata-group label {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.125rem;
-  color: black;
-}
-
-/* 🌙 Dark Mode Support */
-.dark-mode .metadata-group label {
-  color: white;
-}
-
-/* 🖊️ Input & Select Styling */
-select,
-input {
-  width: 100%;
-  max-width: 40rem; /* Balanced width for all screens */
-  padding: 0.8rem;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 0.25rem;
-  font-size: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease-in-out;
-}
-
-/* 🏆 Mobile Optimization */
-@media (max-width: 768px) {
-  .metadata-group {
-    width: 100%; /* Takes full width on smaller screens */
-  }
-
-  select,
-  input {
-    max-width: 100%; /* Makes inputs fully fluid */
-  }
-}
-/* 🔵 Focus Effects */
-input:focus,
-select:focus {
-  border-color: #007bff;
-  outline: none;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.4);
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-/* 📌 Main Metadata Container */
-.metadata-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  gap: 2rem;
-  padding: 2vw;
-  border-radius: 0.625rem;
-  max-width: 90rem; /* Prevents over-expansion on ultra-wide screens */
-  margin: auto; /* Centers the container */
-}
-
-/* 🎯 Metadata Group Styling */
-.metadata-group {
-  width: 100%;
-  max-width: 50rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem; /* Increased gap for better readability */
-  align-items: center;
-  text-align: center;
-  background: transparent;
-  border-radius: 0.625rem;
-  transition: transform 0.2s ease-in-out;
-}
-
-/* 🏷️ Label Styling */
-.metadata-group label {
-  text-align: center;
-  font-weight: bold;
-  font-size: 1.125rem;
-  color: black;
-}
-
-/* 🌙 Dark Mode Support */
-.dark-mode .metadata-group label {
-  color: white;
-}
-
-/* 🖊️ Input & Select Styling */
-select,
-input {
-  width: 100%;
-  max-width: 40rem;
-  padding: 0.9rem;
-  background-color: white;
-  border: 1px solid #ccc;
-  border-radius: 0.375rem;
-  font-size: 1rem;
-  box-sizing: border-box;
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-}
-
-/* 📱 Mobile Optimization */
-@media (max-width: 768px) {
-  .metadata-group {
-    width: 100%;
-    max-width: 100%; /* Full width for small screens */
-  }
-
-  select,
-  input {
-    max-width: 100%;
-    font-size: 1.05rem; /* Slightly increased for better mobile usability */
-  }
-}
-
-.metadata-notes label
-{
-font-style: italic;
-font-weight: none;
-}
-
-/* 🏷️ Tags Container */
-.tags-container {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  width: 90%;
-  min-height: 40px; /* Adjusted for a cleaner look */
-  cursor: text;
-  background-color: transparent;
-  border-radius: 7px;
-  padding: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  transition: box-shadow 0.3s ease-in-out;
-}
-
-/* 🎯 Individual Tags */
-.tag {
-  background-color: transparent;
-  color: black;
-  padding: 6px 12px;
-  border-radius: 15px;
-  margin: 4px;
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  border: 1px solid #ccc; /* Subtle border for better visibility */
-  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-}
-
-/* 🌙 Dark Mode Support */
-.dark-mode .tag {
-  color: white;
-  border-color: rgba(255, 255, 255, 0.5);
-}
-
-/* ❌ Remove Tag Button */
-.tag .remove-tag {
-  margin-left: 8px;
-  cursor: pointer;
-  font-weight: bold;
-  transition: color 0.2s ease-in-out;
-}
-
-.tag .remove-tag:hover {
-  color: red;
-}
-
-/* 🔡 Input Field */
-.tags-container input {
-  border: none;
-  outline: none;
-  flex-grow: 1;
-  width: 90%;
-  max-width: 50rem;
-  height: 38px; /* Slightly adjusted for better alignment */
-  border-radius: 5px;
+#passwordMatchMessage {
   font-size: 0.9rem;
-  border: 1px solid #ccc;
-  padding: 0 10px;
-  transition: border-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  font-weight: 500;
 }
 
-/* 🔵 Focus Effect */
-.tags-container input:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
-}
-
-/* 📱 Mobile Optimization */
-@media (max-width: 768px) {
-  .tags-container {
-    width: 100%;
-    padding: 8px;
-  }
-
-  .tag {
-    font-size: 13px;
-    padding: 5px 10px;
-  }
-
-  .tags-container input {
-    font-size: 0.85rem;
-    height: 36px;
-  }
-}
-/* 🌍 Language Selection Container */
-.languages {
-  width: 100%;
-  background-color: transparent;
-  margin-top: 2vw;
+/* Two-Factor Switch */
+.toggle-group {
   display: flex;
-  flex-direction: column; /* Stack elements vertically */
-  gap: 1.5vw; /* Keeps spacing relative for flexibility */
-}
-
-/* 🗨️ Meta Section for Comments */
-.meta {
-  display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 0.8rem; /* Adjusted for balanced spacing */
-  background-color: transparent;
-  margin-top: 2vw;
-  width: 50%;
-  margin-left: 0;
-  border-radius: 7px;
-  padding: 10px;
-  flex-wrap: nowrap; /* Ensures elements stay in a single row */
-  transition: background 0.3s ease-in-out;
 }
 
-/* 🔤 Meta Labels */
-.meta p {
-  font-weight: bold;
-  margin-right: 12px; /* Ensures spacing between text and inputs */
-  white-space: nowrap; /* Prevents text from wrapping */
-  font-size: 1rem;
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
 }
 
-/* 🎯 Adjust Radio Button Spacing */
-.meta input[type="radio"] {
-  margin: 0 6px;
-  cursor: pointer;
-}
-
-/* 🏷️ Label Styling */
-.meta label {
-  font-weight: normal;
-  cursor: pointer;
-  white-space: nowrap;
-  font-size: 0.95rem;
-  transition: color 0.3s ease-in-out;
-}
-
-/* 🌙 Dark Mode Adjustments */
-.dark-mode .meta p,
-.dark-mode .meta label {
-  color: white;
-}
-
-/* 📱 Mobile Optimization */
-@media (max-width: 768px) {
-  .meta {
-    width: 100%; /* Expands to full width on smaller screens */
-    flex-wrap: wrap; /* Allows wrapping if necessary */
-    justify-content: center;
-  }
-
-  .meta p {
-    font-size: 0.95rem;
-  }
-
-  .meta label {
-    font-size: 0.9rem;
-  }
-}
-
-.containerr {
-  background: transparent;
-  display:none;
-  padding: 20px;
-  border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
-  width: 80%;
-  margin: auto;
-  margin-top: 10px;
-  min-height: 50px;
-}
-
-.dark-mode .containerr label
-{
-  color:white;
-}
-
-.hidden {
+.switch input {
   display: none;
 }
 
-input, select, button {
-  width: 80%;
-  padding: 10px;
-  margin: 10px 0;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  outline: none;
-  align-items: center;
-  justify-content: center;
-}
-
-/* 🎨 General Button Styling */
-button {
-  width: 50%;
-  min-width: 120px; /* Slightly increased for better touch accessibility */
-  max-width: 300px; /* Prevents excessive stretching on wider screens */
-  height: 2.8rem; /* Slightly taller for better UX */
-  background-color: #45a049;
-  color: white;
-  margin: 0.5rem 1vw 3vw; /* Top, dynamic left spacing, and bottom */
-  border-radius: 0.5rem;
-  font-weight: bold;
-  font-size: 1.1rem; /* Scales with user preferences */
+.slider {
+  position: absolute;
   cursor: pointer;
-  transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
-  border: none;
-  text-align: center;
-  display: inline-flex;
-  justify-content: center;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px; width: 18px;
+  left: 3px; bottom: 3px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #ff4444;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Login Activity */
+.login-activity {
+  margin-top: 30px;
+}
+
+.login-activity h4 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  display: flex;
   align-items: center;
-  white-space: nowrap; /* Prevents text from wrapping */
+  gap: 8px;
+  color: #444;
 }
 
-/* 🎭 First Button in a Container */
-button:first-child {
-  background: green;
-  color: black;
+.login-activity ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-/* 🚀 Button Hover Effect */
-button:hover {
-  background: green;
-  transform: scale(1.05); /* Subtle hover animation */
+.login-activity li {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+  font-size: 0.95rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
-/* 📱 Mobile & Small Screens */
-@media (max-width: 768px) {
-  button {
-    width: 80%; /* Takes more space for better usability */
-    font-size: 1rem; /* Slightly smaller font */
-    height: 2.5rem; /* Adjust height for smaller screens */
+.login-activity li i {
+  color: #ff4444;
+  margin-right: 8px;
+}
+
+.login-activity .time {
+  font-size: 0.85rem;
+  color: gray;
+}
+
+/* General form styling */
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.form-group label {
+  font-size: 1.1rem;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.toggle-option {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 8px 0;
+  font-size: 0.95rem;
+}
+
+/* Switch toggle design */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 50px;
+  height: 24px;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: 0.3s;
+  border-radius: 34px;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 18px;
+  width: 18px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+
+input:checked + .slider {
+  background-color: #ff4444;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+/* Save button */
+.save-btn {
+  padding: 12px 18px;
+  border: none;
+  background: #ff4444;
+  color: white;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  align-self: flex-start;
+}
+
+.save-btn:hover {
+  background: #e63c3c;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>⚙️ Settings</h2>
+    <button class="tab-button active" data-target="profile"><i class="fa fa-user"></i> Profile</button>
+    <button class="tab-button" data-target="account"><i class="fa fa-cog"></i> Account</button>
+    <button class="tab-button" data-target="notifications"><i class="fa fa-bell"></i> Notifications</button>
+    <button class="tab-button" data-target="privacy"><i class="fa fa-lock"></i> Privacy</button>
+    <button class="tab-button" data-target="payments"><i class="fa fa-credit-card"></i> Payments</button>
+    <button class="tab-button" data-target="subscription"><i class="fa fa-tv"></i> Subscription</button>
+    <button class="tab-button" data-target="delete"><i class="fa fa-trash"></i> Delete Account</button>
+  </div>
+
+  <!-- Content -->
+  <div class="content">
+    <div id="profile" class="content-section active">
+      <div class="content-header">
+        <i class="fa fa-user"></i> Profile Settings
+      </div>
+      <form id="profileForm" class="profile-form">
+        <!-- Profile Picture Upload -->
+        <div class="form-group profile-pic-group">
+          <label for="profilePic">Profile Picture</label>
+          <div class="profile-pic-wrapper">
+            <img id="profilePicPreview" src="https://via.placeholder.com/120" alt="Profile Picture" class="profile-pic">
+            <input type="file" id="profilePic" accept="image/*">
+          </div>
+        </div>
+  
+        <!-- Username -->
+        <div class="form-group">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your username">
+        </div>
+  
+        <!-- Bio -->
+        <div class="form-group">
+          <label for="bio">Bio</label>
+          <textarea id="bio" rows="4" placeholder="Tell us about yourself..."></textarea>
+        </div>
+  
+        <!-- Save Button -->
+        <button type="submit" class="save-btn">Save Changes</button>
+      </form>
+    </div>
+
+  
+
+<!-- Account -->
+<div id="account" class="content-section">
+  <div class="content-header"><i class="fa fa-cog"></i> Account Settings</div>
+
+  <form id="accountForm" class="account-form">
+    <!-- Email Update -->
+    <div class="form-group">
+      <label for="email">Email Address</label>
+      <input type="email" id="email" placeholder="Enter your email" required>
+      <small class="note">We'll send a confirmation link to your new email.</small>
+    </div>
+
+    <!-- Password Update -->
+    <div class="form-group">
+      <label for="currentPassword">Current Password</label>
+      <input type="password" id="currentPassword" placeholder="Enter current password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="newPassword">New Password</label>
+      <input type="password" id="newPassword" placeholder="Enter new password" required>
+    </div>
+
+    <div class="form-group">
+      <label for="confirmNewPassword">Confirm New Password</label>
+      <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required>
+      <small id="passwordMatchMessage"></small>
+    </div>
+
+    <!-- Two-Factor Authentication -->
+    <div class="form-group toggle-group">
+      <label for="twoFactor">Two-Factor Authentication</label>
+      <label class="switch">
+        <input type="checkbox" id="twoFactor">
+        <span class="slider round"></span>
+      </label>
+    </div>
+
+    <!-- Login Activity -->
+    <div class="login-activity">
+      <h4><i class="fa fa-shield"></i> Recent Login Activity</h4>
+      <ul>
+        <li><i class="fa fa-desktop"></i> Chrome – Nairobi, Kenya <span class="time">2 hours ago</span></li>
+        <li><i class="fa fa-mobile"></i> Safari – iPhone, Kenya <span class="time">1 day ago</span></li>
+        <li><i class="fa fa-laptop"></i> Firefox – Windows, US <span class="time">3 days ago</span></li>
+      </ul>
+    </div>
+
+    <!-- Save Button -->
+    <button type="submit" class="save-btn">Save Changes</button>
+  </form>
+</div>
+
+
+<!-- Notifications -->
+<div id="notifications" class="content-section">
+  <div class="content-header">
+    <i class="fa fa-bell"></i> Notification Settings
+  </div>
+  <p>Choose how you'd like to stay updated on Nettoon activity.</p>
+
+  <form id="notificationForm" class="settings-form">
+    <!-- Email Notifications -->
+    <div class="form-group">
+      <label>Email Notifications</label>
+      <div class="toggle-option">
+        <span>New Episodes</span>
+        <label class="switch">
+          <input type="checkbox" id="emailEpisodes" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="toggle-option">
+        <span>Comments & Replies</span>
+        <label class="switch">
+          <input type="checkbox" id="emailComments">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Push Notifications -->
+    <div class="form-group">
+      <label>Push Notifications</label>
+      <div class="toggle-option">
+        <span>Trending Updates</span>
+        <label class="switch">
+          <input type="checkbox" id="pushTrending" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="toggle-option">
+        <span>Recommendations</span>
+        <label class="switch">
+          <input type="checkbox" id="pushRecommendations">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+
+    <!-- Platform Alerts -->
+    <div class="form-group">
+      <label>Platform Alerts</label>
+      <div class="toggle-option">
+        <span>System Announcements</span>
+        <label class="switch">
+          <input type="checkbox" id="systemAlerts" checked>
+          <span class="slider round"></span>
+        </label>
+      </div>
+      <div class="toggle-option">
+        <span>Special Offers</span>
+        <label class="switch">
+          <input type="checkbox" id="specialOffers">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+
+    <button type="submit" class="save-btn">Save Notification Preferences</button>
+  </form>
+</div>
+
+
+    <!-- Privacy -->
+    <div id="privacy" class="content-section">
+      <div class="content-header"><i class="fa fa-lock"></i> Privacy Settings</div>
+      <form id="privacyForm">
+        <label>Profile Visibility</label>
+        <select id="visibility">
+          <option value="public">Public</option>
+          <option value="private">Private</option>
+        </select>
+        <label>Blocked Users</label>
+        <input type="text" id="blockedUser" placeholder="Enter username to block">
+        <button type="button" onclick="blockUser()">Block</button>
+        <ul id="blockedList"></ul>
+        <button type="submit">Save Privacy Settings</button>
+      </form>
+    </div>
+
+    <!-- Payments -->
+    <div id="payments" class="content-section">
+      <div class="content-header"><i class="fa fa-credit-card"></i> Payment Settings</div>
+      <form id="paymentForm">
+        <label>Card Number</label>
+        <input type="text" maxlength="16" id="cardNumber" placeholder="1234 5678 9012 3456">
+        <label>Expiry Date</label>
+        <input type="text" id="expiry" placeholder="MM/YY">
+        <label>CVV</label>
+        <input type="password" maxlength="3" id="cvv">
+        <button type="submit">Save Payment Info</button>
+      </form>
+    </div>
+
+    <!-- Subscription -->
+    <div id="subscription" class="content-section">
+      <div class="content-header"><i class="fa fa-tv"></i> Subscription</div>
+      <form id="subscriptionForm">
+        <label>Select Plan</label>
+        <select id="plan">
+          <option value="free">Free</option>
+          <option value="basic">Basic - $5/month</option>
+          <option value="premium">Premium - $10/month</option>
+        </select>
+        <label><input type="checkbox" id="autoRenew"> Enable Auto-Renewal</label>
+        <button type="submit">Save Subscription</button>
+      </form>
+    </div>
+
+    <!-- Delete Account -->
+    <div id="delete" class="content-section">
+      <div class="content-header"><i class="fa fa-trash"></i> Delete Account</div>
+      <p style="color:red;">⚠️ Once deleted, your account cannot be restored.</p>
+      <button class="danger-btn" id="deleteBtn">Delete My Account</button>
+    </div>
+  </div>
+
+  <script>
+    // Sidebar tab switching
+    const buttons = document.querySelectorAll(".tab-button");
+    const sections = document.querySelectorAll(".content-section");
+
+    buttons.forEach(btn => {
+      btn.addEventListener("click", () => {
+        buttons.forEach(b => b.classList.remove("active"));
+        sections.forEach(s => s.classList.remove("active"));
+        btn.classList.add("active");
+        document.getElementById(btn.dataset.target).classList.add("active");
+      });
+    });
+
+    // Profile picture preview
+    document.getElementById("profilePic").addEventListener("change", function(e) {
+      const file = e.target.files[0];
+      if(file) {
+        const reader = new FileReader();
+        reader.onload = () => {
+          const img = document.getElementById("profilePreview");
+          img.src = reader.result;
+          img.style.display = "block";
+        }
+        reader.readAsDataURL(file);
+      }
+    });
+
+    // Account password match
+    document.getElementById("accountForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const pass = document.getElementById("password").value;
+      const confirm = document.getElementById("confirmPassword").value;
+      if (pass !== confirm) {
+        alert("Passwords do not match!");
+      } else {
+        alert("Account updated successfully!");
+      }
+    });
+
+    // Notifications
+    document.getElementById("notificationsForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("emailNotifs").checked;
+      const push = document.getElementById("pushNotifs").checked;
+      alert(`Preferences saved:\nEmail: ${email}\nPush: ${push}`);
+    });
+
+    // Privacy
+    function blockUser() {
+      const user = document.getElementById("blockedUser").value;
+      if(user.trim() !== "") {
+        const li = document.createElement("li");
+        li.textContent = user;
+        document.getElementById("blockedList").appendChild(li);
+        document.getElementById("blockedUser").value = "";
+      }
+    }
+    document.getElementById("privacyForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Privacy settings updated!");
+    });
+
+    // Payment
+    document.getElementById("paymentForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Payment info saved!");
+    });
+
+    // Subscription
+    document.getElementById("subscriptionForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const plan = document.getElementById("plan").value;
+      const renew = document.getElementById("autoRenew").checked;
+      alert(`Subscription updated:\nPlan: ${plan}\nAuto-Renew: ${renew}`);
+    });
+
+    // Delete account
+    document.getElementById("deleteBtn").addEventListener("click", function() {
+      if(confirm("Are you sure you want to delete your account? This cannot be undone.")) {
+        alert("Your account has been deleted!");
+      }
+    });
+
+// Password match check
+const newPassword = document.getElementById("newPassword");
+const confirmNewPassword = document.getElementById("confirmNewPassword");
+const passwordMatchMessage = document.getElementById("passwordMatchMessage");
+
+function checkPasswordMatch() {
+  if (newPassword.value && confirmNewPassword.value) {
+    if (newPassword.value === confirmNewPassword.value) {
+      passwordMatchMessage.textContent = "✅ Passwords match";
+      passwordMatchMessage.style.color = "green";
+    } else {
+      passwordMatchMessage.textContent = "❌ Passwords do not match";
+      passwordMatchMessage.style.color = "red";
+    }
+  } else {
+    passwordMatchMessage.textContent = "";
   }
 }
 
-button {
-  all: unset; /* Removes browser default styles */
-  background-color: #007bff; /* Button color */
-  color: white;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  display: inline-block;
-  text-align: center;
-}
+newPassword.addEventListener("input", checkPasswordMatch);
+confirmNewPassword.addEventListener("input", checkPasswordMatch);
+
+// Form submit (simulate save)
+document.getElementById("accountForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  alert("✅ Account settings saved!");
+});
 
 
-      </style>
-  
-      <!-- Navbar -->
-      <div class="nav">
-        <div class="search">
-          <input type="search" id="search" placeholder="Search Cartoons and Animations Series" />
-          <a href="index12.html"><img src="search.png" class="search-icon" /></a>
-          <span class="tooltip">Search</span>
-        </div>
+// Handle Notifications Settings Save
+document.getElementById("notificationForm").addEventListener("submit", function(e) {
+  e.preventDefault();
 
-        <a href="index5.html">
-          <div class="upload">
-            <img src="upload.png" alt="Upload Icon" />
-            <div class="tooltip">Upload Shorts</div>
-          </div>
-        </a>
+  const settings = {
+    emailEpisodes: document.getElementById("emailEpisodes").checked,
+    emailComments: document.getElementById("emailComments").checked,
+    pushTrending: document.getElementById("pushTrending").checked,
+    pushRecommendations: document.getElementById("pushRecommendations").checked,
+    systemAlerts: document.getElementById("systemAlerts").checked,
+    specialOffers: document.getElementById("specialOffers").checked,
+  };
 
-        <div class="Notifications" id="notification-icon">
-          <img src="sub-3.png" />
-          <div class="tooltip">Notifications</div>
-        </div>
+  console.log("Saved Notification Preferences:", settings);
 
-        <div class="Notification-container" id="notification-container">
-          <p>No new notifications</p>
-        </div>
+  // Simulate save with localStorage (can later be replaced with API call)
+  localStorage.setItem("notificationSettings", JSON.stringify(settings));
 
-        <a href="#" class="account-dropdown">
-          <div class="Account">
-            <img src="14.png" alt="Account Icon" />
-          </div>
-        </a>
+  alert("✅ Your notification preferences have been saved successfully!");
+});
 
-        <div class="dropdown-content" id="accountDropdown">
-          <ul>
-            <a href="index4.html">
-              <li><div class="proofile"><img src="14.png" alt="Profile Image" /><span>Guest</span></div></li>
-            </a>
-         
-            <a href="index6.html">
-              <li><div class="proofile"><img src="settings 2.png" alt="Settings" /><span>Settings</span></div></li>
-            </a>
-          </ul>
-        </div>
-      </div>
-        
-        </div>
+// Load preferences if already saved
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = JSON.parse(localStorage.getItem("notificationSettings"));
+  if (saved) {
+    document.getElementById("emailEpisodes").checked = saved.emailEpisodes;
+    document.getElementById("emailComments").checked = saved.emailComments;
+    document.getElementById("pushTrending").checked = saved.pushTrending;
+    document.getElementById("pushRecommendations").checked = saved.pushRecommendations;
+    document.getElementById("systemAlerts").checked = saved.systemAlerts;
+    document.getElementById("specialOffers").checked = saved.specialOffers;
+  }
+});
 
-  <div class="container-1">
 
-    <div class="title">
-      <h3>Series Title</h3>
-      <input type="text" placeholder="Enter Series title">
-    </div>
 
-    <div class="Description">
-      <h3>Series Description</h3>
-      <textarea placeholder="Enter Series description (Optional)"></textarea>
-    </div>
-
-    <h3>Series Thumbnail</h3>
-    <div class="uploads">
-      <div class="thumbnail" onclick="document.getElementById('fileInputThumbnailMovies').click()">
-        <img src="image-upload.png" alt="Click to upload thumbnail" class="upload-poster">
-        <input type="file" id="fileInputThumbnailMovies" class="file-input" accept="image/*" onchange="previewMovieThumbnail(event)">
-      </div>
-    </div>
-
-    <div class="preview-container" id="previewContainer"></div>
-
-    <div id="episodesWrapper">
-      <div class="Episodess">
-        <div class="title">
-          <h3>Episode Title</h3>
-          <input type="text" placeholder="Enter Episode title">
-        </div>
-  
-        <label>Select Episode Number:</label>
-        <select name="episodeNumber" class="episode-dropdown">
-          <option value="">-- Episode Number --</option>
-          <option value="1">1</option><option value="2">2</option>
-          <option value="3">3</option><option value="4">4</option>
-          <option value="5">5</option>
-        </select>
-  
-        <div class="Description">
-          <h3>Episode Description</h3>
-          <textarea placeholder="Enter Episode description (Optional)"></textarea>
-        </div>
-  
-        <h3>Add Episode Video and Preview Thumbnail</h3>
-        <div class="uploadss">
-          <input type="file" class="file-input-video" accept="video/*">
-          <input type="file" class="file-input-img" accept="image/*">
-        </div>
-  
-        <div class="preview-container"></div>
-  
-        <!-- hidden on the first block, visible on clones -->
-        <div class="delete"><span class="delete-btn">Delete Episode</span></div>
-      </div>
-    </div>
-  
-    <div class="Episodes">
-      <div class="Add" id="addEpisodeBtn"><span>Add Episode</span></div>
-    </div>
-    
-
-    <!-- Upper Section -->
-    <div class="upper-container">
-      <div class="metadata-group">
-        <label>Genre</label>
-        <select id="genre">
-          <option value="comedy">Comedy</option>
-          <option value="adventure">Adventure</option>
-          <option value="fantasy">Fantasy</option>
-          <option value="action">Action</option>
-          <option value="science-fiction">Science Fiction</option>
-          <option value="drama">Drama</option>
-          <option value="horror">Horror</option>
-          <option value="musical">Musical</option>
-          <option value="thriller">Thriller</option>
-          <option value="romance">Romance</option>
-          <option value="mystery">Mystery</option>
-          <option value="slice-of-life">Slice of Life</option>
-          <option value="dark-comedy">Dark Comedy</option>
-          <option value="hand-drawn">Hand-Drawn</option>
-          <option value="cgi">CGI</option>
-          <option value="stop-motion">Stop Motion</option>
-          <option value="anime">Anime</option>
-          <option value="gothic">Gothic</option>
-          <option value="western">Western</option>
-          <option value="cyberpunk">Cyberpunk</option>
-        </select>
-      </div>
-
-      <div class="metadata-group">
-        <label>Tags</label>
-        <div id="tags-container" class="tags-container">
-          <input type="text" id="tagInput" placeholder="e.g., Anime, Superhero, Kenya">
-        </div>
-      </div>
-
-      <div class="metadata-group">
-        <label for="content-rating">Content Rating</label>
-        <select id="content-rating">
-          <option value="G">G</option>
-          <option value="PG">PG</option>
-          <option value="PG-13">PG-13</option>
-          <option value="R">R</option>
-        </select>
-      </div>
-
-      <div class="metadata-group">
-        <label for="rating">Age Rating</label>
-        <select id="rating">
-          <option value="g">G</option>
-          <option value="pg">PG</option>
-          <option value="pg-13">PG-13</option>
-          <option value="r">R</option>
-        </select>
-      </div>
-
-      <div class="metadata-group">
-        <label for="country">Country</label>
-        <select id="country">
-          <option value="Kenya">Kenya</option>
-          <option value="USA">USA</option>
-          <option value="Japan">Japan</option>
-        </select>
-      </div>
-
-      <div class="metadata-group">
-        <label>Save to Playlist</label>
-        <select id="Playlist">
-          <option>Create New Playlist</option>
-          <option>Teen X</option>
-          <option>Afrilens</option>
-          <option>Nettoon</option>
-        </select>
-      </div>
-
-      <div class="meta">
-        <p>Allow comments</p>
-        <input type="radio" name="comments" id="commentsYes" value="Yes">
-        <label for="commentsYes">Yes</label>
-        <input type="radio" name="comments" id="commentsNo" value="No">
-        <label for="commentsNo">No</label>
-      </div>
-    </div>
-
-    <a href="#"><button type="submit">Upload Video</button></a>
-
-  </div>
-        
-  <script src="script12.js"></script>
-  <script type="text/javascript" src="https://seobli.com/wl/structure.js"></script>
-</main>
+  </script>
 </body>
 </html>

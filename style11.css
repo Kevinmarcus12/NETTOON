@@ -822,13 +822,15 @@ opacity: 1;
 .login-container {
     width: 100%;
     max-width: 500px;
+    margin:200px auto 0 auto; /* Top margin + horizontal centering */
+    padding: 2rem;
     background-color: #F8F8FF; /* Ghost White */
     border: 1px solid #ccc; /* Light grey border */
-    padding: 2rem;
+
     border-radius: 10px;
     box-shadow: 5 4px 12px rgba(0, 0, 0, 0.15);
     text-align: center;
-    margin:200px auto 0 auto; /* Top margin + horizontal centering */
+ 
     gap: 20px;
     z-index: 11;
   }
@@ -918,7 +920,7 @@ opacity: 1;
   }
   
   .toon {
-    color: black;
+    color: var(--color-text-dark); /* Default dark text color for light mode (black) */
   }
   
   /* Dark mode styles */
@@ -1196,8 +1198,8 @@ margin-top: 7rem;
 @media (min-width: 1280px) and (max-width: 1599px) {
 .login-container
 {
-  background-color: saddlebrown;
-  margin:150px auto 0 auto; /* Top margin + horizontal centering */
+  background-color: transparent;
+  margin:200px auto 0 auto; /* Top margin + horizontal centering */
 }
 
 }

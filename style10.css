@@ -943,7 +943,7 @@ h2 {
     padding: 5px 0; /* Adds some spacing inside */
     margin: 0; /* Removes any unwanted margin */
     border-radius: 7px;
-    font-weight: var(--font-weight-extrabold); /* Extra bold for prominence */
+    font-weight: 800; /* Slightly bolder */
     font-size: 2rem;
 
 }
@@ -954,7 +954,7 @@ h2 {
   }
   
   .toon {
-    color: black;
+    color: var(--color-text-dark); /* Default dark text color for light mode (black) */
   }
   
   /* Dark mode styles */
@@ -1632,7 +1632,7 @@ h2
 h2 {
 
   padding: 2px 0; /* Adds some spacing inside */
-  font-size: 1.5rem;
+  font-size:2rem;
 
 }
 

@@ -222,6 +222,21 @@ body::-webkit-scrollbar-thumb {
   border: 2px solid var(--color-bg-light); /* Adds a subtle border for definition */
 }
 
+body {
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-text);
+  font-family: var(--font-family-primary);
+}
+
+h1 { font-size: var(--font-size-heading); }
+h2 { font-size: var(--font-size-xxl); }
+h3 { font-size: var(--font-size-xl); }
+p, span, li { font-size: var(--font-size-base); }
+small { font-size: var(--font-size-xs); }
+
+
+
+
 
 /* ========================================================================== */
 /* HEADER & FOOTER GENERAL STYLING                                            */
@@ -2077,7 +2092,7 @@ background-color:transparent;
   display: block;
   position: relative;
   width: 100%;
-  background-color:transparent;
+  background-color:violet;
   border-radius: 7px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -2096,7 +2111,7 @@ background-color:transparent;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
   font-weight: 400;
-  background-color:transparent;
+  background-color:cadetblue;
   color: #111;
   box-sizing: border-box;
 
@@ -2132,7 +2147,7 @@ body.dark-mode textarea {
 .commentt-profile {
   width: 100%;
   height: 40px;
-  background-color:transparent;
+  background-color:darkcyan;
   display: flex; /* ✅ Use flex to control child layout */
   align-items: center;
   gap: 10px; /* Space between items */
