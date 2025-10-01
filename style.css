@@ -426,8 +426,8 @@ a {
   /* Flex Container Properties (for arranging navigation links/items) */
   display: flex;   /* Enables flexbox for aligning internal navigation items */
   align-items: center; /* Vertically centers the navigation items */
-  justify-content: space-around; /* Distributes navigation items with equal space around them */
-  gap: 5vw; /* Fluid spacing between navigation items, scales with viewport width */
+  justify-content: flex-end; /* All nav items stick to the right */
+  gap: 1.5rem; /* Even spacing between them */
   
   /* Appearance */
   background-color: transparent; /* Ensures a transparent background for the navigation area */
@@ -452,6 +452,8 @@ a {
   flex-grow: 1;
   height: 100%;
 }
+
+
 
 .search {
   display: flex;
@@ -545,6 +547,7 @@ body.dark-mode .search input[type="search"]::placeholder {
 }
 
 
+
 /* Clear button to the right */
 .clear-btn {
   position: absolute;
@@ -588,143 +591,186 @@ visibility: visible;
 opacity: 1;
 
 }
-
 /* Notifications Icon */
 .Notifications {
   position: relative;
-  width: 3vw;
-  height: 3vw;
-  background-color: transparent;
-  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  margin-right: 2rem;
 }
 
 .Notifications img {
-  width: 2vw;
-  height: 2vw;
-  margin-top: 0.4375rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-/* Notification Dropdown */
+/* Dropdown Container */
 .Notification-container {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 110%;
   right: 1%;
   width: 24%;
-  min-width: 11.25em;
-  height: auto;
-  min-height: 30em;
-  padding: 1rem;
-
+  min-width: 17rem;
+  max-height: 30em;
   background-color: #333;
-  color: white;
-  border-radius: 0.5em;
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-overflow-x: hidden;
+  color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.4);
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 
   z-index: 30;
 }
 
-/* Active class to show the container */
 .Notification-container.active {
   display: block;
 }
 
-.Notification
-{
-  width: 90%;
-  height: 18%;
-  background-color: grey;
-  position: absolute;
-  display: block;
-margin-left: 0px;
-justify-content: flex-start;
-border-radius: var(--border-radius-md); /* Consistent medium rounded corners for the card */
+/* Sticky Header for Notification Count */
+.Notification-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: red; /* same as container background */
+  padding: 0rem;
+  border-bottom: 1px solid #444;
 }
 
-.User-profile
-{
+.Notification-header span {
+  width:100%;
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  color: black;
+  background-color: white;
+  border-radius: 0rem;
+  font-weight: bold;
+}
+
+.dark-mode .Notification-header span {
+  color: #fff;
+  background-color: #444;
+}
+
+
+
+.Notification {
   display: flex;
-  flex-wrap: nowrap;
-  width: 30%;
-  height: 40%;
-  float: left;
-  background-color: transparent;
-justify-content: space-between;
+  padding: 0.75rem;
+  border-radius: 0.2rem;
+  background-color: white;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s ease;
+  flex-direction: column; /* stack rows */
+  gap: 0.4rem;
 }
 
-.User-profile img
+.dark-mode .Notification
 {
-width:30px;
-height: 30px;
-border-radius: 50%;
-float: left;
-
+  background-color: grey;
 }
+
+
+.Notification:hover {
+border-color: #2a2d2f;
+}
+
+
+
+.User-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* push username left, timer right */
+  width: 100%;
+}
+
 
 .User-profile span
 {
-width: 60%;
-height: 20px;
-background-color: transparent;
-float: right;
-margin-top: 0.3rem;
-right: 10%;
-}
-
-.account
-{
-width: 20%;
-height: 40%;
-background-color: transparent;
-float: right;
-
-}
-
-.account img
-{
-width: 100%;
-height: 100%;
-
-}
-
-
-
-.Content
-{
-  width: 100%;
-  height: 40px;
+  color: #36454F;
   background-color: transparent;
-  margin-top: 2rem;
+}
+
+.dark-mode .User-profile span
+{
+  color: #D3D3D3;
+}
+
+.User-profile img {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Username stays left */
+.username {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #36454F;
+  margin-left: 0.5rem;
+  flex: 1;
+}
+
+/* Row 2: Message left, Thumb right */
+.message-row {
   display: flex;
-  flex-wrap:nowrap;
-justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-row span
+{
+  color: black;
+  background-color: transparent;
+}
+
+.dark-mode .message-row span
+{
+  color: white;
 
 }
 
-.Content span
-{
-color: white;
-float: left;
-
+.text {
+  color: black;
+  font-size: 0.9rem;
+  flex: 1;
+  margin-right: 0.5rem;
 }
 
-.timer
-{
-width: 160px;
-height: 20px;
-background-color: transparent;
-margin-top: 0.7rem;
-margin-right: 0.3rem;
+/* Thumbnail fixed right */
+.video-thumb {
+  flex-shrink: 0;
 }
 
-.timer span
-{
-  font-size: 12px;
+.video-thumb img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.3rem;
+  object-fit: cover;
+}
+
+/* Row 3: Timer */
+.timer {
+  flex: 1;
+  width: 5%;
+  height: 30px;
+  background-color: saddlebrown;
+  display:none;          /* let it be a full-width row */
+  padding-left: 2rem;    /* indent under username/message, same space as avatar */
+  margin-top: 0.2rem;
+}
+
+.timer span {
+  font-size: 0.3rem;
+  color: #aaa;
+  display:none;   /* makes sure it behaves like a label */
 }
 
 
@@ -741,14 +787,21 @@ margin-right: 0.3rem;
   border-radius: 50%;
   margin-left: 1em;
 }
+
+
+.nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 2rem; /* equal spacing between Upload, Notifications, Account */
+}
+
+
 .Account {
   position: relative;
   width: 3vw;
   height: 3vw;
   background-color: transparent;
-  margin-top: 0.3125rem; /* 5px */
-  margin-right: 1rem;     /* 16px */
-  margin-bottom: 0.1875rem; /* 3px */
+  margin: 0; /* remove extra margins */
   display: flex;
   align-items: center;
   border-radius: 50%;
@@ -1079,7 +1132,7 @@ margin-right: 0.3rem;
 
   /* Sizing & Appearance */
   height: var(--category-pill-height); /* Fixed height (30px) for the pill */
-  background-color: var(--color-bg-metadata-light); /* **YouTube-inspired light gray background** */
+  background-color: #F5F5F5;
   border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
   
   /* Spacing & Positioning */
@@ -1402,6 +1455,12 @@ margin-right: 0.3rem;
 .dark-mode .profilee img {
   filter: invert(1); /* Inverts colors for better visibility on dark backgrounds */
 }
+
+/* Dark mode: only invert the placeholder, not uploaded images */
+.dark-mode .profilee img.placeholder {
+  filter: invert(1);
+}
+
 /* ==== PROFILE NAME CONTAINER (.profilee-name) ==== */
 /* This container holds the profile name text. *//* ==== PROFILE NAME CONTAINER (.profilee-name) ==== */
 /* This flexible container holds the profile name text, managing its layout. */

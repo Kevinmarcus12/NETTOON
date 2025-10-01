@@ -1,60 +1,58 @@
-document.addEventListener("DOMContentLoaded", function() {
-  const lightIcon = document.getElementById("theme-toggle-light");
-  const darkIcon = document.getElementById("theme-toggle-dark");
-  const body = document.body; // Cache body element for efficiency
 
-  // Function to apply the theme classes and icon visibility
-  function applyTheme(mode) {
-      if (mode === "dark") {
-          body.classList.add("dark-mode");
-          body.classList.remove("light-mode");
-          if (lightIcon) lightIcon.style.display = "block"; // Only show if element exists
-          if (darkIcon) darkIcon.style.display = "none";   // Only hide if element exists
-      } else {
-          body.classList.add("light-mode");
-          body.classList.remove("dark-mode");
-          if (lightIcon) lightIcon.style.display = "none";  // Only hide if element exists
-          if (darkIcon) darkIcon.style.display = "block";  // Only show if element exists
-      }
-  }
 
-  // Function to toggle modes
-  function toggleMode() {
-      if (body.classList.contains("dark-mode")) {
-          applyTheme("light");
-          localStorage.setItem("theme", "light"); // Save preference
-      } else {
-          applyTheme("dark");
-          localStorage.setItem("theme", "dark"); // Save preference
-      }
+// ======================= THEME TOGGLE =======================
+document.addEventListener("DOMContentLoaded", () => {
+  const themeToggle = document.getElementById("themeToggle");
+  const lightImg = document.getElementById("theme-toggle-light");
+  const darkImg = document.getElementById("theme-toggle-dark");
+
+  function setTheme(mode) {
+    if (mode === "dark") {
+      document.body.classList.add("dark-mode");
+      document.body.classList.remove("light-mode");
+      themeToggle.checked = true;
+    } else {
+      document.body.classList.add("light-mode");
+      document.body.classList.remove("dark-mode");
+      themeToggle.checked = false;
+    }
   }
 
-  // --- Initial Theme Setup on Load ---
-  const savedTheme = localStorage.getItem("theme");
-
-  if (savedTheme) {
-      // If a theme is saved, apply it
-      applyTheme(savedTheme);
-  } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      // If no theme is saved, check user's system preference (optional, but good UX)
-      applyTheme("dark");
-      localStorage.setItem("theme", "dark"); // Save this initial preference
-  }
-  else {
-      // Default to light mode if no preference saved and no system dark mode preference
-      applyTheme("light");
-      localStorage.setItem("theme", "light"); // Save this initial preference
+  function toggleAndSave() {
+    const newMode = themeToggle.checked ? "dark" : "light";
+    setTheme(newMode);
+    localStorage.setItem("theme", newMode);
   }
 
-  // --- Event Listeners ---
-  // Ensure icons exist before adding listeners
-  if (darkIcon) {
-      darkIcon.addEventListener("click", toggleMode);
+  // Initialize from storage or system
+  const stored = localStorage.getItem("theme");
+  if (stored) {
+    setTheme(stored);
+  } else {
+    const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    setTheme(prefersDark ? "dark" : "light");
   }
-  if (lightIcon) {
-      lightIcon.addEventListener("click", toggleMode);
+
+  themeToggle.addEventListener("change", toggleAndSave);
+
+  // Fallback if icons fail
+  function fallbackImage(imgEl, faClass) {
+    if (!imgEl) return;
+    imgEl.addEventListener("error", () => {
+      const i = document.createElement("i");
+      i.className = faClass;
+      i.style.width = imgEl.style.width || "20px";
+      i.style.height = imgEl.style.height || "20px";
+      imgEl.replaceWith(i);
+    });
+    if (imgEl.complete && imgEl.naturalWidth === 0) {
+      imgEl.dispatchEvent(new Event("error"));
+    }
   }
+  fallbackImage(lightImg, "fa-solid fa-sun");
+  fallbackImage(darkImg, "fa-solid fa-moon");
 });
+
 
 
 

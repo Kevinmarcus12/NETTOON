@@ -102,24 +102,43 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
-
 // ======================= PROFILE PICTURE & FORM =======================
 
+// Elements
+const profilePicInput = document.getElementById("profilePic");
+const profilePicPreview = document.getElementById("profilePicPreview");
+const uploadText = document.getElementById("uploadText");
+const resetBtn = document.getElementById("resetPic");
+const placeholderSrc = "14.png"; // default placeholder
+
+// Hide reset button by default
+resetBtn.hidden = true;
+
 // Trigger hidden input when clicking text
-document.getElementById("uploadText").addEventListener("click", () => {
-  document.getElementById("profilePic").click();
+uploadText.addEventListener("click", () => {
+  profilePicInput.click();
 });
 
 // Handle profile picture preview
-document.getElementById("profilePic").addEventListener("change", event => {
+profilePicInput.addEventListener("change", event => {
   const file = event.target.files[0];
   if (file) {
     const reader = new FileReader();
     reader.onload = e => {
-      document.getElementById("profilePicPreview").src = e.target.result;
+      profilePicPreview.src = e.target.result;
+      profilePicPreview.classList.remove("placeholder"); // remove placeholder styling
+      resetBtn.hidden = false; // 👈 show reset button
     };
     reader.readAsDataURL(file);
   }
+});
+
+// Reset to placeholder
+resetBtn.addEventListener("click", () => {
+  profilePicPreview.src = placeholderSrc;
+  profilePicPreview.classList.add("placeholder"); // reapply placeholder styling
+  profilePicInput.value = ""; // clear file input
+  resetBtn.hidden = true; // 👈 hide reset button again
 });
 
 // Profile form submit
@@ -233,12 +252,150 @@ window.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// ======================= PAYMENTS =======================
-// ... (kept as-is, already clean)
+// Elements
+const paymentMethodsList = document.getElementById("paymentMethodsList");
+const transactionsBody = document.getElementById("transactionsBody");
+const addPaymentModal = document.getElementById("addPaymentModal");
+const addPaymentBtn = document.getElementById("addPaymentBtn");
+const closeModalBtn = document.getElementById("closeModalBtn");
+const saveCardBtn = document.getElementById("saveCardBtn");
+
+// Open modal
+addPaymentBtn.addEventListener("click", () => {
+  addPaymentModal.classList.remove("hidden");
+});
+
+// Close modal
+closeModalBtn.addEventListener("click", () => {
+  addPaymentModal.classList.add("hidden");
+});
+
+// Save card
+saveCardBtn.addEventListener("click", () => {
+  const cardNumber = document.getElementById("cardNumber").value;
+  const cardHolder = document.getElementById("cardHolder").value;
+
+  if (cardNumber && cardHolder) {
+    const masked = "•••• •••• •••• " + cardNumber.slice(-4);
+    const li = document.createElement("li");
+    li.innerHTML = `<span>${masked} - ${cardHolder}</span> 
+      <button onclick="removeCard(this)">Remove</button>`;
+    paymentMethodsList.appendChild(li);
+
+    addPaymentModal.classList.add("hidden");
+    document.getElementById("cardNumber").value = "";
+    document.getElementById("expiryDate").value = "";
+    document.getElementById("cvv").value = "";
+    document.getElementById("cardHolder").value = "";
+  }
+});
+
+// Remove card
+function removeCard(btn) {
+  btn.parentElement.remove();
+}
+
+// Load transactions (dummy data)
+const transactions = [
+  { date: "2025-09-01", plan: "Premium", amount: "$9.99", status: "Paid" },
+  { date: "2025-08-01", plan: "Premium", amount: "$9.99", status: "Paid" },
+  { date: "2025-07-01", plan: "Premium", amount: "$9.99", status: "Paid" }
+];
+
+transactions.forEach(tx => {
+  const tr = document.createElement("tr");
+  tr.innerHTML = `
+    <td>${tx.date}</td>
+    <td>${tx.plan}</td>
+    <td>${tx.amount}</td>
+    <td>${tx.status}</td>
+  `;
+  transactionsBody.appendChild(tr);
+});
+
+// Save billing info + methods
+document.getElementById("paymentsForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const billingAddress = document.getElementById("billingAddress").value;
+  const paymentMethods = Array.from(document.querySelectorAll("#paymentMethodsList li span"))
+    .map(li => li.textContent);
+
+  const settings = {
+    billingAddress,
+    paymentMethods
+  };
+
+  console.log("Saved Payments Settings:", settings);
+  localStorage.setItem("paymentsSettings", JSON.stringify(settings));
+
+  alert("💳 Payment preferences updated!");
+});
+
+// Load saved preferences
+window.addEventListener("DOMContentLoaded", () => {
+  const saved = JSON.parse(localStorage.getItem("paymentsSettings"));
+  if (saved) {
+    document.getElementById("billingAddress").value = saved.billingAddress;
+    saved.paymentMethods.forEach(method => {
+      const li = document.createElement("li");
+      li.innerHTML = `<span>${method}</span> 
+        <button onclick="removeCard(this)">Remove</button>`;
+      paymentMethodsList.appendChild(li);
+    });
+  }
+});
 
 
-// ======================= SUBSCRIPTION =======================
-// ... (kept as-is, already clean)
+// Elements
+const planCards = document.querySelectorAll(".plan-card");
+const currentPlan = document.getElementById("currentPlan");
+const cancelSubscriptionBtn = document.getElementById("cancelSubscriptionBtn");
+const subscriptionForm = document.getElementById("subscriptionForm");
+
+// Select Plan
+planCards.forEach(card => {
+  card.querySelector(".select-plan-btn").addEventListener("click", () => {
+    const plan = card.dataset.plan;
+    const price = card.dataset.price;
+    currentPlan.textContent = `${plan.charAt(0).toUpperCase() + plan.slice(1)} Plan - $${price} / mo`;
+
+    localStorage.setItem("currentPlan", JSON.stringify({ plan, price }));
+    alert(`✅ You have selected the ${plan} plan!`);
+  });
+});
+
+// Cancel Subscription
+cancelSubscriptionBtn.addEventListener("click", () => {
+  if (confirm("⚠ Are you sure you want to cancel your subscription?")) {
+    currentPlan.textContent = "No Active Subscription";
+    localStorage.removeItem("currentPlan");
+    alert("Your subscription has been canceled.");
+  }
+});
+
+// Save Preferences
+subscriptionForm.addEventListener("submit", e => {
+  e.preventDefault();
+
+  const autoRenew = document.getElementById("autoRenew").checked;
+  localStorage.setItem("autoRenew", autoRenew);
+
+  alert("💾 Subscription settings saved!");
+});
+
+// Load Preferences
+window.addEventListener("DOMContentLoaded", () => {
+  const savedPlan = JSON.parse(localStorage.getItem("currentPlan"));
+  const autoRenew = localStorage.getItem("autoRenew") === "true";
+
+  if (savedPlan) {
+    currentPlan.textContent = `${savedPlan.plan.charAt(0).toUpperCase() + savedPlan.plan.slice(1)} Plan - $${savedPlan.price} / mo`;
+  }
+
+  document.getElementById("autoRenew").checked = autoRenew;
+});
+
 
 
 // ======================= DELETE ACCOUNT =======================

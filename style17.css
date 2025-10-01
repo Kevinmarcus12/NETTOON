@@ -604,45 +604,189 @@ opacity: 1;
 /* Notifications Icon */
 .Notifications {
   position: relative;
-  width: 3vw;
-  height: 3vw;
-  background-color: transparent;
-  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   cursor: pointer;
+  margin-right: 2rem;
 }
 
 .Notifications img {
-  width: 2vw;
-  height: 2vw;
-  margin-top: 0.4375rem;
+  width: 1.5rem;
+  height: 1.5rem;
 }
 
-/* Notification Dropdown */
+/* Dropdown Container */
 .Notification-container {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 110%;
   right: 1%;
   width: 24%;
-  min-width: 11.25em;
+  min-width: 17rem;
   max-height: 30em;
-  padding: 1rem;
-
   background-color: #333;
-  color: white;
-  border-radius: 0.5em;
-  box-shadow: 0 0.5em 1em rgba(0, 0, 0, 0.2);
-
+  color: #fff;
+  border-radius: 0.5rem;
+  box-shadow: 0 0.75rem 1.5rem rgba(0, 0, 0, 0.4);
   overflow-y: auto;
   scrollbar-width: thin;
-  scrollbar-color: rgba(0, 0, 0, 0.5) transparent;
+  scrollbar-color: rgba(255, 255, 255, 0.3) transparent;
 
   z-index: 30;
 }
 
-/* Active class to show the container */
 .Notification-container.active {
   display: block;
+}
+
+/* Sticky Header for Notification Count */
+.Notification-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: red; /* same as container background */
+  padding: 0rem;
+  border-bottom: 1px solid #444;
+}
+
+.Notification-header span {
+  width:100%;
+  display: inline-block;
+  padding: 0.25rem 0.6rem;
+  color: black;
+  background-color: white;
+  border-radius: 0rem;
+  font-weight: bold;
+}
+
+.dark-mode .Notification-header span {
+  color: #fff;
+  background-color: #444;
+}
+
+
+
+.Notification {
+  display: flex;
+  padding: 0.75rem;
+  border-radius: 0.2rem;
+  background-color: white;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  transition: background 0.2s ease;
+  flex-direction: column; /* stack rows */
+  gap: 0.4rem;
+}
+
+.dark-mode .Notification
+{
+  background-color: grey;
+}
+
+
+.Notification:hover {
+border-color: #2a2d2f;
+}
+
+
+
+.User-profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* push username left, timer right */
+  width: 100%;
+}
+
+
+.User-profile span
+{
+  color: #36454F;
+  background-color: transparent;
+}
+
+.dark-mode .User-profile span
+{
+  color: #D3D3D3;
+}
+
+.User-profile img {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* Username stays left */
+.username {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #36454F;
+  margin-left: 0.5rem;
+  flex: 1;
+}
+
+/* Row 2: Message left, Thumb right */
+.message-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.message-row span
+{
+  color: black;
+  background-color: transparent;
+}
+
+.dark-mode .message-row span
+{
+  color: white;
+
+}
+
+.text {
+  color: black;
+  font-size: 0.9rem;
+  flex: 1;
+  margin-right: 0.5rem;
+}
+
+/* Thumbnail fixed right */
+.video-thumb {
+  flex-shrink: 0;
+}
+
+.video-thumb img {
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0.3rem;
+  object-fit: cover;
+}
+
+/* Row 3: Timer */
+.timer {
+  flex: 1;
+  width: 5%;
+  height: 30px;
+  background-color: saddlebrown;
+  display:none;          /* let it be a full-width row */
+  padding-left: 2rem;    /* indent under username/message, same space as avatar */
+  margin-top: 0.2rem;
+}
+
+.timer span {
+  font-size: 0.3rem;
+  color: #aaa;
+  display:none;   /* makes sure it behaves like a label */
+}
+
+.Theme {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
 }
 
 .Theme {
@@ -879,7 +1023,7 @@ opacity: 1;
   border-left: 0.25rem solid transparent; /* Converted from 4px */
   color: var(--color-text-secondary, #666);
   transition: 0.3s;
-  margin-bottom: 3.125rem; /* Converted from 50px */
+  margin-bottom: 0.5rem; /* Converted from 50px */
 }
 
 .dark-mode .menu-item {
@@ -1044,6 +1188,30 @@ opacity: 1;
   outline: none;
 }
 
+/* FORCE override fallback */
+.form-group.toggle-row.left-align {
+  display: flex !important;
+  justify-content: flex-start !important;
+  align-items: center !important;
+  gap: 14px !important;
+  max-width: 140px !important;
+  margin-left: 0 !important;
+  height: 80px;
+  background-color: transparent;
+}
+
+.form-group.toggle-row.left-align > label[for="autoRenew"] {
+  margin: 0 !important;
+  white-space: nowrap !important;
+}
+
+.form-group.toggle-row.left-align .switch {
+  margin: 0 !important;
+  flex: 0 0 auto !important;
+
+}
+
+
 /* small helper text */
 .setting-desc {
   font-size: 0.9rem;
@@ -1051,12 +1219,47 @@ opacity: 1;
   margin: 0 0 10px 0;
 }
 
-/* ===== Profile picture ===== */
+
+/* Profile picture styles */
 .profile-pic-group { display: flex; flex-direction: column; gap: 10px; }
 .profile-pic-wrapper { display:flex; align-items:center; gap:15px; }
-.profile-pic { width:120px; height:120px; border-radius:50%; object-fit:cover; border:2px solid white; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
+.profile-pic {
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
 #profilePic { cursor:pointer; }
-.dark-mode .profile-pic-wrapper img { filter: invert(1); }
+
+/* ⬇️ Apply invert ONLY to placeholder when in dark mode */
+.dark-mode .profile-pic-wrapper img.placeholder {
+  filter: invert(1);
+}
+
+/* Uploaded images stay natural */
+.profile-pic-wrapper img:not(.placeholder) {
+  filter: none;
+}
+
+/* Reset button styling */
+.reset-btn {
+  background: #f5f5f5;
+  color: #ff4444;
+  border: 1px solid #ddd;
+  padding: 6px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.reset-btn:hover {
+  background: #ff4444;
+  color: #fff;
+}
+
 
 /* ===== Primary buttons (single canonical style) =====
    Use .save-btn for main action. For small variant: .save-btn.small */
@@ -1115,11 +1318,13 @@ opacity: 1;
   display: inline-block;
   width: 60px;
   height: 28px;
+
 }
 .switch input {
   opacity: 0;
   width: 0;
   height: 0;
+  
 }
 
 /* ==== Display Section Tweaks ==== */
@@ -1149,6 +1354,7 @@ opacity: 1;
   bottom: 0;
   background-color: black;
   transition: 0.4s;
+  border-radius: 30px;   /* fully rounded track */
 }
 
 .dark-mode .slider
@@ -1165,6 +1371,7 @@ opacity: 1;
   bottom: 0.25rem; /* 4px */
   background-color: white;
   transition: 0.4s;
+  border-radius: 50%;
 }
 
 .dark-mode .slider:before
@@ -1173,11 +1380,11 @@ opacity: 1;
 }
 
 input:checked + .slider {
-  background-color: red; /* Blue accent */
+  background-color: #ff4444;
 }
 
 .dark-mode :checked + .slider {
-  background-color:red /* Blue accent */
+  background-color: #ff4444;
 }
 
 
@@ -1194,7 +1401,7 @@ input:checked + .slider:before {
 
 /* Rounded sliders */
 .slider.round {
-  border-radius: 2.125rem; /* 34px */
+  border-radius: 30px;   /* fully rounded track */
 }
 
 .slider.round:before {
