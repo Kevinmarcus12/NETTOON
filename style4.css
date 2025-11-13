@@ -632,6 +632,12 @@ opacity: 1;
   display: block;
 }
 
+.dark-mode .Notification-container
+{
+  background-color: #2a2d2f;
+}
+
+
 /* Sticky Header for Notification Count */
 .Notification-header {
   position: sticky;
@@ -673,8 +679,9 @@ opacity: 1;
 
 .dark-mode .Notification
 {
-  background-color: grey;
+  background-color: var(--color-bg-metadata-dark); /* **YouTube-inspired dark gray background** */
 }
+
 
 
 .Notification:hover {
@@ -772,6 +779,7 @@ border-color: #2a2d2f;
   color: #aaa;
   display:none;   /* makes sure it behaves like a label */
 }
+
 
 .Theme {
   display: flex;
@@ -1202,6 +1210,7 @@ border-color: #2a2d2f;
 }/* ==== INDIVIDUAL STAT ITEMS (.viewws, .followers, .videos, .follow, .country) ==== */
 /* These individual sections within .container-3 display specific account statistics. */
 .viewws,
+.following,
 .followers,
 .videos,
 .follow,
@@ -1255,7 +1264,7 @@ border-color: #2a2d2f;
 }
 
 /* Dark mode adjustment for stat icons (if needed) */
-.dark-mode .container-3 img {
+.dark-mode .container-3 img{
   /* filter: invert(1); if icons are dark and need to be light in dark mode */
 }
 
@@ -3000,8 +3009,8 @@ margin-bottom: 5%;
   .dark-mode .container-3 .followers img,
   .dark-mode .container-3 .videos img,
   .dark-mode .container-3 .country img,
-  .dark-mode .container-3 .follow img
-  
+  .dark-mode .container-3 .follow img,
+  .dark-mode .container-3 .following img
   {
     filter: invert(1);
   
