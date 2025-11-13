@@ -71,7 +71,6 @@ window.onclick = function(event) {
 };
 
 
-
 document.addEventListener("DOMContentLoaded", function () {
     const notificationIcon = document.getElementById("notification-icon");
     const notificationContainer = document.getElementById("notification-container");
@@ -90,3 +89,17 @@ document.addEventListener("DOMContentLoaded", function () {
   });
   
 
+  function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
+  
+    if (input.type === "password") {
+      input.type = "text";
+      icon.src = "views.png"; // 👁 open eye image
+      icon.alt = "Hide Password";
+    } else {
+      input.type = "password";
+      icon.src = "closed eyes.png"; // 🙈 closed eye image
+      icon.alt = "Show Password";
+    }
+  }
+  

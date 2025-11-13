@@ -119,3 +119,21 @@ document.addEventListener("DOMContentLoaded", () => {
       reader.readAsDataURL(file);
     }
   });
+
+  function togglePassword(inputId, icon) {
+    const input = document.getElementById(inputId);
+  
+    // When password is hidden
+    if (input.type === "password") {
+      input.type = "text";
+      icon.src = "views.png"; // 👁 change to your “open eye” image
+      icon.alt = "Hide Password";
+    } 
+    // When password is visible
+    else {
+      input.type = "password";
+      icon.src = "closed eyes.png"; // 🙈 change back to your “closed eye” image
+      icon.alt = "Show Password";
+    }
+  }
+  

@@ -210,15 +210,39 @@ Nettoon.com
         </div>
 
         <div class="login-container">
-            <h1><span class="net">NET</span> <span class="toon">TOON</span></h1>
-            <input type="text" placeholder="Email or Phone Number" />
-            <input type="password" placeholder="Password" />
-            <button class="login-btn">Log In</button>
-            <a href="#" class="forgot">Forgot Password?</a>
-            <div class="divider"></div>
-            <a href="index10.html"><button class="create-account">Create New Account</button></a>
+          <h1><span class="net">NET</span> <span class="toon">TOON</span></h1>
+        
+          <!-- Email/Phone -->
+          <input type="text" placeholder="Email or Phone Number" />
+        
+          <!-- Password with visibility toggle -->
+          <div class="password-container">
+            <input type="password" id="loginPassword" placeholder="Password" />
+            <img
+              src="closed eyes.png"
+              class="toggle-password"
+              id="toggleLoginPassword"
+              alt="Show Password"
+              onclick="togglePassword('loginPassword', this)"
+            />
           </div>
-
+        
+          <button class="login-btn">Log In</button>
+        
+          <a href="#" class="forgot">Forgot Password?</a>
+        
+          <!-- Google Sign-In -->
+          <button class="google-signin">
+            <img src="google logo.png" alt="Google Logo" />
+            Sign in with Google
+          </button>
+        
+          <!-- Create Account -->
+          <a href="index10.html">
+            <button class="create-account">Create New Account</button>
+          </a>
+        </div>
+        
         
 <script src="script11.js"></script>
 <script type=“text/javascript” src=“https://seobli.com/wl/structure.js”></script>

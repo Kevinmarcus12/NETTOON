@@ -466,37 +466,37 @@
                 <option value="Others">Other</option>
             </select>
             
-            <label for="password">Password</label>
-            <input type="password" id="password" placeholder="Enter password" required>
-            
-            <label for="confirm-password">Confirm Password</label>
-            <input type="password" id="confirm-password" placeholder="Confirm password" required>
-            <span id="password-error" style="color: red; display: none;">Passwords do not match!</span>
-            
-            <div id="parent-consent" style="display: none;">
-                <label for="parent-name">Parent/Guardian Full Name</label>
-                <input type="text" id="parent-name" placeholder="Enter parent/guardian name">
-                
-                <label for="parent-email">Parent/Guardian Email</label>
-                <input type="email" id="parent-email" placeholder="Enter parent/guardian email">
-            </div>
-
-            <div class="consent-wrapper">
-              <label class="consent-item">
-                <span>
-                  I agree to the
-                  <a href="/terms" target="_blank">Terms</a>
-                  and
-                  <a href="/privacy" target="_blank">Privacy Policy</a>
-                </span>
-                <input type="checkbox" id="terms" required />
-              </label>
-            
-             
+            <div class="form-group">
+              <label for="password">Password</label>
+              <div class="password-container">
+                <input type="password" id="password" placeholder="Enter password" required>
+                <img src="closed eyes.png" class="toggle-password" id="togglePassword1"
+                     alt="Show Password" onclick="togglePassword('password', this)">
+              </div>
             </div>
             
-
+            <div class="form-group">
+              <label for="confirm-password">Confirm Password</label>
+              <div class="password-container">
+                <input type="password" id="confirm-password" placeholder="Confirm password" required>
+                <img src="closed eyes.png" class="toggle-password" id="togglePassword2"
+                     alt="Show Password" onclick="togglePassword('confirm-password', this)">
+              </div>
+              <span id="password-error" class="password-error">Passwords do not match!</span>
+            </div>
             
+            
+         <div class="consent-wrapper">
+  <label class="consent-item">
+    <input type="checkbox" id="terms" required />
+    <span>
+      I agree to the
+      <a href="/terms" target="_blank">Terms</a>
+      and
+      <a href="/privacy" target="_blank">Privacy Policy</a>
+    </span>
+  </label>
+</div>
             
             <button type="submit" class="signup-btn">Sign Up</button>
         </form>

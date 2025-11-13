@@ -645,6 +645,12 @@ opacity: 1;
   display: block;
 }
 
+.dark-mode .Notification-container
+{
+  background-color: #2a2d2f;
+}
+
+
 /* Sticky Header for Notification Count */
 .Notification-header {
   position: sticky;
@@ -686,8 +692,9 @@ opacity: 1;
 
 .dark-mode .Notification
 {
-  background-color: grey;
+  background-color: var(--color-bg-metadata-dark); /* **YouTube-inspired dark gray background** */
 }
+
 
 
 .Notification:hover {
@@ -1175,7 +1182,7 @@ border-color: #2a2d2f;
   justify-content: center; /* Horizontally centers the items within this section */
   align-items: center; /* Vertically centers the items within this section */
   
-  gap: var(--spacing-sm); /* Responsive spacing between elements using a variable (0.5em approx 8px) */
+  gap:0.7em; /* Responsive spacing between elements using a variable (0.5em approx 8px) */
   margin-block: var(--spacing-xxxs); /* Responsive vertical margin (1px approx 0.0625rem) for subtle spacing */
   
   border-radius: 0.4375rem; /* Uses your specified rem value for consistency */
@@ -1190,6 +1197,7 @@ border-color: #2a2d2f;
 .dislikee,
 .timee,
 .follow,
+.following,
 .option {
     /* Positioning & Layout */
     position: relative;    /* Allows for absolute positioning of child elements (e.g., badges) */
@@ -1202,9 +1210,9 @@ border-color: #2a2d2f;
     min-width: 1rem;       /* Ensures a minimum width for touch targets */
     height: var(--section-item-height); /* Fixed height (27.2px) for consistent button/item size */
     margin-block: var(--spacing-xxs-half); /* Responsive vertical margin (5px) - mostly for wrapping scenarios */
-    
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05); /* Optional soft shadow */
     /* Appearance */
-    background-color: var(--color-bg-metadata-light); /* **YouTube-inspired light gray background** */
+    background-color: #f0f0f0;
     border-radius: var(--border-radius-sm); /* Consistent small rounded corners (7px) */
     cursor: pointer;       /* Indicates that the element is clickable */
     /* NO TRANSITIONS as per user request */
@@ -1217,8 +1225,10 @@ border-color: #2a2d2f;
 .dark-mode .dislikee,
 .dark-mode .timee,
 .dark-mode .follow,
+.dark-mode .following,
 .dark-mode .option {
-    background-color: var(--color-bg-metadata-dark); /* **YouTube-inspired dark gray background** */
+  background-color: var(--color-bg-metadata-dark); /* **YouTube-inspired dark gray background** */
+
 }
 
 
@@ -1236,6 +1246,7 @@ border-color: #2a2d2f;
 .dislikee:hover,
 .timee:hover,
 .follow:hover,
+.following:hover,
 .option:hover {
   background-color: gray;
 }
@@ -1247,6 +1258,7 @@ body.dark-mode .likess:hover,
 body.dark-mode .dislikee:hover,
 body.dark-mode .timee:hover,
 body.dark-mode .follow:hover,
+body.dark-mode .following:hover,
 body.dark-mode .option:hover {
   background-color: #4a4b4d !important;
 }
@@ -1261,16 +1273,32 @@ img {
 /* Specific flex adjustments for .viewss, .follow, and .timee */
 /* These override the general 'flex: 1.5' to give them more space. */
 .viewss {
-  flex: 1.8; 
+  flex: 2; 
   margin-left: 0.5rem;
 }
 
-.follow {
-  flex: 2;
+.following {
+  flex: 1.8; 
 }
 
+.commentss {
+  flex: 1.8; 
+}
+
+.likess {
+  flex: 1.8; 
+}
+
+.dislikee {
+  flex: 1.8; 
+}
+
+.follow {
+  flex: 2.8;
+} 
+
 .timee {
-  flex: 2;
+  flex: 3;
 }
 
 /* Responsive icon styling for all interactive elements */
@@ -1279,6 +1307,7 @@ img {
 .likess img,
 .dislikee img,
 .follow img,
+.following img,
 .option img {
   width: clamp(1.3rem, 2vw, 1.5rem); /* Responsive width for icons, scaling from 1.3rem to 1.5rem */
   height: auto; /* Maintains icon aspect ratio */
@@ -1297,6 +1326,7 @@ img {
 .likess span,
 .dislikee span,
 .timee span,
+.following span,
 .follow span {
   background-color: transparent; /* No background for the text itself */
   color: var(--color-text-dark-contrast); /* Dark text color for light mode, using a variable */
@@ -1308,6 +1338,16 @@ img {
   margin: 0; /* Removes default margins */
 }
 
+/* Dark mode for label text */
+body.dark-mode .viewss span,
+body.dark-mode .commentss span,
+body.dark-mode .likess span,
+body.dark-mode .dislikee span,
+body.dark-mode .timee span,
+body.dark-mode .following span,
+body.dark-mode .follow span {
+  color: var(--color-text-light-alt); /* Lighter text color for dark mode */
+}
 
 .option {
   position: relative;
@@ -3774,6 +3814,7 @@ body {
 .dark-mode .sectionn .likess,
 .dark-mode .sectionn .dislikee,
 .dark-mode .sectionn .follow,
+.dark-mode .sectionn .following,
 .dark-mode .sectionn .timee,
 .dark-mode .sectionn .option
 
@@ -3787,6 +3828,7 @@ body {
 .dark-mode .sectionn .likess img,
 .dark-mode .sectionn .dislikee img,
 .dark-mode .sectionn .follow img,
+.dark-mode .sectionn .following img,
 .dark-mode .sectionn .option img
 {
   filter: invert(1);
