@@ -101,60 +101,61 @@ document.addEventListener("DOMContentLoaded", () => {
       notificationContainer.classList.remove("active");
     }
   });
-});
-// ======================= PROFILE PICTURE & FORM =======================
-
-// Elements
+});// ================= PROFILE PICTURE =================
 const profilePicInput = document.getElementById("profilePic");
 const profilePicPreview = document.getElementById("profilePicPreview");
 const uploadText = document.getElementById("uploadText");
-const resetBtn = document.getElementById("resetPic");
-const placeholderSrc = "14.png"; // default placeholder
+const resetPic = document.getElementById("resetPic");
+const defaultProfilePic = "14.png";
 
-// Hide reset button by default
-resetBtn.hidden = true;
+resetPic.hidden = true; // hide initially
 
-// Trigger hidden input when clicking text
-uploadText.addEventListener("click", () => {
-  profilePicInput.click();
-});
+uploadText.addEventListener("click", () => profilePicInput.click());
 
-// Handle profile picture preview
-profilePicInput.addEventListener("change", event => {
-  const file = event.target.files[0];
+profilePicInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
   if (file) {
-    const reader = new FileReader();
-    reader.onload = e => {
-      profilePicPreview.src = e.target.result;
-      profilePicPreview.classList.remove("placeholder"); // remove placeholder styling
-      resetBtn.hidden = false; // 👈 show reset button
-    };
-    reader.readAsDataURL(file);
+    profilePicPreview.src = URL.createObjectURL(file);
+    resetPic.hidden = false; // show reset button
   }
 });
 
-// Reset to placeholder
-resetBtn.addEventListener("click", () => {
-  profilePicPreview.src = placeholderSrc;
-  profilePicPreview.classList.add("placeholder"); // reapply placeholder styling
-  profilePicInput.value = ""; // clear file input
-  resetBtn.hidden = true; // 👈 hide reset button again
+resetPic.addEventListener("click", () => {
+  profilePicPreview.src = defaultProfilePic;
+  profilePicInput.value = "";
+  resetPic.hidden = true; // hide reset button again
 });
 
-// Profile form submit
-document.getElementById("profileForm").addEventListener("submit", e => {
-  e.preventDefault();
-  const username = document.getElementById("username").value.trim();
-  if (!username) {
-    alert("Username cannot be empty!");
-    return;
+
+// ================= BANNER =================
+const bannerInput = document.getElementById("profileBanner");
+const bannerPreview = document.getElementById("bannerPreview");
+const uploadBannerText = document.getElementById("uploadBannerText");
+const resetBanner = document.getElementById("resetBanner");
+const defaultBanner = "Nettoon.jpg";
+
+resetBanner.hidden = true; // hide initially
+
+uploadBannerText.addEventListener("click", () => bannerInput.click());
+bannerPreview.addEventListener("click", () => bannerInput.click());
+
+bannerInput.addEventListener("change", (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    bannerPreview.src = URL.createObjectURL(file);
+    resetBanner.hidden = false; // show reset button
   }
-  alert("Profile updated successfully!");
+});
+
+resetBanner.addEventListener("click", () => {
+  bannerPreview.src = defaultBanner;
+  bannerInput.value = "";
+  resetBanner.hidden = true; // hide again
 });
 
 
 
-// ======================= ACCOUNT SETTINGS =======================
+// ======================= ACCOUNT SETTINGS =======================// ======================= PASSWORD MATCH CHECK =======================
 const newPassword = document.getElementById("newPassword");
 const confirmNewPassword = document.getElementById("confirmNewPassword");
 const passwordMatchMessage = document.getElementById("passwordMatchMessage");
@@ -172,13 +173,33 @@ function checkPasswordMatch() {
     passwordMatchMessage.textContent = "";
   }
 }
+
 newPassword.addEventListener("input", checkPasswordMatch);
 confirmNewPassword.addEventListener("input", checkPasswordMatch);
 
-document.getElementById("accountForm").addEventListener("submit", function(e) {
+// ======================= PASSWORD VISIBILITY TOGGLE =======================
+document.querySelectorAll(".toggle-password").forEach(button => {
+  button.addEventListener("click", () => {
+    const targetId = button.getAttribute("data-target");
+    const input = document.getElementById(targetId);
+    const icon = button.querySelector("i");
+
+    if (input.type === "password") {
+      input.type = "text";
+      icon.classList.replace("fa-eye", "fa-eye-slash");
+    } else {
+      input.type = "password";
+      icon.classList.replace("fa-eye-slash", "fa-eye");
+    }
+  });
+});
+
+// ======================= FORM SUBMIT =======================
+document.getElementById("accountForm").addEventListener("submit", function (e) {
   e.preventDefault();
   alert("✅ Account settings saved!");
 });
+
 
 
 // ======================= NOTIFICATION SETTINGS =======================

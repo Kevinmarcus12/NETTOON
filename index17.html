@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=3.0, user-scalable=yes" />
 
   <link rel="icon" href="icons/logo.png" type="image/x-icon">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <title>Nettoon.com</title>
 
   <link rel="stylesheet" href="style17.css" />
@@ -246,6 +246,25 @@
         </div>
       </div> <!-- ✅ this closing div was missing -->
 
+
+<!-- Profile Banner / Cover Photo -->
+<div class="form-group banner-group">
+  <label for="profileBanner">Profile Banner / Cover Photo</label>
+
+  <div class="banner-wrapper">
+    <img id="bannerPreview" src="Nettoon.jpg" alt="Profile Banner" class="profile-banner placeholder">
+
+    <input type="file" id="profileBanner" accept="image/*" hidden>
+
+    <span id="uploadBannerText" class="upload-text">
+      Click here to upload a new banner
+    </span>
+
+    <button type="button" id="resetBanner" class="reset-btn">Reset</button>
+  </div>
+</div>
+
+
       <!-- Username -->
       <div class="form-group">
         <label for="username">Username</label>
@@ -263,8 +282,7 @@
     </form>
   </div>
 
-
-     <!-- Account -->
+<!-- Account -->
 <div id="account" class="content-section">
   <div class="content-header"><i class="fa fa-cog"></i> Account Settings</div>
 
@@ -279,17 +297,32 @@
     <!-- Password Update -->
     <div class="form-group">
       <label for="currentPassword">Current Password</label>
-      <input type="password" id="currentPassword" placeholder="Enter current password" required>
+      <div class="password-container">
+        <input type="password" id="currentPassword" placeholder="Enter current password" required>
+        <button type="button" class="toggle-password" data-target="currentPassword">
+          <i class="fa fa-eye"></i>
+        </button>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="newPassword">New Password</label>
-      <input type="password" id="newPassword" placeholder="Enter new password" required>
+      <div class="password-container">
+        <input type="password" id="newPassword" placeholder="Enter new password" required>
+        <button type="button" class="toggle-password" data-target="newPassword">
+          <i class="fa fa-eye"></i>
+        </button>
+      </div>
     </div>
 
     <div class="form-group">
       <label for="confirmNewPassword">Confirm New Password</label>
-      <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required>
+      <div class="password-container">
+        <input type="password" id="confirmNewPassword" placeholder="Confirm new password" required>
+        <button type="button" class="toggle-password" data-target="confirmNewPassword">
+          <i class="fa fa-eye"></i>
+        </button>
+      </div>
       <small id="passwordMatchMessage"></small>
     </div>
 
@@ -297,6 +330,7 @@
     <button type="submit" class="save-btn">Save Changes</button>
   </form>
 </div>
+
 
 
 <!-- Theme Section -->
